@@ -1,0 +1,155 @@
+/*   
+Theme Name: RoloPress Core
+Theme URI: http://rolopress.com
+Description: A Contact Manager built on WordPress
+Author: <a href="http://slipfire.com/">SlipFire</a> &amp; <a href="http://sudarmuthu.com/">Sudar Muthu</a>
+Author URI: 
+Version: 0.1
+Tags: contact-manager, crm
+.
+RoloPress for WordPress is copyright SlipFire http://slipfire.com/  and Sudar Muthu http://sudarmuthu.com
+Like WordPress, this work is released under GNU General Public License, version 2 (GPL).
+http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+RoloPress core theme is based on the Shape Theme by Ian Stewart http://themeshapes.com/shape/
+
+Special Thanks for their contributions to RoloPress (whether they know it or not)
+Sarah at Stuff by Sarah: http://www.stuffbysarah.net/
+.
+*/
+
+
+/* Import a basic layout */
+@import url('styles/2c-r.css');
+
+/* Reset default browser styles */
+@import url('styles/reset.css');
+
+/* Rebuild default browser styles */
+@import url('styles/rebuild.css');
+
+/* Basic WordPress Styles */
+@import url('styles/wp.css');
+
+
+body {
+	margin: 1.5em 15%;
+}
+
+/* =Header
+-------------------------------------------------------------- */
+
+#branding {
+	margin: 0 0 1.5em 0;
+}
+
+
+/* =Menu
+-------------------------------------------------------------- */
+
+#access {
+	margin: 0 0 1.5em 0;
+	overflow: auto;
+}
+.skip-link {
+	display: none;
+}
+.menu ul {
+	list-style: none;
+	margin: 0;
+}
+.menu ul ul {
+	display: none;
+}
+.menu li {
+	display: inline;
+}
+.menu a {
+	display: block;
+	float: left;
+}
+
+
+/* =Content
+-------------------------------------------------------------- */
+
+.post {
+	margin: 0 0 3em 0;	
+}
+.entry-content, .entry-summary {
+	margin: 1.5em 0 0 0;
+}
+
+
+/* =Navigation
+-------------------------------------------------------------- */
+
+.navigation {
+	margin: 0 0 1.5em 0;
+	overflow: auto;	
+}
+
+
+/* =Widget Areas
+-------------------------------------------------------------- */
+
+.widget-area ul {
+	list-style: none;
+	margin-left: 0;
+}
+.widget-area ul ul {
+	list-style: disc;
+	margin-left: 1.1em;
+}
+.widget-area ul ul ul {
+	margin-left: 2.5em;
+}
+.widget-container {
+	margin: 0 0 1.5em 0;
+}
+
+/* =Temporary styles until the
+		directory can read @import
+		
+.aligncenter {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.alignleft {
+	float: left;
+}
+
+.alignright {
+	float: right;
+}
+		
+-------------------------------------------------------------- */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
