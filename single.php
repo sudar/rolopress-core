@@ -1,6 +1,8 @@
 <?php get_header(); ?>
 	
+		<?php rolopress_before_container(); // Before container hook ?>
 		<div id="container">	
+			<?php rolopress_before_content(); // Before content hook ?>
 			<div id="content">
 			
 <?php the_post(); ?>
@@ -10,7 +12,8 @@
 					<div class="nav-next"><?php next_post_link( '%link', '%title <span class="meta-nav">&raquo;</span>' ) ?></div>
 				</div><!-- #nav-above -->
 
-				<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+				<div id="post-<?php the_ID(); ?>" <?php rolopress_post_class(); ?>>
+					<?php rolopress_before_entry(); // Before entry hook ?>
 					<h1 class="entry-title"><?php the_title(); ?></h1>
 					
 					<div class="entry-meta">
@@ -45,7 +48,8 @@
 						<?php _e( 'Both comments and trackbacks are currently closed.', 'shape' ) ?>
 <?php endif; ?>
 <?php edit_post_link( __( 'Edit', 'shape' ), "\n\t\t\t\t\t<span class=\"edit-link\">", "</span>" ) ?>
-					</div><!-- .entry-utility -->													
+					</div><!-- .entry-utility -->
+				<?php rolopress_after_entry(); // After entry hook ?>					
 				</div><!-- #post-<?php the_ID(); ?> -->			
 				
 				<div id="nav-below" class="navigation">
@@ -54,9 +58,10 @@
 				</div><!-- #nav-below -->					
 
 <?php comments_template('', true); ?>			
-			
-			</div><!-- #content -->		
+			</div><!-- #content -->	
+		    <?php rolopress_after_content(); // After content hook ?>			
 		</div><!-- #container -->
+		<?php rolopress_after_container(); // After container hook ?>
 		
 <?php get_sidebar(); ?>	
 <?php get_footer(); ?>

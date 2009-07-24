@@ -1,6 +1,8 @@
 <?php get_header(); ?>
 	
+		<?php rolopress_before_container(); // Before container hook ?>
 		<div id="container">	
+			<?php rolopress_before_content(); // Before content hook ?>		
 			<div id="content">
 			
 <?php the_post(); ?>			
@@ -18,7 +20,8 @@
 
 <?php while ( have_posts() ) : the_post(); ?>
 
-				<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+				<div id="post-<?php the_ID(); ?>" <?php rolopress_post_class(); ?>>
+					<?php rolopress_before_entry(); // Before entry hook ?>
 					<h2 class="entry-title"><a href="<?php the_permalink(); ?>" title="<?php printf( __('Permalink to %s', 'shape'), the_title_attribute('echo=0') ); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
 
 					<div class="entry-meta">
@@ -42,7 +45,8 @@
 <?php endif; ?>						
 						<span class="comments-link"><?php comments_popup_link( __( 'Leave a comment', 'shape' ), __( '1 Comment', 'shape' ), __( '% Comments', 'shape' ) ) ?></span>
 						<?php edit_post_link( __( 'Edit', 'shape' ), "<span class=\"meta-sep\">|</span>\n\t\t\t\t\t\t<span class=\"edit-link\">", "</span>\n\t\t\t\t\t\n" ) ?>
-					</div><!-- #entry-utility -->	
+					</div><!-- #entry-utility -->
+				    <?php rolopress_after_entry(); // After entry hook ?>						
 				</div><!-- #post-<?php the_ID(); ?> -->
 
 <?php endwhile; ?>			
@@ -55,7 +59,9 @@
 <?php } ?>			
 			
 			</div><!-- #content -->		
+			<?php rolopress_after_content(); // After content hook ?>
 		</div><!-- #container -->
+		<?php rolopress_after_container(); // After container hook ?>
 		
 <?php get_sidebar(); ?>	
 <?php get_footer(); ?>

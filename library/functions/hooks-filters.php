@@ -1,0 +1,78 @@
+<?php
+
+// Located in header.php 
+function rolopress_head() {
+    do_action('rolopress_head');
+}
+
+function rolopress_body_class() {
+    do_action('rolopress_body_class');
+}
+
+function rolopress_before_wrapper() {
+    do_action('rolopress_before_wrapper');
+}
+
+function rolopress_before_header() {
+    do_action('rolopress_before_header');
+}
+
+function rolopress_header() {
+    do_action('rolopress_header');
+}
+
+function rolopress_after_header() {
+    do_action('rolopress_after_header');
+}
+
+
+// Located in body files 
+
+function rolopress_post_class() {
+    do_action('rolopress_post_class');
+}
+
+function rolopress_before_container() {
+    do_action('rolopress_before_container');
+}
+
+function rolopress_before_content() {
+    do_action('rolopress_before_content');
+}
+
+function rolopress_before_entry() {
+    do_action('rolopress_before_entry');
+}
+
+function rolopress_after_entry() {
+    do_action('rolopress_after_entry');
+}
+
+function rolopress_after_content() {
+    do_action('rolopress_after_content');
+}
+
+function rolopress_after_container() {
+    do_action('rolopress_after_container');
+}
+
+// Located in footer.php
+function rolopress_before_footer() {
+    do_action('rolopress_before_footer');
+}
+
+function rolopress_footer() {
+    do_action('rolopress_footer');
+}
+
+function rolopress_after_footer() {
+    do_action('rolopress_after_footer');
+}
+
+function rolopress_after_wrapper() {
+    do_action('rolopress_after_wrapper');
+}
+
+
+
+?>

@@ -16,17 +16,21 @@
 	
 	<?php if ( is_singular() ) wp_enqueue_script( 'comment-reply' ); ?>
 	
-	<?php wp_head(); ?>
+	<?php rolopress_head(); // rolopress head hook ?>
+	<?php wp_head(); // wordpress head hook ?>
 	
-	<link rel="alternate" type="application/rss+xml" href="<?php bloginfo('rss2_url'); ?>" title="<?php printf( __( '%s latest posts', 'shape' ), wp_specialchars( get_bloginfo('name'), 1 ) ); ?>" />
-	<link rel="alternate" type="application/rss+xml" href="<?php bloginfo('comments_rss2_url') ?>" title="<?php printf( __( '%s latest comments', 'shape' ), wp_specialchars( get_bloginfo('name'), 1 ) ); ?>" />
+	<link rel="alternate" type="application/rss+xml" href="<?php bloginfo('rss2_url'); ?>" title="<?php printf( __( '%s latest posts', 'rolopress' ), wp_specialchars( get_bloginfo('name'), 1 ) ); ?>" />
+	<link rel="alternate" type="application/rss+xml" href="<?php bloginfo('comments_rss2_url') ?>" title="<?php printf( __( '%s latest comments', 'rolopress' ), wp_specialchars( get_bloginfo('name'), 1 ) ); ?>" />
 	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />	
 </head>
 
-<body <?php body_class(); ?>>
+<body class="<?php rolopress_body_class(); ?>">
+<?php rolopress_before_wrapper(); // before wrapper hook ?> 
 <div id="wrapper" class="hfeed">
 
+	<?php rolopress_before_header(); // before header hook ?>
 	<div id="header">
+				<?php rolopress_header(); // Header hook ?>
 		<div id="masthead">
 		
 			<div id="branding">
@@ -39,11 +43,12 @@
 			</div><!-- #branding -->
 			
 			<div id="access">
-				<div class="skip-link"><a href="#content" title="<?php _e( 'Skip to content', 'shape' ) ?>"><?php _e( 'Skip to content', 'shape' ) ?></a></div>
+				<div class="skip-link"><a href="#content" title="<?php _e( 'Skip to content', 'rolopress' ) ?>"><?php _e( 'Skip to content', 'rolopress' ) ?></a></div>
 				<?php wp_page_menu( 'sort_column=menu_order' ); ?>			
 			</div><!-- #access -->
 			
 		</div><!-- #masthead -->	
 	</div><!-- #header -->
+	<?php rolopress_after_header(); ?>  
 	
 	<div id="main">
