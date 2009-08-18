@@ -2,8 +2,8 @@
 	
 		<?php rolopress_before_container(); // Before container hook ?>
 		<div id="container">	
-			<?php rolopress_before_content(); // Before content hook ?>
-			<div id="content">
+			<?php rolopress_before_main(); // Before main hook ?>
+			<div id="main">
 			
 <?php the_post(); ?>
 
@@ -25,10 +25,10 @@
 						<?php edit_post_link( __( 'Edit', 'shape' ), "<span class=\"meta-sep\">|</span>\n\t\t\t\t\t\t<span class=\"edit-link\">", "</span>\n\t\t\t\t\t" ) ?>						
 					</div><!-- .entry-meta -->
 					
-					<div class="entry-content">
-<?php the_content(); ?>
+					<div class="entry-main">
+<?php the_main(); ?>
 <?php wp_link_pages('before=<div class="page-link">' . __( 'Pages:', 'shape' ) . '&after=</div>') ?>
-					</div><!-- .entry-content -->
+					</div><!-- .entry-main -->
 					
 					<div class="entry-utility">
 					<?php printf( __( 'This entry was posted in %1$s%2$s. Bookmark the <a href="%3$s" title="Permalink to %4$s" rel="bookmark">permalink</a>. Follow any comments here with the <a href="%5$s" title="Comments RSS to %4$s" rel="alternate" type="application/rss+xml">RSS feed for this post</a>.', 'shape' ),
@@ -58,8 +58,8 @@
 				</div><!-- #nav-below -->					
 
 <?php comments_template('', true); ?>			
-			</div><!-- #content -->	
-		    <?php rolopress_after_content(); // After content hook ?>			
+			</div><!-- #main -->	
+		    <?php rolopress_after_main(); // After main hook ?>			
 		</div><!-- #container -->
 		<?php rolopress_after_container(); // After container hook ?>
 		

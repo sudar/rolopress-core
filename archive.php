@@ -2,8 +2,8 @@
 	
 		<?php rolopress_before_container(); // Before container hook ?>
 		<div id="container">	
-				<?php rolopress_before_content(); // Before content hook ?>
-				<div id="content">
+				<?php rolopress_before_main(); // Before main hook ?>
+				<div id="main">
 			
 <?php the_post(); ?>			
 			
@@ -63,8 +63,8 @@
 					<div class="nav-next"><?php previous_posts_link(__( 'Newer posts <span class="meta-nav">&raquo;</span>', 'rolopress' )) ?></div>
 				</div><!-- #nav-below -->
 <?php } ?>			
-			</div><!-- #content -->	
-			<?php rolopress_after_content(); // After content hook ?>
+			</div><!-- #main -->	
+			<?php rolopress_after_main(); // After main hook ?>
 	
 		</div><!-- #container -->
 		<?php rolopress_after_container(); // After container hook ?>

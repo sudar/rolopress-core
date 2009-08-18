@@ -33,6 +33,12 @@
 				<?php rolopress_header(); // Header hook ?>
 		<div id="masthead">
 		
+		<div id="access">
+				<div class="skip-link"><a href="#main" title="<?php _e( 'Skip to main', 'rolopress' ) ?>"><?php _e( 'Skip to main', 'rolopress' ) ?></a></div>
+				<?php wp_page_menu( 'sort_column=menu_order&show_home=home' ); ?>	
+                <?php if (function_exists('menu_widgets')) menu_widgets(); ?>				
+			</div><!-- #access -->
+		
 			<div id="branding">
 				<div id="blog-title"><span><a href="<?php bloginfo( 'url' ) ?>/" title="<?php bloginfo( 'name' ) ?>" rel="home"><?php bloginfo( 'name' ) ?></a></span></div>
 <?php if ( is_home() || is_front_page() ) { ?>
@@ -42,10 +48,6 @@
 <?php } ?>
 			</div><!-- #branding -->
 			
-			<div id="access">
-				<div class="skip-link"><a href="#content" title="<?php _e( 'Skip to content', 'rolopress' ) ?>"><?php _e( 'Skip to content', 'rolopress' ) ?></a></div>
-				<?php wp_page_menu( 'sort_column=menu_order' ); ?>			
-			</div><!-- #access -->
 			
 		</div><!-- #masthead -->	
 	</div><!-- #header -->

@@ -2,8 +2,8 @@
 	
 		<?php rolopress_before_container(); // Before container hook ?>
 		<div id="container">	
-			<?php rolopress_before_content(); // Before content hook ?>	
-			<div id="content">
+			<?php rolopress_before_main(); // Before main hook ?>	
+			<div id="main">
 			
 <?php if ( have_posts() ) : ?>
 				
@@ -63,16 +63,16 @@
 
 				<div id="post-0" class="post no-results not-found">
 					<h2 class="entry-title"><?php _e( 'Nothing Found', 'rolopress' ) ?></h2>
-					<div class="entry-content">
+					<div class="entry-main">
 						<p><?php _e( 'Sorry, but nothing matched your search criteria. Please try again with some different keywords.', 'rolopress' ); ?></p>
 	<?php get_search_form(); ?>						
-					</div><!-- .entry-content -->
+					</div><!-- .entry-main -->
 				</div>
 
 <?php endif; ?>			
 
-			</div><!-- #content -->		
-			<?php rolopress_after_content(); // After content hook ?>
+			</div><!-- #main -->		
+			<?php rolopress_after_main(); // After main hook ?>
 		</div><!-- #container -->
 		<?php rolopress_after_container(); // After container hook ?>
 		

@@ -74,13 +74,13 @@ body {
 }
 
 
-/* =Content
+/* =main
 -------------------------------------------------------------- */
 
 .post {
 	margin: 0 0 3em 0;	
 }
-.entry-content, .entry-summary {
+.entry-main, .entry-summary {
 	margin: 1.5em 0 0 0;
 }
 

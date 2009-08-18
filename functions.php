@@ -11,6 +11,9 @@ include_once( 'library/setup/setup-fields.php' );
 //load hooks and filters
 include_once( 'library/functions/hooks-filters.php' );
 
+//load widget areas
+include_once( 'library/functions/widgets.php' );
+
 
 
 
@@ -146,7 +149,7 @@ function custom_comments($comment, $args, $depth) {
   					'#comment-' . get_comment_ID() );
   					edit_comment_link(__('Edit', 'rolopress'), ' <span class="meta-sep">|</span> <span class="edit-link">', '</span>'); ?></div>
   <?php if ($comment->comment_approved == '0') _e("\t\t\t\t\t<span class='unapproved'>Your comment is awaiting moderation.</span>\n", 'rolopress') ?>
-          <div class="comment-content">
+          <div class="comment-main">
       		<?php comment_text() ?>
   		</div>
 		<?php // echo the comment reply link with help from Justin Tadlock http://justintadlock.com/ and Will Norris http://willnorris.com/
@@ -174,7 +177,7 @@ function custom_pings($comment, $args, $depth) {
     					get_comment_time() );
     					edit_comment_link(__('Edit', 'rolopress'), ' <span class="meta-sep">|</span> <span class="edit-link">', '</span>'); ?></div>
     <?php if ($comment->comment_approved == '0') _e('\t\t\t\t\t<span class="unapproved">Your trackback is awaiting moderation.</span>\n', 'rolopress') ?>
-            <div class="comment-content">
+            <div class="comment-main">
     			<?php comment_text() ?>
 			</div>
 <?php } // end custom_pings

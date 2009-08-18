@@ -2,8 +2,8 @@
 	
 		<?php rolopress_before_container(); // Before container hook ?>
 		<div id="container">	
-			<?php rolopress_before_content(); // Before content hook ?>
-			<div id="content">
+			<?php rolopress_before_main(); // Before main hook ?>
+			<div id="main">
 			
 <?php global $wp_query; $total_pages = $wp_query->max_num_pages; if ( $total_pages > 1 ) { ?>
 				<div id="nav-above" class="navigation">
@@ -27,11 +27,11 @@
 						<?php edit_post_link( __( 'Edit', 'rolopress' ), "<span class=\"meta-sep\">|</span>\n\t\t\t\t\t\t<span class=\"edit-link\">", "</span>\n\t\t\t\t\t" ) ?>
 					</div><!-- .entry-meta -->
 					
-					<div class="entry-content">	
+					<div class="entry-main">	
 
-<?php the_content( __( 'Continue reading <span class="meta-nav">&raquo;</span>', 'rolopress' )  ); ?>
+<?php the_main( __( 'Continue reading <span class="meta-nav">&raquo;</span>', 'rolopress' )  ); ?>
 <?php wp_link_pages('before=<div class="page-link">' . __( 'Pages:', 'rolopress' ) . '&after=</div>') ?>
-					</div><!-- .entry-content -->
+					</div><!-- .entry-main -->
 
 					<div class="entry-utility">
 						<span class="cat-links"><span class="entry-utility-prep entry-utility-prep-cat-links"><?php _e( 'Posted in ', 'rolopress' ); ?></span><?php echo get_the_category_list(', '); ?></span>
@@ -56,8 +56,8 @@
 <?php } ?>			
 
 		
-			</div><!-- #content -->		
-			<?php rolopress_after_content(); // After content hook ?>
+			</div><!-- #main -->		
+			<?php rolopress_after_main(); // After main hook ?>
 		</div><!-- #container -->
 		<?php rolopress_after_container(); // After container hook ?>
 		
