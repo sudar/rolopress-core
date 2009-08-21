@@ -26,7 +26,7 @@
 					</div><!-- .entry-meta -->
 					
 					<div class="entry-main">
-<?php the_main(); ?>
+<?php the_content(); ?>
 <?php wp_link_pages('before=<div class="page-link">' . __( 'Pages:', 'shape' ) . '&after=</div>') ?>
 					</div><!-- .entry-main -->
 					

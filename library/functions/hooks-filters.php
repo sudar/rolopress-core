@@ -21,6 +21,10 @@ function rolopress_header() {
     do_action('rolopress_header');
 }
 
+function rolopress_menu() {
+    do_action('rolopress_menu');
+}
+
 function rolopress_after_header() {
     do_action('rolopress_after_header');
 }
@@ -35,10 +39,12 @@ function rolopress_post_class() {
 function rolopress_before_container() {
     do_action('rolopress_before_container');
 }
-
-function rolopress_before_content() {
-    do_action('rolopress_before_content');
+	
+	
+function rolopress_before_main() {
+    do_action('rolopress_before_main');
 }
+
 
 function rolopress_before_entry() {
     do_action('rolopress_before_entry');
@@ -48,7 +54,7 @@ function rolopress_after_entry() {
     do_action('rolopress_after_entry');
 }
 
-function rolopress_after_content() {
+function rolopress_after_main() {
     do_action('rolopress_after_content');
 }
 

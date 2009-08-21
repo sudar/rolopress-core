@@ -1,0 +1,17 @@
+/* -------------------------------------------------------------- 
+   
+   Styles for Widget Areas
+     
+-------------------------------------------------------------- */   
+
+
+/* Styles for Menu Widget area */
+
+#access h3.widget-title{
+       display: none;
+}
+
+
+#access li{
+display: inline;
+}

@@ -35,6 +35,9 @@ Sarah at Stuff by Sarah: http://www.stuffbysarah.net/
 /* Basic WordPress Styles */
 @import url('styles/wp.css');
 
+/* Styles for Widget Areas */
+@import url('styles/widgets.css');
+
 
 body {
 	margin: 1.5em 15%;
@@ -71,6 +74,7 @@ body {
 .menu a {
 	display: block;
 	float: left;
+	padding:0 10px 0 0;
 }
 
 

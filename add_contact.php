@@ -17,7 +17,7 @@ Template Name: Add Contacts
 				<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 					<h1 class="entry-title"><?php the_title(); ?></h1>
 					<div class="entry-main">
-<?php the_main(); ?>
+<?php the_content(); ?>
 <?php wp_link_pages('before=<div class="page-link">' . __( 'Pages:', 'shape' ) . '&after=</div>') ?>					
 <?php edit_post_link( __( 'Edit', 'shape' ), '<span class="edit-link">', '</span>' ) ?>
 					</div><!-- .entry-main -->
