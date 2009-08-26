@@ -10,7 +10,7 @@
 
 
 /* widget areas */
-register_sidebar( array( 'name' => __('Menu', 'rolopress'), 'id' => 'menu', 'before_widget' => '<div class="menu widget %2$s widget-%2$s">', 'after_widget' => '</div>', 'before_title' => '<h3 class="widget-title">', 'after_title' => '</h3>' ) );
+register_sidebar( array( 'name' => __('Menu', 'rolopress'), 'id' => 'menu', 'before_widget' => '<div class="menu_item widget %2$s widget-%2$s">', 'after_widget' => '</div>', 'before_title' => '<h3 class="widget-title">', 'after_title' => '</h3>' ) );
 register_sidebar( array( 'name' => __('Primary', 'rolopress'), 'id' => 'primary', 'before_widget' => '<div id="%1$s" class="widget %2$s widget-%2$s"><div class="widget-inside">', 'after_widget' => '</div></div>', 'before_title' => '<h3 class="widget-title">', 'after_title' => '</h3>' ) );
 
 
@@ -28,22 +28,26 @@ register_sidebar( array( 'name' => __('404 Template', 'rolopress'), 'id' => 'uti
 
 
 function rolopress_default_menu() {
-		 /* Widgetized Menu*/
-					if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('menu') ) : 
-                        wp_page_menu( 'sort_column=menu_order&show_home=Home&menu_class=page_menu&link_before=<span>&link_after=</span> ');
+				{ ?>
+				<div id="menu">
+				<?php }
+					if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('menu') ) :
+						wp_page_menu( 'sort_column=menu_order&show_home=Home&menu_class=menu_item&link_before=<span>&link_after=</span> ');
+
 						{ ?>
-						<li id="search">
+						<div class="menu_item">
 						<form id="searchform" method="get" action="<?php bloginfo('home') ?>">
-					<div>
-						<input id="s" name="s" type="text" value="<?php echo wp_specialchars(stripslashes($_GET['s']), true) ?>" size="20" tabindex="1" />
-						<input id="searchsubmit" name="searchsubmit" type="submit" value="<?php _e('Search', 'rolopress') ?>" tabindex="2" />
-					</div>
-				</form>
-			</li><?php }
-		 endif;
+							<input id="s" name="s" type="text" value="<?php echo wp_specialchars(stripslashes($_GET['s']), true) ?>" size="20" tabindex="1" />
+					    	<input id="searchsubmit" name="searchsubmit" type="submit" value="<?php _e('Search', 'rolopress') ?>" tabindex="2" />
+						</form>
+						</div>
+				</div>
+				<?php }
+		
+					endif; 
 };
 
-add_filter('rolopress_menu', 'rolopress_default_menu');
+add_filter('rolopress_before_wrapper', 'rolopress_default_menu');
 
 
 /** 

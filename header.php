@@ -35,8 +35,6 @@
 		
 		<div id="access">
 				<div class="skip-link"><a href="#main" title="<?php _e( 'Skip to main', 'rolopress' ) ?>"><?php _e( 'Skip to main', 'rolopress' ) ?></a></div>
-				 <?php rolopress_menu(); ?> 	ROLOPRESS CORE
-				<!--<?php wp_page_menu( 'sort_column=menu_order&show_home=Home&menu_class=page_menu&link_before=<span>&link_after=</span> '); ?>-->
 			</div><!-- #access -->
 		
 			<div id="branding">

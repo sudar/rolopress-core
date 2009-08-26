@@ -61,20 +61,25 @@ body {
 .skip-link {
 	display: none;
 }
-.menu ul {
+#menu ul {
 	list-style: none;
 	margin: 0;
 }
-.menu ul ul {
+#menu ul ul {
 	display: none;
 }
-.menu li {
+#menu li {
 	display: inline;
 }
-.menu a {
+#menu a {
 	display: block;
 	float: left;
 	padding:0 10px 0 0;
+}
+
+
+#menu h3 {
+    display: none;
 }
 
 
