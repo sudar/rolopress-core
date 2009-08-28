@@ -41,8 +41,8 @@ function rolopress_before_container() {
 }
 	
 	
-function rolopress_before_main() {
-    do_action('rolopress_before_main');
+function rolopress_before_info() {
+    do_action('rolopress_before_info');
 }
 
 
@@ -54,8 +54,8 @@ function rolopress_after_entry() {
     do_action('rolopress_after_entry');
 }
 
-function rolopress_after_main() {
-    do_action('rolopress_after_content');
+function rolopress_after_info() {
+    do_action('rolopress_after_info');
 }
 
 function rolopress_after_container() {

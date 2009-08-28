@@ -2,8 +2,8 @@
 	
 		<?php rolopress_before_container(); // Before container hook ?>
 		<div id="container">	
-				<?php rolopress_before_main(); // Before main hook ?>
-				<div id="main">
+				<?php rolopress_before_info(); // Before info hook ?>
+				<div id="info">
 			
 <?php the_post(); ?>
 
@@ -22,7 +22,7 @@
 						<?php edit_post_link( __( 'Edit', 'rolopress' ), "<span class=\"meta-sep\">|</span>\n\t\t\t\t\t\t<span class=\"edit-link\">", "</span>\n\t\t\t\t\t" ) ?>						
 					</div><!-- .entry-meta -->
 					
-					<div class="entry-main">
+					<div class="entry-info">
 						<div class="entry-attachment">					
 <?php if ( wp_attachment_is_image( $post->id ) ) : $att_image = wp_get_attachment_image_src( $post->id, "medium"); ?>
 						<p class="attachment"><a href="<?php echo wp_get_attachment_url($post->id); ?>" title="<?php the_title(); ?>" rel="attachment"><img src="<?php echo $att_image[0];?>" width="<?php echo $att_image[1];?>" height="<?php echo $att_image[2];?>"  class="attachment-medium" alt="<?php $post->post_excerpt; ?>" /></a>
@@ -37,7 +37,7 @@
 <?php the_content( __( 'Continue reading <span class="meta-nav">&raquo;</span>', 'rolopress' )  ); ?>
 <?php wp_link_pages('before=<div class="page-link">' . __( 'Pages:', 'rolopress' ) . '&after=</div>') ?>
 
-					</div><!-- .entry-main -->
+					</div><!-- .entry-info -->
 					
 					<div class="entry-utility">
 					<?php printf( __( 'This entry was posted in %1$s%2$s. Bookmark the <a href="%3$s" title="Permalink to %4$s" rel="bookmark">permalink</a>. Follow any comments here with the <a href="%5$s" title="Comments RSS to %4$s" rel="alternate" type="application/rss+xml">RSS feed for this post</a>.', 'rolopress' ),
@@ -62,8 +62,8 @@
 				</div><!-- #post-<?php the_ID(); ?> -->						
 
 <?php comments_template(); ?>	
-			</div><!-- #main -->			
-			<?php rolopress_after_main(); // After main hook ?>			
+			</div><!-- #info -->			
+			<?php rolopress_after_info(); // After info hook ?>			
 
 		</div><!-- #container -->
 		<?php rolopress_after_container(); // After container hook ?>

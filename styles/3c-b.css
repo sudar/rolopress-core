@@ -1,13 +1,13 @@
 /*
 LAYOUT: Three-Column
-DESCRIPTION: Three-column fluid layout with two sidebars on both sides of content
+DESCRIPTION: Three-column fluid layout with two sidebars on both sides of info
 */
 
 #container {
 	float: left;
 	width: 100%;
 }
-#content {
+#info {
 	margin: 0 200px;
 }
 #primary, #secondary {

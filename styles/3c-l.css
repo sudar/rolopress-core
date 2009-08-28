@@ -1,6 +1,6 @@
 /*
 LAYOUT: Three-Column (Left)
-DESCRIPTION: Three-column fluid layout with two sidebars left of content
+DESCRIPTION: Three-column fluid layout with two sidebars left of info
 */
 
 #container {
@@ -8,7 +8,7 @@ DESCRIPTION: Three-column fluid layout with two sidebars left of content
 	margin: 0 0 0 -400px;
 	width: 100%;
 }
-#content {
+#info {
 	margin: 0 0 0 400px;
 }
 #primary, #secondary {
