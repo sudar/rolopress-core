@@ -1,5 +1,7 @@
 	</div><!-- #main -->
-	<?php rolopress_before_footer(); // Before footer hook ?>
+		<?php rolopress_after_main(); // after main hook ?>
+	
+	<?php rolopress_before_footer(); // before footer hook ?>
 	<div id="footer">
 	<?php rolopress_footer(); // rolopress footer hook ?>
 		<div id="colophon">

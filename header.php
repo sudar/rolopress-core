@@ -51,4 +51,5 @@
 	</div><!-- #header -->
 	<?php rolopress_after_header(); ?>  
 	
+	<?php rolopress_before_main(); // before main hook ?> 
 	<div id="main">
