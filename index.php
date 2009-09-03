@@ -2,15 +2,19 @@
 	
 		<?php rolopress_before_container(); // Before container hook ?>
 		<div id="container">	
-			<?php rolopress_before_info(); // Before info hook ?>
-			<div id="info">
+			<?php rolopress_before_main(); // Before main hook ?>
+			<div id="main">
 			
 <?php global $wp_query; $total_pages = $wp_query->max_num_pages; if ( $total_pages > 1 ) { ?>
 				<div id="nav-above" class="navigation">
 					<div class="nav-previous"><?php next_posts_link(__( '<span class="meta-nav">&laquo;</span> Older posts', 'rolopress' )) ?></div>
 					<div class="nav-next"><?php previous_posts_link(__( 'Newer posts <span class="meta-nav">&raquo;</span>', 'rolopress' )) ?></div>
 				</div><!-- #nav-above -->
-<?php } ?>			
+<?php } ?>	
+
+			<?php rolopress_before_info(); // Before info hook ?>
+			<div id="info">		
+			<?php rolopress_before_info_content(); // Before info content hook ?>
 			
 <?php while ( have_posts() ) : the_post() ?>
 	
@@ -27,11 +31,11 @@
 						<?php edit_post_link( __( 'Edit', 'rolopress' ), "<span class=\"meta-sep\">|</span>\n\t\t\t\t\t\t<span class=\"edit-link\">", "</span>\n\t\t\t\t\t" ) ?>
 					</div><!-- .entry-meta -->
 					
-					<div class="entry-info">	
+					<div class="entry-main">	
 
 <?php the_content( __( 'Continue reading <span class="meta-nav">&raquo;</span>', 'rolopress' )  ); ?>
 <?php wp_link_pages('before=<div class="page-link">' . __( 'Pages:', 'rolopress' ) . '&after=</div>') ?>
-					</div><!-- .entry-info -->
+					</div><!-- .entry-main -->
 
 					<div class="entry-utility">
 						<span class="cat-links"><span class="entry-utility-prep entry-utility-prep-cat-links"><?php _e( 'Posted in ', 'rolopress' ); ?></span><?php echo get_the_category_list(', '); ?></span>
@@ -44,9 +48,14 @@
 				<?php rolopress_after_entry(); // After entry hook ?>
 				</div><!-- #post-<?php the_ID(); ?> -->
 				
+				
 <?php comments_template(); ?>				
 	
-<?php endwhile; ?>		
+<?php endwhile; ?>	
+
+			<?php rolopress_after_info_content(); // After info content hook ?>
+			</div><!-- #info -->		
+			<?php rolopress_after_info(); // After info hook ?>	
 
 <?php global $wp_query; $total_pages = $wp_query->max_num_pages; if ( $total_pages > 1 ) { ?>
 				<div id="nav-below" class="navigation">
@@ -56,8 +65,8 @@
 <?php } ?>			
 
 		
-			</div><!-- #info -->		
-			<?php rolopress_after_info(); // After info hook ?>
+			</div><!-- #main -->		
+			<?php rolopress_after_main(); // After main hook ?>
 		</div><!-- #container -->
 		<?php rolopress_after_container(); // After container hook ?>
 		

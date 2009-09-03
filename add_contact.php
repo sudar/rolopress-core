@@ -12,6 +12,10 @@ Template Name: Add Contacts
 		<div id="container">	
 			<div id="main">
 			
+			<?php rolopress_before_info(); // Before info hook ?>
+			<div id="info">		
+			<?php rolopress_before_info_content(); // Before info content hook ?>
+			
 <?php the_post(); ?>
 				
 				<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -23,7 +27,11 @@ Template Name: Add Contacts
 					</div><!-- .entry-main -->
 				</div><!-- #post-<?php the_ID(); ?> -->			
 			
-<?php if ( get_post_custom_values('comments') ) comments_template() // Add a custom field with Name and Value of "comments" to enable comments on this page ?>			
+<?php if ( get_post_custom_values('comments') ) comments_template() // Add a custom field with Name and Value of "comments" to enable comments on this page ?>		
+
+			<?php rolopress_after_info_content(); // After info content hook ?>
+			</div><!-- #info -->		
+			<?php rolopress_after_info(); // After info hook ?>		
 			
 			</div><!-- #main -->		
 		</div><!-- #container -->

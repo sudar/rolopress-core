@@ -2,8 +2,8 @@
 	
 		<?php rolopress_before_container(); // Before container hook ?>
 		<div id="container">	
-			<?php rolopress_before_info(); // Before info hook ?>	
-			<div id="info">
+			<?php rolopress_before_main(); // Before main hook ?>	
+			<div id="main">
 			
 <?php if ( have_posts() ) : ?>
 				
@@ -14,7 +14,11 @@
 					<div class="nav-previous"><?php next_posts_link(__( '<span class="meta-nav">&laquo;</span> Older posts', 'rolopress' )) ?></div>
 					<div class="nav-next"><?php previous_posts_link(__( 'Newer posts <span class="meta-nav">&raquo;</span>', 'rolopress' )) ?></div>
 				</div><!-- #nav-above -->
-<?php } ?>							
+<?php } ?>			
+
+			<?php rolopress_before_info(); // Before info hook ?>
+			<div id="info">		
+			<?php rolopress_before_info_content(); // Before info content hook ?>				
 
 <?php while ( have_posts() ) : the_post() ?>
 
@@ -52,6 +56,10 @@
 
 <?php endwhile; ?>
 
+			<?php rolopress_after_info_content(); // After info content hook ?>
+			</div><!-- #info -->		
+			<?php rolopress_after_info(); // After info hook ?>	
+
 <?php global $wp_query; $total_pages = $wp_query->max_num_pages; if ( $total_pages > 1 ) { ?>
 				<div id="nav-below" class="navigation">
 					<div class="nav-previous"><?php next_posts_link(__( '<span class="meta-nav">&laquo;</span> Older posts', 'rolopress' )) ?></div>
@@ -63,16 +71,16 @@
 
 				<div id="post-0" class="post no-results not-found">
 					<h2 class="entry-title"><?php _e( 'Nothing Found', 'rolopress' ) ?></h2>
-					<div class="entry-info">
+					<div class="entry-main">
 						<p><?php _e( 'Sorry, but nothing matched your search criteria. Please try again with some different keywords.', 'rolopress' ); ?></p>
 	<?php get_search_form(); ?>						
-					</div><!-- .entry-info -->
+					</div><!-- .entry-main -->
 				</div>
 
 <?php endif; ?>			
 
-			</div><!-- #info -->		
-			<?php rolopress_after_info(); // After info hook ?>
+			</div><!-- #main -->		
+			<?php rolopress_after_main(); // After main hook ?>
 		</div><!-- #container -->
 		<?php rolopress_after_container(); // After container hook ?>
 		

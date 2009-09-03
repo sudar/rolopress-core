@@ -2,8 +2,8 @@
 	
 		<?php rolopress_before_container(); // Before container hook ?>
 		<div id="container">	
-			<?php rolopress_before_info(); // Before info hook ?>
-			<div id="info">
+			<?php rolopress_before_main(); // Before main hook ?>
+			<div id="main">
 			
 <?php the_post(); ?>			
 			
@@ -18,6 +18,10 @@
 					<div class="nav-next"><?php previous_posts_link(__( 'Newer posts <span class="meta-nav">&raquo;</span>', 'rolopress' )) ?></div>
 				</div><!-- #nav-above -->
 <?php } ?>			
+
+			<?php rolopress_before_info(); // Before info hook ?>
+			<div id="info">		
+			<?php rolopress_before_info_content(); // Before info content hook ?>
 
 <?php while ( have_posts() ) : the_post(); ?>
 
@@ -48,7 +52,11 @@
 				  <?php rolopress_after_entry(); // After entry hook ?>
 				</div><!-- #post-<?php the_ID(); ?> -->
 
-<?php endwhile; ?>			
+<?php endwhile; ?>	
+
+			<?php rolopress_after_info_content(); // After info content hook ?>
+			</div><!-- #info -->		
+			<?php rolopress_after_info(); // After info hook ?>			
 
 <?php global $wp_query; $total_pages = $wp_query->max_num_pages; if ( $total_pages > 1 ) { ?>
 				<div id="nav-below" class="navigation">
@@ -56,8 +64,8 @@
 					<div class="nav-next"><?php previous_posts_link(__( 'Newer posts <span class="meta-nav">&raquo;</span>', 'rolopress' )) ?></div>
 				</div><!-- #nav-below -->
 <?php } ?>	
-			</div><!-- #info -->			
-			<?php rolopress_after_info(); // After info hook ?>
+			</div><!-- #main -->			
+			<?php rolopress_after_main(); // After main hook ?>
 	
 		</div><!-- #container -->
 		<?php rolopress_after_container(); // After container hook ?>

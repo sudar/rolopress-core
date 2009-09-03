@@ -24,7 +24,8 @@
 	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />	
 </head>
 
-<body class="<?php rolopress_body_class(); ?>">
+<body class="<?php rolopress_body_class() ?>">
+
 <?php rolopress_before_wrapper(); // before wrapper hook ?> 
 <div id="wrapper" class="hfeed">
 
@@ -50,6 +51,3 @@
 		</div><!-- #masthead -->	
 	</div><!-- #header -->
 	<?php rolopress_after_header(); ?>  
-	
-	<?php rolopress_before_main(); // before main hook ?> 
-	<div id="main">
