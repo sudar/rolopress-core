@@ -2,22 +2,22 @@
 
 
 //Auto create pages
-include_once( 'library/setup/add-pages.php' );
+	require_once( 'library/setup/add-pages.php' );
 
 //Auto create custom fields
-include_once( 'library/setup/setup-fields.php' );
+	require_once( 'library/setup/setup-fields.php' );
 
 //load hooks and filters
-include_once( 'library/functions/hooks-filters.php' );
+	require_once( 'library/functions/hooks-filters.php' );
 
 //loads framework functions
-include_once( 'library/functions/framework.php' );
+	require_once( 'library/functions/framework.php' );
 
 //load widget areas
-include_once( 'library/functions/widgets.php' );
+	require_once( 'library/functions/widgets.php' );
 
 //load dynamic classes
-//include_once( 'library/functions/dynamic-classes.php' );
+	require_once( 'library/functions/dynamic-classes.php' );
 
 
 

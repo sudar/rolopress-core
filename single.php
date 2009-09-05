@@ -16,7 +16,7 @@
 					<div class="nav-next"><?php next_post_link( '%link', '%title <span class="meta-nav">&raquo;</span>' ) ?></div>
 				</div><!-- #nav-above -->
 
-				<div id="post-<?php the_ID(); ?>" <?php rolopress_post_class(); ?>>
+				<div id="contact-<?php the_ID(); ?>" <?php rolopress_post_class(); ?>>
 					<?php rolopress_before_entry(); // Before entry hook ?>
 					<h1 class="entry-title"><?php the_title(); ?></h1>
 					

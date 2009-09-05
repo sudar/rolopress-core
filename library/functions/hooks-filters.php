@@ -5,10 +5,6 @@ function rolopress_head() {
     do_action('rolopress_head');
 }
 
-function rolopress_body_class() {
-    do_action('rolopress_body_class');
-}
-
 function rolopress_before_wrapper() {
     do_action('rolopress_before_wrapper');
 }
@@ -32,9 +28,7 @@ function rolopress_after_header() {
 
 // Located in body files 
 
-function rolopress_post_class() {
-    do_action('rolopress_post_class');
-}
+
 
 function rolopress_before_container() {
     do_action('rolopress_before_container');
