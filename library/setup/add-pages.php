@@ -6,6 +6,7 @@ Special thanks to Sarah G for her help with this code
 http://www.stuffbysarah.net/wordpress-plugins/
 */
 
+//TODO This should be done only when the theme is activated. 
 add_action('init', 'create_new_page');
 
 function create_new_page() {

@@ -1,6 +1,5 @@
 <?php
 
-
 //Auto create pages
 	require_once( 'library/setup/add-pages.php' );
 
@@ -19,6 +18,8 @@
 //load dynamic classes
 	require_once( 'library/functions/dynamic-classes.php' );
 
+//load Template functions
+	require_once( 'library/functions/template-functions.php' );
 
 
 // Make theme available for translation
