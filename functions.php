@@ -184,4 +184,3 @@ function custom_pings($comment, $args, $depth) {
     			<?php comment_text() ?>
 			</div>
 <?php } // end custom_pings
-

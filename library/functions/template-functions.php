@@ -9,7 +9,7 @@
 function rolo_add_contact() {
     if (isset($_POST['rp_add_contact']) && $_POST['rp_add_contact'] == 'add_contact') {
         if (_rolo_save_contact_fields()) {
-            echo("Contact information succesfully added.");
+            echo("Contact information successfully added.");
         } else {
             echo("There was some problem in inserting the contact info");
         }

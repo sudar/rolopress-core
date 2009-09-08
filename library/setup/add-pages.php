@@ -24,7 +24,7 @@ function create_new_page() {
         $page_id = wp_insert_post($add_page);
 
         if ($page_id) {
-            update_post_meta($page_id, '_wp_page_template', 'add_contact.php');
+            update_post_meta($page_id, '_wp_page_template', 'contact-add.php');
         }
     }
 } 
