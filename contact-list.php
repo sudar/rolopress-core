@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Contact List
+ * Template Name: Contact: List
  *
  * Lists your contacts on one page.
  *
@@ -31,7 +31,7 @@ get_header(); ?>
 			<?php rolopress_before_info(); // Before info hook ?>
 			<div id="info">		
 			<?php rolopress_before_info_content(); // Before info content hook ?>
-			<h3></h3>
+			<h3 class="section-title"><span>Contacts</span></h3>
 			
 <?php if ( $wp_query->have_posts() ) : while ( $wp_query->have_posts() ) : $wp_query->the_post(); ?>
 	
@@ -74,8 +74,6 @@ get_header(); ?>
 			</div><!-- #info -->		
 			<?php rolopress_after_info(); // After info hook ?>	
 
-			</div><!-- #main -->		
-			<?php rolopress_after_main(); // After main hook ?>	
 
 <?php global $wp_query; $total_pages = $wp_query->max_num_pages; if ( $total_pages > 1 ) { ?>
 				<div id="nav-below" class="navigation">

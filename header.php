@@ -37,17 +37,7 @@
 		<div id="access">
 				<div class="skip-link"><a href="#main" title="<?php _e( 'Skip to main', 'rolopress' ) ?>"><?php _e( 'Skip to main', 'rolopress' ) ?></a></div>
 			</div><!-- #access -->
-		
-			<div id="branding">
-				<div id="blog-title"><span><a href="<?php bloginfo( 'url' ) ?>/" title="<?php bloginfo( 'name' ) ?>" rel="home"><?php bloginfo( 'name' ) ?></a></span></div>
-<?php if ( is_home() || is_front_page() ) { ?>
-		    		<h1 id="blog-description"><?php bloginfo( 'description' ) ?></h1>
-<?php } else { ?>	
-		    		<div id="blog-description"><?php bloginfo( 'description' ) ?></div>
-<?php } ?>
-			</div><!-- #branding -->
-			
-			
+				
 		</div><!-- #masthead -->	
 	</div><!-- #header -->
 	<?php rolopress_after_header(); ?>  

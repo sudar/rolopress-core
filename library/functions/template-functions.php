@@ -256,4 +256,51 @@ function _rolo_get_field($post_id, $field_name) {
     return apply_filters($contact_fields[$field_name]['filter'], $value);
 }
 
+function rolopress_default_menu() {
+			{ ?>
+			<div id="menu">
+			<?php }
+				if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('menu') ) : {
+					{ ?>
+					<div class="menu_item">
+					<h1 id="app-title"><span><a href="<?php bloginfo( 'url' ) ?>/" title="<?php bloginfo( 'name' ) ?>" rel="home"><?php bloginfo( 'name' ) ?></a></span></h1>
+					<?php }
+					wp_page_menu( 'sort_column=menu_order&menu_class=menu_item&link_before=<span>&link_after=</span>');
+					 { ?>							
+					</div>
+					<ul class="menu_item alignright">
+						<li><form id="searchform" method="get" action="<?php bloginfo('home') ?>">
+						<input id="s" name="s" type="text" value="<?php echo wp_specialchars(stripslashes($_GET['s']), true) ?>" size="20" tabindex="1" />
+					 	<input id="searchsubmit" name="searchsubmit" type="submit" value="<?php _e('Search', 'rolopress') ?>" tabindex="2" />
+						</form></li>
+						<?php global $user_ID, $user_identity, $user_level ?>
+						<?php if ( $user_level >= 1 ) : ?>
+							<li><a title="settings" href="<?php bloginfo('url') ?>/wp-admin/"><span>Settings</span></a></li>
+						<?php endif // $user_level >= 1 ?>
+						<?php wp_loginout(); ?>
+					</ul>
+			</div>
+			<?php }
+}
+			endif; 
+};
+
+add_filter('rolopress_before_wrapper', 'rolopress_default_menu');
+
+
+/** 
+* To replace default menu use widgets or add the following code to your child theme's functions.php:
+ add_action('init', 'remove_rolopress_default_menu'); // first call the function to remove the default menu
+
+ function remove_rolopress_default_menu() { // here's the function we just called
+     remove_filter('rolopress_menu', 'rolopress_default_menu'); // removing the default menu
+}
+
+ function my_new_menu() { // here's our new menu
+    [new menu stuff]
+	}
+
+add_filter('rolopress_menu', 'my_new_menu'); // make sure you use the filter
+**/
+
 ?>
