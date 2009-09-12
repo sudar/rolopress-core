@@ -52,7 +52,7 @@ body {
 
 
 /* =Menu
--------------------------------------------------------------- */
+-------------------------------------------------------------- 
 
 #access {
 	margin: 0 0 1.5em 0;
@@ -76,11 +76,62 @@ body {
 	float: left;
 	padding:0 10px 0 0;
 }
-
-
 #menu h3 {
     display: none;
 }
+
+*/
+
+
+#access {
+	margin: 0 0 1.5em 0;
+	overflow: auto;
+}
+.skip-link {
+	display: none;
+}
+	
+#menu {
+	height: 36px;
+	background: #464646;
+	padding:5px 15px;
+	}
+	
+#menu ul {
+	list-style: none;
+	margin: 0;
+}
+#menu ul ul {
+	display: none;
+}
+#menu li {
+	display: inline;
+}
+#menu a {
+	display: block;
+	float: left;
+	padding:0 10px 0 0;
+	color:#ccc;
+	text-decoration:none; 
+}
+#menu a:hover {
+	color:#FFFFFF;
+	text-decoration:underline;
+}
+.menu_item {
+	line-height: 36px;
+}
+
+#menu .widget-title {
+    display: none;
+}
+#app-title a{
+	font-family: Georgia,"Times New Roman","Bitstream Charter",Times,serif;
+	font-size: 22px;
+	text-decoration: none;
+	color: white;
+}
+
 
 
 /* =main
@@ -127,24 +178,22 @@ h3.section-heading {
 	margin: 0 0 1.5em 0;
 }
 
-/* =Temporary styles until the
-		directory can read @import
-		
+/* =Alignment
+-------------------------------------------------------------- */	
 .aligncenter {
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
 }
 
-.alignleft {
+.alignleft, .alignleft li {
 	float: left;
 }
 
-.alignright {
+.alignright,.alignright li {
 	float: right;
 }
 		
--------------------------------------------------------------- */
 
 
 
