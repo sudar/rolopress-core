@@ -5,16 +5,16 @@ DESCRIPTION: Two-column fluid layout with one sidebars left of info
 
 #container {
 	float: right;
-	margin: 0 0 0 -200px;
+	margin: 0 0 0 -300px;
 	width: 100%;
 }
 #info {
-	margin: 0 0 0 200px;
+	margin: 0 0 0 300px;
 }
 #primary, #secondary {
 	float: left;
 	overflow: hidden;
-	width: 180px;
+	width: 280px;
 }
 #secondary {
 	clear: left;

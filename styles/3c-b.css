@@ -8,12 +8,12 @@ DESCRIPTION: Three-column fluid layout with two sidebars on both sides of info
 	width: 100%;
 }
 #info {
-	margin: 0 200px;
+	margin: 0 300px;
 }
 #primary, #secondary {
 	float: left;
 	overflow: hidden;
-	width: 180px;
+	width: 280px;
 }
 #primary {
 	margin: 0 0 0 -100%;
@@ -23,7 +23,7 @@ DESCRIPTION: Three-column fluid layout with two sidebars on both sides of info
 	position: relative;
 }
 #secondary {
-	margin: 0 0 0 -180px;
+	margin: 0 0 0 -280px;
 }
 #footer {
 	clear: left;
