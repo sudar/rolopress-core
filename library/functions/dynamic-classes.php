@@ -142,6 +142,8 @@ function rolopress_body_class( $print = true ) {
 	// Separates classes with a single space, collates classes for BODY
 	$c = join( ' ', apply_filters( 'body_class',  $c ) ); // Available filter: body_class
 
+	
+	
 	// And tada!
 	return $print ? print($c) : $c;
 }
