@@ -11,16 +11,16 @@ DESCRIPTION: Three-column fluid layout with two sidebars on both sides of info
 	margin: 0 300px;
 }
 #primary, #secondary {
-	float: left;
 	overflow: hidden;
 	width: 280px;
+	float: left;
 }
 #primary {
 	margin: 0 0 0 -100%;
 }
 * html #primary {
-	left: 20px;
-	position: relative;
+	left:20px;
+	position:relative;
 }
 #secondary {
 	margin: 0 0 0 -280px;

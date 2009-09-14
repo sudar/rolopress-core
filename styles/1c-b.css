@@ -6,8 +6,8 @@ DESCRIPTION: One-column fluid layout with sidebars stacked in two columns below 
 #primary, #secondary {
 	float: left;
 	overflow: hidden;
-	padding: 10px 1.9%;
-	width: 46%;
+	padding: 10px .4%;
+	width: 49%;
 }
 #primary {
 	clear: both;

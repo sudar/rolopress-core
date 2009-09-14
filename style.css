@@ -165,7 +165,7 @@ h3.section-heading {
 
 .widget-area ul {
 	list-style: none;
-	margin-left: 0;
+	margin-left: .7em;
 }
 .widget-area ul ul {
 	list-style: disc;
