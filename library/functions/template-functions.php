@@ -285,22 +285,7 @@ function rolopress_default_menu() {
 			endif; 
 };
 
-add_filter('rolopress_before_wrapper', 'rolopress_default_menu');
+add_action('rolopress_before_wrapper', 'rolopress_default_menu');
 
-
-/** 
-* To replace default menu use widgets or add the following code to your child theme's functions.php:
- add_action('init', 'remove_rolopress_default_menu'); // first call the function to remove the default menu
-
- function remove_rolopress_default_menu() { // here's the function we just called
-     remove_filter('rolopress_menu', 'rolopress_default_menu'); // removing the default menu
-}
-
- function my_new_menu() { // here's our new menu
-    [new menu stuff]
-	}
-
-add_filter('rolopress_menu', 'my_new_menu'); // make sure you use the filter
-**/
 
 ?>
