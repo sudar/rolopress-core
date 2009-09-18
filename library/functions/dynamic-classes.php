@@ -97,7 +97,7 @@ function rolopress_body_class( $print = true ) {
 			$c[] = 'page-parent';
 		if ( $wp_query->post->post_parent )
 			$c[] = 'page-child parent-pageid-' . $wp_query->post->post_parent;
-		if ( is_page_template() ) // Hat tip to Ian, themeshaper.com
+		if ( is_page_template() ) // Hat tip to Ian, themerolopressr.com
 			$c[] = 'page-template page-template-' . str_replace( '.php', '-php', get_post_meta( $pageID, '_wp_page_template', true ) );
 		rewind_posts();
 	}
