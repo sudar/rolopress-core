@@ -8,11 +8,9 @@ Template Name: Contact: Add
 		<div id="container">	
 			<div id="main">
 			
-
 			<?php rolopress_before_info(); // Before info hook ?>
 			<div id="info">		
 			<?php rolopress_before_info_content(); // Before info content hook ?>
-			<h3 class="section-title"><span>Add Contact</span></h3>
             <?php the_post(); ?>
 				
 				<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>

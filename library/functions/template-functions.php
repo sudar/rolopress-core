@@ -9,9 +9,9 @@
 function rolo_add_contact() {
     if (isset($_POST['rp_add_contact']) && $_POST['rp_add_contact'] == 'add_contact') {
         if (_rolo_save_contact_fields()) {
-            echo("Contact information successfully added.");
+            echo __("Contact information successfully added.");
         } else {
-            echo("There was some problem in inserting the contact info");
+            echo __("There was some problem in inserting the contact info");
         }
     }
     _rolo_show_contact_fields();
@@ -24,21 +24,167 @@ function rolo_add_contact() {
 function _rolo_show_contact_fields() {
 	global $contact_fields;
 	$rolo_tab_index = 1000;
+//                <input type="hidden" name="<?php echo $name.'_noncename';? >" id="< ?php echo $name.'_noncename';? >" value="< ? php echo wp_create_nonce( plugin_basename(__FILE__) ); ? >" />
 ?>
-<form action="" method="post">
+<form action="" method="post" class="uniForm inlineLabels">
+    <div id="errorMsg">
+        <h3><?php _e('Oops!, We Have a Problem.');?></h3>
+        <ol>
+        </ol>
+    </div>
+
+    <fieldset class="inlineLabels">
+
+      <legend><?php _e('Add a new person');?></legend>
+
 <?php
 	foreach($contact_fields as $meta_box) {
 
         $meta_box_value = $meta_box['std'];
+        if (isset ($meta_box['multiple'])) {
+            $multiples = $meta_box['multiple'];
 
-		echo'<input type="hidden" name="'.$meta_box['name'].'_noncename" id="'.$meta_box['name'].'_noncename" value="'.wp_create_nonce( plugin_basename(__FILE__) ).'" />';
-		echo'<p><label style="letter-spacing:1px; text-transform:uppercase; color:#777;" for="'.$meta_box['name'].'_rolo_value">'.$meta_box['title'].'</label><br/>';
-		echo'<input style="padding:4px; font-weight:bold; border-top:1px solid #ccc; border-right:1px solid #ddd; border-bottom:1px solid #ddd; border-left:1px solid #ccc;" type="text" name="'.$meta_box['name'].'_rolo_value" value="'.$meta_box_value.'" size="55" tabindex="'.$rolo_tab_index.'" /></p>';
+            $i = 0;
+            foreach ($multiples as $multiple) {
+
+                $name = $meta_box['name'] . $multiple;
+                if ($i == 0) {
+                    $ctrl_class = ' multipleInput';
+                    $title = $meta_box['title'];
+                } else {
+                    $ctrl_class = ' multipleInput ctrlHidden';
+                    $title = '';
+                }
+?>
+        <div class="ctrlHolder<?php echo $ctrl_class;?>">
+
+            <label for="<?php echo $name.'_rolo_value';?>">
+                <?php echo $title;?>
+            </label>
+            <input type="text" name="<?php echo $name.'_rolo_value';?>" value="<?php echo $meta_box_value ;?>" size="55" tabindex="<?php echo $rolo_tab_index;?>" class="textInput" />
+            <select>
+<?php
+                foreach ($multiples as $option) {
+?>
+                    <option value ="<?php echo $option; ?>"><?php echo $option; ?></option>
+<?php
+                }
+?>
+            </select>
+<?php
+            if ($i == 0) {
+                $i ++;
+                $hidden = 'style = "display:none"';
+            } else {
+                $hidden = '';
+            }
+?>
+            <img src ="<?php echo get_bloginfo('template_directory') ?>/img/delete.png" class="rolo_delete_ctrl" alt="<?php _e('Delete');?>" <?php echo $hidden;?> />
+            <img src ="<?php echo get_bloginfo('template_directory') ?>/img/add.png" class="rolo_add_ctrl" alt="<?php _e('Add another');?>" />
+        </div>
+<?php
+            $rolo_tab_index++;
+
+            }
+        } else {
+            $name = $meta_box['name'];
+?>
+        <div class="ctrlHolder">
+            <input type="hidden" name="<?php echo $name.'_noncename';?>" id="<?php echo $name.'_noncename';?>" value="<?php echo wp_create_nonce( plugin_basename(__FILE__) );?>" />
+            <label for="<?php echo $name.'_rolo_value';?>">
+<?php
+                if ($meta_box['mandatory'] == true) {
+                    echo '<em>*</em>';
+                }
+                echo $meta_box['title'];
+?>
+            </label>
+            <input type="text" name="<?php echo $name.'_rolo_value';?>" value="<?php echo $meta_box_value ;?>" size="55" tabindex="<?php echo $rolo_tab_index;?>" class="textInput" />
+        </div>
+<?php
+            $rolo_tab_index++;
+        }
+	}
+?>
+    </fieldset>
+   <div class="buttonHolder">
+      <input type="hidden" name="rp_add_contact" value="add_contact" />
+      <button type="submit" name="submit" id="submit" class="submitButton"><?php _e('Add Contact');?></button>
+   </div>
+</form>
+<?php
+}
+
+/**
+ * Show the list of contact fields in add contact page
+ * @global array $new_meta_boxes List of contact fields
+ */
+function _rolo_show_contact_fields_old() {
+	global $contact_fields;
+	$rolo_tab_index = 1000;
+?>
+<form action="" method="post" class="uniForm inlineLabels">
+    <div id="errorMsg">
+        <h3><?php _e('Oops!, We Have a Problem.');?></h3>
+        <ol>
+        </ol>
+    </div>
+
+    <fieldset class="inlineLabels">
+
+      <legend><?php _e('Add a new person');?></legend>
+
+<?php
+	foreach($contact_fields as $meta_box) {
+
+        $meta_box_value = $meta_box['std'];
+        if (isset ($meta_box['multiple'])) {
+            $multiples = $meta_box['multiple'];
+            $name = $meta_box['name'] . $multiples[0];
+
+            $ctrl_class = 'multipleInput ' . $meta_box['name'];
+        } else {
+            $name = $meta_box['name'];
+            $ctrl_class = "";
+        }
+?>
+        <div class="ctrlHolder">
+            <input type="hidden" name="<?php echo $name.'_noncename';?>" id="<?php echo $name.'_noncename';?>" value="<?php echo wp_create_nonce( plugin_basename(__FILE__) );?>" />
+            <label for="<?php echo $name.'_rolo_value';?>">
+<?php
+                if ($meta_box['mandatory'] == true) {
+                    echo '<em>*</em>';
+                }
+                echo $meta_box['title'];
+?>
+            </label>
+            <input type="text" name="<?php echo $name.'_rolo_value';?>" value="<?php echo $meta_box_value ;?>" size="55" tabindex="<?php echo $rolo_tab_index;?>" class="textInput <?php echo $ctrl_class; ?>" />
+<?php
+            if (isset ($meta_box['multiple'])) {
+?>
+            <select>
+<?php
+                foreach ($multiples as $multiple) {
+?>
+                    <option value ="<?php echo $multiple ?>"><?php echo $multiple; ?></option>
+<?php
+                }
+?>
+            </select>
+            <img src ="<?php echo get_bloginfo('template_directory') ?>/img/add.png" class="rolo_add_ctrl" alt="<?php _e('Add another');?>" />
+<?php
+            }
+?>
+        </div>
+<?php
 		$rolo_tab_index++;
 	}
 ?>
-    <input type="hidden" name="rp_add_contact" value="add_contact" />
-    <input type="submit" value="Add Contact" />
+    </fieldset>
+   <div class="buttonHolder">
+      <input type="hidden" name="rp_add_contact" value="add_contact" />
+      <button type="submit" name="submit" id="submit" class="submitButton"><?php _e('Add Contact');?></button>
+   </div>
 </form>
 <?php
 }
@@ -67,8 +213,7 @@ function _rolo_save_contact_fields() {
 	foreach($contact_fields as $meta_box) {
 		// Verify
         //TODO - Check whether the current use is logged in or not
-		if ( !wp_verify_nonce( $_POST[$meta_box['name'].'_noncename'], plugin_basename(__FILE__) ))
-		{
+		if ( !wp_verify_nonce( $_POST[$meta_box['name'].'_noncename'], plugin_basename(__FILE__) )) {
 			return false;
 		}
 

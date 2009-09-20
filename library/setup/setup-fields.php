@@ -21,7 +21,8 @@ array
     "filter" => "rolo_contact_first_name",
     "std" => "",
     "title" => "First Name",
-    "description" => ""
+    "description" => "",
+    "mandatory" => true
     ),
     "last_name"=>
     array
@@ -30,7 +31,8 @@ array
     "filter" => "rolo_contact_last_name",
     "std" => "",
     "title" => "Last Name",
-    "description" => ""
+    "description" => "",
+    "mandatory" => true
     ),
     "title" =>
     array
@@ -50,49 +52,14 @@ array
     "title" => "Email",
     "description" => ""
     ),
-    "mobile_phone" =>
+    "phone" =>
     array
     (
-    "name" => "mobile_phone",
-    "filter" => "rolo_contact_mobile_phone",
+    'multiple' => array ('home', 'mobile', 'work', 'fax', 'other'),
+    "name" => "phone_",
+    "filter" => "rolo_contact_phone_",
     "std" => "",
-    "title" => "Mobile",
-    "description" => ""
-    ),
-    "work_phone" =>
-    array
-    (
-    "name" => "work_phone",
-    "filter" => "rolo_contact_work_phone",
-    "std" => "",
-    "title" => "Work Phone",
-    "description" => ""
-    ),
-    "home_phone" =>
-    array
-    (
-    "name" => "home_phone",
-    "filter" => "rolo_contact_home_phone",
-    "std" => "",
-    "title" => "Home Phone",
-    "description" => ""
-    ),
-    "fax" =>
-    array
-    (
-    "name" => "fax",
-    "filter" => "rolo_contact_fax",
-    "std" => "",
-    "title" => "Fax",
-    "description" => ""
-    ),
-    "other" =>
-    array
-    (
-    "name" => "other",
-    "filter" => "rolo_contact_other",
-    "std" => "",
-    "title" => "Other Phone",
+    "title" => "Phone",
     "description" => ""
     ),
     "website" =>
@@ -100,8 +67,25 @@ array
     (
     "name" => "website",
     "filter" => "rolo_contact_website",
-    "std" => "",
+    "std" => "http://",
     "title" => "Website",
+    "description" => ""
+    ),
+    array
+    (
+    'multiple' => array ('Yahoo', 'MSN', 'AOL', 'GTalk', 'Skype'),
+    "name" => "im_",
+    "filter" => "rolo_contact_IM_",
+    "std" => "",
+    "title" => "IM",
+    "description" => ""
+    ),
+    array
+    (
+    "name" => "twitter",
+    "filter" => "rolo_contact_twitter",
+    "std" => "http://twitter.com/",
+    "title" => "Twitter",
     "description" => ""
     ),
     "address_1" =>

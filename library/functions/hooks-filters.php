@@ -28,17 +28,14 @@ function rolopress_after_header() {
 
 // Located in body files 
 
-
-
 function rolopress_before_container() {
     do_action('rolopress_before_container');
 }
-	
-	
+
 function rolopress_before_main() {
     do_action('rolopress_before_main');
 }
-	
+
 function rolopress_before_info() {
     do_action('rolopress_before_info');
 }
@@ -46,7 +43,6 @@ function rolopress_before_info() {
 function rolopress_before_info_content() {
     do_action('rolopress_before_info_content');
 }
-
 
 function rolopress_before_entry() {
     do_action('rolopress_before_entry');
@@ -89,7 +85,4 @@ function rolopress_after_footer() {
 function rolopress_after_wrapper() {
     do_action('rolopress_after_wrapper');
 }
-
-
-
 ?>
