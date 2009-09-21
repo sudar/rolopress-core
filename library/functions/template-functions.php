@@ -38,21 +38,25 @@ function _rolo_show_contact_fields() {
       <legend><?php _e('Add a new person');?></legend>
 
 <?php
-	foreach($contact_fields as $meta_box) {
+	foreach($contact_fields as $contact_field) {
 
-        $meta_box_value = $meta_box['std'];
-        if (isset ($meta_box['multiple'])) {
-            $multiples = $meta_box['multiple'];
+        if (function_exists($contact_field['setup_function'])){
+            call_user_func_array($contact_field['setup_function'], array($contact_field['name']));
+        } else {
+
+        $meta_box_value = $contact_field['std'];
+        if (isset ($contact_field['multiple'])) {
+            $multiples = $contact_field['multiple'];
 
             $i = 0;
             foreach ($multiples as $multiple) {
 
-                $name = $meta_box['name'] . $multiple;
+                $name = $contact_field['name'] . $multiple;
                 if ($i == 0) {
-                    $ctrl_class = ' multipleInput ' . $meta_box['name'];
-                    $title = $meta_box['title'];
+                    $ctrl_class = ' multipleInput ' . $contact_field['name'];
+                    $title = $contact_field['title'];
                 } else {
-                    $ctrl_class = ' multipleInput ctrlHidden ' . $meta_box['name'];
+                    $ctrl_class = ' multipleInput ctrlHidden ' . $contact_field['name'];
                     $title = '';
                 }
 ?>
@@ -87,22 +91,23 @@ function _rolo_show_contact_fields() {
 
             }
         } else {
-            $name = $meta_box['name'];
+            $name = $contact_field['name'];
 ?>
         <div class="ctrlHolder">
             <input type="hidden" name="<?php echo $name.'_noncename';?>" id="<?php echo $name.'_noncename';?>" value="<?php echo wp_create_nonce( plugin_basename(__FILE__) );?>" />
             <label for="<?php echo $name.'_rolo_value';?>">
 <?php
-                if ($meta_box['mandatory'] == true) {
+                if ($contact_field['mandatory'] == true) {
                     echo '<em>*</em>';
                 }
-                echo $meta_box['title'];
+                echo $contact_field['title'];
 ?>
             </label>
             <input type="text" name="<?php echo $name.'_rolo_value';?>" value="<?php echo $meta_box_value ;?>" size="55" tabindex="<?php echo $rolo_tab_index;?>" class="textInput" />
         </div>
 <?php
             $rolo_tab_index++;
+        }
         }
 	}
 ?>

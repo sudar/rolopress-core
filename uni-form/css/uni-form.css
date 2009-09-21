@@ -95,6 +95,17 @@
     width:50% !important;
     margin-right: 10px;
 }
+.inlineLabels .city {
+    width:25% !important;
+    margin-right: 10px;
+}
+.inlineLabels .state {
+    width:20% !important;
+    margin-right: 10px;
+}
+.inlineLabels .zip {
+    width:19% !important;
+}
 .inlineLabels .fileUpload > input{
 }
 
@@ -110,7 +121,7 @@
     width:68%;
     /* user prefs */
     border:2px solid #dfdfdf;
-    height:10em;
+    /*height:10em;*/
     background: #FFFFFF;
     padding: 0;
 }

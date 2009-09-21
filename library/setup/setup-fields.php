@@ -55,12 +55,14 @@ array
     "phone" =>
     array
     (
-    'multiple' => array ('home', 'mobile', 'work', 'fax', 'other'),
-    "name" => "phone_",
+    'multiple' => array ('Home', 'Mobile', 'Work', 'Fax', 'Other'),
+    "name" => "phone",
     "filter" => "rolo_contact_phone_",
     "std" => "",
     "title" => "Phone",
-    "description" => ""
+    "description" => "",
+    'setup_function' => 'rolo_setup_contact_multiple',
+    'save_function' => 'rolo_save_contact_multiple'
     ),
     "website" =>
     array
@@ -88,60 +90,70 @@ array
     "title" => "Twitter",
     "description" => ""
     ),
-    "address_1" =>
+    "address" =>
     array
     (
-    "name" => "address_1",
+    "name" => "address",
     "filter" => "rolo_contact_address_1",
     "std" => "",
-    "title" => "Address 1",
-    "description" => ""
+    "title" => "Address",
+    "description" => "",
+    "setup_function" => 'rolo_setup_contact_address',
+    'save_function' => 'rolo_save_contact_address'
     ),
-    "address_2" =>
-    array
-    (
-    "name" => "address_2",
-    "filter" => "rolo_contact_address_2",
-    "std" => "",
-    "title" => "Address 2",
-    "description" => ""
-    ),
-    "city" =>
-    array
-    (
-    "name" => "city",
-    "filter" => "rolo_contact_city",
-    "std" => "",
-    "title" => "City",
-    "description" => ""
-    ),
-    "state" =>
-    array
-    (
-    "name" => "state",
-    "filter" => "rolo_contact_state",
-    "std" => "",
-    "title" => "State",
-    "description" => ""
-    ),
-    "postal_code" =>
-    array
-    (
-    "name" => "postal_code",
-    "filter" => "rolo_contact_postal_code",
-    "std" => "",
-    "title" => "Postal Code",
-    "description" => ""
-    ),
-    "country" =>
-    array
-    (
-    "name" => "country",
-    "filter" => "rolo_contact_country",
-    "std" => "",
-    "title" => "Country",
-    "description" => ""
-    ),
+//    array
+//    (
+//    "name" => "address_1",
+//    "filter" => "rolo_contact_address_1",
+//    "std" => "",
+//    "title" => "Address 1",
+//    "description" => ""
+//    ),
+//    "address_2" =>
+//    array
+//    (
+//    "name" => "address_2",
+//    "filter" => "rolo_contact_address_2",
+//    "std" => "",
+//    "title" => "Address 2",
+//    "description" => ""
+//    ),
+//    "city" =>
+//    array
+//    (
+//    "name" => "city",
+//    "filter" => "rolo_contact_city",
+//    "std" => "",
+//    "title" => "City",
+//    "description" => ""
+//    ),
+//    "state" =>
+//    array
+//    (
+//    "name" => "state",
+//    "filter" => "rolo_contact_state",
+//    "std" => "",
+//    "title" => "State",
+//    "description" => ""
+//    ),
+//    "postal_code" =>
+//    array
+//    (
+//    "name" => "postal_code",
+//    "filter" => "rolo_contact_postal_code",
+//    "std" => "",
+//    "title" => "Postal Code",
+//    "description" => ""
+//    ),
+//    "country" =>
+//    array
+//    (
+//    "name" => "country",
+//    "filter" => "rolo_contact_country",
+//    "std" => "",
+//    "title" => "Country",
+//    "description" => ""
+//    ),
     "image_path" =>
     array
     (
@@ -152,6 +164,98 @@ array
     "description" => ""
 ));
 
+/**
+ * Setup field for editing address
+ * @global <type> $contact_fields
+ * @param <type> $field_name
+ */
+function rolo_setup_contact_address($field_name) {
+    global $contact_fields;
+
+    $address_field = $contact_fields[$field_name];
+    $name = $address_field['name'];
+?>
+        <div class="ctrlHolder">
+            <label for="<?php echo $name.'_rolo_value';?>">
+<?php
+                if ($address_field['mandatory'] == true) {
+                    echo '<em>*</em>';
+                }
+                echo $address_field['title'];
+?>
+            </label>
+            <textarea rows="3" cols="20"></textarea>
+        </div>
+
+        <div class="ctrlHolder">
+            <label></label>
+            <input type="text" name="<?php echo $name.'_rolo_value';?>" value="<?php echo $meta_box_value ;?>" size="30" tabindex="<?php echo $rolo_tab_index;?>" class="textInput city" />
+            <input type="text" name="<?php echo $name.'_rolo_value';?>" value="<?php echo $meta_box_value ;?>" size="15" tabindex="<?php echo $rolo_tab_index;?>" class="textInput state" />
+            <input type="text" name="<?php echo $name.'_rolo_value';?>" value="<?php echo $meta_box_value ;?>" size="10" tabindex="<?php echo $rolo_tab_index;?>" class="textInput zip" />
+        </div>
+
+        <div class="ctrlHolder">
+            <label></label>
+            <input type="text" name="<?php echo $name.'_rolo_value';?>" value="<?php echo $meta_box_value ;?>" size="55" tabindex="<?php echo $rolo_tab_index;?>" class="textInput" />
+        </div>
+
+<?php
+}
+
+
+function rolo_setup_contact_multiple($field_name) {
+    global $contact_fields;
+
+    $multiple_field = $contact_fields[$field_name];
+    $multiples = $multiple_field['multiple'];
+
+    $options = "";
+    foreach ($multiples as $option) {
+        $options .= "<option value ='$option'>$option</option>";
+    }
+
+    for ($i = 0 ; $i < count($multiples) ; $i++) {
+
+        $multiple = $multiples[$i];
+        
+        $name = $multiple_field['name'] . "[$i]";
+        $select_name = $multiple_field['name'] . "_select[$i]";
+        if ($i == 0) {
+            $ctrl_class = ' multipleInput ' . $multiple_field['name'];
+            $title = $multiple_field['title'];
+        } else {
+            $ctrl_class = ' multipleInput ctrlHidden ' . $multiple_field['name'];
+            $title = '';
+        }
+?>
+        <div class="ctrlHolder<?php echo $ctrl_class;?>">
+
+            <label for="<?php echo $name;?>">
+                <?php echo $title;?>
+            </label>
+            <input type="text" name="<?php echo $name;?>" value="<?php echo $meta_box_value ;?>" size="55" class="textInput" />
+            <select name="<?php echo $select_name;?>">
+                <?php echo $options;?>
+            </select>
+<?php
+            if ($i == 0) {
+                $hidden = 'style = "display:none"';
+            } else {
+                $hidden = '';
+            }
+?>
+            <img src ="<?php echo get_bloginfo('template_directory') ?>/img/delete.png" class="rolo_delete_ctrl" alt="<?php _e('Delete');?>" <?php echo $hidden;?> />
+            <img src ="<?php echo get_bloginfo('template_directory') ?>/img/add.png" class="rolo_add_ctrl" alt="<?php _e('Add another');?>" />
+        </div>
+<?php
+    }
+}
+
+/**
+ *
+ * @global <type> $post
+ * @global <type> $contact_fields
+ */
 function rolo_append_meta_box() {
     global $post, $contact_fields;
 
