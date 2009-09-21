@@ -49,10 +49,10 @@ function _rolo_show_contact_fields() {
 
                 $name = $meta_box['name'] . $multiple;
                 if ($i == 0) {
-                    $ctrl_class = ' multipleInput';
+                    $ctrl_class = ' multipleInput ' . $meta_box['name'];
                     $title = $meta_box['title'];
                 } else {
-                    $ctrl_class = ' multipleInput ctrlHidden';
+                    $ctrl_class = ' multipleInput ctrlHidden ' . $meta_box['name'];
                     $title = '';
                 }
 ?>
