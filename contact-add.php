@@ -11,7 +11,7 @@ Template Name: Contact: Add
 			<?php rolopress_before_info(); // Before info hook ?>
 			<div id="info">		
 			<?php rolopress_before_info_content(); // Before info content hook ?>
-			<h2 class="section-title"><?php _e('Add New Contact');?></h2>
+			<h3 class="section-title"><?php _e('Add a new contact');?></h3>
             <?php the_post(); ?>
 				
 				<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
