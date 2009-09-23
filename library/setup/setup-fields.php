@@ -73,15 +73,19 @@ array
     "title" => "Website",
     "description" => ""
     ),
+    'im' =>
     array
     (
     'multiple' => array ('Yahoo', 'MSN', 'AOL', 'GTalk', 'Skype'),
-    "name" => "im_",
+    "name" => "im",
     "filter" => "rolo_contact_IM_",
     "std" => "",
     "title" => "IM",
-    "description" => ""
+    "description" => "",
+    'setup_function' => 'rolo_setup_contact_multiple',
+    'save_function' => 'rolo_save_contact_multiple'
     ),
+    'twitter' =>
     array
     (
     "name" => "twitter",
@@ -94,13 +98,13 @@ array
     array
     (
     "name" => "address",
-    "filter" => "rolo_contact_address_1",
+    "filter" => "rolo_contact_address",
     "std" => "",
     "title" => "Address",
     "description" => "",
     "setup_function" => 'rolo_setup_contact_address',
     'save_function' => 'rolo_save_contact_address'
-    ),
+    )
 //    array
 //    (
 //    "name" => "address_1",
@@ -154,29 +158,30 @@ array
 //    "title" => "Country",
 //    "description" => ""
 //    ),
-    "image_path" =>
-    array
-    (
-    "name" => "image_path",
-    "filter" => "rolo_contact_image_path",
-    "std" => "",
-    "title" => "Image Path",
-    "description" => ""
-));
+//    "image_path" =>
+//    array
+//    (
+//    "name" => "image_path",
+//    "filter" => "rolo_contact_image_path",
+//    "std" => "",
+//    "title" => "Image Path",
+//    "description" => ""
+//)
+);
 
 /**
  * Setup field for editing address
+ * 
  * @global <type> $contact_fields
  * @param <type> $field_name
  */
-function rolo_setup_contact_address($field_name) {
+function rolo_setup_contact_address($field_name, &$rolo_tab_index) {
     global $contact_fields;
 
     $address_field = $contact_fields[$field_name];
-    $name = $address_field['name'];
 ?>
         <div class="ctrlHolder">
-            <label for="<?php echo $name.'_rolo_value';?>">
+            <label for="rolo_contact_address">
 <?php
                 if ($address_field['mandatory'] == true) {
                     echo '<em>*</em>';
@@ -184,26 +189,46 @@ function rolo_setup_contact_address($field_name) {
                 echo $address_field['title'];
 ?>
             </label>
-            <textarea rows="3" cols="20"></textarea>
+            <textarea rows="3" cols="20" name ="rolo_contact_address" tabindex="<?php echo $rolo_tab_index++;?>" ></textarea>
         </div>
 
         <div class="ctrlHolder">
-            <label></label>
-            <input type="text" name="<?php echo $name.'_rolo_value';?>" value="<?php echo $meta_box_value ;?>" size="30" tabindex="<?php echo $rolo_tab_index;?>" class="textInput city" />
-            <input type="text" name="<?php echo $name.'_rolo_value';?>" value="<?php echo $meta_box_value ;?>" size="15" tabindex="<?php echo $rolo_tab_index;?>" class="textInput state" />
-            <input type="text" name="<?php echo $name.'_rolo_value';?>" value="<?php echo $meta_box_value ;?>" size="10" tabindex="<?php echo $rolo_tab_index;?>" class="textInput zip" />
+            <label for="rolo_contact_city"></label>
+            <input type="text" name="rolo_contact_city" value="<?php echo $meta_box_value ;?>" size="30" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput city" />
+            <input type="text" name="rolo_contact_state" value="<?php echo $meta_box_value ;?>" size="15" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput state" />
+            <input type="text" name="rolo_contact_zip" value="<?php echo $meta_box_value ;?>" size="10" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput zip" />
         </div>
 
         <div class="ctrlHolder">
-            <label></label>
-            <input type="text" name="<?php echo $name.'_rolo_value';?>" value="<?php echo $meta_box_value ;?>" size="55" tabindex="<?php echo $rolo_tab_index;?>" class="textInput" />
+            <label for="rolo_contact_country"></label>
+            <input type="text" name="rolo_contact_country" value="<?php echo $meta_box_value ;?>" size="55" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput" />
         </div>
-
 <?php
 }
 
+/**
+ * Save contact address information
+ *
+ * @param <type> $field_name
+ * @param <type> $post_id
+ */
+function rolo_save_contact_address($field_name, $post_id) {
+    // TODO - Validate fields
 
-function rolo_setup_contact_multiple($field_name) {
+    update_post_meta($post_id, 'rolo_contact_address', $_POST['rolo_contact_address']);
+    update_post_meta($post_id, 'rolo_contact_city', $_POST['rolo_contact_city']);
+    update_post_meta($post_id, 'rolo_contact_state', $_POST['rolo_contact_state']);
+    update_post_meta($post_id, 'rolo_contact_zip', $_POST['rolo_contact_zip']);
+    update_post_meta($post_id, 'rolo_contact_country', $_POST['rolo_contact_country']);
+}
+
+/**
+ * Setup function for fields involving more than one instance (phone, IM)
+ *
+ * @global <type> $contact_fields
+ * @param <type> $field_name
+ */
+function rolo_setup_contact_multiple($field_name, &$rolo_tab_index) {
     global $contact_fields;
 
     $multiple_field = $contact_fields[$field_name];
@@ -233,8 +258,8 @@ function rolo_setup_contact_multiple($field_name) {
             <label for="<?php echo $name;?>">
                 <?php echo $title;?>
             </label>
-            <input type="text" name="<?php echo $name;?>" value="<?php echo $meta_box_value ;?>" size="55" class="textInput" />
-            <select name="<?php echo $select_name;?>">
+            <input type="text" name="<?php echo $name;?>" value="<?php echo $meta_box_value ;?>" size="55" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput" />
+            <select name="<?php echo $select_name;?>" tabindex="<?php echo $rolo_tab_index++;?>">
                 <?php echo $options;?>
             </select>
 <?php
@@ -248,6 +273,28 @@ function rolo_setup_contact_multiple($field_name) {
             <img src ="<?php echo get_bloginfo('template_directory') ?>/img/add.png" class="rolo_add_ctrl" alt="<?php _e('Add another');?>" />
         </div>
 <?php
+    }
+}
+
+/**
+ * Save function for multiple fields
+ *
+ * @global <type> $contact_fields
+ * @param <type> $field_name
+ * @param <type> $post_id
+ */
+function rolo_save_contact_multiple($field_name, $post_id) {
+    global $contact_fields;
+
+    $multiple_field = $contact_fields[$field_name];
+
+    // TODO - Validate fields
+
+    $multiple_field_values  = $_POST[$multiple_field['name']];
+    $multiple_field_selects = $_POST[$multiple_field['name'] . '_select'];
+
+    for ($i = 0 ; $i < count($multiple_field_values) ; $i++) {
+        update_post_meta($post_id, 'rolo_contact_' . $multiple_field['name'] . '_' . $multiple_field_selects[$i], $multiple_field_values[$i]);
     }
 }
 
@@ -303,6 +350,6 @@ function rolo_save_postdata( $post_id ) {
     }
 }
 
-add_action('admin_menu', 'rolo_create_meta_box');
-add_action('save_post', 'rolo_save_postdata');
+//add_action('admin_menu', 'rolo_create_meta_box');
+//add_action('save_post', 'rolo_save_postdata');
 ?>

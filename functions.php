@@ -198,4 +198,14 @@ function rolo_add_script() {
         wp_enqueue_style('uniform', get_bloginfo('template_directory') . '/uni-form/css/uni-form.css');
     }
 }
+
+/**
+ * Create taxonomies
+ */
+function rolo_create_taxonomy() {
+    register_taxonomy( 'type', 'post', array( 'hierarchical' => false, 'label' => __('Rolopress Type'), 'query_var' => true, 'rewrite' => true ) );
+    register_taxonomy( 'company', 'post', array( 'hierarchical' => false, 'label' => __('Company'), 'query_var' => true, 'rewrite' => true ) );
+}
+
+add_action('init', 'rolo_create_taxonomy', 0);
 ?>
