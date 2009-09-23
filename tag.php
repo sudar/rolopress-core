@@ -24,7 +24,7 @@
 
 <?php while ( have_posts() ) : the_post(); ?>
 
-				<div id="contact-<?php the_ID(); ?>" class="<?php rolopress_post_class(); ?>">
+				<div id="contact-<?php the_ID(); ?>" class="<?php rolopress_entry_class(); ?>">
 					<?php rolopress_before_entry(); // Before entry hook ?>
 					<h2 class="entry-title"><a href="<?php the_permalink(); ?>" title="<?php printf( __('Permalink to %s', 'rolopress'), the_title_attribute('echo=0') ); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
 

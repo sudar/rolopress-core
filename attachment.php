@@ -14,7 +14,7 @@
 
 				<h1 class="page-title"><a href="<?php echo get_permalink($post->post_parent) ?>" title="<?php printf( __( 'Return to %s', 'rolopress' ), wp_specialchars( get_the_title($post->post_parent), 1 ) ) ?>" rev="attachment"><span class="meta-nav">&laquo; </span><?php echo get_the_title($post->post_parent) ?></a></h1>
 				
-				<div id="contact-<?php the_ID(); ?>" <?php rolopress_post_class(); ?>>
+				<div id="contact-<?php the_ID(); ?>" <?php rolopress_entry_class(); ?>>
 					<?php rolopress_before_entry(); // Before entry hook ?>
 					<h2 class="entry-title"><?php the_title(); ?></h2>
 					

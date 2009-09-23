@@ -5,18 +5,19 @@ Template Name: Contact: Add
 ?>
 <?php get_header(); ?>
 	
-		<div id="container">	
+		<div id="container">
 			<div id="main">
 			
 			<?php rolopress_before_info(); // Before info hook ?>
 			<div id="info">		
 			<?php rolopress_before_info_content(); // Before info content hook ?>
+			<h2 class="section-title"><?php _e('Add New Contact');?></h2>
             <?php the_post(); ?>
 				
 				<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 					<div class="entry-main">
 
-                        <?php rolo_add_contact()                        ;?>
+                        <?php rolo_add_contact();?>
 
 					</div><!-- .entry-main -->
 				</div><!-- #post-<?php the_ID(); ?> -->			

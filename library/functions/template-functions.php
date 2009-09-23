@@ -54,8 +54,6 @@ function _rolo_show_contact_fields() {
 
     <fieldset class="inlineLabels">
 
-      <legend><?php _e('Add a new person');?></legend>
-
 <?php
 	foreach($contact_fields as $contact_field) {
 

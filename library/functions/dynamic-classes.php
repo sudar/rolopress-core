@@ -1,240 +1,486 @@
 <?php
 /**
- * Adds contextual classes to body class.
+ * Adds contextual classes to major theme elements.
+ * This gives a near unlimited amount of control over design elements.
  *
- * Many of the functions behind this come from the great sandbox theme.
+ * Many of the functions behind this come from the great Sandbox theme.
+ * But, they have been completely rewritten to be more Justin-understandable.
  * @link http://www.plaintxt.org/themes/sandbox
  *
- * @package RoloPress
+ * @package Hybrid
  * @subpackage Functions
  */
 
+/**
+ * Creates a set of classes for each site entry. Each entry is 
+ * given the class of 'hentry'. Posts are given category, tag, and 
+ * author classes. Alternates post classes of odd, even, and alt are added.
+ *
+ * Mostly relies on conditional tags but several other functions are key.
+ * @link http://codex.wordpress.org/Conditional_Tags
+ * @link http://codex.wordpress.org/Template_Tags/get_the_category
+ * @link http://codex.wordpress.org/Template_Tags/get_the_tags
+ *
+ * @internal changed the function to rolopress_entry_class from rolopress_entry_class in 0.5.
+ *
+ * @since 0.5
+ * @global $post The current post's DB object.
+ * @param string|array $class Additional classes for more control.
+ * @return string
+ */
+function rolopress_entry_class( $class = '' ) {
+	global $post;
+	static $post_alt;
 
-// Generates semantic classes for BODY element
-function rolopress_body_class( $print = true ) {
-	global $wp_query, $current_user;
+	$args = array(
+		'entry_tax' => array( 'category', 'post_tag' )
+	);
 
-	// This is RoloPress!
-	$c = array('rolopress');
+	/* Microformats. */
+	$classes[] = 'hentry';
 
-	// Applies the time- and date-based classes (below) to BODY element
-	rolopress_date_classes( time(), $c );
+	/* Post type. For backwards compatibility w/stylesheets, all entries should be given a class of 'post'. */
+	if ( $post->post_type != 'post' )
+		$classes[] = 'post';
+	$classes[] = $post->post_type;
 
-	// Generic semantic classes for what type of content is displayed
-	is_front_page()  ? $c[] = 'home'       : null; // For the front page, if set
-	is_home()        ? $c[] = 'blog'       : null; // For the blog posts page, if set
-	is_archive()     ? $c[] = 'archive'    : null;
-	is_date()        ? $c[] = 'date'       : null;
-	is_search()      ? $c[] = 'search'     : null;
-	is_paged()       ? $c[] = 'paged'      : null;
-	is_attachment()  ? $c[] = 'attachment' : null;
-	is_404()         ? $c[] = 'four04'     : null; // CSS does not allow a digit as first character
+	/* Post alt class. */
+	$classes[] = 'post-' . ++$post_alt;
 
-	// Special classes for BODY element when a post item
-	if ( is_single() ) {
-		$postID = $wp_query->post->ID;
-		the_post();
+	if ( $post_alt % 2 )
+		$classes[] = 'odd';
+	else
+		$classes[] = 'even alt';
 
-		// Adds 'single' class and class with the post ID
-		$c[] = 'single post-id-' . $postID;
+	/* Sticky class (only on home/blog page). */
+	if( is_sticky() && is_home() )
+		$classes[] = 'sticky';
 
-		// Adds classes for the month, day, and hour when the post was created
-		if ( isset( $wp_query->post->post_date ) )
-			rolopress_date_classes( mysql2date( 'U', $wp_query->post->post_date ), $c, 's-' );
+	/* Author class. */
+	if ( !is_attachment() )
+		$classes[] = 'author-' . sanitize_html_class( get_the_author_meta( 'user_nicename' ), get_the_author_meta( 'ID' ) );
 
-		// Adds category classes for each category on single posts
-		if ( $cats = get_the_category() )
-			foreach ( $cats as $cat )
-				$c[] = 's-category-' . $cat->slug;
+	/* Password-protected posts. */
+	if ( post_password_required() )
+		$classes[] = 'protected';
 
-		// Adds tag classes for each tags on single posts
-		if ( $tags = get_the_tags() )
-			foreach ( $tags as $tag )
-				$c[] = 's-tag-' . $tag->slug;
+	/* Add each taxonomy as a class. */
+	if ( $post->post_type == 'post' ) :
 
-		// Adds MIME-specific classes for attachments
-		if ( is_attachment() ) {
-			$mime_type = get_post_mime_type();
-			$mime_prefix = array( 'application/', 'image/', 'text/', 'audio/', 'video/', 'music/' );
-				$c[] = 'attachmentid-' . $postID . ' attachment-' . str_replace( $mime_prefix, "", "$mime_type" );
-		}
+		foreach ( $args['entry_tax'] as $tax ) :
 
-		// Adds author class for the post author
-		$c[] = 's-author-' . sanitize_title_with_dashes(strtolower(get_the_author_login()));
-		rewind_posts();
-	}
+			foreach ( (array)get_the_terms( $post->ID, $tax ) as $term ) :
+				if ( !empty( $term->slug ) ) :
+					$classes[] = $tax . '-' . sanitize_html_class( $term->slug, $term->term_id );
+				endif;
+			endforeach;
 
-	// Author name classes for BODY on author archives
-	elseif ( is_author() ) {
-		$author = $wp_query->get_queried_object();
-		$c[] = 'author';
-		$c[] = 'author-' . $author->user_nicename;
-	}
+		endforeach;
 
-	// Category name classes for BODY on category archvies
-	elseif ( is_category() ) {
-		$cat = $wp_query->get_queried_object();
-		$c[] = 'category';
-		$c[] = 'category-' . $cat->slug;
-	}
+	endif;
 
-	// Tag name classes for BODY on tag archives
-	elseif ( is_tag() ) {
-		$tags = $wp_query->get_queried_object();
-		$c[] = 'tag';
-		$c[] = 'tag-' . $tags->slug;
-	}
+	/* User-created classes. */
+	if ( !empty( $class ) ) :
+		if ( !is_array( $class ) )
+			$class = preg_split( '#\s+#', $class );
+		$classes = array_merge( $classes, $class );
+	endif;
 
-	// Page author for BODY on 'pages'
-	elseif ( is_page() ) {
-		$pageID = $wp_query->post->ID;
-		$page_children = wp_list_pages("child_of=$pageID&echo=0");
-		the_post();
-		$c[] = 'page pageid-' . $pageID;
-		$c[] = 'page-author-' . sanitize_title_with_dashes(strtolower(get_the_author('login')));
-		// Checks to see if the page has children and/or is a child page; props to Adam
-		if ( $page_children )
-			$c[] = 'page-parent';
-		if ( $wp_query->post->post_parent )
-			$c[] = 'page-child parent-pageid-' . $wp_query->post->post_parent;
-		if ( is_page_template() ) // Hat tip to Ian, themerolopressr.com
-			$c[] = 'page-template page-template-' . str_replace( '.php', '-php', get_post_meta( $pageID, '_wp_page_template', true ) );
-		rewind_posts();
-	}
+	/* Join all the classes into one string and echo them. */
+	$class = join( ' ', $classes );
 
-	// Search classes for results or no results
-	elseif ( is_search() ) {
-		the_post();
-		if ( have_posts() ) {
-			$c[] = 'search-results';
-		} else {
-			$c[] = 'search-no-results';
-		}
-		rewind_posts();
-	}
-
-	// For when a visitor is logged in while browsing
-	if ( $current_user->ID )
-		$c[] = 'loggedin';
-
-	// Paged classes; for 'page X' classes of index, single, etc.
-	if ( ( ( $page = $wp_query->get('paged') ) || ( $page = $wp_query->get('page') ) ) && $page > 1 ) {
-		// Thanks to Prentiss Riddle, twitter.com/pzriddle, for the security fix below.
-		$page = intval($page); // Ensures that an integer (not some dangerous script) is passed for the variable
-		$c[] = 'paged-' . $page;
-		if ( is_single() ) {
-			$c[] = 'single-paged-' . $page;
-		} elseif ( is_page() ) {
-			$c[] = 'page-paged-' . $page;
-		} elseif ( is_category() ) {
-			$c[] = 'category-paged-' . $page;
-		} elseif ( is_tag() ) {
-			$c[] = 'tag-paged-' . $page;
-		} elseif ( is_date() ) {
-			$c[] = 'date-paged-' . $page;
-		} elseif ( is_author() ) {
-			$c[] = 'author-paged-' . $page;
-		} elseif ( is_search() ) {
-			$c[] = 'search-paged-' . $page;
-		}
-	}
-
-	// Separates classes with a single space, collates classes for BODY
-	$c = join( ' ', apply_filters( 'body_class',  $c ) ); // Available filter: body_class
-
-	
-	
-	// And tada!
-	return $print ? print($c) : $c;
+	echo apply_filters( 'rolopress_entry_class', $class );
 }
 
-// Generates semantic classes for each post DIV element
-function rolopress_post_class( $print = true ) {
-	global $post, $rolopress_post_alt;
+/**
+ * Sets a class for each comment. Sets alt, odd/even, and author/user classes. 
+ * Adds author, user, and reader classes. Needs more work because WP, by 
+ * default, assigns even/odd backwards (Odd should come first, even second).
+ *
+ * @link http://codex.wordpress.org/Template_Tags/get_comment_author_url
+ * @link http://codex.wordpress.org/Function_Reference/get_userdata
+ *
+ * @todo Find a better way to get the user's role b/c these can be custom.
+ *
+ * @since 0.2
+ * @global $wpdb WordPress DB access object.
+ * @global $comment The current comment's DB object.
+ */
+function rolopress_comment_class() {
+	global $comment, $wpdb, $wp_roles;
+	static $comment_alt;
+	$classes = array();
 
-	// hentry for hAtom compliace, gets 'alt' for every other post DIV, describes the post type and p[n]
-	$c = array( 'hentry', "p$rolopress_post_alt", $post->post_type, $post->post_status );
+	/* Gets default WP comment classes. */
+	$classes = str_replace( array( 'byuser', 'bypostauthor' ), '', get_comment_class() );
 
-	// Author for the post queried
-	$c[] = 'author-' . sanitize_title_with_dashes(strtolower(get_the_author('login')));
+	/* User classes to match user role.  Major props to Ptah Dunbar for original idea. @link http://wpframework.com */
+	if ( $comment->user_id > 0 && $user = get_userdata( $comment->user_id ) ) :
 
-	// Category for the post queried
-	foreach ( (array) get_the_category() as $cat )
-		$c[] = 'category-' . $cat->slug;
+		/* Set a class with the commenter's role. */
+		$capabilities = $user->{$wpdb->prefix . 'capabilities'};
 
-	// Tags for the post queried; if not tagged, use .untagged
-	if ( get_the_tags() == null ) {
-		$c[] = 'untagged';
-	} else {
-		foreach ( (array) get_the_tags() as $tag )
-			$c[] = 'tag-' . $tag->slug;
-	}
+		if ( !isset( $wp_roles ) ) :
+			$wp_roles = new WP_Roles();
+		endif;
 
-	// For password-protected posts
-	if ( $post->post_password )
-		$c[] = 'protected';
+		foreach ( $wp_roles->role_names as $role => $name ) :
 
-	// Applies the time- and date-based classes (below) to post DIV
-	rolopress_date_classes( mysql2date( 'U', $post->post_date ), $c );
+			if ( is_array( $capabilities) && array_key_exists( $role, $capabilities ) ) :
+				$classes[] = $role . ' ' . $role . '-' . sanitize_html_class( $user->user_nicename, $user->user_id );
+			endif;
 
-	// If it's the other to the every, then add 'alt' class
-	if ( ++$rolopress_post_alt % 2 )
-		$c[] = 'alt';
+		endforeach;
 
-	// Separates classes with a single space, collates classes for post DIV
-	$c = join( ' ', apply_filters( 'post_class', $c ) ); // Available filter: post_class
+		/* Comment by the entry/post author. */
+		if ( $post = get_post( $post_id ) ) :
+			if ( $comment->user_id === $post->post_author )
+				$classes[] = 'entry-author';
+		endif;
 
-	// And tada!
-	return $print ? print($c) : $c;
+	else :
+		/* If not a registered user */
+		$classes[] = 'reader';
+
+	endif;
+
+	/* @link http://microid.org */
+	$email = get_comment_author_email();
+	$url = get_comment_author_url();
+	if ( !empty( $email ) && !empty( $url ) )
+		$classes[] = 'microid-mailto+http:sha1:' . sha1( sha1( 'mailto:'.$email ) . sha1( $url ) );
+
+	/* Join all the classes into one string and echo them. */
+	$class = join( ' ', $classes );
+
+	echo apply_filters( 'rolopress_comment_class', $class );
 }
 
-// Define the num val for 'alt' classes (in post DIV and comment LI)
-$rolopress_post_alt = 1;
+/**
+ * Provides classes for the <body> element depending on page context.
+ *
+ * Mostly relies on conditional tags but several other functions are key
+ * @link http://codex.wordpress.org/Conditional_Tags
+ * @link http://codex.wordpress.org/Template_Tags/get_the_category
+ * @link http://codex.wordpress.org/Template_Tags/get_the_tags
+ * @link http://codex.wordpress.org/Function_Reference/get_userdata
+ * @link http://codex.wordpress.org/Function_Reference/get_post_mime_type
+ * @link http://codex.wordpress.org/Function_Reference/get_post_meta
+ *
+ * @since 0.1
+ * @uses $wp_query
+ * @param string|array $class Additional classes for more control.
+ * @return string
+ */
+function rolopress_body_class( $class = '' ) {
+	global $wp_query;
 
-// Generates semantic classes for each comment LI element
-function rolopress_comment_class( $print = true ) {
-	global $comment, $post, $rolopress_comment_alt;
+	$classes = array();
 
-	// Collects the comment type (comment, trackback),
-	$c = array( $comment->comment_type );
+	/* Text direction (which direction does the text flow). */
+	if ( 'rtl' == get_bloginfo( 'text_direction' ) )
+		$classes[] = 'rtl';
+	else
+		$classes[] = 'ltr';
 
-	// Counts trackbacks (t[n]) or comments (c[n])
-	if ( $comment->comment_type == 'comment' ) {
-		$c[] = "c$rolopress_comment_alt";
-	} else {
-		$c[] = "t$rolopress_comment_alt";
-	}
+	/* Date classes. */
+	$time = time() + ( get_option( 'gmt_offset' ) * 3600 );
+	$classes[] = 'y' . gmdate( 'Y', $time );
+	$classes[] = 'm' . gmdate( 'm', $time );
+	$classes[] = 'd' . gmdate( 'd', $time );
+	$classes[] = 'h' . gmdate( 'H', $time );
+	$classes[] = strtolower( gmdate( 'l', $time ) );
 
-	// If the comment author has an id (registered), then print the log in name
-	if ( $comment->user_id > 0 ) {
-		$user = get_userdata($comment->user_id);
-		// For all registered users, 'byuser'; to specificy the registered user, 'commentauthor+[log in name]'
-		$c[] = 'byuser comment-author-' . sanitize_title_with_dashes(strtolower( $user->user_login ));
-		// For comment authors who are the author of the post
-		if ( $comment->user_id === $post->post_author )
-			$c[] = 'bypostauthor';
-	}
+	/* Is the current user logged in. */
+	if ( is_user_logged_in() )
+		$classes[] = 'logged-in';
+	else
+		$classes[] = 'not-logged-in';
 
-	// If it's the other to the every, then add 'alt' class; collects time- and date-based classes
-	rolopress_date_classes( mysql2date( 'U', $comment->comment_date ), $c, 'c-' );
-	if ( ++$rolopress_comment_alt % 2 )
-		$c[] = 'alt';
+	/* Basic classes generated by is_* functions. */
+	if ( is_front_page() )
+		$classes[] = 'home front-page';
+	if ( is_home() )
+		$classes[] = 'blog';
+	if ( is_archive() )
+		$classes[] = 'archive';
+	if ( is_date() )
+		$classes[] = 'date';
+	if ( is_tax() )
+		$classes[] = 'taxonomy';
+	if ( is_author() )
+		$classes[] = 'author';
+	if ( is_singular() )
+		$classes[] = 'singular';
+	if ( is_404() )
+		$classes[] = 'error-404';
+	if ( is_paged() )
+		$classes[] = 'paged';
+	if ( is_preview() && is_single() )
+		$classes[] = 'preview preview-single';
+	if ( is_preview() && is_page() )
+		$classes[] = 'preview preview-page';
 
-	// Separates classes with a single space, collates classes for comment LI
-	$c = join( ' ', apply_filters( 'comment_class', $c ) ); // Available filter: comment_class
+	/* Attachments. */
+	if ( is_attachment() ) :
+		$classes[] = 'attachment attachment-' . $wp_query->post->ID;
+		$mime_type = explode( '/', get_post_mime_type() );
+		foreach ( $mime_type as $type ) :
+			$classes[] = 'attachment-' . $type;
+		endforeach;
 
-	// Tada again!
-	return $print ? print($c) : $c;
+	/* Single posts. */
+	elseif ( is_single() ) :
+		$classes[] = 'single single-' . $wp_query->post->ID;
+		if ( is_sticky( $wp_query->post->ID ) ) :
+			$classes[] = 'single-sticky';
+		endif;
+
+		foreach ( (array)get_the_category( $wp_query->post->ID ) as $cat ) :
+			$classes[] = 'single-category-' . sanitize_html_class( $cat->slug, $cat->term_id );
+		endforeach;
+
+		$wp_query->in_the_loop = true;
+		foreach ( ( array )get_the_tags( $wp_query->post->ID ) as $tag ) :
+				$classes[] = 'single-post_tag-' . sanitize_html_class( $tag->slug, $tag->term_id );
+		endforeach;
+		$wp_query->in_the_loop = false;
+
+		$classes[] = 'single-author-' . get_the_author_meta( 'user_nicename', $wp_query->post->post_author );
+
+	/* Pages. */
+	elseif ( is_page() ) :
+		$classes[] = 'page page-' . $wp_query->post->ID;
+
+		if ( is_page_template() ) :
+			$classes[] = 'page-template page-template-' . str_replace( '.php', '', get_post_meta( $wp_query->post->ID, '_wp_page_template', true ) );
+		endif;
+
+		$classes[] = 'page-author-' . get_the_author_meta( 'user_nicename', $wp_query->post->post_author );
+
+	/* Archives (author, category, date, tag). */
+	elseif ( is_author() ) :
+		$classes[] = 'author-' . get_the_author_meta( 'user_nicename', get_query_var( 'author' ) );
+
+	/* Taxomonies (tags, categories, etc.). */
+	elseif ( is_tax() || is_category() || is_tag() ) :
+		$term = $wp_query->get_queried_object();
+		$classes[] = $term->taxonomy . ' ' . $term->taxonomy . '-' . sanitize_html_class( $term->slug, $term->term_id );
+
+	/* Time and date. */
+	elseif ( is_time() ) :
+		$classes[] = 'time';
+
+	elseif ( is_day() ) :
+		$classes[] = 'day';
+
+	elseif ( get_query_var( 'w' ) ) :
+		$classes[] = 'week';
+
+	elseif ( is_month() ) :
+		$classes[] = 'month';
+
+	elseif ( is_year() ) :
+		$classes[] = 'year';
+
+	/* Search results. */
+	elseif ( is_search() ) :
+		if ( have_posts() ) :
+			$classes[] = 'search search-results';
+		else :
+			$classes[] = 'search search-no-results';
+		endif;
+
+	endif;
+
+	/* Paged views. */
+	if ( ( ( $page = $wp_query->get('paged') ) || ( $page = $wp_query->get('page') ) ) && $page > 1 ) :
+		$page = intval( $page );
+		$classes[] = 'paged-' . $page;
+
+		if ( is_front_page() )
+			$classes[] = 'home-paged home-paged-' . $page . ' front-page-paged front-page-paged-' . $page;
+		if ( is_home() )
+			$classes[] = 'blog-paged blog-paged-' . $page;
+		if ( is_single() )
+			$classes[] = 'single-paged single-paged-' . $page;
+		elseif ( is_page() )
+			$classes[] = 'page-paged page-paged-' . $page;
+		elseif ( is_category() )
+			$classes[] = 'category-paged category-paged-' . $page;
+		elseif ( is_tag() )
+			$classes[] = 'post_tag-paged post_tag-paged-' . $page;
+		elseif ( is_date() )
+			$classes[] = 'date-paged date-paged-' . $page;
+		elseif ( is_author() )
+			$classes[] = 'author-paged author-paged-' . $page;
+		elseif ( is_search() )
+			$classes[] = 'search-paged search-paged-' . $page;
+	endif;
+
+	/* Browser and OS detection.  Major props to Ptah Dunbar. @link http://wpframework.com */
+	$browser = $_SERVER[ 'HTTP_USER_AGENT' ];
+
+	/* OS detection. */
+	if ( preg_match( "/Windows/", $browser ) )
+		$classes[] = 'windows';
+	elseif ( preg_match( "/Mac/", $browser ) )
+		$classes[] = 'mac';
+	elseif ( preg_match( "/Linux/", $browser ) )
+		$classes[] = 'linux';
+	else
+		$classes[] = 'unknown-os';
+
+	/* Chrome */
+	if ( preg_match( "/Chrome/", $browser ) ) :
+		preg_match( "/Chrome\/(\d.\d)/si", $browser, $matches );
+		$classes[] = 'chrome chrome-' . str_replace( ".", "-", $matches[1] );
+
+	/* Safari */
+	elseif ( preg_match( "/Safari/", $browser ) ) :
+		preg_match( "/Version\/(\d.\d)/si", $browser, $matches );
+		$classes[] = 'safari safari-' . str_replace( ".", "-", $matches[1] );
+
+	/* Opera */
+	elseif ( preg_match( "/Opera/", $browser ) ) :
+		preg_match( "/Opera\/(\d.\d)/si", $browser, $matches );
+		$classes[] = 'opera opera-' . str_replace( ".", "-", $matches[1] );
+
+	/* Internet Explorer */
+	elseif ( preg_match( "/MSIE/", $browser ) ) :
+		$classes[] = 'msie';
+		if ( preg_match( "/MSIE 6.0/", $browser ) ) :
+			$classes[] = 'ie6';
+		elseif ( preg_match( "/MSIE 7.0/", $browser ) ) :
+			$classs[] = 'ie7';
+		elseif ( preg_match( "/MSIE 8.0/", $browser ) ) :
+			$classes[] = 'ie8';
+		endif;
+
+	/* Firefox */
+	elseif ( preg_match( "/Firefox/", $browser ) && preg_match( "/Gecko/", $browser ) ) :
+		preg_match( "/Firefox\/(\d)/si", $browser, $matches );
+		$classes[] = 'firefox firefox-' . str_replace( ".", "-", $matches[1] );
+
+	/* Unknown browser */
+	else :
+		$classes[] = 'unknown-browser';
+
+	endif;
+
+	/* Hybrid theme widgets detection. */
+	if ( is_sidebar_active( 'primary' ) ) :
+		$classes[] = 'primary-active';
+	else :
+		$classes[] = 'primary-inactive';
+		$primary = 'inactive';
+	endif;
+
+	if ( is_sidebar_active( 'secondary' ) ) :
+		$classes[] = 'secondary-active';
+	else :
+		$classes[] = 'secondary-inactive';
+		$secondary = 'inactive';
+	endif;
+
+	if ( is_sidebar_active( 'subsidiary' ) ) :
+		$classes[] = 'subsidiary-active';
+	else :
+		$classes[] = 'subsidiary-inactive';
+		$subsidiary = 'inactive';
+	endif;
+
+	if ( $primary == 'inactive' && $secondary == 'inactive' && $subsidiary == 'inactive' )
+		$classes[] = 'no-widgets';
+
+	/* Input class. */
+	if ( !empty( $class ) ) :
+		if ( !is_array( $class ) )
+			$class = preg_split( '#\s+#', $class );
+		$classes = array_merge( $classes, $class );
+	endif;
+
+	/* Join all the classes into one string. */
+	$class = join( ' ', $classes );
+
+	/* Print the body class. */
+	echo apply_filters( 'rolopress_body_class', $class );
 }
 
-// Generates time- and date-based classes for BODY, post DIVs, and comment LIs; relative to GMT (UTC)
-function rolopress_date_classes( $t, &$c, $p = '' ) {
-	$t = $t + ( get_option('gmt_offset') * 3600 );
-	$c[] = $p . 'y' . gmdate( 'Y', $t ); // Year
-	$c[] = $p . 'm' . gmdate( 'm', $t ); // Month
-	$c[] = $p . 'd' . gmdate( 'd', $t ); // Day
-	$c[] = $p . 'h' . gmdate( 'H', $t ); // Hour
-}
+/**
+ * Function for handling what the browser/search engine title should be.
+ * Tries to handle every situation to make for the best SEO.
+ *
+ * @since 0.1
+ * @global $wp_query
+ * @global $rolopress_settings
+ */
+function rolopress_document_title( $doctitle ) {
+	global $wp_query, $rolopress_settings;
 
+	$separator = ':';
+
+	if ( is_singular() && !is_attachment() ) :
+		$doctitle = wp_specialchars( get_post_meta( $wp_query->post->ID, 'Title', true ), true );
+
+	elseif ( is_home() ) :
+		$doctitle = get_bloginfo( 'name' ) . $separator . ' ' . get_bloginfo( 'description' );
+
+	elseif ( is_attachment() ) :
+		$doctitle = single_post_title( false, false );
+
+	elseif ( is_category() ) :
+		$doctitle = single_cat_title( false, false );
+
+	elseif ( is_tag() ) :
+		$doctitle = single_tag_title( false, false );
+
+	elseif ( is_tax() ) :
+		$term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
+		$doctitle = $term->name;
+
+	elseif ( is_author() ) :
+		$doctitle = get_the_author_meta( 'display_name', get_query_var( 'author' ) );
+
+	elseif ( is_search() ) :
+		$doctitle = sprintf( __('Search results for &quot;%1$s&quot;', 'hybrid'), esc_attr( get_search_query() ) );
+
+	elseif ( get_query_var( 'minute' ) && get_query_var( 'hour' ) ) :
+		$doctitle = sprintf( __('Archive for %1$s', 'hybrid'), get_the_time( __('g:i a', 'hybrid') ) );
+
+	elseif ( get_query_var( 'minute' ) ) :
+		$doctitle = sprintf( __('Archive for minute %1$s', 'hybrid'), get_the_time( __('i', 'hybrid') ) );
+
+	elseif ( get_query_var( 'hour' ) ) :
+		$doctitle = sprintf( __('Archive for %1$s', 'hybrid'), get_the_time( __('g a', 'hybrid') ) );
+
+	elseif ( is_day() ) :
+		$doctitle = sprintf( __('Archive for %1$s', 'hybrid'), get_the_time( __('F jS, Y', 'hybrid') ) );
+
+	elseif ( get_query_var( 'w' ) ) :
+		$doctitle = sprintf( __('Archive for week %1$s of %2$s', 'hybrid'), get_the_time( __('W', 'hybrid') ), get_the_time( __('Y', 'hybrid') ) );
+
+	elseif ( is_month() ) :
+		$doctitle = sprintf( __('Archive for %1$s', 'hybrid'), single_month_title( ' ', false) );
+
+	elseif ( is_year() ) :
+		$doctitle = sprintf( __('Archive for %1$s', 'hybrid'), get_the_time( __('Y', 'hybrid') ) );
+
+	elseif ( is_404() ) :
+		$doctitle = __('404 Not Found', 'hybrid');
+
+	endif;
+
+	if ( !$doctitle && is_front_page() )
+		$doctitle = get_bloginfo( 'name' ) . $separator . ' ' . get_bloginfo( 'description' );
+	elseif ( !$doctitle && is_singular() )
+		$doctitle = single_post_title( false, false );
+
+	/* If paged. */
+	if ( ( ( $page = $wp_query->get( 'paged' ) ) || ( $page = $wp_query->get( 'page' ) ) ) && $page > 1 )
+		$doctitle = sprintf( __('%1$s Page %2$s', 'hybrid'), $doctitle . $separator, $page );
+
+	return apply_filters( 'rolopress_document_title', $doctitle );
+}
 
 ?>

@@ -11,7 +11,7 @@
 			
 <?php the_post(); ?>
 				
-				<div id="post-<?php the_ID(); ?>" class="<?php rolopress_post_class(); ?>">
+				<div id="post-<?php the_ID(); ?>" class="<?php rolopress_entry_class(); ?>">
 					<?php rolopress_before_entry(); // Before entry hook ?>
 					<h1 class="entry-title"><?php the_title(); ?></h1>
 					<div class="entry-main">

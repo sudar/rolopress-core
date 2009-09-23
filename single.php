@@ -8,23 +8,18 @@
 			<?php rolopress_before_info(); // Before info hook ?>
 			<div id="info">		
 			<?php rolopress_before_info_content(); // Before info content hook ?>
+			<h2 class="entry-title"><?php the_title(); ?></h2>
 			
 <?php the_post(); ?>
 
-				<div id="nav-above" class="navigation">
-					<div class="nav-previous"><?php previous_post_link( '%link', '<span class="meta-nav">&laquo;</span> %title' ) ?></div>
-					<div class="nav-next"><?php next_post_link( '%link', '%title <span class="meta-nav">&raquo;</span>' ) ?></div>
-				</div><!-- #nav-above -->
-
-				<div id="contact-<?php the_ID(); ?>" class="<?php rolopress_post_class(); ?>">
+					<div id="contact-<?php the_ID(); ?>" class="<?php rolopress_entry_class(); ?>">
 					<?php rolopress_before_entry(); // Before entry hook ?>
-					<h1 class="entry-title"><?php the_title(); ?></h1>
-					
+				
 					<div class="entry-meta">
-						<span class="meta-prep meta-prep-author"><?php _e('By ', 'rolopress'); ?></span>
-						<span class="author vcard"><a class="url fn n" href="<?php echo get_author_link( false, $authordata->ID, $authordata->user_nicename ); ?>" title="<?php printf( __( 'View all posts by %s', 'rolopress' ), $authordata->display_name ); ?>"><?php the_author(); ?></a></span>
+						<span class="meta-prep meta-prep-author"><?php _e('Owner: ', 'rolopress'); ?></span>
+						<span class="author vcard"><a class="url fn n" href="<?php echo get_author_link( false, $authordata->ID, $authordata->user_nicename ); ?>" title="<?php printf( __( 'View all items by %s', 'rolopress' ), $authordata->display_name ); ?>"><?php the_author(); ?></a></span>
 						<span class="meta-sep"> | </span>
-						<span class="meta-prep meta-prep-entry-date"><?php _e('Published ', 'rolopress'); ?></span>
+						<span class="meta-prep meta-prep-entry-date"><?php _e('Last updated: ', 'rolopress'); ?></span>
 						<span class="entry-date"><abbr class="published" title="<?php the_time('Y-m-d\TH:i:sO') ?>"><?php the_time( get_option( 'date_format' ) ); ?></abbr></span>
 						<?php edit_post_link( __( 'Edit', 'rolopress' ), "<span class=\"meta-sep\">|</span>\n\t\t\t\t\t\t<span class=\"edit-link\">", "</span>\n\t\t\t\t\t" ) ?>						
 					</div><!-- .entry-meta -->
@@ -57,15 +52,10 @@
 				</div><!-- #post-<?php the_ID(); ?> -->			
 				
 			<?php rolopress_after_info_content(); // After info content hook ?>
-			</div><!-- #info -->		
-			<?php rolopress_after_info(); // After info hook ?>	
-				
-				<div id="nav-below" class="navigation">
-					<div class="nav-previous"><?php previous_post_link( '%link', '<span class="meta-nav">&laquo;</span> %title' ) ?></div>
-					<div class="nav-next"><?php next_post_link( '%link', '%title <span class="meta-nav">&raquo;</span>' ) ?></div>
-				</div><!-- #nav-below -->					
 
-<?php comments_template('', true); ?>			
+<?php comments_template('', true); ?>		
+			</div><!-- #info -->		
+			<?php rolopress_after_info(); // After info hook ?>		
 			</div><!-- #main -->	
 		    <?php rolopress_after_main(); // After main hook ?>			
 		</div><!-- #container -->

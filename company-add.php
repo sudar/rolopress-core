@@ -17,7 +17,7 @@
 			<?php rolopress_before_info(); // Before info hook ?>
 			<div id="info">		
 			<?php rolopress_before_info_content(); // Before info content hook ?>
-			<h3 class="section-title"><span>Add Contact</span></h3>
+			<h2 class="section-title"><span>Add Company</span></h2>
             <?php the_post(); ?>
 				
 				<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
