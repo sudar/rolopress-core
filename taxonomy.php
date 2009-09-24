@@ -23,9 +23,10 @@
 			<div id="info">		
 			<?php rolopress_before_info_content(); // Before info content hook ?>
             
-            <h2 class="page-title"><?php _e( 'Category Archives:', 'rolopress' ) ?> <span><?php single_cat_title() ?></span></span></h2>
-				<?php $categorydesc = category_description(); if ( !empty($categorydesc) ) echo apply_filters( 'archive_meta', '<div class="archive-meta">' . $categorydesc . '</div>' ); ?>
-
+                <h2 class="page-title">
+                    <?php $term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) ); echo $term->name; echo " List"; ?>
+                    <?php edit_post_link( __( 'Edit', 'rolopress' ), "\n\t\t\t\t\t<span class=\"edit-link\">", "</span>" ) ?>		
+                </h2>
 
 <?php while ( have_posts() ) : the_post(); ?>
 
