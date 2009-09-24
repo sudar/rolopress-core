@@ -105,7 +105,7 @@ add_action('template_redirect', 'rolo_add_script');
  */
 function rolo_add_script() {
     if (is_page(array('Add Contact','Add Company', 'Edit Company', 'Edit Contact'))) {
-        wp_enqueue_script( 'uni-form', get_bloginfo('template_directory') . '/uni-form/js/uni-form.jquery.js', array('jquery'), '', true );
+        wp_enqueue_script( 'uni-form', get_bloginfo('template_directory') . '/js/uni-form.jquery.js', array('jquery'), '', true );
         wp_enqueue_script( 'rolopress-js', get_bloginfo('template_directory') . '/js/rolopress.js', array('jquery', 'uni-form'), '', true );
     }
 }
