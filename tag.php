@@ -7,7 +7,7 @@
 			
 <?php the_post(); ?>			
 			
-				<h1 class="page-title"><?php _e( 'Tag Archives:', 'rolopress' ) ?> <span><?php single_tag_title() ?></span></h1>
+
 
 <?php rewind_posts(); ?>
 			
@@ -20,7 +20,9 @@
 
 			<?php rolopress_before_info(); // Before info hook ?>
 			<div id="info">		
-			<?php rolopress_before_info_content(); // Before info content hook ?>	
+            
+            <h2 class="page-title"><?php _e( 'Tag Archives:', 'rolopress' ) ?> <span><?php single_tag_title() ?></span></h2>
+
 
 <?php while ( have_posts() ) : the_post(); ?>
 
@@ -55,7 +57,7 @@
 
 <?php endwhile; ?>		
 
-			<?php rolopress_after_info_content(); // After info content hook ?>
+
 			</div><!-- #info -->		
 			<?php rolopress_after_info(); // After info hook ?>		
 

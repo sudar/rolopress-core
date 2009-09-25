@@ -7,7 +7,7 @@
 			
 <?php if ( have_posts() ) : ?>
 				
-				<h1 class="page-title"><?php _e( 'Search Results for: ', 'rolopress' ); ?><span><?php the_search_query(); ?></span></h1>
+
 				
 <?php global $wp_query; $total_pages = $wp_query->max_num_pages; if ( $total_pages > 1 ) { ?>
 				<div id="nav-above" class="navigation">
@@ -18,13 +18,14 @@
 
 			<?php rolopress_before_info(); // Before info hook ?>
 			<div id="info">		
-			<?php rolopress_before_info_content(); // Before info content hook ?>				
+                <h2 class="page-title"><?php _e( 'Search Results for: ', 'rolopress' ); ?><span><?php the_search_query(); ?></span></h2>
+		
 
 <?php while ( have_posts() ) : the_post() ?>
 
 				<div id="post-<?php the_ID(); ?>" <?php rolopress_entry_class(); ?>>
 					<?php rolopress_before_entry(); // Before entry hook ?>
-					<h2 class="entry-title"><a href="<?php the_permalink(); ?>" title="<?php printf( __('Permalink to %s', 'rolopress'), the_title_attribute('echo=0') ); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
+					<h3 class="entry-title"><a href="<?php the_permalink(); ?>" title="<?php printf( __('Permalink to %s', 'rolopress'), the_title_attribute('echo=0') ); ?>" rel="bookmark"><?php the_title(); ?></a></h3>
 
 <?php if ( $post->post_type == 'post' ) { ?>									
 					<div class="entry-meta">
@@ -56,7 +57,6 @@
 
 <?php endwhile; ?>
 
-			<?php rolopress_after_info_content(); // After info content hook ?>
 			</div><!-- #info -->		
 			<?php rolopress_after_info(); // After info hook ?>	
 

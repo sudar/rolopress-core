@@ -5,11 +5,8 @@
 			<?php rolopress_before_main(); // Before main hook ?>
 			<div id="main">
 			
-<?php the_post(); ?>			
-			
-				<h1 class="page-title author"><?php printf( __( 'Author Archives: <span class="vcard">%s</span>', 'rolopress' ), "<a class='url fn n' href='$authordata->user_url' title='$authordata->display_name' rel='me'>$authordata->display_name</a>" ) ?></h1>
-				<?php $authordesc = $authordata->user_description; if ( !empty($authordesc) ) echo apply_filters( 'archive_meta', '<div class="archive-meta">' . $authordesc . '</div>' ); ?>
-
+<?php the_post(); ?>
+            
 <?php rewind_posts(); ?>
 			
 <?php global $wp_query; $total_pages = $wp_query->max_num_pages; if ( $total_pages > 1 ) { ?>
@@ -17,17 +14,20 @@
 					<div class="nav-previous"><?php next_posts_link(__( '<span class="meta-nav">&laquo;</span> Older posts', 'rolopress' )) ?></div>
 					<div class="nav-next"><?php previous_posts_link(__( 'Newer posts <span class="meta-nav">&raquo;</span>', 'rolopress' )) ?></div>
 				</div><!-- #nav-above -->
-<?php } ?>			
+<?php } ?>		
 
-			<?php rolopress_before_info(); // Before info hook ?>
-			<div id="info">		
-			<?php rolopress_before_info_content(); // Before info content hook ?>
+            <?php rolopress_before_info(); // Before info hook ?>
+			<div id="info">
+			<h2 class="page-title author"><?php printf( __( 'Items Owned By: <span class="vcard">%s</span>', 'rolopress' ), "<a class='url fn n' href='$authordata->user_url' title='$authordata->display_name' rel='me'>$authordata->display_name</a>" ) ?></h2>      
+                <?php $authordesc = $authordata->user_description; if ( !empty($authordesc) ) echo apply_filters( 'archive_meta', '<div class="archive-meta">' . $authordesc . '</div>' ); ?>
+	
+	
 
 <?php while ( have_posts() ) : the_post(); ?>
 
-				<div id="contact-<?php the_ID(); ?>" <?php rolopress_entry_class(); ?>>
+				<div id="contact-<?php the_ID(); ?>" class="<?php rolopress_entry_class(); ?>">
 					<?php rolopress_before_entry(); // Before entry hook ?>
-					<h2 class="entry-title"><a href="<?php the_permalink(); ?>" title="<?php printf( __('Permalink to %s', 'rolopress'), the_title_attribute('echo=0') ); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
+					<h3 class="entry-title"><a href="<?php the_permalink(); ?>" title="<?php printf( __('Permalink to %s', 'rolopress'), the_title_attribute('echo=0') ); ?>" rel="bookmark"><?php the_title(); ?></a></h3>
 
 					<div class="entry-meta">
 						<span class="meta-prep meta-prep-author"><?php _e('By ', 'rolopress'); ?></span>
@@ -54,7 +54,6 @@
 
 <?php endwhile; ?>	
 
-			<?php rolopress_after_info_content(); // After info content hook ?>
 			</div><!-- #info -->		
 			<?php rolopress_after_info(); // After info hook ?>			
 

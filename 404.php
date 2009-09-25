@@ -7,11 +7,10 @@
 
 			<?php rolopress_before_info(); // Before info hook ?>
 			<div id="info">		
-			<?php rolopress_before_info_content(); // Before info content hook ?>
-
+            	
+                <h2 class="page-title"><?php _e( 'Not Found', 'rolopress' ); ?></h2>
 			
 				<div id="post-0" class="post error404 not-found">
-					<h1 class="entry-title"><?php _e( 'Not Found', 'rolopress' ); ?></h1>
 					<?php rolopress_before_entry(); // Before entry hook ?>
 					<div class="entry-main">
 						<p><?php _e( 'Apologies, but we were unable to find what you were looking for. Perhaps searching will help.', 'rolopress' ); ?></p>
@@ -20,7 +19,6 @@
 				  <?php rolopress_after_entry(); // After entry hook ?>
 				</div><!-- #post-0 -->
 				
-			<?php rolopress_after_info_content(); // After info content hook ?>
 			</div><!-- #info -->		
 			<?php rolopress_after_info(); // After info hook ?>	
 			

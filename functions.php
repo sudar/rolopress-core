@@ -20,7 +20,7 @@
 
 //load Template functions
 	require_once( 'library/functions/template-functions.php' );
-
+    
 
 // Make theme available for translation
 // Translations can be filed in the /languages/ directory

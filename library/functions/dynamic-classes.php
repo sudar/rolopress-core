@@ -4,10 +4,12 @@
  * This gives a near unlimited amount of control over design elements.
  *
  * Many of the functions behind this come from the great Sandbox theme.
- * But, they have been completely rewritten to be more Justin-understandable.
  * @link http://www.plaintxt.org/themes/sandbox
  *
- * @package Hybrid
+ * This file was taken from the Hybrid theme because it's so good!
+ * @link http://themehybrid.com/
+ *
+ * @package RoloPress
  * @subpackage Functions
  */
 
@@ -21,12 +23,6 @@
  * @link http://codex.wordpress.org/Template_Tags/get_the_category
  * @link http://codex.wordpress.org/Template_Tags/get_the_tags
  *
- * @internal changed the function to rolopress_entry_class from rolopress_entry_class in 0.5.
- *
- * @since 0.5
- * @global $post The current post's DB object.
- * @param string|array $class Additional classes for more control.
- * @return string
  */
 function rolopress_entry_class( $class = '' ) {
 	global $post;
@@ -101,10 +97,6 @@ function rolopress_entry_class( $class = '' ) {
  * @link http://codex.wordpress.org/Function_Reference/get_userdata
  *
  * @todo Find a better way to get the user's role b/c these can be custom.
- *
- * @since 0.2
- * @global $wpdb WordPress DB access object.
- * @global $comment The current comment's DB object.
  */
 function rolopress_comment_class() {
 	global $comment, $wpdb, $wp_roles;
@@ -167,10 +159,6 @@ function rolopress_comment_class() {
  * @link http://codex.wordpress.org/Function_Reference/get_post_mime_type
  * @link http://codex.wordpress.org/Function_Reference/get_post_meta
  *
- * @since 0.1
- * @uses $wp_query
- * @param string|array $class Additional classes for more control.
- * @return string
  */
 function rolopress_body_class( $class = '' ) {
 	global $wp_query;
@@ -368,7 +356,7 @@ function rolopress_body_class( $class = '' ) {
 
 	endif;
 
-	/* Hybrid theme widgets detection. */
+	/* rolopress theme widgets detection. */
 	if ( is_sidebar_active( 'primary' ) ) :
 		$classes[] = 'primary-active';
 	else :
@@ -408,12 +396,7 @@ function rolopress_body_class( $class = '' ) {
 }
 
 /**
- * Function for handling what the browser/search engine title should be.
- * Tries to handle every situation to make for the best SEO.
- *
- * @since 0.1
- * @global $wp_query
- * @global $rolopress_settings
+ * Function for handling what the browser title should be.
  */
 function rolopress_document_title( $doctitle ) {
 	global $wp_query, $rolopress_settings;
@@ -443,31 +426,31 @@ function rolopress_document_title( $doctitle ) {
 		$doctitle = get_the_author_meta( 'display_name', get_query_var( 'author' ) );
 
 	elseif ( is_search() ) :
-		$doctitle = sprintf( __('Search results for &quot;%1$s&quot;', 'hybrid'), esc_attr( get_search_query() ) );
+		$doctitle = sprintf( __('Search results for &quot;%1$s&quot;', 'rolopress'), esc_attr( get_search_query() ) );
 
 	elseif ( get_query_var( 'minute' ) && get_query_var( 'hour' ) ) :
-		$doctitle = sprintf( __('Archive for %1$s', 'hybrid'), get_the_time( __('g:i a', 'hybrid') ) );
+		$doctitle = sprintf( __('Archive for %1$s', 'rolopress'), get_the_time( __('g:i a', 'rolopress') ) );
 
 	elseif ( get_query_var( 'minute' ) ) :
-		$doctitle = sprintf( __('Archive for minute %1$s', 'hybrid'), get_the_time( __('i', 'hybrid') ) );
+		$doctitle = sprintf( __('Archive for minute %1$s', 'rolopress'), get_the_time( __('i', 'rolopress') ) );
 
 	elseif ( get_query_var( 'hour' ) ) :
-		$doctitle = sprintf( __('Archive for %1$s', 'hybrid'), get_the_time( __('g a', 'hybrid') ) );
+		$doctitle = sprintf( __('Archive for %1$s', 'rolopress'), get_the_time( __('g a', 'rolopress') ) );
 
 	elseif ( is_day() ) :
-		$doctitle = sprintf( __('Archive for %1$s', 'hybrid'), get_the_time( __('F jS, Y', 'hybrid') ) );
+		$doctitle = sprintf( __('Archive for %1$s', 'rolopress'), get_the_time( __('F jS, Y', 'rolopress') ) );
 
 	elseif ( get_query_var( 'w' ) ) :
-		$doctitle = sprintf( __('Archive for week %1$s of %2$s', 'hybrid'), get_the_time( __('W', 'hybrid') ), get_the_time( __('Y', 'hybrid') ) );
+		$doctitle = sprintf( __('Archive for week %1$s of %2$s', 'rolopress'), get_the_time( __('W', 'rolopress') ), get_the_time( __('Y', 'rolopress') ) );
 
 	elseif ( is_month() ) :
-		$doctitle = sprintf( __('Archive for %1$s', 'hybrid'), single_month_title( ' ', false) );
+		$doctitle = sprintf( __('Archive for %1$s', 'rolopress'), single_month_title( ' ', false) );
 
 	elseif ( is_year() ) :
-		$doctitle = sprintf( __('Archive for %1$s', 'hybrid'), get_the_time( __('Y', 'hybrid') ) );
+		$doctitle = sprintf( __('Archive for %1$s', 'rolopress'), get_the_time( __('Y', 'rolopress') ) );
 
 	elseif ( is_404() ) :
-		$doctitle = __('404 Not Found', 'hybrid');
+		$doctitle = __('404 Not Found', 'rolopress');
 
 	endif;
 
@@ -478,7 +461,7 @@ function rolopress_document_title( $doctitle ) {
 
 	/* If paged. */
 	if ( ( ( $page = $wp_query->get( 'paged' ) ) || ( $page = $wp_query->get( 'page' ) ) ) && $page > 1 )
-		$doctitle = sprintf( __('%1$s Page %2$s', 'hybrid'), $doctitle . $separator, $page );
+		$doctitle = sprintf( __('%1$s Page %2$s', 'rolopress'), $doctitle . $separator, $page );
 
 	return apply_filters( 'rolopress_document_title', $doctitle );
 }

@@ -21,7 +21,6 @@
 
 			<?php rolopress_before_info(); // Before info hook ?>
 			<div id="info">		
-			<?php rolopress_before_info_content(); // Before info content hook ?>
             
                 <h2 class="page-title">
                     <?php $term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) ); echo $term->name; echo " List"; ?>	
@@ -31,6 +30,12 @@
 
 				<div id="post-<?php the_ID(); ?>" class="<?php rolopress_entry_class(); ?>">
 					<?php rolopress_before_entry(); // Before entry hook ?>
+                    
+                    <!-- FOR PLACEMENT ONLY -->
+                    <div class="comment-author vcard"><img alt='' src='http://www.gravatar.com/avatar/ad516503a11cd5ca435acc9bb6523536?s=80' class='photo avatar avatar-80 photo avatar-default' height='80' width='80' /> </div>
+                    
+                    
+                    
 					<h2 class="entry-title"><a href="<?php the_permalink(); ?>" title="<?php printf( __('Permalink to %s', 'rolopress'), the_title_attribute('echo=0') ); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
 
 					<div class="entry-meta">
@@ -60,7 +65,7 @@
 
 <?php endwhile; ?>		
 
-			<?php rolopress_after_info_content(); // After info content hook ?>
+
 			</div><!-- #info -->		
 			<?php rolopress_after_info(); // After info hook ?>		
 
