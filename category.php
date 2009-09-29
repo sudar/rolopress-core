@@ -21,6 +21,7 @@
 
 			<?php rolopress_before_info(); // Before info hook ?>
 			<div id="info">		
+			<?php rolopress_before_info_content(); // Before info content hook ?>
             
             <h2 class="page-title"><?php _e( 'Category Archives:', 'rolopress' ) ?> <span><?php single_cat_title() ?></span></span></h2>
 				<?php $categorydesc = category_description(); if ( !empty($categorydesc) ) echo apply_filters( 'archive_meta', '<div class="archive-meta">' . $categorydesc . '</div>' ); ?>
@@ -59,6 +60,7 @@
 
 <?php endwhile; ?>		
 
+			<?php rolopress_after_info_content(); // After info content hook ?>
 			</div><!-- #info -->		
 			<?php rolopress_after_info(); // After info hook ?>		
 

@@ -443,9 +443,9 @@ function rolopress_default_menu() {
 					<div class="menu_item">
 					<h1 id="app-title"><span><a href="<?php bloginfo( 'url' ) ?>/" title="<?php bloginfo( 'name' ) ?>" rel="home"><?php bloginfo( 'name' ) ?></a></span></h1>
 					<ul class="menu_item">
-                    <li><a title="contacts" href="/type/contact"<span>Contacts</span></a></li>
-                    <li><a title="companies" href="/type/company"<span>Companies</span></a></li>
-                    <ul>					
+                    <li><a title="contacts" href="/type/contact"><span>Contacts</span></a></li>
+                    <li><a title="companies" href="/type/company"><span>Companies</span></a></li>
+                    </ul>					
 					</div>
 					<ul class="menu_item alignright">
 						<li><form id="searchform" method="get" action="<?php bloginfo('home') ?>">

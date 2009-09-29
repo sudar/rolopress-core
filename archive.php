@@ -28,6 +28,7 @@
 
 			<?php rolopress_before_info(); // Before info hook ?>
 			<div id="info">		
+			<?php rolopress_before_info_content(); // Before info content hook ?>	
 
 <?php while ( have_posts() ) : the_post(); ?>
 
@@ -60,6 +61,7 @@
 
 <?php endwhile; ?>			
 
+			<?php rolopress_after_info_content(); // After info content hook ?>
 			</div><!-- #info -->		
 			<?php rolopress_after_info(); // After info hook ?>	
 

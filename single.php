@@ -10,7 +10,6 @@
  			<h2 class="page-title">
             <?php echo get_the_term_list( $post->ID, 'type', ' ', ', ', ': ' );?><?php the_title(); ?>
             </h2>
-
 					<div id="entry-<?php the_ID(); ?>" class="<?php rolopress_entry_class(); ?>">
 					<?php rolopress_before_entry(); // Before entry hook ?>
 					<div class="entry-meta">
@@ -37,7 +36,7 @@
 					</div><!-- .entry-utility -->
                     <?php rolopress_after_entry(); // After entry hook ?>
                     </div><!-- #post-<?php the_ID(); ?> -->
-<?php comments_template('', true); ?>
+<?php comments_template( '/notes.php' ); ?> 
 					</div><!-- #info -->
 					<?php rolopress_after_info(); // After info hook ?>
 					</div><!-- #main -->

@@ -7,16 +7,16 @@
 				
 			<?php rolopress_before_info(); // Before info hook ?>
 			<div id="info">		
+			<?php rolopress_before_info_content(); // Before info content hook ?>
+				
+			
 <?php the_post(); ?>
-            <h2 class="page-title"><a href="<?php echo get_permalink($post->post_parent) ?>" title="<?php printf( __( 'Return to %s', 'rolopress' ), wp_specialchars( get_the_title($post->post_parent), 1 ) ) ?>" rev="attachment"><span class="meta-nav">&laquo; </span><?php echo get_the_title($post->post_parent) ?></a></h2>				
-			
 
-
-			
+				<h1 class="page-title"><a href="<?php echo get_permalink($post->post_parent) ?>" title="<?php printf( __( 'Return to %s', 'rolopress' ), wp_specialchars( get_the_title($post->post_parent), 1 ) ) ?>" rev="attachment"><span class="meta-nav">&laquo; </span><?php echo get_the_title($post->post_parent) ?></a></h1>
 				
 				<div id="contact-<?php the_ID(); ?>" <?php rolopress_entry_class(); ?>>
 					<?php rolopress_before_entry(); // Before entry hook ?>
-					<h3 class="entry-title"><?php the_title(); ?></h3>
+					<h2 class="entry-title"><?php the_title(); ?></h2>
 					
 					<div class="entry-meta">
 						<span class="meta-prep meta-prep-author"><?php _e('By ', 'rolopress'); ?></span>
@@ -66,6 +66,7 @@
 				<?php rolopress_after_entry(); // After entry hook ?>					
 				</div><!-- #post-<?php the_ID(); ?> -->		
 
+			<?php rolopress_after_info_content(); // After info content hook ?>
 			</div><!-- #info -->		
 			<?php rolopress_after_info(); // After info hook ?>					
 

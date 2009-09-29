@@ -110,6 +110,20 @@ function rolo_add_script() {
 //        wp_enqueue_style('uniform', get_bloginfo('template_directory') . '/uni-form/css/uni-form.css');
     }
 }
+/**
+ * Add JavaScript to the theme on needed notes (comments) pages
+ */
+
+function theme_queue_js(){
+  if (!is_admin()){
+    if ( is_singular() AND comments_open() AND (get_option('thread_comments') == 1))
+      wp_enqueue_script( 'comment-reply' );
+  }
+}
+add_action('get_header', 'theme_queue_js');
+
+
+
 
 /**
  * Create taxonomies
@@ -120,4 +134,6 @@ function rolo_create_taxonomy() {
 }
 
 add_action('init', 'rolo_create_taxonomy', 0);
+
+
 ?>
