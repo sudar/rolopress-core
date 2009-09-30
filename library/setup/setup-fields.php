@@ -104,6 +104,17 @@ array
     "description" => "",
     "setup_function" => 'rolo_setup_contact_address',
     'save_function' => 'rolo_save_contact_address'
+    ),
+    'info' =>
+    array
+    (
+    "name" => "info",
+    "filter" => "rolo_contact_twitter",
+    "std" => "",
+    "title" => "Background Info",
+    "description" => "",
+    'setup_function' => 'rolo_setup_contact_info',
+    'save_function' => 'rolo_save_contact_info'
     )
 //    array
 //    (
@@ -298,6 +309,51 @@ function rolo_save_contact_multiple($field_name, $post_id) {
     }
 }
 
+/**
+ * Setup function for background info
+ *
+ * @global array $contact_fields List of contact fields
+ * @param string $field_name Field Name to be shown
+ * @param <type> $rolo_tab_index
+ */
+function rolo_setup_contact_info($field_name, &$rolo_tab_index) {
+    global $contact_fields;
+
+    $info_field = $contact_fields[$field_name];
+    $name = 'rolo_contact_' . $info_field['name'];
+?>
+    <div class="ctrlHolder">
+        <label for="<?php echo $name;?>">
+<?php
+            if ($info_field['mandatory'] == true) {
+                echo '<em>*</em>';
+            }
+            echo $info_field['title'];
+?>
+        </label>
+        <textarea rows="3" cols="20" name ="<?php echo $name; ?>" tabindex="<?php echo $rolo_tab_index++;?>" ></textarea>
+    </div>
+<?php
+}
+
+/**
+ * Save function for background info
+ *
+ * @global array $contact_fields List of contact fields
+ * @param string $field_name Field Name to be saved
+ * @param id $post_id Post ID
+ */
+function rolo_save_contact_info($field_name, $post_id) {
+    global $contact_fields;
+
+    $info_field = $contact_fields[$field_name];
+
+    $notes = $_POST['rolo_contact_' . $info_field['name']];
+
+    if ($notes != '') {
+        wp_update_post(array('ID' => $post_id, 'post_content' => $notes));
+    }
+}
 /**
  *
  * @global <type> $post
