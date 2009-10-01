@@ -9,9 +9,6 @@
 //load hooks and filters
 	require_once( 'library/functions/hooks-filters.php' );
 
-//loads framework functions
-	require_once( 'library/functions/framework.php' );
-
 //load widget areas
 	require_once( 'library/functions/widgets.php' );
 

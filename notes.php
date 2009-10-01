@@ -53,7 +53,7 @@ return;
 
 <div id="respond">
 
-<h3><?php comment_form_title( 'Add a Note', 'Add a Note to %s' ); ?></h3>
+<h3><?php comment_form_title( 'Add a Note', 'Add a Note Attachment' ); ?></h3>
 
 <div class="cancel-note-reply">
 <small><?php cancel_comment_reply_link('Cancel attachment to note'); ?> </small>
@@ -117,7 +117,7 @@ $GLOBALS['comment'] = $comment; ?>
 <?php comment_text() ?>
 <?php if($args['max_depth']!=$depth) { ?>
 <div class="attach">
-  <?php comment_reply_link(array_merge( $args, array('reply_text' => '<span>Attach</span>','depth' => $depth, 'max_depth' => $args['max_depth']))) ?>
+  <?php comment_reply_link(array_merge( $args, array('reply_text' => 'Attach','depth' => $depth, 'max_depth' => $args['max_depth']))) ?>
 </div>
 <?php } ?>
 </div>
