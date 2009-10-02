@@ -66,7 +66,8 @@ function _rolo_show_company_fields() {
         } else {
 
             $default_value = $company_field['default_value'];
-            $name = 'rolo_company_' . $company_field['name'];
+            $name  = 'rolo_company_' . $company_field['name'];
+            $class = $company_field['class'];
 ?>
         <div class="ctrlHolder">
             <label for="<?php echo $name;?>">
@@ -77,7 +78,7 @@ function _rolo_show_company_fields() {
                 echo $company_field['title'];
 ?>
             </label>
-            <input type="text" name="<?php echo $name;?>" value="<?php echo $default_value ;?>" size="55" tabindex="<?php echo $rolo_tab_index;?>" class="textInput" />
+            <input type="text" name="<?php echo $name;?>" value="<?php echo $default_value ;?>" size="55" tabindex="<?php echo $rolo_tab_index;?>" class="textInput <?php echo $class;?>" />
         </div>
 <?php
             $rolo_tab_index++;
@@ -110,9 +111,12 @@ function _rolo_save_company_fields() {
 //        return false;
 //        }
 
+    // TODO Validation
+    $company_name = $_POST['rolo_company_name'];
+
     $new_post = array();
 
-    $new_post['post_title'] = $_POST['rolo_company_name'];
+    $new_post['post_title'] = $company_name;
     $new_post['post_type'] = 'post';
     $new_post['post_status'] = 'publish';
 
@@ -134,6 +138,7 @@ function _rolo_save_company_fields() {
 
         // Set the custom taxonmy for the post
         wp_set_post_terms($post_id, 'company', 'type');
+        wp_set_post_terms($post_id, $company_name, 'company');
     } else {
 //        TODO - handle error
     }
@@ -162,7 +167,7 @@ function _rolo_show_company_notes($company_id) {
             <label for="rolo_company_notes">
                 <?php _e('Notes');?>
             </label>
-            <textarea rows="3" cols="20" name ="rolo_company_notes"></textarea>
+            <textarea rows="3" cols="20" name ="rolo_company_notes" class="textArea notes"></textarea>
         </div>
     </fieldset>
    <div class="buttonHolder">
@@ -232,7 +237,7 @@ function rolo_setup_company_address($field_name, &$rolo_tab_index) {
                 echo $address_field['title'];
 ?>
             </label>
-            <textarea rows="3" cols="20" name ="rolo_company_address" tabindex="<?php echo $rolo_tab_index++;?>" ></textarea>
+            <textarea rows="3" cols="20" name ="rolo_company_address" tabindex="<?php echo $rolo_tab_index++;?>" class="textArea address" ></textarea>
         </div>
 
         <div class="ctrlHolder">
@@ -244,7 +249,7 @@ function rolo_setup_company_address($field_name, &$rolo_tab_index) {
 
         <div class="ctrlHolder">
             <label for="rolo_company_country"></label>
-            <input type="text" name="rolo_company_country" value="<?php echo $meta_box_value ;?>" size="55" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput" />
+            <input type="text" name="rolo_company_country" value="<?php echo $meta_box_value ;?>" size="55" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput country" />
         </div>
 <?php
 }
@@ -286,7 +291,8 @@ function rolo_setup_company_multiple($field_name, &$rolo_tab_index) {
 
         $multiple = $multiples[$i];
 
-        $name = $multiple_field['name'] . "[$i]";
+        $name  = $multiple_field['name'] . "[$i]";
+        $class = $multiple_field['class'];
         $select_name = $multiple_field['name'] . "_select[$i]";
         if ($i == 0) {
             $ctrl_class = ' multipleInput ' . $multiple_field['name'];
@@ -301,7 +307,7 @@ function rolo_setup_company_multiple($field_name, &$rolo_tab_index) {
             <label for="<?php echo $name;?>">
                 <?php echo $title;?>
             </label>
-            <input type="text" name="<?php echo $name;?>" value="<?php echo $meta_box_value ;?>" size="55" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput" />
+            <input type="text" name="<?php echo $name;?>" value="<?php echo $meta_box_value ;?>" size="55" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput <?php echo $class;?>" />
             <select name="<?php echo $select_name;?>" tabindex="<?php echo $rolo_tab_index++;?>">
                 <?php echo $options;?>
             </select>
@@ -363,7 +369,7 @@ function rolo_setup_company_info($field_name, &$rolo_tab_index) {
             echo $info_field['title'];
 ?>
         </label>
-        <textarea rows="3" cols="20" name ="<?php echo $name; ?>" tabindex="<?php echo $rolo_tab_index++;?>" ></textarea>
+        <textarea rows="3" cols="20" name ="<?php echo $name; ?>" tabindex="<?php echo $rolo_tab_index++;?>" class="textArea info" ></textarea>
     </div>
 <?php
 }

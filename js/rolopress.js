@@ -43,39 +43,5 @@ jQuery(document).ready(function() {
        $this.parent('.ctrlHolder').hide().trigger('hide');
     });
 
-//    jQuery('img.rolo_add_ctrl').click(function () {
-//       var $this = jQuery(this) ;
-//       var slug = "";
-//       jQuery.each($this.prevAll('.multipleInput').attr('class').split(' '), function () {
-//           if (this != 'multipleInput' && this != 'textInput') {
-//               slug = this;
-//           }
-//       });
-//
-//       var values = new Array();
-//
-//       var select_ctrl = "<select>";
-//       var img_ctrl = $this.clone(bool);
-//
-//       var $options = $this.prevAll('select').find('option:not(:selected)');
-//       if ($options.length > 0) {
-//           jQuery.each($options, function () {
-//              values.push(jQuery(this).attr('value'));
-//              select_ctrl += '<option value = "' + jQuery(this).attr('value') +'">' + jQuery(this).attr('value') + '</option>';
-//           });
-//       }
-//
-//       select_ctrl += '</select>'
-//
-//       if (values.length > 1) {
-//           vimg_ctrl =
-//       }
-//
-//       var name = slug + values[0] + '_rolo_value';
-//       var html = '<label for="' + name +'"></label><input type = "text" name = ' + name +' class="textInput " />' + select_ctrl;
-//       jQuery(html).appendTo($this.parent('.ctrlHolder'));
-//
-//    });
-
-
+    jQuery('input.company').suggest("/wp-admin/admin-ajax.php?action=ajax-tag-search&tax=company", {multiple:false});
 });
