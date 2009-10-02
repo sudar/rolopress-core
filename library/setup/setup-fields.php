@@ -19,7 +19,7 @@ array
     (
     "name" => "first_name",
     "filter" => "rolo_contact_first_name",
-    "std" => "",
+    'default_value' => "",
     "title" => "First Name",
     "description" => "",
     "mandatory" => true
@@ -29,7 +29,7 @@ array
     (
     "name" => "last_name",
     "filter" => "rolo_contact_last_name",
-    "std" => "",
+    'default_value' => "",
     "title" => "Last Name",
     "description" => "",
     "mandatory" => true
@@ -39,7 +39,7 @@ array
     (
     "name" => "title",
     "filter" => "rolo_contact_title",
-    "std" => "",
+    'default_value' => "",
     "title" => "Title",
     "description" => ""
     ),
@@ -48,7 +48,7 @@ array
     (
     "name" => "email",
     "filter" => "rolo_contact_email",
-    "std" => "",
+    'default_value' => "",
     "title" => "Email",
     "description" => ""
     ),
@@ -58,7 +58,7 @@ array
     'multiple' => array ('Home', 'Mobile', 'Work', 'Fax', 'Other'),
     "name" => "phone",
     "filter" => "rolo_contact_phone_",
-    "std" => "",
+    'default_value' => "",
     "title" => "Phone",
     "description" => "",
     'setup_function' => 'rolo_setup_contact_multiple',
@@ -69,7 +69,7 @@ array
     (
     "name" => "website",
     "filter" => "rolo_contact_website",
-    "std" => "http://",
+    'default_value' => "http://",
     "title" => "Website",
     "description" => ""
     ),
@@ -79,7 +79,7 @@ array
     'multiple' => array ('Yahoo', 'MSN', 'AOL', 'GTalk', 'Skype'),
     "name" => "im",
     "filter" => "rolo_contact_IM_",
-    "std" => "",
+    'default_value' => "",
     "title" => "IM",
     "description" => "",
     'setup_function' => 'rolo_setup_contact_multiple',
@@ -90,7 +90,7 @@ array
     (
     "name" => "twitter",
     "filter" => "rolo_contact_twitter",
-    "std" => "http://twitter.com/",
+    'default_value' => "http://twitter.com/",
     "title" => "Twitter",
     "description" => ""
     ),
@@ -99,7 +99,7 @@ array
     (
     "name" => "address",
     "filter" => "rolo_contact_address",
-    "std" => "",
+    'default_value' => "",
     "title" => "Address",
     "description" => "",
     "setup_function" => 'rolo_setup_contact_address',
@@ -109,251 +109,104 @@ array
     array
     (
     "name" => "info",
-    "filter" => "rolo_contact_twitter",
-    "std" => "",
+    "filter" => "rolo_contact_info",
+    'default_value' => "",
     "title" => "Background Info",
     "description" => "",
     'setup_function' => 'rolo_setup_contact_info',
     'save_function' => 'rolo_save_contact_info'
     )
-//    array
-//    (
-//    "name" => "address_1",
-//    "filter" => "rolo_contact_address_1",
-//    "std" => "",
-//    "title" => "Address 1",
-//    "description" => ""
-//    ),
-//    "address_2" =>
-//    array
-//    (
-//    "name" => "address_2",
-//    "filter" => "rolo_contact_address_2",
-//    "std" => "",
-//    "title" => "Address 2",
-//    "description" => ""
-//    ),
-//    "city" =>
-//    array
-//    (
-//    "name" => "city",
-//    "filter" => "rolo_contact_city",
-//    "std" => "",
-//    "title" => "City",
-//    "description" => ""
-//    ),
-//    "state" =>
-//    array
-//    (
-//    "name" => "state",
-//    "filter" => "rolo_contact_state",
-//    "std" => "",
-//    "title" => "State",
-//    "description" => ""
-//    ),
-//    "postal_code" =>
-//    array
-//    (
-//    "name" => "postal_code",
-//    "filter" => "rolo_contact_postal_code",
-//    "std" => "",
-//    "title" => "Postal Code",
-//    "description" => ""
-//    ),
-//    "country" =>
-//    array
-//    (
-//    "name" => "country",
-//    "filter" => "rolo_contact_country",
-//    "std" => "",
-//    "title" => "Country",
-//    "description" => ""
-//    ),
-//    "image_path" =>
-//    array
-//    (
-//    "name" => "image_path",
-//    "filter" => "rolo_contact_image_path",
-//    "std" => "",
-//    "title" => "Image Path",
-//    "description" => ""
-//)
 );
 
-/**
- * Setup field for editing address
- * 
- * @global <type> $contact_fields
- * @param <type> $field_name
- */
-function rolo_setup_contact_address($field_name, &$rolo_tab_index) {
-    global $contact_fields;
+$company_fields =
+array
+(
+    "name" =>
+    array
+    (
+    "name" => "name",
+    "filter" => "rolo_company_name",
+    'default_value' => "",
+    "title" => "Company name",
+    "description" => "",
+    "mandatory" => true
+    ),
+    "email" =>
+    array
+    (
+    "name" => "email",
+    "filter" => "rolo_company_email",
+    'default_value' => "",
+    "title" => "Email",
+    "description" => "",
+    "mandatory" => false
+    ),
+    "phone" =>
+    array
+    (
+    'multiple' => array ('Home', 'Mobile', 'Work', 'Fax', 'Other'),
+    "name" => "phone",
+    "filter" => "rolo_company_phone_",
+    'default_value' => "",
+    "title" => "Phone",
+    "description" => "",
+    'setup_function' => 'rolo_setup_company_multiple',
+    'save_function' => 'rolo_save_company_multiple'
+    ),
+    "website" =>
+    array
+    (
+    "name" => "website",
+    "filter" => "rolo_company_website",
+    'default_value' => "http://",
+    "title" => "Website",
+    "description" => ""
+    ),
+    'im' =>
+    array
+    (
+    'multiple' => array ('Yahoo', 'MSN', 'AOL', 'GTalk', 'Skype'),
+    "name" => "im",
+    "filter" => "rolo_company_IM_",
+    'default_value' => "",
+    "title" => "IM",
+    "description" => "",
+    'setup_function' => 'rolo_setup_company_multiple',
+    'save_function' => 'rolo_save_company_multiple'
+    ),
+    'twitter' =>
+    array
+    (
+    "name" => "twitter",
+    "filter" => "rolo_company_twitter",
+    'default_value' => "http://twitter.com/",
+    "title" => "Twitter",
+    "description" => ""
+    ),
+    "address" =>
+    array
+    (
+    "name" => "address",
+    "filter" => "rolo_company_address",
+    'default_value' => "",
+    "title" => "Address",
+    "description" => "",
+    "setup_function" => 'rolo_setup_company_address',
+    'save_function' => 'rolo_save_company_address'
+    ),
+    'info' =>
+    array
+    (
+    "name" => "info",
+    "filter" => "rolo_company_info",
+    'default_value' => "",
+    "title" => "Background Info",
+    "description" => "",
+    'setup_function' => 'rolo_setup_company_info',
+    'save_function' => 'rolo_save_company_info'
+    )
+);
 
-    $address_field = $contact_fields[$field_name];
-?>
-        <div class="ctrlHolder">
-            <label for="rolo_contact_address">
-<?php
-                if ($address_field['mandatory'] == true) {
-                    echo '<em>*</em>';
-                }
-                echo $address_field['title'];
-?>
-            </label>
-            <textarea rows="3" cols="20" name ="rolo_contact_address" tabindex="<?php echo $rolo_tab_index++;?>" ></textarea>
-        </div>
-
-        <div class="ctrlHolder">
-            <label for="rolo_contact_city"></label>
-            <input type="text" name="rolo_contact_city" value="<?php echo $meta_box_value ;?>" size="30" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput city" />
-            <input type="text" name="rolo_contact_state" value="<?php echo $meta_box_value ;?>" size="15" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput state" />
-            <input type="text" name="rolo_contact_zip" value="<?php echo $meta_box_value ;?>" size="10" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput zip" />
-        </div>
-
-        <div class="ctrlHolder">
-            <label for="rolo_contact_country"></label>
-            <input type="text" name="rolo_contact_country" value="<?php echo $meta_box_value ;?>" size="55" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput" />
-        </div>
-<?php
-}
-
-/**
- * Save contact address information
- *
- * @param <type> $field_name
- * @param <type> $post_id
- */
-function rolo_save_contact_address($field_name, $post_id) {
-    // TODO - Validate fields
-
-    update_post_meta($post_id, 'rolo_contact_address', $_POST['rolo_contact_address']);
-    update_post_meta($post_id, 'rolo_contact_city', $_POST['rolo_contact_city']);
-    update_post_meta($post_id, 'rolo_contact_state', $_POST['rolo_contact_state']);
-    update_post_meta($post_id, 'rolo_contact_zip', $_POST['rolo_contact_zip']);
-    update_post_meta($post_id, 'rolo_contact_country', $_POST['rolo_contact_country']);
-}
-
-/**
- * Setup function for fields involving more than one instance (phone, IM)
- *
- * @global <type> $contact_fields
- * @param <type> $field_name
- */
-function rolo_setup_contact_multiple($field_name, &$rolo_tab_index) {
-    global $contact_fields;
-
-    $multiple_field = $contact_fields[$field_name];
-    $multiples = $multiple_field['multiple'];
-
-    $options = "";
-    foreach ($multiples as $option) {
-        $options .= "<option value ='$option'>$option</option>";
-    }
-
-    for ($i = 0 ; $i < count($multiples) ; $i++) {
-
-        $multiple = $multiples[$i];
-        
-        $name = $multiple_field['name'] . "[$i]";
-        $select_name = $multiple_field['name'] . "_select[$i]";
-        if ($i == 0) {
-            $ctrl_class = ' multipleInput ' . $multiple_field['name'];
-            $title = $multiple_field['title'];
-        } else {
-            $ctrl_class = ' multipleInput ctrlHidden ' . $multiple_field['name'];
-            $title = '';
-        }
-?>
-        <div class="ctrlHolder<?php echo $ctrl_class;?>">
-
-            <label for="<?php echo $name;?>">
-                <?php echo $title;?>
-            </label>
-            <input type="text" name="<?php echo $name;?>" value="<?php echo $meta_box_value ;?>" size="55" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput" />
-            <select name="<?php echo $select_name;?>" tabindex="<?php echo $rolo_tab_index++;?>">
-                <?php echo $options;?>
-            </select>
-<?php
-            if ($i == 0) {
-                $hidden = 'style = "display:none"';
-            } else {
-                $hidden = '';
-            }
-?>
-            <img src ="<?php echo get_bloginfo('template_directory') ?>/img/delete.png" class="rolo_delete_ctrl" alt="<?php _e('Delete');?>" <?php echo $hidden;?> />
-            <img src ="<?php echo get_bloginfo('template_directory') ?>/img/add.png" class="rolo_add_ctrl" alt="<?php _e('Add another');?>" />
-        </div>
-<?php
-    }
-}
-
-/**
- * Save function for multiple fields
- *
- * @global <type> $contact_fields
- * @param <type> $field_name
- * @param <type> $post_id
- */
-function rolo_save_contact_multiple($field_name, $post_id) {
-    global $contact_fields;
-
-    $multiple_field = $contact_fields[$field_name];
-
-    // TODO - Validate fields
-
-    $multiple_field_values  = $_POST[$multiple_field['name']];
-    $multiple_field_selects = $_POST[$multiple_field['name'] . '_select'];
-
-    for ($i = 0 ; $i < count($multiple_field_values) ; $i++) {
-        update_post_meta($post_id, 'rolo_contact_' . $multiple_field['name'] . '_' . $multiple_field_selects[$i], $multiple_field_values[$i]);
-    }
-}
-
-/**
- * Setup function for background info
- *
- * @global array $contact_fields List of contact fields
- * @param string $field_name Field Name to be shown
- * @param <type> $rolo_tab_index
- */
-function rolo_setup_contact_info($field_name, &$rolo_tab_index) {
-    global $contact_fields;
-
-    $info_field = $contact_fields[$field_name];
-    $name = 'rolo_contact_' . $info_field['name'];
-?>
-    <div class="ctrlHolder">
-        <label for="<?php echo $name;?>">
-<?php
-            if ($info_field['mandatory'] == true) {
-                echo '<em>*</em>';
-            }
-            echo $info_field['title'];
-?>
-        </label>
-        <textarea rows="3" cols="20" name ="<?php echo $name; ?>" tabindex="<?php echo $rolo_tab_index++;?>" ></textarea>
-    </div>
-<?php
-}
-
-/**
- * Save function for background info
- *
- * @global array $contact_fields List of contact fields
- * @param string $field_name Field Name to be saved
- * @param id $post_id Post ID
- */
-function rolo_save_contact_info($field_name, $post_id) {
-    global $contact_fields;
-
-    $info_field = $contact_fields[$field_name];
-
-    $notes = $_POST['rolo_contact_' . $info_field['name']];
-
-    if ($notes != '') {
-        wp_update_post(array('ID' => $post_id, 'post_content' => $notes));
-    }
-}
 /**
  *
  * @global <type> $post
