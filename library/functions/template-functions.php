@@ -158,6 +158,157 @@ function rolo_contact_full($contact_id) {
 }
 
 /**
+ * Print summary information about company
+ * @param <type> $company_id
+ * @return <type>
+ */
+function rolo_company_summary($company_id) {
+    //TODO Need to display the information in Microformat friendly format
+    if (!$company_id) {
+        return false;
+    }
+
+    $company = get_post_meta($company_id, 'rolo_company');
+    $company = $company[0];
+?>
+    <div class="span-3 first" id="company_image">
+        <?php echo get_avatar($company['rolo_company_email']);?>
+        <!--img class="company_image" src="" alt="image" width="100" height="100"/-->
+    </div>
+
+     <div class="span-4" id="company-left">
+         <div class="company">
+             <h4><a href="<?php echo get_permalink($company_id); ?>" rel="bookmark"><?php echo $company['rolo_company_name'];?></a></h4>
+         </div><!-- /company -->
+
+         <div class="info small" id="info_box">
+             <?php
+             //TODO Find out how to associate companies
+             ?>
+             <ul>
+                 <li class="email">
+                    <a href="mailto:<?php echo $company['rolo_company_email'];?>"><?php echo $company['rolo_company_email'];?></a>
+                 </li>
+             </ul>
+        </div><!-- /info_box -->
+
+    </div><!-- /company-left -->
+
+    <div class="span-4" id="company-middle">
+        <div class="phone small">
+            <ul>
+                <li>Mobile: <?php echo $company['rolo_company_phone_Mobile']; ?></li>
+                <li>Home: <?php echo $company['rolo_company_phone_Home']; ?></li>
+                <li>Work: <?php echo $company['rolo_company_phone_Work']; ?></li>
+                <li>Fax: <?php echo $company['rolo_company_phone_Fax']; ?></li>
+                <li>Other: <?php echo $company['rolo_company_phone_Other']; ?></li>
+            </ul>
+        </div><!-- /phone small -->
+    </div><!-- /company-middle -->
+
+    <div class="span-2" id="company-right">
+        <p>
+            <span class="commentnum">
+                <a href="<?php get_permalink(get_the_ID()); ?>#comments" title="Comment on ">Notes</a>
+            </span>
+        </p>
+    </div><!-- /company-right -->
+
+<?php
+}
+
+/**
+ * Display full company information
+ *
+ * @param int $company_id
+ * @return <type>
+ */
+function rolo_company_full($company_id) {
+    //TODO Need to display the information in Microformat friendly format
+    if (!$company_id) {
+        return false;
+    }
+
+    $company = get_post_meta($company_id, 'rolo_company');
+    $company = $company[0];
+//    print_r($company);
+?>
+    <div class="span-3 first" id="company_image">
+        <?php echo get_avatar($company['rolo_company_email']);?>
+        <!--img class="company_image" src="" alt="image" width="100" height="100"/-->
+    </div>
+
+     <div class="span-4" id="company-left">
+         <div class="company">
+             <h4><a href="<?php echo get_permalink($company_id); ?>" rel="bookmark"><?php echo $company['rolo_company_first_name'] . ' ' . $company['rolo_company_last_name'];?></a></h4>
+         </div><!-- /company -->
+
+         <div class="info small" id="info_box">
+             <?php
+             //TODO Find out how to associate companies
+             ?>
+             <ul>
+                 <li class="company">
+                     <?php echo get_the_term_list($company_id, 'company', __('Company:')); ?>
+                 </li>
+                 <li class="email">
+                    <a href="mailto:<?php echo $company['rolo_company_email'];?>"><?php echo $company['rolo_company_email'];?></a>
+                 </li>
+             </ul>
+        </div><!-- /info_box -->
+
+    </div><!-- /company-left -->
+
+    <div class="span-4" id="company-middle">
+        <div class="phone small">
+            <ul>
+                <li>Mobile: <?php echo $company['rolo_company_phone_Mobile']; ?></li>
+                <li>Home: <?php echo $company['rolo_company_phone_Home']; ?></li>
+                <li>Work: <?php echo $company['rolo_company_phone_Work']; ?></li>
+                <li>Fax: <?php echo $company['rolo_company_phone_Fax']; ?></li>
+                <li>Other: <?php echo $company['rolo_company_phone_Other']; ?></li>
+            </ul>
+        </div><!-- /phone small -->
+    </div><!-- /company-middle -->
+
+    <div class="span-4" id="company-middle">
+        <div class="IM small">
+            <ul>
+                <li>Yahoo: <?php echo $company['rolo_company_im_Yahoo']; ?></li>
+                <li>MSN: <?php echo $company['rolo_company_im_MSN']; ?></li>
+                <li>AOL: <?php echo $company['rolo_company_im_AOL']; ?></li>
+                <li>GTalk: <?php echo $company['rolo_company_im_GTalk']; ?></li>
+                <li>Skype: <?php echo $company['rolo_company_im_Skype']; ?></li>
+                <li>Website: <?php echo $company['rolo_company_website']; ?></li>
+                <li>Twitter: <?php echo $company['rolo_company_twitter']; ?></li>
+            </ul>
+        </div><!-- /phone small -->
+    </div><!-- /company-middle -->
+
+    <div class="span-4" id="company-middle">
+        <div class="IM small">
+            <ul>
+                <li>Address: <?php echo $company['rolo_company_address']; ?></li>
+                <li>City: <?php echo $company['rolo_company_city']; ?></li>
+                <li>State: <?php echo $company['rolo_company_state']; ?></li>
+                <li>Zip: <?php echo $company['rolo_company_zip']; ?></li>
+                <li>Country: <?php echo $company['rolo_company_country']; ?></li>
+            </ul>
+        </div><!-- /phone small -->
+    </div><!-- /company-middle -->
+
+    <div class="span-2" id="company-right">
+        <p>
+            <span class="commentnum">
+                <a href="<?php get_permalink(get_the_ID()); ?>#comments" title="Comment on ">Notes</a>
+            </span>
+        </p>
+    </div><!-- /company-right -->
+
+<?php
+}
+
+/**
  * Get contact url
  * @param <type> $contact_id
  * @return <type>

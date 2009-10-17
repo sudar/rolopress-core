@@ -139,6 +139,9 @@ function _rolo_save_company_fields() {
             }
         }
 
+        // store the array as post meta
+        update_post_meta($post_id, 'rolo_company' , $new_company);
+
         // Set the custom taxonmy for the post
         wp_set_post_terms($post_id, 'company', 'type');
         wp_set_post_terms($post_id, $company_name, 'company');
