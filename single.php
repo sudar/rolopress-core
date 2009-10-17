@@ -19,7 +19,9 @@
                     <span class="meta-prep meta-prep-entry-date"><?php _e('Last updated: ', 'rolopress'); ?></span>
                     <span class="entry-date"><abbr class="published" title="<?php the_time('Y-m-d\TH:i:sO') ?>"><?php the_time( get_option( 'date_format' ) ); ?></abbr></span>
 					</div><!-- .entry-meta -->
-					<div class="entry-main"><?php the_content(); ?><?php wp_link_pages('before=<div class="page-link">' . __( 'Pages:', 'rolopress' ) . '&after=</div>') ?>
+					<div class="entry-main">
+                        <?php rolo_contact_summary(get_the_ID()); ?>
+                    <?php wp_link_pages('before=<div class="page-link">' . __( 'Pages:', 'rolopress' ) . '&after=</div>') ?>
 					</div><!-- .entry-main -->
 					<div class="entry-utility">
 					<?php printf( __( 'This entry was posted in %1$s%2$s. Bookmark the <a href="%3$s" title="Permalink to %4$s" rel="bookmark">permalink</a>. Follow any comments here with the <a href="%5$s" title="Comments RSS to %4$s" rel="alternate" type="application/rss+xml">RSS feed for this post</a>.', 'rolopress' ),

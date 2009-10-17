@@ -120,19 +120,29 @@ function _rolo_save_contact_fields() {
 
     $post_id = wp_insert_post($new_post);
 
+    // Store only first name and last name as seperate custom fields
+    update_post_meta($post_id, 'rolo_contact_first_name', $_POST['rolo_contact_first_name']);
+    update_post_meta($post_id, 'rolo_contact_last_name', $_POST['rolo_contact_last_name']);
+
     if ($post_id) {
+        $new_contact = array();
+
         foreach($contact_fields as $contact_field) {
 
             if (function_exists($contact_field['save_function'])){
-                call_user_func_array($contact_field['save_function'], array($contact_field['name'], $post_id));
+               call_user_func_array($contact_field['save_function'], array($contact_field['name'], $post_id, &$new_contact));
             } else {
 
                 $data = $_POST['rolo_contact_' . $contact_field['name']];
 
     //            TODO - Validate data
-                update_post_meta($post_id, 'rolo_contact_' . $contact_field['name'], $data);
+                $new_contact['rolo_contact_' . $contact_field['name']] = $data;
+//                update_post_meta($post_id, 'rolo_contact_' . $contact_field['name'], $data);
             }
         }
+
+        // store the array as post meta
+        update_post_meta($post_id, 'rolo_contact' , $new_contact);
 
         // Set the custom taxonmy for the post
         wp_set_post_terms($post_id, 'Contact', 'type');
@@ -257,14 +267,15 @@ function rolo_setup_contact_address($field_name, &$rolo_tab_index) {
  * @param <type> $field_name
  * @param <type> $post_id
  */
-function rolo_save_contact_address($field_name, $post_id) {
+function rolo_save_contact_address($field_name, $post_id, &$new_contact) {
     // TODO - Validate fields
 
-    update_post_meta($post_id, 'rolo_contact_address', $_POST['rolo_contact_address']);
-    update_post_meta($post_id, 'rolo_contact_city', $_POST['rolo_contact_city']);
-    update_post_meta($post_id, 'rolo_contact_state', $_POST['rolo_contact_state']);
-    update_post_meta($post_id, 'rolo_contact_zip', $_POST['rolo_contact_zip']);
-    update_post_meta($post_id, 'rolo_contact_country', $_POST['rolo_contact_country']);
+    $new_contact['rolo_contact_address'] = $_POST['rolo_contact_address'];
+    $new_contact['rolo_contact_city'] = $_POST['rolo_contact_city'];
+    $new_contact['rolo_contact_state'] = $_POST['rolo_contact_state'];
+    $new_contact['rolo_contact_zip'] = $_POST['rolo_contact_zip'];
+    $new_contact['rolo_contact_country'] = $_POST['rolo_contact_country'];
+
 }
 
 /**
@@ -329,7 +340,7 @@ function rolo_setup_contact_multiple($field_name, &$rolo_tab_index) {
  * @param <type> $field_name
  * @param <type> $post_id
  */
-function rolo_save_contact_multiple($field_name, $post_id) {
+function rolo_save_contact_multiple($field_name, $post_id, &$new_contact) {
     global $contact_fields;
 
     $multiple_field = $contact_fields[$field_name];
@@ -340,7 +351,8 @@ function rolo_save_contact_multiple($field_name, $post_id) {
     $multiple_field_selects = $_POST[$multiple_field['name'] . '_select'];
 
     for ($i = 0 ; $i < count($multiple_field_values) ; $i++) {
-        update_post_meta($post_id, 'rolo_contact_' . $multiple_field['name'] . '_' . $multiple_field_selects[$i], $multiple_field_values[$i]);
+//        update_post_meta($post_id, 'rolo_contact_' . $multiple_field['name'] . '_' . $multiple_field_selects[$i], $multiple_field_values[$i]);
+        $new_contact['rolo_contact_' . $multiple_field['name'] . '_' . $multiple_field_selects[$i]] = $multiple_field_values[$i];
     }
 }
 

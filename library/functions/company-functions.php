@@ -123,16 +123,19 @@ function _rolo_save_company_fields() {
     $post_id = wp_insert_post($new_post);
 
     if ($post_id) {
+        $new_company = array();
+
         foreach($company_fields as $company_field) {
 
             if (function_exists($company_field['save_function'])){
-                call_user_func_array($company_field['save_function'], array($company_field['name'], $post_id));
+                call_user_func_array($company_field['save_function'], array($company_field['name'], $post_id, &$new_company));
             } else {
 
                 $data = $_POST['rolo_company_' . $company_field['name']];
 
     //            TODO - Validate data
-                update_post_meta($post_id, 'rolo_company_' . $company_field['name'], $data);
+                $new_company['rolo_company_' . $company_field['name']] = $data;
+//                update_post_meta($post_id, 'rolo_company_' . $company_field['name'], $data);
             }
         }
 
@@ -260,14 +263,14 @@ function rolo_setup_company_address($field_name, &$rolo_tab_index) {
  * @param <type> $field_name
  * @param <type> $post_id
  */
-function rolo_save_company_address($field_name, $post_id) {
+function rolo_save_company_address($field_name, $post_id, &$new_company) {
     // TODO - Validate fields
 
-    update_post_meta($post_id, 'rolo_company_address', $_POST['rolo_company_address']);
-    update_post_meta($post_id, 'rolo_company_city', $_POST['rolo_company_city']);
-    update_post_meta($post_id, 'rolo_company_state', $_POST['rolo_company_state']);
-    update_post_meta($post_id, 'rolo_company_zip', $_POST['rolo_company_zip']);
-    update_post_meta($post_id, 'rolo_company_country', $_POST['rolo_company_country']);
+    $new_company['rolo_company_address'] = $_POST['rolo_company_address'];
+    $new_company['rolo_company_city'] = $_POST['rolo_company_city'];
+    $new_company['rolo_company_state'] = $_POST['rolo_company_state'];
+    $new_company['rolo_company_zip'] = $_POST['rolo_company_zip'];
+    $new_company['rolo_company_country'] = $_POST['rolo_company_country'];
 }
 
 /**
@@ -332,7 +335,7 @@ function rolo_setup_company_multiple($field_name, &$rolo_tab_index) {
  * @param <type> $field_name
  * @param <type> $post_id
  */
-function rolo_save_company_multiple($field_name, $post_id) {
+function rolo_save_company_multiple($field_name, $post_id, &$new_company) {
     global $company_fields;
 
     $multiple_field = $company_fields[$field_name];
@@ -343,7 +346,8 @@ function rolo_save_company_multiple($field_name, $post_id) {
     $multiple_field_selects = $_POST[$multiple_field['name'] . '_select'];
 
     for ($i = 0 ; $i < count($multiple_field_values) ; $i++) {
-        update_post_meta($post_id, 'rolo_company_' . $multiple_field['name'] . '_' . $multiple_field_selects[$i], $multiple_field_values[$i]);
+//        update_post_meta($post_id, 'rolo_company_' . $multiple_field['name'] . '_' . $multiple_field_selects[$i], $multiple_field_values[$i]);
+        $new_company ['rolo_company_' . $multiple_field['name'] . '_' . $multiple_field_selects[$i]] = $multiple_field_values[$i];
     }
 }
 

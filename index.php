@@ -31,9 +31,9 @@
 					</div><!-- .entry-meta -->
 					
 					<div class="entry-main">	
-
-<?php the_content( __( 'Continue reading <span class="meta-nav">&raquo;</span>', 'rolopress' )  ); ?>
-<?php wp_link_pages('before=<div class="page-link">' . __( 'Pages:', 'rolopress' ) . '&after=</div>') ?>
+                        <?php rolo_contact_full(get_the_ID()); ?>
+                        <?php the_content( __( 'Continue reading <span class="meta-nav">&raquo;</span>', 'rolopress' )  ); ?>
+                        <?php wp_link_pages('before=<div class="page-link">' . __( 'Pages:', 'rolopress' ) . '&after=</div>') ?>
 					</div><!-- .entry-main -->
 
 					<div class="entry-utility">

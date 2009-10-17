@@ -13,14 +13,18 @@ function rolo_contact_summary($contact_id) {
     if (!$contact_id) {
         return false;
     }
+
+    $contact = get_post_meta($contact_id, 'rolo_contact');
+    $contact = $contact[0];
 ?>
     <div class="span-3 first" id="contact_image">
-        <img class="contact_image" src="<?php echo rolo_contact_photo_url($contact_id);?>" alt="image" width="100" height="100"/>
+        <?php echo get_avatar($contact['rolo_contact_email']);?>
+        <!--img class="contact_image" src="" alt="image" width="100" height="100"/-->
     </div>
 
      <div class="span-4" id="contact-left">
          <div class="contact">
-             <h4><a href="<?php echo rolo_contact_url($contact_id); ?>" rel="bookmark"><?php echo rolo_contact_name($contact_id);?></a></h4>
+             <h4><a href="<?php echo get_permalink($contact_id); ?>" rel="bookmark"><?php echo $contact['rolo_contact_first_name'] . ' ' . $contact['rolo_contact_last_name'];?></a></h4>
          </div><!-- /contact -->
 
          <div class="info small" id="info_box">
@@ -29,10 +33,10 @@ function rolo_contact_summary($contact_id) {
              ?>
              <ul>
                  <li class="company">
-                     Company:<a href="http://crmdemo.slipfire.com/list/microsoft" title="View all posts in Microsoft" rel="category tag">Microsoft</a>
+                     <?php echo get_the_term_list($contact_id, 'company', __('Company:')); ?>
                  </li>
                  <li class="email">
-                    <a href="<?php echo rolo_contact_email_link($contact_id);?>"><?php echo rolo_contact_email($contact_id);?></a>
+                    <a href="mailto:<?php echo $contact['rolo_contact_email'];?>"><?php echo $contact['rolo_contact_email'];?></a>
                  </li>
              </ul>
         </div><!-- /info_box -->
@@ -42,10 +46,11 @@ function rolo_contact_summary($contact_id) {
     <div class="span-4" id="contact-middle">
         <div class="phone small">
             <ul>
-                <li>Mobile: <?php echo rolo_contact_mobile_phone($contact_id); ?></li>
-                <li>Home: <?php echo rolo_contact_home_phone($contact_id); ?></li>
-                <li>Work: <?php echo rolo_contact_work_phone($contact_id); ?></li>
-                <li>Fax: <?php echo rolo_contact_fax($contact_id); ?></li>
+                <li>Mobile: <?php echo $contact['rolo_contact_phone_Mobile']; ?></li>
+                <li>Home: <?php echo $contact['rolo_contact_phone_Home']; ?></li>
+                <li>Work: <?php echo $contact['rolo_contact_phone_Work']; ?></li>
+                <li>Fax: <?php echo $contact['rolo_contact_phone_Fax']; ?></li>
+                <li>Other: <?php echo $contact['rolo_contact_phone_Other']; ?></li>
             </ul>
         </div><!-- /phone small -->
     </div><!-- /contact-middle -->
@@ -53,7 +58,98 @@ function rolo_contact_summary($contact_id) {
     <div class="span-2" id="contact-right">
         <p>
             <span class="commentnum">
-                <a href="http://crmdemo.slipfire.com/people/id-60#comments" title="Comment on ballmer.jpg">3 Notes</a>
+                <a href="<?php get_permalink(get_the_ID()); ?>#comments" title="Comment on ">Notes</a>
+            </span>
+        </p>
+    </div><!-- /contact-right -->
+
+<?php
+}
+
+/**
+ * Display full contact information
+ *
+ * @param int $contact_id
+ * @return <type>
+ */
+function rolo_contact_full($contact_id) {
+    //TODO Need to display the information in Microformat friendly format
+    if (!$contact_id) {
+        return false;
+    }
+
+    $contact = get_post_meta($contact_id, 'rolo_contact');
+    $contact = $contact[0];
+//    print_r($contact);
+?>
+    <div class="span-3 first" id="contact_image">
+        <?php echo get_avatar($contact['rolo_contact_email']);?>
+        <!--img class="contact_image" src="" alt="image" width="100" height="100"/-->
+    </div>
+
+     <div class="span-4" id="contact-left">
+         <div class="contact">
+             <h4><a href="<?php echo get_permalink($contact_id); ?>" rel="bookmark"><?php echo $contact['rolo_contact_first_name'] . ' ' . $contact['rolo_contact_last_name'];?></a></h4>
+         </div><!-- /contact -->
+
+         <div class="info small" id="info_box">
+             <?php
+             //TODO Find out how to associate companies
+             ?>
+             <ul>
+                 <li class="company">
+                     <?php echo get_the_term_list($contact_id, 'company', __('Company:')); ?>
+                 </li>
+                 <li class="email">
+                    <a href="mailto:<?php echo $contact['rolo_contact_email'];?>"><?php echo $contact['rolo_contact_email'];?></a>
+                 </li>
+             </ul>
+        </div><!-- /info_box -->
+
+    </div><!-- /contact-left -->
+
+    <div class="span-4" id="contact-middle">
+        <div class="phone small">
+            <ul>
+                <li>Mobile: <?php echo $contact['rolo_contact_phone_Mobile']; ?></li>
+                <li>Home: <?php echo $contact['rolo_contact_phone_Home']; ?></li>
+                <li>Work: <?php echo $contact['rolo_contact_phone_Work']; ?></li>
+                <li>Fax: <?php echo $contact['rolo_contact_phone_Fax']; ?></li>
+                <li>Other: <?php echo $contact['rolo_contact_phone_Other']; ?></li>
+            </ul>
+        </div><!-- /phone small -->
+    </div><!-- /contact-middle -->
+
+    <div class="span-4" id="contact-middle">
+        <div class="IM small">
+            <ul>
+                <li>Yahoo: <?php echo $contact['rolo_contact_im_Yahoo']; ?></li>
+                <li>MSN: <?php echo $contact['rolo_contact_im_MSN']; ?></li>
+                <li>AOL: <?php echo $contact['rolo_contact_im_AOL']; ?></li>
+                <li>GTalk: <?php echo $contact['rolo_contact_im_GTalk']; ?></li>
+                <li>Skype: <?php echo $contact['rolo_contact_im_Skype']; ?></li>
+                <li>Website: <?php echo $contact['rolo_contact_website']; ?></li>
+                <li>Twitter: <?php echo $contact['rolo_contact_twitter']; ?></li>
+            </ul>
+        </div><!-- /phone small -->
+    </div><!-- /contact-middle -->
+
+    <div class="span-4" id="contact-middle">
+        <div class="IM small">
+            <ul>
+                <li>Address: <?php echo $contact['rolo_contact_address']; ?></li>
+                <li>City: <?php echo $contact['rolo_contact_city']; ?></li>
+                <li>State: <?php echo $contact['rolo_contact_state']; ?></li>
+                <li>Zip: <?php echo $contact['rolo_contact_zip']; ?></li>
+                <li>Country: <?php echo $contact['rolo_contact_country']; ?></li>
+            </ul>
+        </div><!-- /phone small -->
+    </div><!-- /contact-middle -->
+
+    <div class="span-2" id="contact-right">
+        <p>
+            <span class="commentnum">
+                <a href="<?php get_permalink(get_the_ID()); ?>#comments" title="Comment on ">Notes</a>
             </span>
         </p>
     </div><!-- /contact-right -->
@@ -281,10 +377,6 @@ function _rolo_show_contact_fields_old() {
 </form>
 <?php
 }
-
-
-
-
 
 // Produces an avatar image with the hCard-compliant photo class
 function commenter_link() {
