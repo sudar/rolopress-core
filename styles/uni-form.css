@@ -92,19 +92,19 @@
     border:2px solid #dfdfdf;
 }
 .inlineLabels .multipleInput .textInput {
-    width:50% !important;
+    width:50% ;
     margin-right: 10px;
 }
 .inlineLabels .city {
-    width:25% !important;
+    width:25% ;
     margin-right: 10px;
 }
 .inlineLabels .state {
-    width:20% !important;
+    width:20% ;
     margin-right: 10px;
 }
 .inlineLabels .zip {
-    width:19% !important;
+    width:19% ;
 }
 .inlineLabels .fileUpload > input{
 }

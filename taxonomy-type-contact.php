@@ -31,12 +31,10 @@
 <?php while ( have_posts() ) : the_post(); ?>
 
 				<li id="post-<?php the_ID(); ?>" class="<?php rolopress_entry_class(); ?> menu">
-					<?php rolopress_before_entry(); // Before entry hook ?>     
-
-<?php if ( rolo_type_is( 'contact' ) ) echo "this is a contact"; ?>				
+					<?php rolopress_before_entry(); // Before entry hook ?>            
 
 					<div class="entry-main group">
-                        rolo_contact-tax <?php rolo_contact_summary(get_the_ID()); ?>
+                        rolo_contact-tax-type-contact <?php rolo_contact_summary(get_the_ID()); ?>
                     <?php wp_link_pages('before=<div class="page-link">' . __( 'Pages:', 'rolopress' ) . '&after=</div>') ?>
 					</div><!-- .entry-main -->
 

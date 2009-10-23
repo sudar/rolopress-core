@@ -16,7 +16,7 @@ return;
 ?>
 
 <!-- You can start editing here. -->
-<div id="notes">
+<div id="notes" class="group">
 
 <?php if ( have_comments() ) : ?>
 <h3><?php comments_number('No Notes', 'One Note', '% Notes' );?> for &#8220;<?php the_title(); ?>&#8221;</h3>
@@ -37,6 +37,8 @@ return;
 
 </div><!-- /notes -->
 
+
+
 <?php else : // this is displayed if there are no notes so far ?>
 
 <?php if ('open' == $post->comment_status) : ?>
@@ -47,16 +49,17 @@ return;
 <p class="nonotes">Notes are closed.</p>
 
 <?php endif; ?>
+</div>
 <?php endif; ?>
 
 <?php if ('open' == $post->comment_status) : ?>
 
-<div id="respond">
+<div id="respond" class="group">
 
-<h3><?php comment_form_title( 'Add a Note', 'Add a Note Attachment' ); ?></h3>
+<h3><?php comment_form_title( __('Add a Note', 'rolopress'), __('Add a Note Attachment', 'rolopress'), true ); ?></h3>
 
 <div class="cancel-note-reply">
-<small><?php cancel_comment_reply_link('Cancel attachment to note'); ?> </small>
+<small><?php cancel_comment_reply_link( __('Cancel attachment to note', 'rolopress') ); ?> </small>
 </div>
 
 <?php if ( get_option('comment_registration') && !$user_ID ) : ?>
@@ -116,22 +119,26 @@ $GLOBALS['comment'] = $comment; ?>
 
 <?php comment_text() ?>
 <?php if($args['max_depth']!=$depth) { ?>
-<div class="attach">
+    <div class="attach">
   <?php comment_reply_link(array_merge( $args, array('reply_text' => 'Attach','depth' => $depth, 'max_depth' => $args['max_depth']))) ?>
-</div>
+    </div><!-- /attach -->
 <?php } ?>
-</div>
+</div><!-- /comment -->
 <div class="note-meta notemetadata">
 <a href="<?php echo htmlspecialchars(get_comment_link( $comment->comment_ID )) ?>">
 <span class="note-author vcard">
 <?php printf(__('<span class="added-by">Added by: </span><cite class="fn">%s</cite> <span class="added-on">on </span>'), get_comment_author_link()) ?>
 </span>
 <span class="note-date-time">
-<?php printf(__('%1$s at %2$s'), get_comment_date(),get_comment_time()) ?></a><?php edit_comment_link(__('(Edit)'),'  ','') ?></span>
-</div>
+<?php printf(__('%1$s at %2$s'), get_comment_date(),get_comment_time()) ?></span></a><?php edit_comment_link(__('(Edit)'),'  ','') ?>
+</div><!-- note-meta -->
+
 <?php
 }
 ?>
+
+
+
 
 <?php  //Custom Reply Link for Notes: http://www.aarongloege.com/blog/web-development/wordpress/advanced-comment-customization/
 function my_replylink($c='',$post=null) {

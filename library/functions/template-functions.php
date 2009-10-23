@@ -18,6 +18,7 @@ function rolo_contact_summary($contact_id) {
     $contact = $contact[0];
 ?>
     <div class="span-3 first" id="contact_image">
+	hello
         <?php echo get_avatar($contact['rolo_contact_email']);?>
         <!--img class="contact_image" src="" alt="image" width="100" height="100"/-->
     </div>
@@ -82,77 +83,51 @@ function rolo_contact_full($contact_id) {
     $contact = $contact[0];
 //    print_r($contact);
 ?>
-    <div class="span-3 first" id="contact_image">
-        <?php echo get_avatar($contact['rolo_contact_email']);?>
-        <!--img class="contact_image" src="" alt="image" width="100" height="100"/-->
-    </div>
 
-     <div class="span-4" id="contact-left">
-         <div class="contact">
-             <h4><a href="<?php echo get_permalink($contact_id); ?>" rel="bookmark"><?php echo $contact['rolo_contact_first_name'] . ' ' . $contact['rolo_contact_last_name'];?></a></h4>
-         </div><!-- /contact -->
+<ul id="hcard-<?php echo basename(get_permalink());?>" class="vcard">
 
-         <div class="info small" id="info_box">
-             <?php
-             //TODO Find out how to associate companies
-             ?>
-             <ul>
-                 <li class="company">
-                     <?php echo get_the_term_list($contact_id, 'company', __('Company:')); ?>
-                 </li>
-                 <li class="email">
-                    <a href="mailto:<?php echo $contact['rolo_contact_email'];?>"><?php echo $contact['rolo_contact_email'];?></a>
-                 </li>
-             </ul>
-        </div><!-- /info_box -->
+			<?php echo get_avatar($contact['rolo_contact_email']);?>
+			<!--img class="contact_image" src="" alt="image" width="100" height="100"/-->	
 
-    </div><!-- /contact-left -->
+			<li class="fn">Steve Bruner<?php echo $contact['rolo_contact_first_name'] . ' ' . $contact['rolo_contact_last_name'];?></li>
+			<li class="title">President<?php echo $contact['rolo_contact_title'] . ' ' . $contact['rolo_contact_title'];?></li>
+		
+			<?php //TODO Find out how to associate companies ?>
+			<li class="org">Rolopress<?php echo get_the_term_list($contact_id, 'company', __('Company:')); ?></li>
+		
+			<li class="email group"><a class="email" href="mailto:sbruner@slipfire.com<?php echo $contact['rolo_contact_email'];?>">sbruner@slipfire.com<?php echo $contact['rolo_contact_email'];?> </a></li>
+		 
+		 <ul class="tel group">
+			<li class="tel"><span class="type"><?php _e('Mobile ', 'rolopress'); ?></span>:<span class="value">917-123-4566<?php echo $contact['rolo_contact_phone_Mobile']; ?></span></li>
+			<li class="tel"><span class="type"><?php _e('Home ', 'rolopress'); ?></span>:<span class="value">917-123-4566<?php echo $contact['rolo_contact_phone_Home']; ?></span></li>
+			<li class="tel"><span class="type"><?php _e('Work ', 'rolopress'); ?></span>:<span class="value">917-123-4566<?php echo $contact['rolo_contact_phone_Work']; ?></span></li>
+			<li class="tel"><span class="type"><?php _e('Fax ', 'rolopress'); ?></span>:<span class="value">917-123-4566<?php echo $contact['rolo_contact_phone_Fax']; ?></span></li>
+			<li class="tel"><span class="type"><?php _e('Other ', 'rolopress'); ?></span>:<span class="value">917-123-4566<?php echo $contact['rolo_contact_phone_Other']; ?></span></li>
+		</ul>
+		
+		<ul class="im social group">
+			<li class="social"><span class="type"><?php _e('Yahoo ', 'rolopress'); ?></span>:<a class="yahoo" href="ymsgr:sendIM?<?php echo $contact['rolo_contact_im_Yahoo']; ?>">sbruner<?php echo $contact['rolo_contact_im_Yahoo']; ?></a></li>
+			<li class="social"><span class="type"><?php _e('MSN ', 'rolopress'); ?></span>:<a class="msn" href="msnim:chat?contact=<?php echo $contact['rolo_contact_im_MSN']; ?>">sbruner<?php echo $contact['rolo_contact_im_MSN']; ?></a></li>
+			<li class="social"><span class="type"><?php _e('AIM ', 'rolopress'); ?></span>:<a class="aim" href="aim:goIM?<?php echo $contact['rolo_contact_im_AOL']; ?>">sbruner<?php echo $contact['rolo_contact_im_AOL']; ?></a></li>
+			<li class="social"><span class="type"><?php _e('GTalk ', 'rolopress'); ?></span>:<a class="gtalk" href="gtalk:chat?jid=<?php echo $contact['rolo_contact_im_GTalk']; ?>">sbruner<?php echo $contact['rolo_contact_im_GTalk']; ?></a></li>
+			<li class="social"><span class="type"><?php _e('Skype ', 'rolopress'); ?></span>:<a class="skype" href="skype:<?php echo $contact['rolo_contact_im_Skype']; ?>?chat">sbruner<?php echo $contact['rolo_contact_im_Skype']; ?></a></li>
+			<li class="social"><span class="type"><?php _e('Twitter ', 'rolopress'); ?></span>:<a class="twitter" href="http://www.twitter.com/<?php echo $contact['rolo_contact_twitter']; ?>">sbruner<?php echo $contact['rolo_contact_twitter']; ?></a></li>
+		</ul>
+		
+		<span class="website group"><a class="url" href="<?php echo $contact['rolo_contact_website']; ?>">www.rolopress.com<?php echo $contact['rolo_contact_website']; ?></a></span>
 
-    <div class="span-4" id="contact-middle">
-        <div class="phone small">
-            <ul>
-                <li>Mobile: <?php echo $contact['rolo_contact_phone_Mobile']; ?></li>
-                <li>Home: <?php echo $contact['rolo_contact_phone_Home']; ?></li>
-                <li>Work: <?php echo $contact['rolo_contact_phone_Work']; ?></li>
-                <li>Fax: <?php echo $contact['rolo_contact_phone_Fax']; ?></li>
-                <li>Other: <?php echo $contact['rolo_contact_phone_Other']; ?></li>
-            </ul>
-        </div><!-- /phone small -->
-    </div><!-- /contact-middle -->
+		<span class="adr label group">
+			<span class="street-address">123 Main Street<?php echo $contact['rolo_contact_address']; ?></span>
+			<span class="locality">Brooklyn<?php echo $contact['rolo_contact_city']; ?></span>,
+			<abbr class="region" title="<?php echo $contact['rolo_contact_state']; ?>">NY<?php echo $contact['rolo_contact_state']; ?></abbr>
+			<span class="postal-code">10001<?php echo $contact['rolo_contact_zip']; ?></span>
+			<span class="country-name">USA<?php echo $contact['rolo_contact_country']; ?></span>
+		</span>
 
-    <div class="span-4" id="contact-middle">
-        <div class="IM small">
-            <ul>
-                <li>Yahoo: <?php echo $contact['rolo_contact_im_Yahoo']; ?></li>
-                <li>MSN: <?php echo $contact['rolo_contact_im_MSN']; ?></li>
-                <li>AOL: <?php echo $contact['rolo_contact_im_AOL']; ?></li>
-                <li>GTalk: <?php echo $contact['rolo_contact_im_GTalk']; ?></li>
-                <li>Skype: <?php echo $contact['rolo_contact_im_Skype']; ?></li>
-                <li>Website: <?php echo $contact['rolo_contact_website']; ?></li>
-                <li>Twitter: <?php echo $contact['rolo_contact_twitter']; ?></li>
-            </ul>
-        </div><!-- /phone small -->
-    </div><!-- /contact-middle -->
+ 
+</ul><!-- vcard -->
 
-    <div class="span-4" id="contact-middle">
-        <div class="IM small">
-            <ul>
-                <li>Address: <?php echo $contact['rolo_contact_address']; ?></li>
-                <li>City: <?php echo $contact['rolo_contact_city']; ?></li>
-                <li>State: <?php echo $contact['rolo_contact_state']; ?></li>
-                <li>Zip: <?php echo $contact['rolo_contact_zip']; ?></li>
-                <li>Country: <?php echo $contact['rolo_contact_country']; ?></li>
-            </ul>
-        </div><!-- /phone small -->
-    </div><!-- /contact-middle -->
 
-    <div class="span-2" id="contact-right">
-        <p>
-            <span class="commentnum">
-                <a href="<?php get_permalink(get_the_ID()); ?>#comments" title="Comment on ">Notes</a>
-            </span>
-        </p>
-    </div><!-- /contact-right -->
 
 <?php
 }
@@ -429,14 +404,18 @@ function rolopress_default_menu() {
 			<?php }
 				if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('menu') ) : {
 					{ ?>
-					<div class="menu_item">
-					<h1 id="app-title"><span><a href="<?php bloginfo( 'url' ) ?>/" title="<?php bloginfo( 'name' ) ?>" rel="home"><?php bloginfo( 'name' ) ?></a></span></h1>
-					<ul class="menu_item">
-                    <li><a title="contacts" href="/type/contact"><span>Contacts</span></a></li>
-                    <li><a title="companies" href="/type/company"><span>Companies</span></a></li>
-                    </ul>					
-					</div>
-					<ul class="menu_item alignright">
+                    <ul class="menu_item site-title">
+					<li id="app-title"><span><a href="<?php bloginfo( 'url' ) ?>/" title="<?php bloginfo( 'name' ) ?>" rel="home"><?php bloginfo( 'name' ) ?></a></span></li>
+					</ul>
+					<ul class="menu_item menu_main">
+					<li><a title="contacts" href="/type/contact"><span><?php _e('Contacts ', 'rolopress'); ?></span></a></li>
+					<li><a title="companies" href="/type/company"><span><?php _e('Companies ', 'rolopress'); ?></span></a></li>	
+					
+	<!-- SUDAR: IF WE CONVERT WP_TAG_CLOUD TO AN ARRAY CAN WE USE IT TO FORMAT THE MENU BETTER -->	
+							<!-- <?php wp_tag_cloud('taxonomy=type&smallest=12&largest=12&unit=px&format=list'); ?> -->
+
+					</ul>
+					<ul class="menu_item sub_menu alignright">
 						<li><form id="searchform" method="get" action="<?php bloginfo('home') ?>">
 						<input id="s" name="s" type="text" value="<?php echo wp_specialchars(stripslashes($_GET['s']), true) ?>" size="20" tabindex="1" />
 					 	<input id="searchsubmit" name="searchsubmit" type="submit" value="<?php _e('Search', 'rolopress') ?>" tabindex="2" />
@@ -588,4 +567,31 @@ function custom_pings($comment, $args, $depth) {
     			<?php comment_text() ?>
 			</div>
 <?php } // end custom_pings
+
+
+
+
+// Identifies taxonomy type
+// thanks to Justin Tadlock: http://wordpress.org/support/topic/281899
+function rolo_type_is( $type, $_post = null ) {
+	if ( empty( $type ) )
+		return false;
+
+	if ( $_post )
+		$_post = get_post( $_post );
+	else
+		$_post =& $GLOBALS['post'];
+
+	if ( !$_post )
+		return false;
+
+	$r = is_object_in_term( $_post->ID, 'type', $type );
+
+	if ( is_wp_error( $r ) )
+		return false;
+
+	return $r;
+}
+
+
 ?>

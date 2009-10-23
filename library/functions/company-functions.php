@@ -248,7 +248,8 @@ function rolo_setup_company_address($field_name, &$rolo_tab_index) {
 
         <div class="ctrlHolder">
             <label for="rolo_company_city"></label>
-            <input type="text" name="rolo_company_city" value="<?php echo $meta_box_value ;?>" size="30" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput city" />
+            <input type="text" name="rolo_company_city" value="<?php echo $meta_box_value ;?>"  size="30" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput city" onChange=applet onFocus="this.value='';this.onfocus='';" />			
+			
             <input type="text" name="rolo_company_state" value="<?php echo $meta_box_value ;?>" size="15" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput state" />
             <input type="text" name="rolo_company_zip" value="<?php echo $meta_box_value ;?>" size="10" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput zip" />
         </div>

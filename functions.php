@@ -24,6 +24,13 @@ require_once( 'library/functions/contact-functions.php' );
 //load company functions
 require_once( 'library/functions/company-functions.php' );
 
+//detect mobile
+require_once( 'library/functions/mobile.php' );
+
+
+
+
+
 // Make theme available for translation
 // Translations can be filed in the /languages/ directory
 load_theme_textdomain( 'rolopress', TEMPLATEPATH . '/languages' );
@@ -119,5 +126,8 @@ function rolo_create_taxonomy() {
     register_taxonomy( 'company', 'post', array( 'hierarchical' => false, 'label' => __('Company'), 'query_var' => true, 'rewrite' => true ) );
 }
 add_action('init', 'rolo_create_taxonomy', 0);
+
+
+
 
 ?>
