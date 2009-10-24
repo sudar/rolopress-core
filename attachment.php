@@ -20,7 +20,7 @@
 					
 					<div class="entry-meta">
 						<span class="meta-prep meta-prep-author"><?php _e('By ', 'rolopress'); ?></span>
-						<span class="author vcard"><a class="url fn n" href="<?php echo get_author_link( false, $authordata->ID, $authordata->user_nicename ); ?>" title="<?php printf( __( 'View all posts by %s', 'rolopress' ), $authordata->display_name ); ?>"><?php the_author(); ?></a></span>
+						<span class="author"><a href="<?php echo get_author_link( false, $authordata->ID, $authordata->user_nicename ); ?>" title="<?php printf( __( 'View all posts by %s', 'rolopress' ), $authordata->display_name ); ?>"><?php the_author(); ?></a></span>
 						<span class="meta-sep"> | </span>
 						<span class="meta-prep meta-prep-entry-date"><?php _e('Published ', 'rolopress'); ?></span>
 						<span class="entry-date"><abbr class="published" title="<?php the_time('Y-m-d\TH:i:sO') ?>"><?php the_time( get_option( 'date_format' ) ); ?></abbr></span>
@@ -45,7 +45,7 @@
 					</div><!-- .entry-main -->
 					
 					<div class="entry-utility">
-					<?php printf( __( 'This entry was posted in %1$s%2$s. Bookmark the <a href="%3$s" title="Permalink to %4$s" rel="bookmark">permalink</a>. Follow any comments here with the <a href="%5$s" title="Comments RSS to %4$s" rel="alternate" type="application/rss+xml">RSS feed for this post</a>.', 'rolopress' ),
+					<?php printf( __( 'This entry has been assigned to %1$s%2$s. Bookmark the <a href="%3$s" title="Permalink to %4$s" rel="bookmark">permalink</a>. Follow any notes here with the <a href="%5$s" title="Comments RSS to %4$s" rel="alternate" type="application/rss+xml">RSS feed for this item</a>.', 'rolopress' ),
 						get_the_category_list(', '),
 						get_the_tag_list( __( ' and tagged ', 'rolopress' ), ', ', '' ),
 						get_permalink(),
@@ -53,13 +53,13 @@
 						comments_rss() ) ?>
 
 <?php if ( ('open' == $post->comment_status) && ('open' == $post->ping_status) ) : // Comments and trackbacks open ?>
-						<?php printf( __( '<a class="comment-link" href="#respond" title="Post a comment">Post a comment</a> or leave a trackback: <a class="trackback-link" href="%s" title="Trackback URL for your post" rel="trackback">Trackback URL</a>.', 'rolopress' ), get_trackback_url() ) ?>
+						<?php printf( __( '<a class="comment-link" href="#respond" title="Add a note">Add a note</a> or leave a trackback: <a class="trackback-link" href="%s" title="Trackback URL for your item" rel="trackback">Trackback URL</a>.', 'rolopress' ), get_trackback_url() ) ?>
 <?php elseif ( !('open' == $post->comment_status) && ('open' == $post->ping_status) ) : // Only trackbacks open ?>
-						<?php printf( __( 'Comments are closed, but you can leave a trackback: <a class="trackback-link" href="%s" title="Trackback URL for your post" rel="trackback">Trackback URL</a>.', 'rolopress' ), get_trackback_url() ) ?>
-<?php elseif ( ('open' == $post->comment_status) && !('open' == $post->ping_status) ) : // Only comments open ?>
-						<?php _e( 'Trackbacks are closed, but you can <a class="comment-link" href="#respond" title="Post a comment">post a comment</a>.', 'rolopress' ) ?>
+						<?php printf( __( 'Notes are closed, but you can leave a trackback: <a class="trackback-link" href="%s" title="Trackback URL for your item" rel="trackback">Trackback URL</a>.', 'rolopress' ), get_trackback_url() ) ?>
+<?php elseif ( ('open' == $post->comment_status) && !('open' == $post->ping_status) ) : // Only notes open ?>
+						<?php _e( 'Trackbacks are closed, but you can <a class="comment-link" href="#respond" title="Add a note">Add a note</a>.', 'rolopress' ) ?>
 <?php elseif ( !('open' == $post->comment_status) && !('open' == $post->ping_status) ) : // Comments and trackbacks closed ?>
-						<?php _e( 'Both comments and trackbacks are currently closed.', 'rolopress' ) ?>
+						<?php _e( 'Both notes and trackbacks are currently closed.', 'rolopress' ) ?>
 <?php endif; ?>
 <?php edit_post_link( __( 'Edit', 'rolopress' ), "\n\t\t\t\t\t<span class=\"edit-link\">", "</span>" ) ?>
 					</div><!-- .entry-utility -->	
