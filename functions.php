@@ -107,6 +107,21 @@ function rolo_add_script() {
     }
 }
 
+// This is a dirty way to get the path in js. TODO: need to have a proper way to fix it.
+add_action('wp_footer', 'rolo_print_script');
+
+function rolo_print_script() {
+$wpurl = get_bloginfo('wpurl');
+echo <<<SCRIPT
+<script>
+// Auto set on page load...
+jQuery(document).ready(function() {
+    jQuery('input.company').suggest("$wpurl/wp-admin/admin-ajax.php?action=ajax-tag-search&tax=company", {multiple:false});
+});
+</script>
+SCRIPT;
+
+}
 /**
  * Add JavaScript to the theme on needed notes (comments) pages
  */

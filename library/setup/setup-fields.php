@@ -43,7 +43,7 @@ array
     'class' => 'title',
     'filter' => "rolo_contact_title",
     'default_value' => '',
-    'title' => 'title',
+    'title' => 'Title',
     'description' => ''
     ),
     "company" =>

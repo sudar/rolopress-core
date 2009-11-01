@@ -42,6 +42,4 @@ jQuery(document).ready(function() {
        var $this = jQuery(this) ;
        $this.parent('.ctrlHolder').hide().trigger('hide');
     });
-
-    jQuery('input.company').suggest("/wp-admin/admin-ajax.php?action=ajax-tag-search&tax=company", {multiple:false});
 });
