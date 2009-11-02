@@ -1,4 +1,3 @@
-
 <?php
 /**
  * Adds contextual classes to major theme elements.
