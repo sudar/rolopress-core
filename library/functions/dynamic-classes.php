@@ -1,3 +1,4 @@
+
 <?php
 /**
  * Adds contextual classes to major theme elements.
@@ -89,7 +90,7 @@ function rolopress_entry_class( $class = '' ) {
 }
 
 /**
- * Sets a class for each comment. Sets alt, odd/even, and author/user classes. 
+ * Sets a class for each note. Sets alt, odd/even, and author/user classes. 
  * Adds author, user, and reader classes. Needs more work because WP, by 
  * default, assigns even/odd backwards (Odd should come first, even second).
  *
