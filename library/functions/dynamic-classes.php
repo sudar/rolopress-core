@@ -98,7 +98,7 @@ function rolopress_entry_class( $class = '' ) {
  *
  * @todo Find a better way to get the user's role b/c these can be custom.
  */
-function rolopress_comment_class() {
+function rolopress_note_class() {
 	global $comment, $wpdb, $wp_roles;
 	static $comment_alt;
 	$classes = array();
@@ -145,7 +145,7 @@ function rolopress_comment_class() {
 	/* Join all the classes into one string and echo them. */
 	$class = join( ' ', $classes );
 
-	echo apply_filters( 'rolopress_comment_class', $class );
+	echo apply_filters( 'rolopress_note_class', $class );
 }
 
 /**

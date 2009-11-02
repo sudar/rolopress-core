@@ -498,7 +498,7 @@ function custom_comments($comment, $args, $depth) {
   $GLOBALS['comment'] = $comment;
 	$GLOBALS['comment_depth'] = $depth;
   ?>
-  	<li id="comment-<?php comment_ID() ?>" class="<?php rolopress_comment_class() ?>">
+  	<li id="comment-<?php comment_ID() ?>" class="<?php rolopress_note_class() ?>">
   		<div class="comment-author vcard"><?php commenter_link() ?></div>
   		<div class="comment-meta"><?php printf(__('Posted %1$s at %2$s <span class="meta-sep">|</span> <a href="%3$s" title="Permalink to this comment">Permalink</a>', 'rolopress'),
   					get_comment_date(),
