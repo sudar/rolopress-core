@@ -1,5 +1,8 @@
 <?php
 
+//change admin section to RoloPress style
+require_once( 'library/functions/admin.php' );
+
 //Auto create pages
 require_once( 'library/setup/add-pages.php' );
 

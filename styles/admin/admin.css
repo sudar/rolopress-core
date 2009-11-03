@@ -1,0 +1,7 @@
+/*
+Styles for RoloPress admin screens
+*/
+
+#login h1 a {
+          background:url(/wp-content/themes/rolopress-core/img/admin/rolo-login.gif) no-repeat top;
+     }
