@@ -1,0 +1,255 @@
+/* -------------------------------------------------------------- 
+   
+   Default Screen Styles for RoloPress
+     
+-------------------------------------------------------------- */   
+
+
+body {
+    margin: 1.5em 15%;
+}
+li {
+list-style:none;
+}
+
+/* =Header
+-------------------------------------------------------------- */
+#access {
+    margin: 0 0 1.5em 0;
+    overflow: auto;
+}
+.skip-link {
+    display: none;
+}
+#menu {
+    height: 36px;
+    background: #464646;
+    padding:5px 15px;
+}
+#menu ul {
+    list-style: none;
+    margin: 0;
+}
+#menu ul ul {
+    display: none;
+}
+#menu li {
+    display: inline;
+}
+#menu a {
+    display: block;
+    float: left;
+    padding:0 10px 0 0;
+    color:#ccc;
+    text-decoration:none;
+}
+#menu a:hover {
+    color:#FFFFFF;
+    text-decoration:underline;
+}
+.menu_item {
+    line-height: 36px;
+}
+#menu .widget-title {
+    display: none;
+}
+#app-title a{
+    font-family: Georgia,"Times New Roman","Bitstream Charter",Times,serif;
+    font-size: 22px;
+    text-decoration: none;
+    color: white;
+}
+
+/* =Home Page
+-------------------------------------------------------------- */
+.home #info {
+	margin: 0;
+}
+.default-text {
+height:100px;
+text-align:center;
+}
+.home h2.page-title {
+display:none;
+}
+
+/* =main
+-------------------------------------------------------------- */
+h3.section-heading {
+    background: black;
+    color: white;
+}
+
+/* =Widget Areas
+-------------------------------------------------------------- */
+.widget-area ul {
+    list-style: none;
+    margin-left: .7em;
+}
+.widget-area ul ul {
+    list-style: disc;
+    margin-left: 1.1em;
+}
+.widget-area ul ul ul {
+    margin-left: 2.5em;
+}
+.widget-container {
+    margin: 0 0 1.5em 0;
+}
+
+/* =Alignment
+-------------------------------------------------------------- */
+.aligncenter {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.alignleft, .alignleft li {
+    float: left;
+}
+.alignright,.alignright li {
+    float: right;
+}
+
+/* =Notes
+-------------------------------------------------------------- */	
+ol.notelist {
+	list-style:none;
+	margin:0;
+	padding:0;
+}
+ol.notelist li {
+	border:1px solid #d5d5d5;
+	border-radius:5px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	margin:0 0 10px;
+	padding:5px 7px 5px 24px;
+	position:relative;
+}
+ol.notelist li.pingback comment-author {
+	padding:0 170px 0 0;
+}
+ol.notelist li div.vcard {
+	font-weight:bold;
+	font-size: 14px;
+	line-height: 16px;
+	font-family: helvetica,arial,sans-serif;
+}
+ol.notelist li div.vcard cite.fn {
+	font-style:normal;
+	font-size: 11px;
+}
+ol.notelist li div.vcard cite.fn a.url {
+	color:#cc0000;
+	text-decoration:none;
+}
+ol.notelist li div.vcard cite.fn a.url:hover {
+	color:#000;
+}
+ol.notelist li div.vcard img.avatar {
+	background: #fff;
+	border:1px solid #aaa;
+	padding: 5px;
+	left:7px;
+	position:absolute;
+	top:7px;
+}
+ol.notelist li div.comment-meta {
+	font-weight:bold; 
+	font-size: 10px;
+	line-height: 16px;
+	font-family: helvetica,arial,sans-serif;
+	position:absolute;
+	right:10px;
+	text-align:right;
+	top:5px;
+}
+ol.notelist li div.comment-meta a {
+	color:#205B87;
+	text-decoration:none;
+}
+ol.notelist li p {
+	font-weight:normal;
+	font-size: 12px;
+	line-height: 16px;
+	font-family: helvetica,arial,sans-serif;
+	margin:5px 0 12px;
+}
+ol.notelist li ul {
+	font-weight:normal;
+	font-size: 12px;
+	line-height: 16px;
+	font-family: helvetica,arial,sans-serif;
+	list-style:square;
+	margin:0 0 12px;
+	padding:0;
+}
+ol.notelist li div.reply a {
+	color:#000;
+	text-decoration:none;
+	text-transform:uppercase;
+}
+ol.notelist li ul.children {
+	list-style:none;
+	margin:12px 0 0;
+	text-indent:0;
+}
+ol.notelist li ul.children li.depth-2 {
+	margin:0 0 3px;
+}
+ol.notelist li ul.children li.depth-3 {
+	margin:0 0 3px;
+}
+ol.notelist li ul.children li.depth-4 {
+	margin:0 0 3px;
+}
+ol.notelist li ul.children li.depth-5 {
+	margin:0 0 3px;
+}
+ol.notelist ul.children li.odd {
+	background:#fff;
+}
+ol.notelist ul.children li.even {
+	background:#f6f6f6;
+}
+ol.notelist li.pingback div.vcard {
+	padding:0 170px 0 0;
+}
+
+/* =Form: company autocomplete
+-------------------------------------------------------------- */	
+.ac_results {
+    border-style:solid;
+    border-width:1px;
+    display:none;
+    list-style-image:none;
+    list-style-position:outside;
+    list-style-type:none;
+    margin:0;
+    padding:0;
+    position:absolute;
+    z-index:10000;
+}
+.ac_results li {
+    padding:2px 5px;
+    text-align:left;
+    white-space:nowrap;
+    color:#101010;
+}
+.ac_over {
+    cursor:pointer;
+}
+.ac_match {
+    text-decoration:underline;
+}
+.ac_over {
+    background-color:#F0F0B8;
+}
+.ac_results {
+    background-color:#FFFFFF;
+    border-color:#808080;
+}
+.ac_results li {
+    color:#101010;
+}

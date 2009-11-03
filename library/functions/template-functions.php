@@ -30,7 +30,7 @@ function rolo_contact_summary($contact_id) {
 		
 			<li class="email group"><a class="email" href="mailto:<?php echo $contact['rolo_contact_email'];?>"><?php echo $contact['rolo_contact_email'];?> </a></li>
 		
-            <span class="website group"><a class="url" href="<?php echo $contact['rolo_contact_website']; ?>"><?php echo $contact['rolo_contact_website']; ?></a></span>
+            <li class="website group"><a class="url" href="<?php echo $contact['rolo_contact_website']; ?>"><?php echo $contact['rolo_contact_website']; ?></a></li>
 
 </ul><!-- vcard -->
 
@@ -382,7 +382,7 @@ function rolopress_default_menu() {
 					<li><a title="contacts" href="/type/contact"><span><?php _e('Contacts ', 'rolopress'); ?></span></a></li>
 					<li><a title="companies" href="/type/company"><span><?php _e('Companies ', 'rolopress'); ?></span></a></li>	
 					
-	<!-- SUDAR: IF WE CONVERT WP_TAG_CLOUD TO AN ARRAY CAN WE USE IT TO FORMAT THE MENU BETTER -->	
+	<!-- IF WE CONVERT WP_TAG_CLOUD TO AN ARRAY CAN WE USE IT TO FORMAT THE MENU BETTER -->	
 							<!-- <?php wp_tag_cloud('taxonomy=type&smallest=12&largest=12&unit=px&format=list'); ?> -->
 
 					</ul>
@@ -397,10 +397,11 @@ function rolopress_default_menu() {
 						<?php endif // $user_level >= 1 ?>
 						<li><?php wp_loginout(); ?></li>
 					</ul>
-			</div>
-			<?php }
+				<?php }
+
 }
 			endif; 
+				{ ?>  </div> <?php }
 };
 
 add_action('rolopress_before_wrapper', 'rolopress_default_menu');

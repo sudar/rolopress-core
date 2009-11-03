@@ -3,5 +3,9 @@ Styles for RoloPress admin screens
 */
 
 #login h1 a {
-          background:url(/wp-content/themes/rolopress-core/img/admin/rolo-login.gif) no-repeat top;
-     }
+	background:url(/wp-content/themes/rolopress-core/img/admin/rolo-login.gif) no-repeat top;
+}
+	 
+#header-logo {
+	background:transparent url(/wp-content/themes/rolopress-core/img/admin/rolopress-icon-small.gif) no-repeat scroll center center;
+}
