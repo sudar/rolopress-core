@@ -249,7 +249,7 @@ function rolo_setup_contact_address($field_name, &$rolo_tab_index) {
 
         <div class="ctrlHolder">
             <label for="rolo_contact_city"></label>
-            <input type="text" name="rolo_contact_city" value="<?php echo $meta_box_value ;?>" size="30" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput city" />
+            <input type="text" name="rolo_contact_city" value="city"<?php echo $meta_box_value ;?>" size="30" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput city" />
             <input type="text" name="rolo_contact_state" value="<?php echo $meta_box_value ;?>" size="15" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput state" />
             <input type="text" name="rolo_contact_zip" value="<?php echo $meta_box_value ;?>" size="10" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput zip" />
         </div>

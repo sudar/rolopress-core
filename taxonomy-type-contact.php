@@ -23,10 +23,12 @@
 			<div id="info">		
             
                 <h2 class="page-title">
-                    <?php $term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) ); echo $term->name; echo " List"; ?>	
+                    <?php _e('Contact List ', 'rolopress'); ?>	
                 </h2>
 				
 				<ul class="item-list">
+				
+<?php query_posts('meta_key=rolo_contact_last_name&orderby=meta_value&order=ASC');?>
 
 <?php while ( have_posts() ) : the_post(); ?>
 
@@ -34,7 +36,7 @@
 					<?php rolopress_before_entry(); // Before entry hook ?>            
 
 					<div class="entry-main group">
-                        rolo_contact-tax-type-contact <?php rolo_contact_summary(get_the_ID()); ?>
+                        <?php rolo_contact_summary(get_the_ID()); ?>
 					</div><!-- .entry-main -->
 
 					<div class="entry-meta">

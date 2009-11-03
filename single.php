@@ -16,10 +16,7 @@
 					<div class="entry-meta">
                     <span class="meta-prep meta-prep-author"><?php _e('Owner: ', 'rolopress'); ?></span>
                     <span class="author"><a href="<?php echo get_author_link( false, $authordata->ID, $authordata->user_nicename ); ?>" title="<?php printf( __( 'View all items by %s', 'rolopress' ), $authordata->display_name ); ?>"><?php the_author(); ?></a></span>
-                    <span class="meta-sep"> | </span>
-                    <span class="meta-prep meta-prep-entry-date"><?php _e('Last updated: ', 'rolopress'); ?></span>
-                    <span class="entry-date"><abbr class="published" title="<?php the_time('Y-m-d\TH:i:sO') ?>"><?php the_time( get_option( 'date_format' ) ); ?></abbr></span>
-					</div><!-- .entry-meta -->
+                    </div><!-- .entry-meta -->
 					<div class="entry-main group">
 						<?php if ( rolo_type_is( 'contact' ) ) rolo_contact_full(get_the_ID());  ?>
 						<?php if ( rolo_type_is( 'company' ) ) rolo_company_full(get_the_ID());  ?>

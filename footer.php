@@ -4,7 +4,7 @@
 		<div id="colophon">
 		
 			<div id="site-info">
-				<p>Powered by <span id="generator-link"><a href="http://rolopress.com/" title="<?php _e( 'RoloPress', 'rolopress' ) ?>" rel="generator"><?php _e( 'RoloPress', 'rolopress' ) ?></a></span></p>			
+				<p><?php _e('Powered by ', 'rolopress'); ?><span id="generator-link"><a href="http://rolopress.com/" title="<?php _e( 'RoloPress', 'rolopress' ) ?>" rel="generator"><?php _e( 'RoloPress', 'rolopress' ) ?></a></span></p>			
 			</div><!-- #site-info -->
 			
 		</div><!-- #colophon -->

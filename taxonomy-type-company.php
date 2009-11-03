@@ -23,10 +23,12 @@
 			<div id="info">		
             
                 <h2 class="page-title">
-                    <?php $term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) ); echo $term->name; echo " List"; ?>	
+                    <?php _e('Company List ', 'rolopress'); ?>	
                 </h2>
 				
 				<ul class="item-list">
+				
+<?php query_posts('meta_key=rolo_company&orderby=meta_value&order=ASC');?>
 
 <?php while ( have_posts() ) : the_post(); ?>
 
