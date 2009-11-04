@@ -15,16 +15,11 @@
 				<div id="post-<?php the_ID(); ?>" class="<?php rolopress_entry_class(); ?>">
 					<?php rolopress_before_entry(); // Before entry hook ?>
 					<div class="entry-main">
-					
-						<?php if ( is_sidebar_active('widget-page') ) {    
-							{ ?>
-							<ul class="xoxo">
-								<?php dynamic_sidebar('widget-page'); ?>
-							</ul> 
-							<?php }
-						} else {                                    
-						echo '<div class="default-text">This page is 100% widgetized. <a href="/wp-admin/widgets.php">Just drop some widgets here to fill it up.</a></div>';
-						};	?>  
+					<ul class="xoxo">
+					<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar("home-widgets") ) :
+						echo '<div class="default-text">This page is totally widgetized. <a href="/wp-admin/widgets.php">Just drop some widgets here to fill it up.</a></div>';
+					 endif; ?>
+					</ul> 
 	
 					</div><!-- .entry-main -->
 					<?php rolopress_after_entry(); // After entry hook ?>
