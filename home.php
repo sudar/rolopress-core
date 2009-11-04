@@ -8,11 +8,7 @@
 			<?php rolopress_before_info(); // Before info hook ?>
 			<div id="info">		
 			
-<?php the_post(); ?>
-
-				<h2 class="page-title"><?php the_title(); ?></h2>
-				
-				<div id="post-<?php the_ID(); ?>" class="<?php rolopress_entry_class(); ?>">
+				<div id="home" class="<?php rolopress_entry_class(); ?>">
 					<?php rolopress_before_entry(); // Before entry hook ?>
 					<div class="entry-main">
 					<ul class="xoxo">
@@ -20,12 +16,11 @@
 						echo '<div class="default-text">This page is totally widgetized. <a href="/wp-admin/widgets.php">Just drop some widgets here to fill it up.</a></div>';
 					 endif; ?>
 					</ul> 
+					<br />
 	
 					</div><!-- .entry-main -->
 					<?php rolopress_after_entry(); // After entry hook ?>
-				</div><!-- #post-<?php the_ID(); ?> -->			
-			
-<?php if ( get_post_custom_values('comments') ) comments_template() // Add a custom field with Name and Value of "comments" to enable comments on this page ?>			
+				</div><!-- #home -->				
 			
 			</div><!-- #info -->		
 			<?php rolopress_after_info(); // After info hook ?>	

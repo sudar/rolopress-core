@@ -96,6 +96,7 @@ function is_sidebar_active( $index ) {
     return false;
 } // end is_sidebar_active
 
+
 add_action('template_redirect', 'rolo_add_script');
 
 /**
