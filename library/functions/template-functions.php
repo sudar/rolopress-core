@@ -18,7 +18,7 @@ function rolo_contact_summary($contact_id) {
 ?>
     <ul id="hcard-<?php echo basename(get_permalink());?>" class="vcard">
 
-			<?php echo get_avatar (($contact['rolo_contact_email']),96);?>
+			<?php echo get_avatar (($contact['rolo_contact_email']),96,get_bloginfo('template_url') . "/img/icons/rolo-contact.jpg");?>
 
 			<li class="fn"><a href="<?php the_permalink();?>"><?php echo $contact['rolo_contact_first_name'] . ' ' . $contact['rolo_contact_last_name'];?></li></a>
 			<li class="title"><?php echo $contact['rolo_contact_title'];?></li>
@@ -55,7 +55,7 @@ function rolo_contact_full($contact_id) {
 
 <ul id="hcard-<?php echo basename(get_permalink());?>" class="vcard">
 
-			<?php echo get_avatar (($contact['rolo_contact_email']),96);?>
+			<?php echo get_avatar (($contact['rolo_contact_email']),96,get_bloginfo('template_url') . "/img/icons/rolo-contact.jpg");?>
 		
 			<li class="fn"><?php echo $contact['rolo_contact_first_name'] . ' ' . $contact['rolo_contact_last_name'];?></li>
 			<li class="title"><?php echo $contact['rolo_contact_title'];?></li>
@@ -117,6 +117,8 @@ function rolo_company_summary($company_id) {
 
 <ul id="hcard-<?php echo basename(get_permalink());?>" class="vcard">
 
+			<?php echo get_avatar (($company['rolo_company_email']),96,get_bloginfo('template_url') . "/img/icons/rolo-company.jpg");?>
+
 			<li class="fn"><a href="<?php the_permalink();?>"><?php echo $company['rolo_company_name'];?></li></a>
 		
 			<li class="email group"><a class="email" href="mailto:<?php echo $company['rolo_company_email'];?>"><?php echo $company['rolo_company_email'];?></a></li>
@@ -146,6 +148,8 @@ function rolo_company_full($company_id) {
 ?>
     
      <div class="span-4" id="company-left">
+	 
+	 			<?php echo get_avatar (($company['rolo_company_email']),96,get_bloginfo('template_url') . "/img/icons/rolo-company.jpg");?>
          <div class="company">
              <h4><a href="<?php echo get_permalink($company_id); ?>" rel="bookmark"><?php echo $company['rolo_company_first_name'] . ' ' . $company['rolo_company_last_name'];?></a></h4>
          </div><!-- /company -->

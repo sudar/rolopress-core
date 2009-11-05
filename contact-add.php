@@ -7,8 +7,7 @@
  * @package RoloPress
  * @subpackage Template
  */
-?>
-<?php get_header(); ?>
+ get_header(); ?>
 	
 <div id="container">
     <div id="main">

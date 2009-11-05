@@ -60,19 +60,6 @@ list-style:none;
     color: white;
 }
 
-/* =Home Page
--------------------------------------------------------------- */
-.home #info {
-	margin: 0;
-}
-.default-text {
-height:100px;
-text-align:center;
-}
-.home h2.page-title {
-display:none;
-}
-
 /* =main
 -------------------------------------------------------------- */
 h3.section-heading {
@@ -249,4 +236,35 @@ ol.notelist li.pingback div.vcard {
 }
 .ac_results li {
     color:#101010;
+}
+
+/* =Page Templates
+-------------------------------------------------------------- */
+.page-template-widgets-no-sidebar #info{
+margin:0;
+}
+.page-template-widgets-no-sidebar .default-text, .page-template-widgets-no-sidebar .default-text  {
+text-align:center;
+}
+#info .widget-area .xoxo {
+width:98%;
+margin:0;
+}
+#info .widget-area  ul  {
+margin:0;
+}
+#info .widget-area li {
+list-style:none;
+}
+#info  .widget-area   ul li.widget  {
+float:left;
+margin:1%;
+width:31%;
+}
+#info  .widget-area  li.widget li  {
+list-style:disc;
+list-style-position:inside;
+}
+#info  .widget-area  br {
+clear:left;
 }
