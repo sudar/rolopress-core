@@ -84,19 +84,6 @@ function tag_ur_it($glue) {
     return trim(join( $glue, $tags ));
 } // end tag_ur_it
 
-//TODO:  ****** SUDAR - NOT SURE WHAT THIS DOES, BUT WHEN I DELETE IT I GET AN ERROR.  TAKEN FROM SHAPE THEME
-// Check for static widgets in widget-ready areas
-function is_sidebar_active( $index ) {
-    global $wp_registered_sidebars;
-
-    $widgetcolums = wp_get_sidebars_widgets();
-
-    if ($widgetcolums[$index]) return true;
-
-    return false;
-} // end is_sidebar_active
-
-
 add_action('template_redirect', 'rolo_add_script');
 
 /**

@@ -61,7 +61,7 @@ function rolo_contact_full($contact_id) {
 			<li class="title"><?php echo $contact['rolo_contact_title'];?></li>
 		
 			<?php //TODO Find out how to associate companies ?>
-			<li class="org"><?php echo get_the_term_list($contact_id, 'company', __('Company:')); ?></li>
+			<li class="org"><span class="type"><?php _e('Company', 'rolopress'); ?></span>:<span class="value"><?php echo get_the_term_list($contact_id, 'company'); ?></span></li>
 		
 			<li class="email group"><a class="email" href="mailto:<?php echo $contact['rolo_contact_email'];?>"><?php echo $contact['rolo_contact_email'];?> </a></li>
 		 
