@@ -1,6 +1,7 @@
 <?php
 
 /* 
+
 Auto create custom fields for RoloPress
 
 Special thanks to
@@ -87,7 +88,7 @@ array
     'class' => 'website',
     'filter' => "rolo_contact_website",
     'default_value' => "http://",
-    'title' => "Website:",
+    'title' => "Website",
     'description' => ''
     ),
     'im' =>

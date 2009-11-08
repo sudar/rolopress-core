@@ -46,7 +46,7 @@ return;
 
 <?php else : // comments (notes) are closed ?>
 <!-- If comments (notes) are closed. -->
-<p class="nonotes">Notes are closed.</p>
+<p class="nonotes"></p>
 
 <?php endif; ?>
 </div>

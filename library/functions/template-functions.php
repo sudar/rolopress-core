@@ -8,7 +8,7 @@
  * @param <type> $contact_id
  * @return <type>
  */
-function rolo_contact_summary($contact_id) {
+function rolo_contact_header($contact_id) {
     if (!$contact_id) {
         return false;
     }
@@ -16,20 +16,17 @@ function rolo_contact_summary($contact_id) {
     $contact = get_post_meta($contact_id, 'rolo_contact');
     $contact = $contact[0];
 ?>
-    <ul id="hcard-<?php echo basename(get_permalink());?>" class="vcard">
+    <ul id="hcard-<?php echo basename(get_permalink());?>" class="item-header">
 
 			<?php echo get_avatar (($contact['rolo_contact_email']),96,get_bloginfo('template_url') . "/img/icons/rolo-contact.jpg");?>
 
 			<li class="fn"><a href="<?php the_permalink();?>"><?php echo $contact['rolo_contact_first_name'] . ' ' . $contact['rolo_contact_last_name'];?></li></a>
-			<li class="title"><?php echo $contact['rolo_contact_title'];?></li>
-		
-			<?php //TODO Find out how to associate companies ?>
-			<li class="org"><?php echo get_the_term_list($contact_id, 'company', __('Company:')); ?></li>
-		
+			<li>
+                <span class="title"><?php echo $contact['rolo_contact_title'];?> </span>   
+           		<?php //TODO Find out how to associate companies ?> 
+                <span class="org"><?php echo get_the_term_list($contact_id, 'company', __('')); ?></span>
+            </li>
 			<li class="email group"><a class="email" href="mailto:<?php echo $contact['rolo_contact_email'];?>"><?php echo $contact['rolo_contact_email'];?> </a></li>
-		
-            <li class="website group"><a class="url" href="<?php echo $contact['rolo_contact_website']; ?>"><?php echo $contact['rolo_contact_website']; ?></a></li>
-
 </ul><!-- vcard -->
 
 
@@ -42,7 +39,7 @@ function rolo_contact_summary($contact_id) {
  * @param int $contact_id
  * @return <type>
  */
-function rolo_contact_full($contact_id) {
+function rolo_contact_details($contact_id) {
     //TODO Need to display the information in Microformat friendly format
     if (!$contact_id) {
         return false;
@@ -55,17 +52,24 @@ function rolo_contact_full($contact_id) {
 
 <ul id="hcard-<?php echo basename(get_permalink());?>" class="vcard">
 
-			<?php echo get_avatar (($contact['rolo_contact_email']),96,get_bloginfo('template_url') . "/img/icons/rolo-contact.jpg");?>
-		
 			<li class="fn"><?php echo $contact['rolo_contact_first_name'] . ' ' . $contact['rolo_contact_last_name'];?></li>
 			<li class="title"><?php echo $contact['rolo_contact_title'];?></li>
 		
 			<?php //TODO Find out how to associate companies ?>
 			<li class="org"><span class="type"><?php _e('Company', 'rolopress'); ?></span>:<span class="value"><?php echo get_the_term_list($contact_id, 'company'); ?></span></li>
+			
+		<span class="adr label group">
+			<span class="street-address"><?php echo $contact['rolo_contact_address']; ?></span>
+			<span class="locality"><?php echo $contact['rolo_contact_city']; ?></span>,
+			<abbr class="region" title="<?php echo $contact['rolo_contact_state']; ?>"><?php echo $contact['rolo_contact_state']; ?></abbr>
+			<span class="postal-code"><?php echo $contact['rolo_contact_zip']; ?></span>
+			<span class="country-name"><?php echo $contact['rolo_contact_country']; ?></span>
+		</span>
 		
 			<li class="email group"><a class="email" href="mailto:<?php echo $contact['rolo_contact_email'];?>"><?php echo $contact['rolo_contact_email'];?> </a></li>
 		 
 		 <ul class="tel group">
+		 
 			<li class="tel"><span class="type"><?php _e('Mobile ', 'rolopress'); ?></span>:<span class="value"><?php echo $contact['rolo_contact_phone_Mobile']; ?></span></li>
 			<li class="tel"><span class="type"><?php _e('Home ', 'rolopress'); ?></span>:<span class="value"><?php echo $contact['rolo_contact_phone_Home']; ?></span></li>
 			<li class="tel"><span class="type"><?php _e('Work ', 'rolopress'); ?></span>:<span class="value"><?php echo $contact['rolo_contact_phone_Work']; ?></span></li>
@@ -83,16 +87,7 @@ function rolo_contact_full($contact_id) {
 		</ul>
 		
 		<span class="website group"><a class="url" href="<?php echo $contact['rolo_contact_website']; ?>"><?php echo $contact['rolo_contact_website']; ?></a></span>
-
-		<span class="adr label group">
-			<span class="street-address"><?php echo $contact['rolo_contact_address']; ?></span>
-			<span class="locality"><?php echo $contact['rolo_contact_city']; ?></span>,
-			<abbr class="region" title="<?php echo $contact['rolo_contact_state']; ?>"><?php echo $contact['rolo_contact_state']; ?></abbr>
-			<span class="postal-code"><?php echo $contact['rolo_contact_zip']; ?></span>
-			<span class="country-name"><?php echo $contact['rolo_contact_country']; ?></span>
-		</span>
-
- 
+		
 </ul><!-- vcard -->
 
 
@@ -105,7 +100,7 @@ function rolo_contact_full($contact_id) {
  * @param <type> $company_id
  * @return <type>
  */
-function rolo_company_summary($company_id) {
+function rolo_company_header($company_id) {
 
     if (!$company_id) {
         return false;
@@ -115,7 +110,7 @@ function rolo_company_summary($company_id) {
     $company = $company[0];
 ?>
 
-<ul id="hcard-<?php echo basename(get_permalink());?>" class="vcard">
+<ul id="hcard-<?php echo basename(get_permalink());?>" class="item-header">
 
 			<?php echo get_avatar (($company['rolo_company_email']),96,get_bloginfo('template_url') . "/img/icons/rolo-company.jpg");?>
 
@@ -136,7 +131,7 @@ function rolo_company_summary($company_id) {
  * @param int $company_id
  * @return <type>
  */
-function rolo_company_full($company_id) {
+function rolo_company_details($company_id) {
     //TODO Need to display the information in Microformat friendly format
     if (!$company_id) {
         return false;
@@ -147,74 +142,44 @@ function rolo_company_full($company_id) {
 //    print_r($company);
 ?>
     
-     <div class="span-4" id="company-left">
-	 
-	 			<?php echo get_avatar (($company['rolo_company_email']),96,get_bloginfo('template_url') . "/img/icons/rolo-company.jpg");?>
-         <div class="company">
-             <h4><a href="<?php echo get_permalink($company_id); ?>" rel="bookmark"><?php echo $company['rolo_company_first_name'] . ' ' . $company['rolo_company_last_name'];?></a></h4>
-         </div><!-- /company -->
+    <ul id="hcard-<?php echo basename(get_permalink());?>" class="vcard">
 
-         <div class="info small" id="info_box">
-             <?php
-             //TODO Find out how to associate companies
-             ?>
-             <ul>
-                 <li class="company">
-                     <?php echo get_the_term_list($company_id, 'company', __('Company:')); ?>
-                 </li>
-                 <li class="email">
-                    <a href="mailto:<?php echo $company['rolo_company_email'];?>"><?php echo $company['rolo_company_email'];?></a>
-                 </li>
-             </ul>
-        </div><!-- /info_box -->
-
-    </div><!-- /company-left -->
-
-    <div class="span-4" id="company-middle">
-        <div class="phone small">
-            <ul>
-                <li>Mobile: <?php echo $company['rolo_company_phone_Mobile']; ?></li>
-                <li>Home: <?php echo $company['rolo_company_phone_Home']; ?></li>
-                <li>Work: <?php echo $company['rolo_company_phone_Work']; ?></li>
-                <li>Fax: <?php echo $company['rolo_company_phone_Fax']; ?></li>
-                <li>Other: <?php echo $company['rolo_company_phone_Other']; ?></li>
-            </ul>
-        </div><!-- /phone small -->
-    </div><!-- /company-middle -->
-
-    <div class="span-4" id="company-middle">
-        <div class="IM small">
-            <ul>
-                <li>Yahoo: <?php echo $company['rolo_company_im_Yahoo']; ?></li>
-                <li>MSN: <?php echo $company['rolo_company_im_MSN']; ?></li>
-                <li>AOL: <?php echo $company['rolo_company_im_AOL']; ?></li>
-                <li>GTalk: <?php echo $company['rolo_company_im_GTalk']; ?></li>
-                <li>Skype: <?php echo $company['rolo_company_im_Skype']; ?></li>
-                <li>Website: <?php echo $company['rolo_company_website']; ?></li>
-                <li>Twitter: <?php echo $company['rolo_company_twitter']; ?></li>
-            </ul>
-        </div><!-- /phone small -->
-    </div><!-- /company-middle -->
-
-    <div class="span-4" id="company-middle">
-        <div class="IM small">
-            <ul>
-                <li>Address: <?php echo $company['rolo_company_address']; ?></li>
-                <li>City: <?php echo $company['rolo_company_city']; ?></li>
-                <li>State: <?php echo $company['rolo_company_state']; ?></li>
-                <li>Zip: <?php echo $company['rolo_company_zip']; ?></li>
-                <li>Country: <?php echo $company['rolo_company_country']; ?></li>
-            </ul>
-        </div><!-- /phone small -->
-    </div><!-- /company-middle -->
-
-    <div class="span-2" id="company-right">
-        <p>
-            <span class="commentnum">
-                <a href="<?php get_permalink(get_the_ID()); ?>#comments" title="Comment on ">Notes</a>
-            </span>
-        </p>
-    </div><!-- /company-right -->
+			<li class="fn"><a href="<?php the_permalink();?>"><?php echo $company['rolo_company_name'];?></li></a>
+			
+		<span class="adr label group">
+			<span class="street-address"><?php echo $company['rolo_company_address']; ?></span>
+			<span class="locality"><?php echo $company['rolo_company_city']; ?></span>,
+			<abbr class="region" title="<?php echo $company['rolo_company_state']; ?>"><?php echo $company['rolo_company_state']; ?></abbr>
+			<span class="postal-code"><?php echo $company['rolo_company_zip']; ?></span>
+			<span class="country-name"><?php echo $company['rolo_company_country']; ?></span>
+		</span>
+		
+		<a class="map" href="http://maps.google.com/maps?f=q&hl=en&geocode=&q= <?php echo $company['rolo_company_address'];?> + <?php echo $company['rolo_company_city'];?> + <?php echo $company['rolo_company_state'];?> + <?php echo $company['rolo_company_zip'];?> + <?php echo $company['rolo_company_country']; ?> &ie=UTF8&iwloc=addr" target="_blank"><span>Map</span></a>
+		
+		
+	
+			<li class="email group"><a class="email" href="mailto:<?php echo $company['rolo_company_email'];?>"><?php echo $company['rolo_company_email'];?> </a></li>
+		 
+		 <ul class="tel group">
+			<li class="tel"><span class="type"><?php _e('Mobile ', 'rolopress'); ?></span>:<span class="value"><?php echo $company['rolo_company_phone_Mobile']; ?></span></li>
+			<li class="tel"><span class="type"><?php _e('Home ', 'rolopress'); ?></span>:<span class="value"><?php echo $company['rolo_company_phone_Home']; ?></span></li>
+			<li class="tel"><span class="type"><?php _e('Work ', 'rolopress'); ?></span>:<span class="value"><?php echo $company['rolo_company_phone_Work']; ?></span></li>
+			<li class="tel"><span class="type"><?php _e('Fax ', 'rolopress'); ?></span>:<span class="value"><?php echo $company['rolo_company_phone_Fax']; ?></span></li>
+			<li class="tel"><span class="type"><?php _e('Other ', 'rolopress'); ?></span>:<span class="value"><?php echo $company['rolo_company_phone_Other']; ?></span></li>
+		</ul>
+		
+		<ul class="im social group">
+			<li class="social"><span class="type"><?php _e('Yahoo ', 'rolopress'); ?></span>:<a class="yahoo" href="ymsgr:sendIM?<?php echo $company['rolo_company_im_Yahoo']; ?>"><?php echo $company['rolo_company_im_Yahoo']; ?></a></li>
+			<li class="social"><span class="type"><?php _e('MSN ', 'rolopress'); ?></span>:<a class="msn" href="msnim:chat?company=<?php echo $company['rolo_company_im_MSN']; ?>"><?php echo $company['rolo_company_im_MSN']; ?></a></li>
+			<li class="social"><span class="type"><?php _e('AIM ', 'rolopress'); ?></span>:<a class="aim" href="aim:goIM?<?php echo $company['rolo_company_im_AOL']; ?>"><?php echo $company['rolo_company_im_AOL']; ?></a></li>
+			<li class="social"><span class="type"><?php _e('GTalk ', 'rolopress'); ?></span>:<a class="gtalk" href="gtalk:chat?jid=<?php echo $company['rolo_company_im_GTalk']; ?>"><?php echo $company['rolo_company_im_GTalk']; ?></a></li>
+			<li class="social"><span class="type"><?php _e('Skype ', 'rolopress'); ?></span>:<a class="skype" href="skype:<?php echo $company['rolo_company_im_Skype']; ?>?chat"><?php echo $company['rolo_company_im_Skype']; ?></a></li>
+			<li class="social"><span class="type"><?php _e('Twitter ', 'rolopress'); ?></span>:<a class="twitter" href="<?php echo $company['rolo_company_twitter']; ?>"><?php echo $company['rolo_company_twitter']; ?></a></li>
+		</ul>
+		
+		<span class="website group"><a class="url" href="<?php echo $company['rolo_company_website']; ?>"><?php echo $company['rolo_company_website']; ?></a></span>
+ 
+</ul><!-- vcard -->
 
 <?php
 }

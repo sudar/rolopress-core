@@ -34,7 +34,7 @@
 					<?php rolopress_before_entry(); // Before entry hook ?>            
 
 					<div class="entry-main group">
-                        rolo_contact-tax-type <?php rolo_contact_summary(get_the_ID()); ?>
+                        rolo_contact-tax-type <?php rolo_contact_header(get_the_ID()); ?>
                     <?php wp_link_pages('before=<div class="page-link">' . __( 'Pages:', 'rolopress' ) . '&after=</div>') ?>
 					</div><!-- .entry-main -->
 
@@ -44,7 +44,6 @@
 						<span class="meta-sep"> | </span>
 						<span class="meta-prep meta-prep-entry-date"><?php _e('Published ', 'rolopress'); ?></span>
 						<span class="entry-date"><abbr class="published" title="<?php the_time('Y-m-d\TH:i:sO') ?>"><?php the_time( get_option( 'date_format' ) ); ?></abbr></span>
-						<?php edit_post_link( __( 'Edit', 'rolopress' ), "<span class=\"meta-sep\">|</span>\n\t\t\t\t\t\t<span class=\"edit-link\">", "</span>\n\t\t\t\t\t" ) ?>
 					</div><!-- .entry-meta -->
 					
 					<div class="entry-summary">	
@@ -57,7 +56,7 @@
 						<span class="meta-sep"> | </span>
 <?php endif ?>
 						<?php the_tags( '<span class="tag-links"><span class="entry-utility-prep entry-utility-prep-tag-links">' . __('Tagged: ', 'rolopress' ) . '</span>', ", ", "</span>\n\t\t\t\t\t\t<span class=\"meta-sep\">|</span>\n" ) ?>
-						<span class="notes-link"><?php comments_popup_link( __( 'Write a Note', 'rolopress' ), __( '1 Note', 'rolopress' ), __( '% Notes', 'rolopress' ) ) ?></span>
+						<?php if ( comments_open() ) : ?><span class="notes-link"><?php comments_popup_link( __( 'Write a Note', 'rolopress' ), __( '1 Note', 'rolopress' ), __( '% Notes', 'rolopress' ) ) ?></span><?php endif;?>
 						<?php edit_post_link( __( 'Edit', 'rolopress' ), "<span class=\"meta-sep\">|</span>\n\t\t\t\t\t\t<span class=\"edit-link\">", "</span>\n\t\t\t\t\t\n" ) ?>
 					</div><!-- #entry-utility -->	
      			<?php rolopress_after_entry(); // After entry hook ?>

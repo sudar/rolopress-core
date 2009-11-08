@@ -27,11 +27,6 @@ require_once( 'library/functions/contact-functions.php' );
 //load company functions
 require_once( 'library/functions/company-functions.php' );
 
-//detect mobile
-require_once( 'library/functions/mobile.php' );
-
-
-
 
 
 // Make theme available for translation

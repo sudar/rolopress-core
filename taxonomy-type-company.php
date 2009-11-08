@@ -36,7 +36,7 @@
 					<?php rolopress_before_entry(); // Before entry hook ?>            
 
 					<div class="entry-main group">
-                        rolo_contact-tax-type-company <?php rolo_company_summary(get_the_ID()); ?>
+                        rolo_contact-tax-type-company <?php rolo_company_header(get_the_ID()); ?>
                     <?php wp_link_pages('before=<div class="page-link">' . __( 'Pages:', 'rolopress' ) . '&after=</div>') ?>
 					</div><!-- .entry-main -->
 
@@ -54,7 +54,7 @@
 						<span class="meta-sep"> | </span>
 <?php endif ?>
 						<?php the_tags( '<span class="tag-links"><span class="entry-utility-prep entry-utility-prep-tag-links">' . __('Tagged: ', 'rolopress' ) . '</span>', ", ", "</span>\n\t\t\t\t\t\t<span class=\"meta-sep\">|</span>\n" ) ?>
-						<span class="notes-link"><?php comments_popup_link( __( 'Write a Note', 'rolopress' ), __( '1 Note', 'rolopress' ), __( '% Notes', 'rolopress' ) ) ?></span>
+						<?php if ( comments_open() ) : ?><span class="notes-link"><?php comments_popup_link( __( 'Write a Note', 'rolopress' ), __( '1 Note', 'rolopress' ), __( '% Notes', 'rolopress' ) ) ?></span><?php endif;?>
 					</div><!-- #entry-utility -->	
      			<?php rolopress_after_entry(); // After entry hook ?>
 				</li><!-- #post-<?php the_ID(); ?> -->

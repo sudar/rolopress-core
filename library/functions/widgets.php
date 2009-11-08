@@ -26,13 +26,13 @@ add_action( 'widgets_init', 'rolopress_register_widgets' );
 add_filter( 'sidebars_widgets', 'remove_sidebars' );
 
 
-
-
 /* widget areas */
 register_sidebar( array( 'name' => __('Menu', 'rolopress'), 'id' => 'menu', 'before_widget' => '<div class="menu_item widget %2$s widget-%2$s">', 'after_widget' => '</div>', 'before_title' => '<h3 class="widget-title">', 'after_title' => '</h3>' ) );
 register_sidebar( array( 'name' => __('Primary', 'rolopress'), 'id' => 'primary', 'before_widget' => '<li id="%1$s" class="widget %2$s widget-%2$s">', 'after_widget' => '</div></li>', 'before_title' => '<h3 class="widget-title section-title">', 'after_title' => '</h3> <div class="inside">' ) );
 register_sidebar( array( 'name' => __('Secondary', 'rolopress'), 'id' => 'secondary', 'before_widget' => '<li id="%1$s" class="widget %2$s widget-%2$s">', 'after_widget' => '</div></li>', 'before_title' => '<h3 class="widget-title section-title">', 'after_title' => '</h3> <div class="inside">' ) );
 register_sidebar( array( 'name' => __('Widget Page', 'rolopress'), 'id' => 'widget-page', 'before_widget' => '<li id="%1$s" class="widget %2$s widget-%2$s">', 'after_widget' => '</div></li>', 'before_title' => '<h3 class="widget-title section-title">', 'after_title' => '</h3> <div class="inside">' ) );
+register_sidebar( array( 'name' => __('Contact: Under Main', 'rolopress'), 'id' => 'contact-under-main', 'before_widget' => '<li id="%1$s" class="widget %2$s widget-%2$s">', 'after_widget' => '</div></li>', 'before_title' => '<h3 class="widget-title section-title">', 'after_title' => '</h3> <div class="inside">' ) );
+register_sidebar( array( 'name' => __('Company: Under Main', 'rolopress'), 'id' => 'company-under-main', 'before_widget' => '<li id="%1$s" class="widget %2$s widget-%2$s">', 'after_widget' => '</div></li>', 'before_title' => '<h3 class="widget-title section-title">', 'after_title' => '</h3> <div class="inside">' ) );
 
 
 /**
@@ -52,6 +52,8 @@ function rolopress_register_widgets() {
 	require_once( TEMPLATEPATH . '/library/widgets/tags.php' );
 	require_once( TEMPLATEPATH . '/library/widgets/companies.php' );
 	require_once( TEMPLATEPATH . '/library/widgets/recent-items.php' );
+	require_once( TEMPLATEPATH . '/library/widgets/contact-details.php' );
+    require_once( TEMPLATEPATH . '/library/widgets/company-details.php' );
 	
 		
 
@@ -66,6 +68,8 @@ function rolopress_register_widgets() {
 	register_widget( 'Rolo_Widget_Tags' );
 	register_widget( 'Rolo_Widget_Companies' );
 	register_widget( 'Rolo_Widget_Recent_Items' );
+	register_widget( 'Rolo_Widget_Contact_Details' );
+	register_widget( 'Rolo_Widget_Company_Details' );
 }
 
 /**

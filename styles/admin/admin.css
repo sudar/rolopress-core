@@ -9,3 +9,15 @@ Styles for RoloPress admin screens
 #header-logo {
 	background:transparent url(/wp-content/themes/rolopress-core/img/admin/rolopress-icon-small.gif) no-repeat scroll center center;
 }
+#footer-rolo {
+	background: #464646;
+	padding-left: 15px;
+	color:#999999;
+	font-family:Georgia,"Times New Roman","Bitstream Charter",Times,serif;
+	font-size:12px;
+	font-style:italic;
+}
+#footer-rolo a:link, #footer-rolo a:visited {
+color:#CCCCCC;
+text-decoration:none;
+}
