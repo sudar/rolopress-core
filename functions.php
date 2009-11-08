@@ -85,12 +85,15 @@ add_action('template_redirect', 'rolo_add_script');
  * Add JavaScript to the theme on needed pages
  */
 function rolo_add_script() {
-    if (is_page(array('Add Contact','Add Company', 'Edit Company', 'Edit Contact'))) {
+    //TODO: Need to include JS only in required pages.
+    
+//    if (is_page(array('Add Contact','Add Company', 'Edit Company', 'Edit Contact'))) {
         wp_enqueue_script( 'uni-form', get_bloginfo('template_directory') . '/js/uni-form.jquery.js', array('jquery'), '', true );
         wp_enqueue_script( 'rolopress-js', get_bloginfo('template_directory') . '/js/rolopress.js', array('jquery', 'uni-form'), '', true );
         // Build in tag auto complete script - Code explanation at http://bit.ly/2vbemR
         wp_enqueue_script( 'suggest' );
-    }
+//    }
+    wp_enqueue_script( 'jeip', get_bloginfo('template_directory') . '/js/jeip.js', array('jquery'), '', true );
 }
 
 // This is a dirty way to get the path in js. TODO: need to have a proper way to fix it.
@@ -98,12 +101,12 @@ add_action('wp_footer', 'rolo_print_script');
 
 function rolo_print_script() {
 $wpurl = get_bloginfo('wpurl');
+$ajax_url = admin_url("admin-ajax.php");
+
 echo <<<SCRIPT
 <script>
-// Auto set on page load...
-jQuery(document).ready(function() {
-    jQuery('input.company').suggest("$wpurl/wp-admin/admin-ajax.php?action=ajax-tag-search&tax=company", {multiple:false});
-});
+var wpurl = "$wpurl";
+var ajax_url = '$ajax_url';
 </script>
 SCRIPT;
 
@@ -129,6 +132,35 @@ function rolo_create_taxonomy() {
 add_action('init', 'rolo_create_taxonomy', 0);
 
 
+/**
+ * callback function for inline contact edits
+ */
+function rolo_edit_contact_callback() {
+    $new_value = $_POST['new_value'];
+    $contact_id = $_POST['id_field'];
+    $id = $_POST['id'];
 
+    $old_values = get_post_meta($contact_id, 'rolo_contact');
+    $old_values = $old_values[0];
+    
+    $old_values[$id] = $new_value;
+    update_post_meta($contact_id, 'rolo_contact', $old_values);
+
+    $results = array(
+        'is_error' => false,
+        'error_text' => '',
+        'html' => $new_value
+    );
+
+    include_once(ABSPATH . 'wp-includes/js/tinymce/plugins/spellchecker/classes/utils/JSON.php');
+
+    $json = new Moxiecode_JSON();
+    $results = $json->encode($results);
+
+    die($results);
+}
+
+add_action('wp_ajax_rolo_edit_contact', 'rolo_edit_contact_callback');
+add_action('wp_ajax_nopriv_rolo_edit_contact', 'rolo_edit_contact_callback');
 
 ?>
