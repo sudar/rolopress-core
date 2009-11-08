@@ -450,4 +450,35 @@ function rolo_save_contact_company($field_name, $post_id) {
     }
 }
 
+/**
+ * callback function for inline contact edits
+ */
+function rolo_edit_contact_callback() {
+    $new_value = $_POST['new_value'];
+    $contact_id = $_POST['id_field'];
+    $id = $_POST['id'];
+
+    $old_values = get_post_meta($contact_id, 'rolo_contact');
+    $old_values = $old_values[0];
+
+    $old_values[$id] = $new_value;
+    update_post_meta($contact_id, 'rolo_contact', $old_values);
+
+    $results = array(
+        'is_error' => false,
+        'error_text' => '',
+        'html' => $new_value
+    );
+
+    include_once(ABSPATH . 'wp-includes/js/tinymce/plugins/spellchecker/classes/utils/JSON.php');
+
+    $json = new Moxiecode_JSON();
+    $results = $json->encode($results);
+
+    die($results);
+}
+
+add_action('wp_ajax_rolo_edit_contact', 'rolo_edit_contact_callback');
+add_action('wp_ajax_nopriv_rolo_edit_contact', 'rolo_edit_contact_callback');
+
 ?>

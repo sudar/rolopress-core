@@ -45,11 +45,18 @@ jQuery(document).ready(function() {
 
     jQuery('input.company').suggest(wpurl + "/wp-admin/admin-ajax.php?action=ajax-tag-search&tax=company", {multiple:false});
 
-    // Edit in place
+    // Edit in place for contacts
 
     jQuery('#rolo_contact_title,#rolo_contact_address, #rolo_contact_city, #rolo_contact_state, #rolo_contact_zip, #rolo_contact_country, #rolo_contact_email, #rolo_contact_phone_Mobile, #rolo_contact_phone_Home, #rolo_contact_phone_Work, #rolo_contact_phone_Other, #rolo_contact_phone_Fax, #rolo_contact_im_Yahoo, #rolo_contact_im_MSN, #rolo_contact_im_AOL, #rolo_contact_im_GTalk, #rolo_contact_im_Skype, #rolo_contact_twitter, #rolo_contact_website').eip(ajax_url, {
         action: 'rolo_edit_contact',
         id_field: 'rolo_contact_id'
+    });
+
+    // Edit in place for company
+
+    jQuery('#rolo_company_title,#rolo_company_address, #rolo_company_city, #rolo_company_state, #rolo_company_zip, #rolo_company_country, #rolo_company_email, #rolo_company_phone_Mobile, #rolo_company_phone_Home, #rolo_company_phone_Work, #rolo_company_phone_Other, #rolo_company_phone_Fax, #rolo_company_im_Yahoo, #rolo_company_im_MSN, #rolo_company_im_AOL, #rolo_company_im_GTalk, #rolo_company_im_Skype, #rolo_company_twitter, #rolo_company_website').eip(ajax_url, {
+        action: 'rolo_edit_company',
+        id_field: 'rolo_company_id'
     });
 
 });
