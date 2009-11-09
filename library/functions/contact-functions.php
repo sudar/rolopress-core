@@ -249,7 +249,7 @@ function rolo_setup_contact_address($field_name, &$rolo_tab_index) {
 
         <div class="ctrlHolder">
             <label for="rolo_contact_city"></label>
-            <input type="text" name="rolo_contact_city" value="city"<?php echo $meta_box_value ;?>" size="30" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput city" />
+            <input type="text" name="rolo_contact_city" value="<?php echo $meta_box_value ;?>" size="30" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput city" />
             <input type="text" name="rolo_contact_state" value="<?php echo $meta_box_value ;?>" size="15" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput state" />
             <input type="text" name="rolo_contact_zip" value="<?php echo $meta_box_value ;?>" size="10" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput zip" />
         </div>
@@ -326,8 +326,8 @@ function rolo_setup_contact_multiple($field_name, &$rolo_tab_index) {
                 $hidden = '';
             }
 ?>
-            <img src ="<?php echo get_bloginfo('template_directory') ?>/img/delete.png" class="rolo_delete_ctrl" alt="<?php _e('Delete');?>" <?php echo $hidden;?> />
-            <img src ="<?php echo get_bloginfo('template_directory') ?>/img/add.png" class="rolo_add_ctrl" alt="<?php _e('Add another');?>" />
+            <img src ="<?php echo get_bloginfo('template_directory') ?>/img/form/delete.png" class="rolo_delete_ctrl" alt="<?php _e('Delete');?>" <?php echo $hidden;?> />
+            <img src ="<?php echo get_bloginfo('template_directory') ?>/img/form/add.png" class="rolo_add_ctrl" alt="<?php _e('Add another');?>" />
         </div>
 <?php
     }

@@ -19,11 +19,11 @@
 					<div class="entry-main group">
 					
 						<!-- What are we looking at? -->
-						<?php if ( rolo_type_is( 'contact' ) ) rolo_contact_header(get_the_ID());			
-							if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar("contact-under-main") ); ?>
+						<?php if ( rolo_type_is( 'contact' ) ) { rolo_contact_header(get_the_ID());	
+							if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar("contact-under-main") ); } ?>
 							
-						<?php if ( rolo_type_is( 'company' ) ) rolo_company_header(get_the_ID());			
-							if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar("company-under-main") ); ?>	
+						<?php if ( rolo_type_is( 'company' ) ) { rolo_company_header(get_the_ID());		
+							if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar("company-under-main") ); } ?>	
 
 						<?php the_content(); ?>							
                  	

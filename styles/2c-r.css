@@ -8,7 +8,7 @@ DESCRIPTION: Two-column fluid layout with one sidebars right of info
 	margin: 0 -300px 0 0;
 	width: 100%;
 }
-#info {
+#info , .navigation{
 	margin: 0 300px 0 0;
 }
 #primary, #secondary {

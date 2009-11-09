@@ -34,7 +34,7 @@ function rolo_contact_header($contact_id) {
 }
 
 /**
- * Display full contact information
+ * Display contact details
  *
  * @param int $contact_id
  * @return <type>
@@ -130,7 +130,7 @@ function rolo_company_header($company_id) {
 }
 
 /**
- * Display full company information
+ * Display company details
  *
  * @param int $company_id
  * @return <type>
@@ -402,7 +402,7 @@ function _rolo_show_contact_fields_old() {
                 }
 ?>
             </select>
-            <img src ="<?php echo get_bloginfo('template_directory') ?>/img/add.png" class="rolo_add_ctrl" alt="<?php _e('Add another');?>" />
+            <img src ="<?php echo get_bloginfo('template_directory') ?>/img/form/add.png" class="rolo_add_ctrl" alt="<?php _e('Add another');?>" />
 <?php
             }
 ?>

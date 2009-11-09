@@ -1,3 +1,6 @@
+	</div><!-- #wrapper -->	
+	<?php rolopress_after_wrapper(); // After wrapper hook ?>
+	
 	<?php rolopress_before_footer(); // before footer hook ?>
 	<div id="footer">
 	<?php rolopress_footer(); // rolopress footer hook ?>
@@ -11,9 +14,6 @@
 	</div><!-- #footer -->
 	<?php rolopress_after_footer(); // After footer hook ?>
 	
-</div><!-- #wrapper -->	
-	<?php rolopress_after_wrapper(); // After wrapper hook ?>
-
 <?php wp_footer(); // WordPress footer hook ?>
 
 </body>
