@@ -402,7 +402,7 @@ function _rolo_show_contact_fields_old() {
                 }
 ?>
             </select>
-            <img src ="<?php echo get_bloginfo('template_directory') ?>/img/form/add.png" class="rolo_add_ctrl" alt="<?php _e('Add another');?>" />
+            <img src ="<?php echo get_bloginfo('template_directory') ?>/img/forms/add.png" class="rolo_add_ctrl" alt="<?php _e('Add another');?>" />
 <?php
             }
 ?>

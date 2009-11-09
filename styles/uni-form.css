@@ -35,7 +35,6 @@
      margin:0; padding:0;
      clear:both;
      /* user prefs */
-     background:#f9f9f9;
      margin:0; padding:7px 4px;
 }
 
@@ -43,8 +42,6 @@
     overflow:hidden;
     clear:both;
     /* user prefs */
-    background:#f9f9f9;
-    border:1px solid #ccc; border-width:1px 0;
     margin:10px 0 0 0; padding:10px;
     text-align:right;
 }
@@ -66,7 +63,7 @@
 
 /* Highlighting the rows on input focus */
 .focused{
-    background:#FFFCDF url(../img/form/uf_focused.png);
+    background:#FFFCDF url(../img/forms/uf_focused.png);
     border:1px solid #EFE795; border-width:1px 0;
     padding:6px 4px;
 }
@@ -137,7 +134,7 @@
 /* inlineLabels esthetics */
 .inlineLabels .formHint strong{
     padding:0 0 0 14px;
-    background:url(../img/form/icon_alert.png) 0 0 no-repeat;
+    background:url(../img/forms/icon_alert.png) 0 0 no-repeat;
     display:inline-block;
 }
 
@@ -238,13 +235,13 @@ label em,
 
 /* Messages */
 .uniForm #errorMsg{
-    background:#ffdfdf url(../img/form/uf_error.png);
+    background:#ffdfdf url(../img/forms/uf_error.png);
     border:1px solid #df7d7d; border-width:1px 0;
     margin:0 0 1em 0; padding:1em;
 }
 .uniForm .error,
 .uniForm .blockLabels.ctrlHolder.error{
-    background:#ffdfdf url(../img/form/uf_error.png);
+    background:#ffdfdf url(../img/forms/uf_error.png);
     border:1px solid #df7d7d; border-width:1px 0;
     position:relative;
 }
@@ -256,7 +253,7 @@ label em,
     font-weight:bold;
     color:#000;
     padding:2px 0 2px 18px;
-    background:url(../img/form/icon-error.png) 0 0 no-repeat;
+    background:url(../img/forms/icon-error.png) 0 0 no-repeat;
 }
 .uniForm #errorMsg dd{
     margin:0; padding:0;
