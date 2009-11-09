@@ -319,8 +319,10 @@ function rolopress_default_menu() {
 					<li id="app-title"><span><a href="<?php bloginfo( 'url' ) ?>/" title="<?php bloginfo( 'name' ) ?>" rel="home"><?php bloginfo( 'name' ) ?></a></span></li>
 					</ul>
 					<ul class="menu_item menu_main">
-					<li><a title="contacts" href="/type/contact"><span><?php _e('Contacts ', 'rolopress'); ?></span></a></li>
-					<li><a title="companies" href="/type/company"><span><?php _e('Companies ', 'rolopress'); ?></span></a></li>	
+					<li><a title="contacts" class="contacts" href="/type/contact"><span><?php _e('Contacts ', 'rolopress'); ?></span></a></li>
+					<li><a title="add-contact" class="add-contact" href="/add-contact"><span><?php _e('Add Contact ', 'rolopress'); ?></span></a></li>
+					<li><a title="companies" class="companies" href="/type/company"><span><?php _e('Companies ', 'rolopress'); ?></span></a></li>	
+					<li><a title="add-company" class="add-company" href="/add-company"><span><?php _e('Add Company ', 'rolopress'); ?></span></a></li>	
 					
 	<!-- IF WE CONVERT WP_TAG_CLOUD TO AN ARRAY CAN WE USE IT TO FORMAT THE MENU BETTER -->	
 							<!-- <?php wp_tag_cloud('taxonomy=type&smallest=12&largest=12&unit=px&format=list'); ?> -->
