@@ -18,7 +18,6 @@ function rolo_add_contact() {
             $contact_id = _rolo_save_contact_fields();
             if ($contact_id) {
                 echo __("Contact information successfully added.");
-                _rolo_show_contact_notes($contact_id);
             } else {
                 echo __("There was some problem in inserting the contact info");
     //            TODO - Handle Error properly
