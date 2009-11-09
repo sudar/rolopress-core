@@ -274,10 +274,10 @@ function rolo_save_contact_address($field_name, $post_id, &$new_contact) {
     // TODO - Validate fields
 
     $new_contact['rolo_contact_address'] = $_POST['rolo_contact_address'];
-    $new_contact['rolo_contact_city'] = $_POST['rolo_contact_city'];
-    $new_contact['rolo_contact_state'] = $_POST['rolo_contact_state'];
-    $new_contact['rolo_contact_zip'] = $_POST['rolo_contact_zip'];
-    $new_contact['rolo_contact_country'] = $_POST['rolo_contact_country'];
+    $new_contact['rolo_contact_city'] = ($_POST['rolo_contact_city'] == 'City') ? '' : $_POST['rolo_contact_city'];
+    $new_contact['rolo_contact_state'] = ($_POST['rolo_contact_state'] == 'Stage') ? '' : $_POST['rolo_contact_state'];
+    $new_contact['rolo_contact_zip'] = ($_POST['rolo_contact_zip'] == 'Zip') ? '' : $_POST['rolo_contact_zip'];
+    $new_contact['rolo_contact_country'] = ($_POST['rolo_contact_country'] == 'Country') ? '' : $_POST['rolo_contact_country'];
 
 }
 

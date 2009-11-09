@@ -20,15 +20,14 @@ function rolo_contact_header($contact_id) {
 
 			<?php echo get_avatar (($contact['rolo_contact_email']),96,get_bloginfo('template_url') . "/img/icons/rolo-contact.jpg");?>
 
-			<li class="fn"><a href="<?php the_permalink();?>"><?php echo $contact['rolo_contact_first_name'] . ' ' . $contact['rolo_contact_last_name'];?></li></a>
+			<li class="fn"><a href="<?php the_permalink();?>"><?php echo $contact['rolo_contact_first_name'] . ' ' . $contact['rolo_contact_last_name'];?></a></li>
 			<li>
                 <span class="title"><?php echo $contact['rolo_contact_title'];?> </span>   
            		<?php //TODO Find out how to associate companies ?> 
                 <span class="org"><?php echo get_the_term_list($contact_id, 'company', __('')); ?></span>
             </li>
 			<li class="email group"><a class="email" href="mailto:<?php echo $contact['rolo_contact_email'];?>"><?php echo $contact['rolo_contact_email'];?> </a></li>
-</ul><!-- vcard -->
-
+    </ul><!-- vcard -->
 
 <?php
 }

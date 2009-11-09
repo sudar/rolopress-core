@@ -270,10 +270,10 @@ function rolo_save_company_address($field_name, $post_id, &$new_company) {
     // TODO - Validate fields
 
     $new_company['rolo_company_address'] = $_POST['rolo_company_address'];
-    $new_company['rolo_company_city'] = $_POST['rolo_company_city'];
-    $new_company['rolo_company_state'] = $_POST['rolo_company_state'];
-    $new_company['rolo_company_zip'] = $_POST['rolo_company_zip'];
-    $new_company['rolo_company_country'] = $_POST['rolo_company_country'];
+    $new_company['rolo_company_city'] = ($_POST['rolo_company_city'] == 'City') ? '' : $_POST['rolo_company_city'];
+    $new_company['rolo_company_state'] = ($_POST['rolo_company_state'] == 'Stage') ? '' : $_POST['rolo_company_state'];
+    $new_company['rolo_company_zip'] = ($_POST['rolo_company_zip'] == 'Zip') ? '' : $_POST['rolo_company_zip'];
+    $new_company['rolo_company_country'] = ($_POST['rolo_company_country'] == 'Country') ? '' : $_POST['rolo_company_country'];
 }
 
 /**
