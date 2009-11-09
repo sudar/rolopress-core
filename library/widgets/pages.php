@@ -14,7 +14,7 @@ class Rolo_Widget_Pages extends WP_Widget {
 
 	function Rolo_Widget_Pages() {
 		$widget_ops = array( 'classname' => 'pages', 'description' => __('An advanced widget that gives you total control over the output of your page links.', 'rolopress') );
-		$control_ops = array( 'width' => 700, 'height' => 350, 'id_base' => 'rolopress-pages' );
+		$control_ops = array( 'id_base' => 'rolopress-pages' );
 		$this->WP_Widget( 'rolopress-pages', __('Pages', 'rolopress'), $widget_ops, $control_ops );
 	}
 

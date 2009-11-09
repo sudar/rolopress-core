@@ -21,7 +21,7 @@ class Rolo_Widget_Companies extends WP_Widget {
 
 	function Rolo_Widget_Companies() {
 		$widget_ops = array( 'classname' => 'companies', 'description' => __('An advanced widget to create a Company list or cloud.','rolopress') );
-		$control_ops = array( 'width' => 700, 'height' => 350, 'id_base' => 'rolopress-companies' );
+		$control_ops = array( 'id_base' => 'rolopress-companies' );
 		$this->WP_Widget( 'rolopress-companies', __('Companies', 'rolopress'), $widget_ops, $control_ops );
 	}
 
@@ -29,7 +29,7 @@ class Rolo_Widget_Companies extends WP_Widget {
 		extract( $args );
 
 		$title = apply_filters( 'widget_title', $instance['title'] );
-		$taxonomy = $instance['taxonomy'];
+//		$taxonomy = $instance['taxonomy'];
 		$format = $instance['format'];
 		$order = $instance['order'];
 		$orderby = $instance['orderby'];
@@ -47,7 +47,7 @@ class Rolo_Widget_Companies extends WP_Widget {
 			$smallest = 8;
 
 		$tags = array(
-			'taxonomy' => $taxonomy,
+			'taxonomy' => 'company',
 			'smallest' => $smallest,
 			'largest' => $largest,
 			'unit' => $unit,
@@ -89,7 +89,7 @@ class Rolo_Widget_Companies extends WP_Widget {
 		$instance['format'] = $new_instance['format'];
 		$instance['orderby'] = $new_instance['orderby'];
 		$instance['order'] = $new_instance['order'];
-		$instance['taxonomy'] = $new_instance['taxonomy'];
+//		$instance['taxonomy'] = $new_instance['taxonomy'];
 		$instance['link'] = $new_instance['link'];
 
 		return $instance;
@@ -105,17 +105,6 @@ class Rolo_Widget_Companies extends WP_Widget {
 		<p>
 			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e('Title:', 'rolopress'); ?></label>
 			<input id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo $instance['title']; ?>" style="width:100%;" />
-		</p>
-		<p>
-			<label for="<?php echo $this->get_field_id( 'taxonomy' ); ?>"><?php _e('Item Type:', 'rolopress'); ?></label>
-			<select id="<?php echo $this->get_field_id( 'taxonomy' ); ?>" name="<?php echo $this->get_field_name( 'taxonomy' ); ?>" class="widefat" style="width:100%;">
-			<?php global $wp_taxonomies; ?>
-			<?php if ( is_array( $wp_taxonomies ) ) : ?>
-				<?php foreach( $wp_taxonomies as $tax ) : ?>
-					<option <?php if ( $tax->name == $instance['taxonomy'] ) echo 'selected="selected"'; ?>><?php echo $tax->name; ?></option>
-				<?php endforeach; ?>
-			<?php endif; ?>
-			</select>
 		</p>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'format' ); ?>"><?php _e('Format:', 'rolopress'); ?> <code>format</code></label> 

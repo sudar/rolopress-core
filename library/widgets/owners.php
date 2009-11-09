@@ -14,7 +14,7 @@ class Rolo_Widget_Owners extends WP_Widget {
 
 	function Rolo_Widget_Owners() {
 		$widget_ops = array( 'classname' => 'owners', 'description' => __('An advanced widget that gives you total control over the output of your item owner lists.','rolopress') );
-		$control_ops = array( 'width' => 700, 'height' => 350, 'id_base' => 'rolopress-owners' );
+		$control_ops = array( 'id_base' => 'rolopress-owners' );
 		$this->WP_Widget( 'rolopress-owners', __('Owners', 'rolopress'), $widget_ops, $control_ops );
 	}
 

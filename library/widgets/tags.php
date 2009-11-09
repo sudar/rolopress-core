@@ -14,7 +14,7 @@ class Rolo_Widget_Tags extends WP_Widget {
 
 	function Rolo_Widget_Tags() {
 		$widget_ops = array( 'classname' => 'tags', 'description' => __('An advanced widget that gives you total control over the output of your tags.','rolopress') );
-		$control_ops = array( 'width' => 700, 'height' => 350, 'id_base' => 'rolopress-tags' );
+		$control_ops = array( 'id_base' => 'rolopress-tags' );
 		$this->WP_Widget( 'rolopress-tags', __('Tags', 'rolopress'), $widget_ops, $control_ops );
 	}
 

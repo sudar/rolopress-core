@@ -50,9 +50,7 @@ function rolopress_register_widgets() {
 	require_once( TEMPLATEPATH . '/library/widgets/recent-items.php' );
 	require_once( TEMPLATEPATH . '/library/widgets/contact-details.php' );
     require_once( TEMPLATEPATH . '/library/widgets/company-details.php' );
-	
 		
-
 	/* Register each widget. */
 	register_widget( 'Rolo_Widget_Archives' );
 	register_widget( 'Rolo_Widget_owners' );
@@ -83,8 +81,6 @@ function rolopress_unregister_widgets() {
 	unregister_widget( 'WP_Widget_Search' );
 	unregister_widget( 'WP_Widget_Tag_Cloud' );
 }
-
-
 
 /**
  * Check for widgets in widget-ready areas. Allows user to completely

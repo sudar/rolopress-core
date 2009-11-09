@@ -14,7 +14,7 @@ class Rolo_Widget_Categories extends WP_Widget {
 
 	function Rolo_Widget_Categories() {
 		$widget_ops = array( 'classname' => 'categories', 'description' => __('An advanced widget that gives you total control over the output of your category links.', 'rolopress') );
-		$control_ops = array( 'width' => 700, 'height' => 350, 'id_base' => 'rolopress-categories' );
+		$control_ops = array( 'id_base' => 'rolopress-categories' );
 		$this->WP_Widget( 'rolopress-categories', __('Categories', 'rolopress'), $widget_ops, $control_ops );
 	}
 
