@@ -34,7 +34,7 @@ class Rolo_Widget_Recent_Items extends WP_Widget {
 			$limit = '';
 
 		$recent_items = array(
-//			'type' => $type,
+			'type' => 'postbypost',
 			'limit' => $limit,
 			'format' => $format,
 			'before' => $before,
