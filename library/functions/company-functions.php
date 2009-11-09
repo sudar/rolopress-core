@@ -248,15 +248,14 @@ function rolo_setup_company_address($field_name, &$rolo_tab_index) {
 
         <div class="ctrlHolder">
             <label for="rolo_company_city"></label>
-            <input type="text" name="rolo_company_city" value="<?php echo $meta_box_value ;?>"  size="30" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput city" onChange=applet onFocus="this.value='';this.onfocus='';" />			
-			
-            <input type="text" name="rolo_company_state" value="<?php echo $meta_box_value ;?>" size="15" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput state" />
-            <input type="text" name="rolo_company_zip" value="<?php echo $meta_box_value ;?>" size="10" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput zip" />
+            <input type="text" name="rolo_company_city" value="<?php _e('City', 'rolopress') ;?>"  size="30" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput city" onChange=applet onFocus="this.value='';this.onfocus='';" />
+            <input type="text" name="rolo_company_state" value="<?php _e('State', 'rolopress') ;?>" size="15" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput state" />
+            <input type="text" name="rolo_company_zip" value="<?php echo _e('Zip', 'rolopress') ;?>" size="10" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput zip" />
         </div>
 
         <div class="ctrlHolder">
             <label for="rolo_company_country"></label>
-            <input type="text" name="rolo_company_country" value="<?php echo $meta_box_value ;?>" size="55" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput country" />
+            <input type="text" name="rolo_company_country" value="<?php _e('Country', 'rolopress') ;?>" size="55" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput country" />
         </div>
 <?php
 }
@@ -350,7 +349,6 @@ function rolo_save_company_multiple($field_name, $post_id, &$new_company) {
     $multiple_field_selects = $_POST[$multiple_field['name'] . '_select'];
 
     for ($i = 0 ; $i < count($multiple_field_values) ; $i++) {
-//        update_post_meta($post_id, 'rolo_company_' . $multiple_field['name'] . '_' . $multiple_field_selects[$i], $multiple_field_values[$i]);
         $new_company ['rolo_company_' . $multiple_field['name'] . '_' . $multiple_field_selects[$i]] = $multiple_field_values[$i];
     }
 }
