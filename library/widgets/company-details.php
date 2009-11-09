@@ -14,7 +14,7 @@ class Rolo_Widget_Company_Details extends WP_Widget {
 
 	function Rolo_Widget_Company_Details() {
 		$widget_ops = array( 'classname' => 'company-details', 'description' => __('Displays all details for your company.', 'rolopress') );
-		$control_ops = array( 'width' => 700, 'height' => 350, 'id_base' => 'rolopress-company-details' );
+		$control_ops = array( 'width' => 230, 'height' => 350, 'id_base' => 'rolopress-company-details' );
 		$this->WP_Widget( 'rolopress-company-details', __('Company Details', 'rolopress'), $widget_ops, $control_ops );
 	}
 

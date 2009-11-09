@@ -4,6 +4,7 @@
  * Handles widgets and widget areas
  *
  * Many thanks to Justin Tadlock: http://www.themehybrid.com
+ * and Ian Stewart: http://www.themeshaper.com
  *
  * @package RoloPress
  * @subpackage Widgets
@@ -19,11 +20,6 @@ add_action( 'widgets_init', 'rolopress_unregister_widgets' );
  * Register RoloPress Widgets
  */
 add_action( 'widgets_init', 'rolopress_register_widgets' );
-
-/**
- * Disables widget areas
- */
-add_filter( 'sidebars_widgets', 'remove_sidebars' );
 
 
 /* widget areas */
@@ -119,23 +115,5 @@ function is_sidebar_active( $index = 1 ) {
 	return false;
 }
 
-/**
- * Removes all widget areas on the No Widgets page template.
- * @uses sidebars_widgets Filter to remove all widget areas
- *
- * We're only going to run it on the No Widgets template. Users that 
- * need additional templates without widgets should create a simliar 
- * function in their child theme.
- *
- * We're retaining the 'sidebar' terminology until such time that the 
- * WordPress community decides on a better term.
- *
- * @since 0.5
- */
-function remove_sidebars( $sidebars_widgets ) {
-	if ( is_page_template( 'no-widgets.php' ) )
-		$sidebars_widgets = array( false );
-	return $sidebars_widgets;
-}
 
 ?>

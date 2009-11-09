@@ -15,7 +15,7 @@ class Rolo_Widget_Contact_Details extends WP_Widget {
 
 	function Rolo_Widget_Contact_Details() {
 		$widget_ops = array( 'classname' => 'contact-details', 'description' => __('Displays all details for your contact.', 'rolopress') );
-		$control_ops = array( 'width' => 700, 'height' => 350, 'id_base' => 'rolopress-contact-details' );
+		$control_ops = array( 'width' => 230, 'height' => 350, 'id_base' => 'rolopress-contact-details' );
 		$this->WP_Widget( 'rolopress-contact-details', __('Contact Details', 'rolopress'), $widget_ops, $control_ops );
 	}
 
