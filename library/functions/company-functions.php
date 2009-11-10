@@ -143,7 +143,7 @@ function _rolo_save_company_fields() {
         update_post_meta($post_id, 'rolo_company' , $new_company);
 
         // Set the custom taxonmy for the post
-        wp_set_post_terms($post_id, 'company', 'type');
+        wp_set_post_terms($post_id, 'Company', 'type');
         wp_set_post_terms($post_id, $company_name, 'company');
     } else {
 //        TODO - handle error
@@ -247,15 +247,14 @@ function rolo_setup_company_address($field_name, &$rolo_tab_index) {
         </div>
 
         <div class="ctrlHolder">
-            <label for="rolo_company_city"></label>
             <input type="text" name="rolo_company_city" value="<?php _e('City', 'rolopress') ;?>"  size="30" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput city" onChange=applet onFocus="this.value='';this.onfocus='';" />
-            <input type="text" name="rolo_company_state" value="<?php _e('State', 'rolopress') ;?>" size="15" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput state" />
-            <input type="text" name="rolo_company_zip" value="<?php echo _e('Zip', 'rolopress') ;?>" size="10" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput zip" />
+            <input type="text" name="rolo_company_state" value="<?php _e('State', 'rolopress') ;?>" size="15" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput state" onChange=applet onFocus="this.value='';this.onfocus='';" />
+            <input type="text" name="rolo_company_zip" value="<?php echo _e('Zip', 'rolopress') ;?>" size="10" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput zip" onChange=applet onFocus="this.value='';this.onfocus='';" />
         </div>
 
         <div class="ctrlHolder">
             <label for="rolo_company_country"></label>
-            <input type="text" name="rolo_company_country" value="<?php _e('Country', 'rolopress') ;?>" size="55" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput country" />
+            <input type="text" name="rolo_company_country" value="<?php _e('Country', 'rolopress') ;?>" size="55" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput country" onChange=applet onFocus="this.value='';this.onfocus='';" />
         </div>
 <?php
 }

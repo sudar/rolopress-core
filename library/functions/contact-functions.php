@@ -250,15 +250,14 @@ function rolo_setup_contact_address($field_name, &$rolo_tab_index) {
         //TODO: Set the default values in a proper way
 ?>
         <div class="ctrlHolder">
-            <label for="rolo_contact_city"></label>
-            <input type="text" name="rolo_contact_city" value="<?php _e('City', 'rolopress') ;?>" size="30" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput city" />
-            <input type="text" name="rolo_contact_state" value="<?php _e('State', 'rolopress') ;?>" size="15" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput state" />
-            <input type="text" name="rolo_contact_zip" value="<?php _e('Zip', 'rolopress') ;?>" size="10" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput zip" />
+            <input type="text" name="rolo_contact_city" value="<?php _e('City', 'rolopress') ;?>" size="30" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput city" onChange=applet onFocus="this.value='';this.onfocus='';" />
+            <input type="text" name="rolo_contact_state" value="<?php _e('State', 'rolopress') ;?>" size="15" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput state" onChange=applet onFocus="this.value='';this.onfocus='';" />
+            <input type="text" name="rolo_contact_zip" value="<?php _e('Zip', 'rolopress') ;?>" size="10" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput zip" onChange=applet onFocus="this.value='';this.onfocus='';" />
         </div>
 
         <div class="ctrlHolder">
             <label for="rolo_contact_country"></label>
-            <input type="text" name="rolo_contact_country" value="<?php _e('Country', 'rolopress') ;?>" size="55" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput country" />
+            <input type="text" name="rolo_contact_country" value="<?php _e('Country', 'rolopress') ;?>" size="55" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput country" onChange=applet onFocus="this.value='';this.onfocus='';" />
         </div>
 <?php
 }

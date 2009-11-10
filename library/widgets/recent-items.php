@@ -14,10 +14,10 @@ class Rolo_Widget_Recent_Items extends WP_Widget {
 
 	function Rolo_Widget_Recent_Items() {
 		$widget_ops = array( 'classname' => 'recent-items', 'description' => __('An advanced widget that gives you total control over the output of your recently created items.', 'rolopress') );
-		$control_ops = array( 'id_base' => 'rolopress-recent-items' );
+		$control_ops = array( 'width' => 500, 'height' => 350, 'id_base' => 'rolopress-recent-items' );
 		$this->WP_Widget( 'rolopress-recent-items', __('Recent Items'), $widget_ops, $control_ops );
 	}
-
+	
 	function widget( $args, $instance ) {
 		extract( $args );
 

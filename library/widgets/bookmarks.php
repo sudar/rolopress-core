@@ -14,7 +14,7 @@ class Rolo_Widget_Bookmarks extends WP_Widget {
 
 	function Rolo_Widget_Bookmarks() {
 		$widget_ops = array( 'classname' => 'bookmarks', 'description' => __('An advanced widget that gives you total control over the output of your bookmarks (links).', 'rolopress') );
-		$control_ops = array( 'id_base' => 'rolopress-bookmarks' );
+		$control_ops = array( 'width' => 500, 'height' => 350, 'id_base' => 'rolopress-bookmarks' );
 		$this->WP_Widget( 'rolopress-bookmarks', __('Bookmarks', 'rolopress'), $widget_ops, $control_ops );
 	}
 

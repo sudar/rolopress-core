@@ -14,7 +14,7 @@ class Rolo_Widget_Archives extends WP_Widget {
 
 	function Rolo_Widget_Archives() {
 		$widget_ops = array( 'classname' => 'archives', 'description' => __('An advanced widget that gives you total control over the output of your archives.', 'rolopress') );
-		$control_ops = array('id_base' => 'rolopress-archives' );
+		$control_ops = array('width' => 500, 'height' => 350, 'id_base' => 'rolopress-archives' );
 		$this->WP_Widget( 'rolopress-archives', __('Archives'), $widget_ops, $control_ops );
 	}
 

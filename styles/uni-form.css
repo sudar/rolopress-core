@@ -93,8 +93,9 @@
     margin-right: 10px;
 }
 .inlineLabels .city {
-    width:30%;
-    margin-right: 2%;
+	margin-left:30%;
+	margin-right:2%;
+	width:30%;
 }
 .inlineLabels .state {
     width:10%;

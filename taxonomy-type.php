@@ -28,13 +28,18 @@
 				
 				<ul class="item-list">
 
+				
+<?php if ( rolo_type_is( 'contact' ) ) query_posts('meta_key=rolo_contact_last_name&orderby=meta_value&order=ASC');?>
+<?php if ( rolo_type_is( 'company' ) ) query_posts('meta_key=rolo_company&orderby=meta_value&order=ASC');?>
+
 <?php while ( have_posts() ) : the_post(); ?>
 
 				<li id="post-<?php the_ID(); ?>" class="<?php rolopress_entry_class(); ?> menu">
 					<?php rolopress_before_entry(); // Before entry hook ?>            
 
 					<div class="entry-main group">
-                        rolo_contact-tax-type <?php rolo_contact_header(get_the_ID()); ?>
+						<?php if ( rolo_type_is( 'contact' ) ) rolo_contact_header(get_the_ID()); ?>
+						<?php if ( rolo_type_is( 'company' ) ) rolo_company_header(get_the_ID()); ?>
                     <?php wp_link_pages('before=<div class="page-link">' . __( 'Pages:', 'rolopress' ) . '&after=</div>') ?>
 					</div><!-- .entry-main -->
 

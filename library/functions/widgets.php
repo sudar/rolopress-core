@@ -50,6 +50,7 @@ function rolopress_register_widgets() {
 	require_once( TEMPLATEPATH . '/library/widgets/recent-items.php' );
 	require_once( TEMPLATEPATH . '/library/widgets/contact-details.php' );
     require_once( TEMPLATEPATH . '/library/widgets/company-details.php' );
+	require_once( TEMPLATEPATH . '/library/widgets/add-contact-form.php' );
 		
 	/* Register each widget. */
 	register_widget( 'Rolo_Widget_Archives' );
@@ -64,6 +65,7 @@ function rolopress_register_widgets() {
 	register_widget( 'Rolo_Widget_Recent_Items' );
 	register_widget( 'Rolo_Widget_Contact_Details' );
 	register_widget( 'Rolo_Widget_Company_Details' );
+	register_widget( 'Rolo_Widget_Add_Contact' );
 }
 
 /**

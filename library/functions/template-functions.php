@@ -60,7 +60,7 @@ function rolo_contact_details($contact_id) {
         <li>
             <span class="adr label group">
                 <span class="street-address" id="rolo_contact_address"><?php echo $contact['rolo_contact_address']; ?></span>
-                <span class="locality" id="rolo_contact_city"><?php echo $contact['rolo_contact_city']; ?></span>,
+                <span class="locality" id="rolo_contact_city"><?php echo $contact['rolo_contact_city']; ?></span>
                 <abbr class="region" id ="rolo_contact_state" title="<?php echo $contact['rolo_contact_state']; ?>"><?php echo $contact['rolo_contact_state']; ?></abbr>
                 <span class="postal-code" id="rolo_contact_zip" ><?php echo $contact['rolo_contact_zip']; ?></span>
                 <span class="country-name" id="rolo_contact_country" ><?php echo $contact['rolo_contact_country']; ?></span>
@@ -69,27 +69,27 @@ function rolo_contact_details($contact_id) {
         <li class="email group"><a class="email" href="mailto:<?php echo $contact['rolo_contact_email'];?>" id="rolo_contact_email"><?php echo $contact['rolo_contact_email'];?> </a></li>
         <li>
              <ul class="tel group">
-                 <li class="tel"><span class="type"><?php _e('Mobile ', 'rolopress'); ?></span>:<span class="value" id="rolo_contact_phone_Mobile"><?php echo $contact['rolo_contact_phone_Mobile']; ?></span></li>
-                 <li class="tel"><span class="type"><?php _e('Home ', 'rolopress'); ?></span>:<span class="value" id="rolo_contact_phone_Home"><?php echo $contact['rolo_contact_phone_Home']; ?></span></li>
-                 <li class="tel"><span class="type"><?php _e('Work ', 'rolopress'); ?></span>:<span class="value" id="rolo_contact_phone_Work"><?php echo $contact['rolo_contact_phone_Work']; ?></span></li>
-                <li class="tel"><span class="type"><?php _e('Fax ', 'rolopress'); ?></span>:<span class="value" id="rolo_contact_phone_Fax"><?php echo $contact['rolo_contact_phone_Fax']; ?></span></li>
-                <li class="tel"><span class="type"><?php _e('Other ', 'rolopress'); ?></span>:<span class="value" id="rolo_contact_phone_Other"><?php echo $contact['rolo_contact_phone_Other']; ?></span></li>
+                 <li class="tel"><span class="type"><?php _e('Mobile', 'rolopress'); ?></span>: <span class="value" id="rolo_contact_phone_Mobile"><?php echo $contact['rolo_contact_phone_Mobile']; ?></span></li>
+                 <li class="tel"><span class="type"><?php _e('Home', 'rolopress'); ?></span>: <span class="value" id="rolo_contact_phone_Home"><?php echo $contact['rolo_contact_phone_Home']; ?></span></li>
+                 <li class="tel"><span class="type"><?php _e('Work', 'rolopress'); ?></span>: <span class="value" id="rolo_contact_phone_Work"><?php echo $contact['rolo_contact_phone_Work']; ?></span></li>
+                <li class="tel"><span class="type"><?php _e('Fax', 'rolopress'); ?></span>: <span class="value" id="rolo_contact_phone_Fax"><?php echo $contact['rolo_contact_phone_Fax']; ?></span></li>
+                <li class="tel"><span class="type"><?php _e('Other', 'rolopress'); ?></span>: <span class="value" id="rolo_contact_phone_Other"><?php echo $contact['rolo_contact_phone_Other']; ?></span></li>
             </ul>
         </li>
 		
         <li>
             <ul class="im social group">
-                <li class="social"><span class="type"><?php _e('Yahoo ', 'rolopress'); ?></span>:<a class="yahoo" id="rolo_contact_im_Yahoo" href="ymsgr:sendIM?<?php echo $contact['rolo_contact_im_Yahoo']; ?>"><?php echo $contact['rolo_contact_im_Yahoo']; ?></a></li>
-                <li class="social"><span class="type"><?php _e('MSN ', 'rolopress'); ?></span>:<a class="msn" id ="rolo_contact_im_MSN" href="msnim:chat?contact=<?php echo $contact['rolo_contact_im_MSN']; ?>"><?php echo $contact['rolo_contact_im_MSN']; ?></a></li>
-                <li class="social"><span class="type"><?php _e('AIM ', 'rolopress'); ?></span>:<a class="aim" id="rolo_contact_im_AOL" href="aim:goIM?<?php echo $contact['rolo_contact_im_AOL']; ?>"><?php echo $contact['rolo_contact_im_AOL']; ?></a></li>
-                <li class="social"><span class="type"><?php _e('GTalk ', 'rolopress'); ?></span>:<a class="gtalk" id="rolo_contact_im_GTalk" href="gtalk:chat?jid=<?php echo $contact['rolo_contact_im_GTalk']; ?>"><?php echo $contact['rolo_contact_im_GTalk']; ?></a></li>
-                <li class="social"><span class="type"><?php _e('Skype ', 'rolopress'); ?></span>:<a class="skype" id="rolo_contact_im_Skype" href="skype:<?php echo $contact['rolo_contact_im_Skype']; ?>?chat"><?php echo $contact['rolo_contact_im_Skype']; ?></a></li>
-                <li class="social"><span class="type"><?php _e('Twitter ', 'rolopress'); ?></span>:<a class="twitter" id="rolo_contact_twitter" href="<?php echo $contact['rolo_contact_twitter']; ?>"><?php echo $contact['rolo_contact_twitter']; ?></a></li>
+                <li class="social"><span class="type"><?php _e('Yahoo', 'rolopress'); ?></span>: <a class="yahoo" id="rolo_contact_im_Yahoo" href="ymsgr:sendIM?<?php echo $contact['rolo_contact_im_Yahoo']; ?>"><?php echo $contact['rolo_contact_im_Yahoo']; ?></a></li>
+                <li class="social"><span class="type"><?php _e('MSN', 'rolopress'); ?></span>: <a class="msn" id ="rolo_contact_im_MSN" href="msnim:chat?contact=<?php echo $contact['rolo_contact_im_MSN']; ?>"><?php echo $contact['rolo_contact_im_MSN']; ?></a></li>
+                <li class="social"><span class="type"><?php _e('AIM', 'rolopress'); ?></span>: <a class="aim" id="rolo_contact_im_AOL" href="aim:goIM?<?php echo $contact['rolo_contact_im_AOL']; ?>"><?php echo $contact['rolo_contact_im_AOL']; ?></a></li>
+                <li class="social"><span class="type"><?php _e('GTalk', 'rolopress'); ?></span>: <a class="gtalk" id="rolo_contact_im_GTalk" href="gtalk:chat?jid=<?php echo $contact['rolo_contact_im_GTalk']; ?>"><?php echo $contact['rolo_contact_im_GTalk']; ?></a></li>
+                <li class="social"><span class="type"><?php _e('Skype', 'rolopress'); ?></span>: <a class="skype" id="rolo_contact_im_Skype" href="skype:<?php echo $contact['rolo_contact_im_Skype']; ?>?chat"><?php echo $contact['rolo_contact_im_Skype']; ?></a></li>
+                <li class="social"><span class="type"><?php _e('Twitter', 'rolopress'); ?></span>: <a class="twitter" id="rolo_contact_twitter" href="<?php echo $contact['rolo_contact_twitter']; ?>"><?php echo $contact['rolo_contact_twitter']; ?></a></li>
             </ul>
         </li>
 		
         <li>
-            <span class="website group"><a class="url" id="rolo_contact_website" href="<?php echo $contact['rolo_contact_website']; ?>"><?php echo $contact['rolo_contact_website']; ?></a></span>
+            <span class="website group"><span class="type"><?php _e('Website', 'rolopress'); ?></span>: <a class="url" id="rolo_contact_website" href="<?php echo $contact['rolo_contact_website']; ?>"><?php echo $contact['rolo_contact_website']; ?></a></span>
         </li>
 		
         </ul><!-- vcard -->
@@ -151,7 +151,7 @@ function rolo_company_details($company_id) {
         <li>
             <span class="adr label group">
                 <span id="rolo_company_address" class="street-address"><?php echo $company['rolo_company_address']; ?></span>
-                <span id ="rolo_company_city" class="locality"><?php echo $company['rolo_company_city']; ?></span>,
+                <span id ="rolo_company_city" class="locality"><?php echo $company['rolo_company_city']; ?></span>
                 <abbr id ="rolo_company_state" class="region" title="<?php echo $company['rolo_company_state']; ?>"><?php echo $company['rolo_company_state']; ?></abbr>
                 <span id="rolo_company_zip" class="postal-code"><?php echo $company['rolo_company_zip']; ?></span>
                 <span id="rolo_company_country" class="country-name"><?php echo $company['rolo_company_country']; ?></span>
@@ -166,27 +166,27 @@ function rolo_company_details($company_id) {
 
         <li>
              <ul class="tel group">
-                 <li class="tel"><span class="type"><?php _e('Mobile ', 'rolopress'); ?></span>:<span id="rolo_company_phone_Mobile" class="value"><?php echo $company['rolo_company_phone_Mobile']; ?></span></li>
-                <li class="tel"><span class="type"><?php _e('Home ', 'rolopress'); ?></span>:<span id="rolo_company_phone_Home" class="value"><?php echo $company['rolo_company_phone_Home']; ?></span></li>
-                <li class="tel"><span class="type"><?php _e('Work ', 'rolopress'); ?></span>:<span id="rolo_company_phone_Work" class="value"><?php echo $company['rolo_company_phone_Work']; ?></span></li>
-                <li class="tel"><span class="type"><?php _e('Fax ', 'rolopress'); ?></span>:<span id="rolo_company_phone_Fax" class="value"><?php echo $company['rolo_company_phone_Fax']; ?></span></li>
-                <li class="tel"><span class="type"><?php _e('Other ', 'rolopress'); ?></span>:<span id="rolo_company_phone_Other" class="value"><?php echo $company['rolo_company_phone_Other']; ?></span></li>
+                 <li class="tel"><span class="type"><?php _e('Mobile', 'rolopress'); ?></span>: <span id="rolo_company_phone_Mobile" class="value"><?php echo $company['rolo_company_phone_Mobile']; ?></span></li>
+                <li class="tel"><span class="type"><?php _e('Home', 'rolopress'); ?></span>: <span id="rolo_company_phone_Home" class="value"><?php echo $company['rolo_company_phone_Home']; ?></span></li>
+                <li class="tel"><span class="type"><?php _e('Work', 'rolopress'); ?></span>: <span id="rolo_company_phone_Work" class="value"><?php echo $company['rolo_company_phone_Work']; ?></span></li>
+                <li class="tel"><span class="type"><?php _e('Fax', 'rolopress'); ?></span>: <span id="rolo_company_phone_Fax" class="value"><?php echo $company['rolo_company_phone_Fax']; ?></span></li>
+                <li class="tel"><span class="type"><?php _e('Other', 'rolopress'); ?></span>: <span id="rolo_company_phone_Other" class="value"><?php echo $company['rolo_company_phone_Other']; ?></span></li>
             </ul>
 		</li>
 
         <li>
             <ul class="im social group">
-                <li class="social"><span class="type"><?php _e('Yahoo ', 'rolopress'); ?></span>:<a class="yahoo" id ="rolo_company_im_Yahoo" href="ymsgr:sendIM?<?php echo $company['rolo_company_im_Yahoo']; ?>"><?php echo $company['rolo_company_im_Yahoo']; ?></a></li>
-                <li class="social"><span class="type"><?php _e('MSN ', 'rolopress'); ?></span>:<a class="msn" id="rolo_company_im_MSN" href="msnim:chat?company=<?php echo $company['rolo_company_im_MSN']; ?>"><?php echo $company['rolo_company_im_MSN']; ?></a></li>
-                <li class="social"><span class="type"><?php _e('AIM ', 'rolopress'); ?></span>:<a class="aim" id="rolo_company_im_AOL" href="aim:goIM?<?php echo $company['rolo_company_im_AOL']; ?>"><?php echo $company['rolo_company_im_AOL']; ?></a></li>
-                <li class="social"><span class="type"><?php _e('GTalk ', 'rolopress'); ?></span>:<a class="gtalk" id="rolo_company_im_GTalk" href="gtalk:chat?jid=<?php echo $company['rolo_company_im_GTalk']; ?>"><?php echo $company['rolo_company_im_GTalk']; ?></a></li>
-                <li class="social"><span class="type"><?php _e('Skype ', 'rolopress'); ?></span>:<a class="skype" id="rolo_company_im_Skype" href="skype:<?php echo $company['rolo_company_im_Skype']; ?>?chat"><?php echo $company['rolo_company_im_Skype']; ?></a></li>
-                <li class="social"><span class="type"><?php _e('Twitter ', 'rolopress'); ?></span>:<a class="twitter" id ="rolo_company_twitter" href="<?php echo $company['rolo_company_twitter']; ?>"><?php echo $company['rolo_company_twitter']; ?></a></li>
+                <li class="social"><span class="type"><?php _e('Yahoo', 'rolopress'); ?></span>: <a class="yahoo" id ="rolo_company_im_Yahoo" href="ymsgr:sendIM?<?php echo $company['rolo_company_im_Yahoo']; ?>"><?php echo $company['rolo_company_im_Yahoo']; ?></a></li>
+                <li class="social"><span class="type"><?php _e('MSN', 'rolopress'); ?></span>: <a class="msn" id="rolo_company_im_MSN" href="msnim:chat?company=<?php echo $company['rolo_company_im_MSN']; ?>"><?php echo $company['rolo_company_im_MSN']; ?></a></li>
+                <li class="social"><span class="type"><?php _e('AIM', 'rolopress'); ?></span>: <a class="aim" id="rolo_company_im_AOL" href="aim:goIM?<?php echo $company['rolo_company_im_AOL']; ?>"><?php echo $company['rolo_company_im_AOL']; ?></a></li>
+                <li class="social"><span class="type"><?php _e('GTalk', 'rolopress'); ?></span>: <a class="gtalk" id="rolo_company_im_GTalk" href="gtalk:chat?jid=<?php echo $company['rolo_company_im_GTalk']; ?>"><?php echo $company['rolo_company_im_GTalk']; ?></a></li>
+                <li class="social"><span class="type"><?php _e('Skype', 'rolopress'); ?></span>: <a class="skype" id="rolo_company_im_Skype" href="skype:<?php echo $company['rolo_company_im_Skype']; ?>?chat"><?php echo $company['rolo_company_im_Skype']; ?></a></li>
+                <li class="social"><span class="type"><?php _e('Twitter', 'rolopress'); ?></span>: <a class="twitter" id ="rolo_company_twitter" href="<?php echo $company['rolo_company_twitter']; ?>"><?php echo $company['rolo_company_twitter']; ?></a></li>
             </ul>
         </li>
 
         <li>
-    		<span class="website group"><a class="url" id ="rolo_company_website" href="<?php echo $company['rolo_company_website']; ?>"><?php echo $company['rolo_company_website']; ?></a></span>
+    		<span class="website group"><span class="type"><?php _e('Website', 'rolopress'); ?></span>: <a class="url" id ="rolo_company_website" href="<?php echo $company['rolo_company_website']; ?>"><?php echo $company['rolo_company_website']; ?></a></span>
         </li>
     </ul><!-- vcard -->
     </form>

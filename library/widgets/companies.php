@@ -21,7 +21,7 @@ class Rolo_Widget_Companies extends WP_Widget {
 
 	function Rolo_Widget_Companies() {
 		$widget_ops = array( 'classname' => 'companies', 'description' => __('An advanced widget to create a Company list or cloud.','rolopress') );
-		$control_ops = array( 'id_base' => 'rolopress-companies' );
+		$control_ops = array( 'width' => 500, 'height' => 350, 'id_base' => 'rolopress-companies' );
 		$this->WP_Widget( 'rolopress-companies', __('Companies', 'rolopress'), $widget_ops, $control_ops );
 	}
 
