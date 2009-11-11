@@ -38,7 +38,6 @@ register_sidebar( array( 'name' => __('Company: Under Main', 'rolopress'), 'id' 
 function rolopress_register_widgets() {
 
 	/* Load each widget file. */
-	require_once( TEMPLATEPATH . '/library/widgets/archives.php' );
 	require_once( TEMPLATEPATH . '/library/widgets/owners.php' );
 	require_once( TEMPLATEPATH . '/library/widgets/bookmarks.php' );
 	require_once( TEMPLATEPATH . '/library/widgets/calendar.php' );
@@ -51,9 +50,10 @@ function rolopress_register_widgets() {
 	require_once( TEMPLATEPATH . '/library/widgets/contact-details.php' );
     require_once( TEMPLATEPATH . '/library/widgets/company-details.php' );
 	require_once( TEMPLATEPATH . '/library/widgets/add-contact-form.php' );
+	require_once( TEMPLATEPATH . '/library/widgets/add-company-form.php' );
+	require_once( TEMPLATEPATH . '/library/widgets/recent-notes.php' );
 		
 	/* Register each widget. */
-	register_widget( 'Rolo_Widget_Archives' );
 	register_widget( 'Rolo_Widget_owners' );
 	register_widget( 'Rolo_Widget_Bookmarks' );
 	register_widget( 'Rolo_Widget_Calendar' );
@@ -66,6 +66,8 @@ function rolopress_register_widgets() {
 	register_widget( 'Rolo_Widget_Contact_Details' );
 	register_widget( 'Rolo_Widget_Company_Details' );
 	register_widget( 'Rolo_Widget_Add_Contact' );
+	register_widget( 'Rolo_Widget_Add_Company' );
+	register_widget( 'Rolo_Widget_Recent_Notes' );
 }
 
 /**
@@ -82,6 +84,7 @@ function rolopress_unregister_widgets() {
 	unregister_widget( 'WP_Widget_Recent_Posts' );
 	unregister_widget( 'WP_Widget_Search' );
 	unregister_widget( 'WP_Widget_Tag_Cloud' );
+	unregister_widget( 'WP_Widget_Recent_Comments' );
 }
 
 /**

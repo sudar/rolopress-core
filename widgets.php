@@ -17,6 +17,8 @@
 			<?php rolopress_before_info(); // Before info hook ?>
 			<div id="info">		
 			
+				<h2 class="page-title"><?php the_title(); ?></h2>
+			
 				<div class="<?php rolopress_entry_class(); ?> widget-area">
 					<?php rolopress_before_entry(); // Before entry hook ?>
 					<div class="entry-main">

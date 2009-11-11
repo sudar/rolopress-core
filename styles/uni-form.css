@@ -221,12 +221,13 @@ div.focused .formHint{
 }
 
 /* Required asterisk styling, use if needed */
-label em,
-.label em{
-    display:block;
-    position:absolute; left:28%;
-    font-style:normal;
-    font-weight:bold;
+label em, .label em{
+display:block;
+float:left;
+font-style:normal;
+font-weight:bold;
+left:0;
+padding-right:1px;
 }
 .blockLabels label em,
 .blockLabels .label em{

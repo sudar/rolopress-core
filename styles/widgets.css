@@ -15,3 +15,15 @@
 #access li{
 display: inline;
 }
+
+
+/* Styles for Form Widgets */
+.widget ul.form {
+margin:0;
+}
+.widget .form .inlineLabels label, .widget .form .inlineLabels .textInput, .widget .form .inlineLabels textarea {
+width:90%;
+margin:2px 0;
+}
+.widget .form .inlineLabels .city {
+margin:0;
