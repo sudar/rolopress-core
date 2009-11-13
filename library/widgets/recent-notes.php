@@ -48,7 +48,7 @@ class Rolo_Widget_Recent_Notes extends WP_Widget {
 			echo "\n\t\t\t\t" . '<ul class="xoxo recent-notes">';
 			
 			if ( $comments ) : foreach ( (array) $comments as $comment) :
-			echo  '<li class="recentnote">' . /* translators: comments widget: 1: item title, 2: note link */ sprintf(_x('%1$s : %2$s', 'widgets'), get_the_title($comment->comment_post_ID) ,  '<a href="' . esc_url( get_comment_link($comment->comment_ID) ) . '">' . get_comment_excerpt($comment->comment_post_ID) . '</a>') . '</li><!-- .recent-note -->';
+			echo  '<li class="recentnote">' . /* translators: comments widget: 1: comment author, 2: post link */ sprintf(_x('%1$s : %2$s', 'widgets'), get_the_title($comment->comment_post_ID) ,  '<a href="' . esc_url( get_comment_link($comment->comment_ID) ) . '">' . get_comment_excerpt($comment->comment_post_ID) . '</a>') . '</li><!-- .recent-note -->';
 			endforeach; endif;
 			
 			echo "\n\t\t\t\t" . '</ul><!-- .xoxo .recent-notes -->';
