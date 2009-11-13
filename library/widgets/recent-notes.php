@@ -70,8 +70,14 @@ class Rolo_Widget_Recent_Notes extends WP_Widget {
 	}
 
 	function form( $instance ) {
+		//Defaults
+		$defaults = array( 'title' => __('Recent Notes', 'rolopress'));
+		$instance = wp_parse_args( (array) $instance, $defaults ); 
+		
 		$title = isset($instance['title']) ? esc_attr($instance['title']) : '';
 		$number = isset($instance['number']) ? absint($instance['number']) : 5;
+		
+
 ?>
 		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:'); ?></label>
 		<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" /></p>
