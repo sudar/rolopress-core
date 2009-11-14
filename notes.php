@@ -5,7 +5,7 @@
  */
  
 // Do not delete these lines
-if (!empty($_SERVER['SCRIPT_FILENAME']) && 'comments.php' == basename($_SERVER['SCRIPT_FILENAME']))
+if (!empty($_SERVER['SCRIPT_FILENAME']) && 'notes.php' == basename($_SERVER['SCRIPT_FILENAME']))
 die ('Please do not load this page directly. Thanks!');
 
 if ( post_password_required() ) { ?>
@@ -109,7 +109,7 @@ return;
 function rolopress_notes($comment, $args, $depth) {
 $GLOBALS['comment'] = $comment; ?>
 <li <?php comment_class(); ?> id="li-note-<?php comment_ID() ?>">
-<div id="comment-<?php comment_ID(); ?>">
+<div id="comment-<?php comment_ID(); ?>" class="note">
 
 <?php if ($comment->comment_approved == '0') : ?>
 <em><?php _e('Your note is awaiting moderation.') ?></em>

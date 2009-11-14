@@ -278,7 +278,8 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 				new_value	: $( "#edit-" + self.id ).attr( "value" ),
 				data		: opt.data,
 				action		: opt.action,
-				id_field	: $('#' + opt.id_field).val()
+				id_field	: $('#' + opt.id_field).val(),
+				note_id	    : $(self).parent('div').attr('id')
 			}
 
 			if( opt.form_type == 'select' ) {

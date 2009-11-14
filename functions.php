@@ -30,6 +30,8 @@ require_once( 'library/functions/contact-functions.php' );
 //load company functions
 require_once( 'library/functions/company-functions.php' );
 
+//load note functions
+require_once( 'library/functions/note-functions.php' );
 
 
 // Make theme available for translation

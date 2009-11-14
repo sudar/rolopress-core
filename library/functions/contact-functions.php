@@ -187,43 +187,6 @@ function _rolo_show_contact_notes($contact_id) {
 }
 
 /**
- * Save notes information to database
- *
- * @return int notes(comment) id
- */
-function _rolo_save_contact_notes() {
-    global $wpdb;
-
-    //TODO - Validate fields
-    //TODO - Validate that the notes field is not empty
-    //TODO - Apply a filter for notes
-
-    $notes = trim($_POST['rolo_contact_notes']);
-    $contact_id = (int) $_POST['rolo_contact_id'];
-
-    $commentdata = array();
-
-    $user = wp_get_current_user();
-    if ( $user->ID ) {
-        if ( empty( $user->display_name ) )
-            $user->display_name=$user->user_login;
-        $commentdata['comment_author'] = $wpdb->escape($user->display_name);
-        $commentdata['comment_author_url'] = $wpdb->escape($user->user_url);
-        $commentdata['comment_author_email'] = $wpdb->escape($user->user_email);
-    } else {
-        // user is not logged in
-        return false;
-    }
-
-    $commentdata['comment_post_ID'] = $contact_id;
-    $commentdata['comment_content'] = $notes;
-
-    $notes_id = wp_new_comment($commentdata);
-
-    return $notes_id;
-}
-
-/**
  * Setup field for editing address
  *
  * @global <type> $contact_fields
