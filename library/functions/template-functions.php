@@ -308,6 +308,15 @@ function _rolo_get_field($post_id, $field_name) {
     return apply_filters($contact_fields[$field_name]['filter'], $value);
 }
 
+function wt_get_ID_by_page_name($page_name)
+{
+	global $wpdb;
+	$page_name_id = $wpdb->get_var("SELECT ID FROM $wpdb->posts WHERE post_name = '".$page_name."'");
+	return $page_name_id;
+}
+
+
+
 function rolopress_default_menu() {
 			{ ?>
 			<div id="menu">
@@ -319,13 +328,10 @@ function rolopress_default_menu() {
 					</ul>
 					<ul class="menu_item menu_main">
 					<li><a title="contacts" class="contacts" href="/type/contact"><span><?php _e('Contacts ', 'rolopress'); ?></span></a></li>
-					<li><a title="add-contact" class="add-contact" href="/add-contact"><span><?php _e('Add Contact ', 'rolopress'); ?></span></a></li>
+					<?php $add_contact_page = get_page_by_title('Add Contact'); $id= $add_contact_page->ID; wp_list_pages("include=$id & title_li=");?>
 					<li><a title="companies" class="companies" href="/type/company"><span><?php _e('Companies ', 'rolopress'); ?></span></a></li>	
-					<li><a title="add-company" class="add-company" href="/add-company"><span><?php _e('Add Company ', 'rolopress'); ?></span></a></li>	
+					<?php $add_company_page = get_page_by_title('Add Company'); $id= $add_company_page->ID; wp_list_pages("include=$id & title_li=");?>
 					
-	<!-- IF WE CONVERT WP_TAG_CLOUD TO AN ARRAY CAN WE USE IT TO FORMAT THE MENU BETTER -->	
-							<!-- <?php wp_tag_cloud('taxonomy=type&smallest=12&largest=12&unit=px&format=list'); ?> -->
-
 					</ul>
 					<ul class="menu_item sub_menu alignright">
 						<li><form id="searchform" method="get" action="<?php bloginfo('home') ?>">

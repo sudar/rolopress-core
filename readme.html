@@ -1,0 +1,179 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<title>A Guide To RoloPress</title>
+<style type="text/css">
+@import url('library/styles/reset.css');
+@import url('library/styles/typography.css');
+body {
+    color:#333;
+    font: 14px "Lucida Sans Unicode", "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
+    line-height:21px;
+    margin:72px auto 53px auto;
+    width:800px;
+}
+strong, em {
+    font-family: "Lucida Sans", "Lucida Sans Unicode", "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
+}
+em.thankyou {
+    font-family:Georgia,serif;
+    font-size:18px;
+    margin-bottom:36px;
+}
+p, ul, ol, dd, pre {
+    margin-bottom:21px;
+}
+pre, code {
+	font:13px Monaco, monospace;
+	line-height:21px;
+}
+p.intro,
+p.intro em {
+    color:#111;
+    font-family:Georgia,serif;
+    font-size:24px;
+    line-height:36px;
+}
+ul {
+    list-style:square;
+    margin-right:3em;
+}
+h1 {
+    color:#111;
+    font-family:Georgia,serif;
+    font-size:36px;
+    line-height:36px;
+    margin-bottom:24px;
+}
+h2,h3,h4 {
+    color:#111;
+    font-family: "Lucida Sans", "Lucida Sans Unicode", "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
+    font-weight:bold;
+}
+h2 {
+    font-family:Georgia,serif;
+    font-size:18px;
+    letter-spacing:2px;    
+    margin-bottom:21px;
+    padding-top:21px;
+    text-transform:uppercase;
+}
+h3 {
+    color:#333;
+    font-family:Georgia,serif;
+    font-size:18px;
+    font-style:italic;
+    font-weight:normal;
+    margin-bottom:21px;
+}
+li {
+    color:#111;
+}
+li h3 {
+    color:#111;
+    font-size:14px;
+    font-family: "Lucida Sans", "Lucida Sans Unicode", "Lucida Grande", Verdana, Arial, Helvetica, sans-serif;
+    font-style:normal;
+    font-weight:bold;
+    margin:0;    
+}
+li p {
+    color:#333;
+}
+.content-column {
+    float:left;
+    margin:0 3em 0 0;
+}
+iframe {
+    border:1px solid #ccc;
+    border-top-color:#aaa;
+    margin-bottom:21px;
+}
+#ts-forums {
+	height: 300px;
+	margin-top: 10px;
+	width: 100%;
+}
+</style>
+<meta name="robots" content="index,nofollow,noodp,noydir" />
+</head>
+<body>
+<h1>A Guide To RoloPress</h1>
+<p class="intro">RoloPress is an application, built on the WordPress platform.  It uses standard WordPress features like Posts, Custom Fields and Custom Taxonomies to transform WordPress into a contact Manager. RoloPress is infinitely expandable via Themes and Plugins, so you can make RoloPress your own.</p>
+
+<h2>Installing RoloPress</h2>
+<p>RoloPress is as simple to install as any other WordPress theme.  However, since it's a theme framework (more on that later), you need to install the <strong>RoloPress Core</strong> theme, and any RoloPress child theme.  If you're reading this than you already have RoloPress Core.  <a href="http://rolopress.com/themes/rolopress-default-theme">You can download our standard RoloPress child theme here.</a>  Both themes should be placed in your wp-content/themes directory.  Just activate the child theme and you're ready to go</p>
+
+<h2>RoloPress Auto Setup</h2>
+<p>Once you activate your RoloPress child theme, a few things automatically happen:</p>
+<ol>
+<li><p>Two Pages get automatically created: "Add Company" and "Add Contact".  The proper theme template is also applied to them.  We don't recommend deleting these pages.</p></li>
+<li><p>Two Custom Taxonomies are created as well: "RoloPress Type" and "Company".  You really don't need to know what they do, because RoloPress fills them in automatically for you.</p></li>
+<li><p>A whole bunch of Custom Fields are assigned to Contacts and Companies.  Again, unless you're a developer, don't worry about it... RoloPress will take care of you.</p></li>
+<h2>What's a Theme Framework?</h2>
+RoloPress is a <em>Theme Framework</em>. Which means it's quite easy for you to modify the look and feel and still keep RoloPress future-proof so you can take advantage of cool new features we implement.  RoloPress uses the Parent/Child relationship to make this easy for you.  The RoloPress Core theme, the Parent, does all the heavy lifting and is the brains behind RoloPress.  All your cool styling changes and modifications should be made in a RoloPress Child Theme.  This way, when we introduce new RoloPress features you just overwrite your existing RoloPress Core with the new one, all your changes are safe, and you upgrade your RoloPress.  To learn more about Parent-Child Themes you may want to <a href="http://themeshaper.com/functions-php-wordpress-child-themes/">read this article.</a>
+
+<h2>Widget Areas</h2>
+<p>RoloPress has 6 widget-ready areas, that can be used creatively to customize your RoloPress.</p>
+<ol>
+<li><h3>Menu</h3>
+<p>RoloPress comes with a default Menu.  If you don't like it, it's easy to modify by dragging widgets to this area.</p></li>
+<li><h3>Primary</h3>
+<p>Usually used as a Sidebar.  If you're using a 3-column layout then it will appear on the left.  If you choose 2-columns than it occupies the top of the sidebar.</p></li>
+<li><h3>Secondary</h3>
+<p>Located immediately after Primary in the markup. Typically used as a sidebar.  If you're using a 3-column layout then it will appear on the right.  If you choose 2-columns than it will appear directly under Primary.</p></li>
+<li><h3>Widget Page</h3>
+<p>RoloPress actually includes two theme templates that can be built entirely with widgets.  One template is a full widget page with no sidebars, the other uses your standard sidebar layout.  A real cool way of using this might be to create a "Dashboard" of many widgets and make that your homepage.  To use this widget area just a create a Page like normal. Then look for the dropdown menu marked "Template" and select "Widget Page" or "Widget Page: No Sidebars".  If you want this to be your homepage, click on "Reading" under the "Settings" menu.  Under "Front Page Displays" choose "A Static Page", and select the page you created.  "Save Changes" and you're ready to go.
+<li><h3>Contact: Under Main</h3>
+<p>Located on any individual contact page, under the contact information</p></li>
+<li><h3>Company: Under Main</h3>
+<p>Located on any individual company page, under the contact information</p></li>
+</ol>
+
+<h2>Widgets</h2>
+<p>Most standard WordPress widgets don't make sense for RoloPress.  So we packed RoloPress with 8 new ones, and removed some that didn't make sense.</p>
+<ol>
+<li><h3>Add Company Form</h3>
+<p>Allows you to add a Company from the front-end of RoloPress.</p></li>
+<li><h3>Add Contact Form</h3>
+<p>Allows you to add a Contact from the front-end of RoloPress.</p></li>
+<li><h3>Companies</h3>
+<p>Lists your Companies as a cloud or a list.</p></li>
+<li><h3>Company Details</h3>
+<p>Displays the details for an individual company.  This is a <em>Smart Widget</em>, which means it only displays when it's supposed to.  A good place to place this widget is the Primary or Secondary sidebars, or Company:Under Main.  This widget will only display when you view an individual company page.</p></li>
+<li><h3>Contact Details</h3>
+<p>Displays the details for an individual contact.  This is a <em>Smart Widget</em>, which means it only displays when it's supposed to.  A good place to place this widget is the Primary or Secondary sidebars, or Contact:Under Main.  This widget will only display when you view an individual conact page.</p></li>
+<li><h3>Owners</h3>
+<p>When you create an items, or write a note, you are the owner of that item.  This widget shows all owners and links to an owners page.</p></li>
+<li><h3>Recent Items</h3>
+<p>Lists all recent items created and links to their individual pages.</p></li>
+<li><h3>Recent Notes</h3>
+<p>Displays the most recent notes entered in RoloPress, for all items.</p></li>
+</ol>
+<h2>Dynamic Contextual Body Classes</h2>
+<p>RoloPress makes use of the dynamic contextual class functions developed by Scott Wallick and Andy Skelton for <a href="http://www.plaintxt.org/themes/sandbox/">The Sandbox</a>, with some additions developed by Justin Tadlock for <a href="http://www.themehybrid.com">The Hybrid Theme</a>. These functions make RoloPress almost endlessley customizable through <abbr title="Cascading Stylesheets">CSS</abbr> alone.</p>
+<p>To really see how these classes work, where they appear and how you can use them, I recommend the Firefox extension, <a href="http://www.getfirebug.com/">Firebug</a>.</p>
+<h2>RoloPress Support</h2>
+<p>If you have a question, problem or suggestion for RoloPress please use <a href="http://rolopress.com/forums/">our Forums.</a></p>
+<p>The latest RoloPress version, updates and bug fixes are always available at the <a href="http://code.google.com/p/rolopress/">RoloPress Project on Google Code</a>.</p>
+
+<h2>Credit and Inspiration</h2>
+<p>A special thanks goes out to those who helped and inspired us, directly or indirectly:</p>
+<ul>
+    <li><a href="http://www.plaintxt.org/themes/sandbox/">Sandbox Theme</a> (of course)</li>
+    <li><a href="http://justintadlock.com/">Justin Tadlock</a></li>
+    <li><a href="http://themeshaper/">Ian Stewart</a></li>
+	<li><a href="http://artisanthemes.com/themes/wp-contact-manager/">Artisan Themes</a></li>
+	
+	
+</ul>
+
+<h2>Copyright &amp; License</h2>
+<p>RoloPress is copyright <a href="http://slipfire.com/">SlipFire LLC</a> and <a href="http://www.sudarmuthu.com">Sudar Muthu</a>, released, like WordPress, under <a href="http://www.gnu.org/licenses/old-licenses/gpl-2.0.html">GNU General Public License, version 2 (GPL)</a>.
+<p>RoloPress has a credit link in the footer template. You may remove or edit this link without cost or concern—although it sure is appreciated if you link back to <a href="http://rolopress.com/">RoloPress.com</a>, in some way.</p>
+
+<p><em class="thankyou">Thank you</em>.</p>
+
+</body>
+</html>
