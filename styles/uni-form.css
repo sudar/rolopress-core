@@ -331,3 +331,7 @@ acronym{
 #errorMsg {
     display:none
 }
+
+.jeip-mouseover {
+    background:url(../img/forms/edit.png) no-repeat right;
+}
