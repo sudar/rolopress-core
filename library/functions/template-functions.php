@@ -25,7 +25,7 @@ function rolo_contact_header($contact_id) {
 				<span class="title" id="rolo_contact_title"><?php echo $contact['rolo_contact_title'];?></span>
 				<span class="org"><?php echo get_the_term_list($contact_id, 'company', __('')); ?></span>
             </li>
-			 <li class="email url-field"><a class="email" href="mailto:<?php echo $contact['rolo_contact_email'];?>" id="rolo_contact_email"><?php echo $contact['rolo_contact_email'];?> </a><span id="rolo_contact_email" class="edit-icon" style=""><?php echo $contact['rolo_contact_email']; ?></span></li>
+			 <li class="email url-field"><a class="email" href="mailto:<?php echo $contact['rolo_contact_email'];?>"><?php echo $contact['rolo_contact_email'];?> </a><span id="rolo_contact_email" class="edit-icon" style=""><?php echo $contact['rolo_contact_email']; ?></span></li>
     </ul><!-- vcard -->
 
 <?php
@@ -61,7 +61,7 @@ function rolo_contact_details($contact_id) {
                 <span class="postal-code" id="rolo_contact_zip" ><?php echo $contact['rolo_contact_zip']; ?></span>
                 <span class="country-name" id="rolo_contact_country" ><?php echo $contact['rolo_contact_country']; ?></span>
 		</li>
-        <li class="email url-field group"><a class="email" href="mailto:<?php echo $contact['rolo_contact_email'];?>" id="rolo_contact_email"><?php echo $contact['rolo_contact_email'];?> </a><span id="rolo_contact_email" class="edit-icon" style=""><?php echo $contact['rolo_contact_email']; ?></span></li>
+        <li class="email url-field group"><a class="email" href="mailto:<?php echo $contact['rolo_contact_email'];?>"><?php echo $contact['rolo_contact_email'];?> </a><span id="rolo_contact_email" class="edit-icon" style=""><?php echo $contact['rolo_contact_email']; ?></span></li>
         <li>
              <ul class="tel group">
                  <li class="tel tel-mobile"><span class="type"><?php _e('Mobile', 'rolopress'); ?></span>: <span class="value" id="rolo_contact_phone_Mobile"><?php echo $contact['rolo_contact_phone_Mobile']; ?></span></li>
@@ -118,7 +118,7 @@ function rolo_company_header($company_id) {
 
 			<li class="fn"><a href="<?php the_permalink();?>"><?php echo $company['rolo_company_name'];?></li></a>
 		
-			<li class="email url-field"><a class="email" href="mailto:<?php echo $company['rolo_company_email'];?>" id="rolo_company_email"><?php echo $company['rolo_company_email'];?> </a><span id="rolo_company_email" class="edit-icon" style=""><?php echo $company['rolo_company_email']; ?></span></li>
+			<li class="email url-field"><a class="email" href="mailto:<?php echo $company['rolo_company_email'];?>"><?php echo $company['rolo_company_email'];?> </a><span id="rolo_company_email" class="edit-icon" style=""><?php echo $company['rolo_company_email']; ?></span></li>
 		
             <li class="website url-field group"><span class="type"><?php _e('Website', 'rolopress'); ?></span> <a class="url" href="<?php echo $company['rolo_company_website']; ?>"><?php echo $company['rolo_company_website']; ?></a><span id="rolo_company_website" class="edit-icon" style=""><?php echo $company['rolo_company_website']; ?></li>
 
@@ -161,7 +161,7 @@ function rolo_company_details($company_id) {
     		<a class="map" id ="rolo_company_address" href="http://maps.google.com/maps?f=q&hl=en&geocode=&q= <?php echo $company['rolo_company_address'];?> + <?php echo $company['rolo_company_city'];?> + <?php echo $company['rolo_company_state'];?> + <?php echo $company['rolo_company_zip'];?> + <?php echo $company['rolo_company_country']; ?> &ie=UTF8&iwloc=addr" target="_blank"><span>Map</span></a>
 		</li>
 	
-        <li class="email url-field"><a class="email" href="mailto:<?php echo $company['rolo_company_email'];?>" id="rolo_company_email"><?php echo $company['rolo_company_email'];?> </a><span id="rolo_company_email" class="edit-icon" style=""><?php echo $company['rolo_company_email']; ?></span></li>
+        <li class="email url-field"><a class="email" href="mailto:<?php echo $company['rolo_company_email'];?>"><?php echo $company['rolo_company_email'];?> </a><span id="rolo_company_email" class="edit-icon" style=""><?php echo $company['rolo_company_email']; ?></span></li>
 
         <li>
              <ul class="tel group">
