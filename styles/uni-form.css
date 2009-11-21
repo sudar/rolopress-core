@@ -334,4 +334,20 @@ acronym{
 
 .jeip-mouseover {
     background:url(../img/forms/edit.png) no-repeat right;
+	padding-right:20px;
+}
+span.edit-icon {
+	display:inline;
+	float:right;
+	height:16px;
+	text-indent:-9999px;
+	width:16px;
+}
+li.url-field:hover .edit-icon {
+	display:inline-block;
+	background:transparent url(../img/forms/edit.png) no-repeat right center;
+	padding-right:0;
+}
+.jeip-editfield {
+	width:90%;
 }

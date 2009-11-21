@@ -110,8 +110,9 @@ array
     'name' => 'twitter',
     'class' => 'twitter',
     'filter' => "rolo_contact_twitter",
-    'default_value' => "http://twitter.com/",
+    'default_value' => '',
     'title' => "Twitter",
+	'url_preface' => "http://twitter.com/",
     'description' => ''
     ),
     "address" =>
