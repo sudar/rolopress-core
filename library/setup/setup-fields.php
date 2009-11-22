@@ -169,7 +169,7 @@ array
     "phone" =>
     array
     (
-    'multiple' => array ('Home', 'Mobile', 'Work', 'Fax', 'Other'),
+    'multiple' => array ('Work', 'Mobile', 'Fax', 'Other'),
     'name' => 'phone',
     'class' => 'phone',
     'filter' => "rolo_company_phone_",
