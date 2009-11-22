@@ -144,6 +144,7 @@ function rolo_company_details($company_id) {
 //    print_r($company);
 ?>
     <form id="company-form">
+        <input type="hidden" name="rolo_company_id" id="rolo_company_id" value ="<?php echo $company_id;?>" />
         <ul id="hcard-<?php echo basename(get_permalink());?>" class="vcard">
 
         <li class="fn"><a href="<?php the_permalink();?>"><?php echo $company['rolo_company_name'];?></li></a>
