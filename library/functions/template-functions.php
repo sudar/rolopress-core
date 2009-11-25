@@ -171,15 +171,15 @@ function rolo_company_details($company_id) {
 					</a>
 			</li>	
 			
-        <li>
-            <span class="adr label group">
-                <span id="rolo_company_address" class="street-address"><?php echo $company['rolo_company_address']; ?></span>
-                <span id ="rolo_company_city" class="locality"><?php echo $company['rolo_company_city']; ?></span>
-                <abbr id ="rolo_company_state" class="region" title="<?php echo $company['rolo_company_state']; ?>"><?php echo $company['rolo_company_state']; ?></abbr>
-                <span id="rolo_company_zip" class="postal-code"><?php echo $company['rolo_company_zip']; ?></span>
-                <span id="rolo_company_country" class="country-name"><?php echo $company['rolo_company_country']; ?></span>
-            </span>
-		</li>
+			<ul class="adr map label"><span class="type"><?php _e('Map', 'rolopress'); ?></span><a class="url" href="http://maps.google.com/maps?f=q&source=s_q&geocode=&q=<?php echo $company['rolo_company_address'] . "+" . $company['rolo_company_city']  . "+" . $company['rolo_company_state']  . "+" . $company['rolo_company_zip']  . "+" . $company['rolo_company_country'];?> ">Map</a>
+				<li class="adr group">
+                <span class="street-address" id="rolo_company_address"><?php echo $company['rolo_company_address']; ?></span>
+                <span class="locality" id="rolo_company_city"><?php echo $company['rolo_company_city']; ?></span>
+                <abbr class="region" id ="rolo_company_state" title="<?php echo $company['rolo_company_state']; ?>"><?php echo $company['rolo_company_state']; ?></abbr>
+                <span class="postal-code" id="rolo_company_zip" ><?php echo $company['rolo_company_zip']; ?></span>
+                <span class="country-name" id="rolo_company_country" ><?php echo $company['rolo_company_country']; ?></span>
+				</li>
+			</ul>
 
         <li>
     		<a class="map" id ="rolo_company_address" href="http://maps.google.com/maps?f=q&hl=en&geocode=&q= <?php echo $company['rolo_company_address'];?> + <?php echo $company['rolo_company_city'];?> + <?php echo $company['rolo_company_state'];?> + <?php echo $company['rolo_company_zip'];?> + <?php echo $company['rolo_company_country']; ?> &ie=UTF8&iwloc=addr" target="_blank"><span>Map</span></a>
