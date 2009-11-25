@@ -23,14 +23,14 @@
 			<div id="info">		
             
                 <h2 class="page-title">
-                    <?php $term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) ); echo $term->name; echo " tax-type List"; ?>
+                    <?php $term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) ); echo $term->name; echo " List"; ?>
                 </h2>
 				
 				<ul class="item-list">
 
 				
 <?php if ( rolo_type_is( 'contact' ) ) query_posts('meta_key=rolo_contact_last_name&orderby=meta_value&order=ASC');?>
-<?php if ( rolo_type_is( 'company' ) ) query_posts('meta_key=rolo_company&orderby=meta_value&order=ASC');?>
+<?php if ( rolo_type_is( 'company' ) ) query_posts('meta_key=rolo_company&orderby=title&order=ASC');?>
 
 <?php while ( have_posts() ) : the_post(); ?>
 

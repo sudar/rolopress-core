@@ -23,7 +23,7 @@
 			<div id="info">		
             
                 <h2 class="page-title">
-                    <?php $term; $term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) ); echo $term->name; echo " tax List"; ?>
+                    <?php $term; $term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) ); echo $term->name; echo " List"; ?>
                 </h2>
 				
 				<ul class="item-list">
