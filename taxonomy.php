@@ -23,11 +23,11 @@
 			<div id="info">		
             
                 <h2 class="page-title">
-                    <?php $term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) ); echo $term->name; echo " List"; ?>
+                    <?php $term; $term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) ); echo $term->name; echo " tax List"; ?>
                 </h2>
 				
 				<ul class="item-list">
-
+	
 				<?php while ( have_posts() ) : the_post(); ?>
 
 				<li id="post-<?php the_ID(); ?>" class="<?php rolopress_entry_class(); ?>">
@@ -63,7 +63,7 @@
      			<?php rolopress_after_entry(); // After entry hook ?>
 				</li><!-- #post-<?php the_ID(); ?> -->
 
-<?php endwhile; ?>		
+<?php endwhile; ?>	
 			
 				</ul><!-- item-list-->
 

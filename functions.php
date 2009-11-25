@@ -6,6 +6,9 @@ require_once( 'library/functions/admin.php' );
 //load RoloSearch
 require_once( 'library/extensions/rolosearch/rolosearch.php' );
 
+//load Multiple Taxonomy Query
+require_once( 'library/extensions/query-multiple-taxonomies/query-multiple-taxonomies.php' );
+
 //Auto create pages
 require_once( 'library/setup/add-pages.php' );
 
