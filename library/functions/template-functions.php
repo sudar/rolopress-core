@@ -2,7 +2,7 @@
 /**
  * Contains all the template functions used in theme
  */
-
+  
 /**
  * Print summary information about contact
  * @param <type> $contact_id
@@ -113,13 +113,23 @@ function rolo_company_header($company_id) {
 
     $company = get_post_meta($company_id, 'rolo_company');
     $company = $company[0];
+	$post_id = get_post($post->ID); // get current company id
+    $slug = $post_id->post_name; // define slug as $slug
+
 ?>
 
 <ul id="hcard-<?php echo basename(get_permalink());?>" class="item-header">
 
 			<?php echo get_avatar (($company['rolo_company_email']),96,get_bloginfo('template_url') . "/img/icons/rolo-company.jpg");?>
 
-			<li class="fn"><a href="<?php the_permalink();?>"><?php echo $company['rolo_company_name'];?></li></a>
+			<li class="fn">
+				<?php if (is_single()) : // show proper links on single or archive company pages ?>
+					<a href="<?php get_bloginfo('url');?>/company/<?php echo $slug; ?>"><?php echo $company['rolo_company_name'];?>
+				<?php else: ?>
+					<a href="<?php the_permalink();?>"><?php echo $company['rolo_company_name'];?>			
+				<?php endif;?>
+					</a>
+			</li>	
 		
 			<li class="email url-field"><a class="email" href="mailto:<?php echo $company['rolo_company_email'];?>"><?php echo $company['rolo_company_email'];?> </a><span id="rolo_company_email" class="edit-icon" style=""><?php echo $company['rolo_company_email']; ?></span></li>
 		
@@ -144,13 +154,23 @@ function rolo_company_details($company_id) {
 
     $company = get_post_meta($company_id, 'rolo_company');
     $company = $company[0];
+	$post_id = get_post($post->ID); // get current company id
+    $slug = $post_id->post_name; // define slug as $slug
 //    print_r($company);
 ?>
     <form id="company-form">
         <input type="hidden" name="rolo_company_id" id="rolo_company_id" value ="<?php echo $company_id;?>" />
         <ul id="hcard-<?php echo basename(get_permalink());?>" class="vcard">
 
-        <li class="fn"><a href="<?php the_permalink();?>"><?php echo $company['rolo_company_name'];?></li></a>
+        <li class="fn">
+				<?php if (is_single()) : // show proper links on single or archive company pages ?>
+					<a href="<?php get_bloginfo('url');?>/company/<?php echo $slug; ?>"><?php echo $company['rolo_company_name'];?>
+				<?php else: ?>
+					<a href="<?php the_permalink();?>"><?php echo $company['rolo_company_name'];?>			
+				<?php endif;?>
+					</a>
+			</li>	
+			
         <li>
             <span class="adr label group">
                 <span id="rolo_company_address" class="street-address"><?php echo $company['rolo_company_address']; ?></span>
