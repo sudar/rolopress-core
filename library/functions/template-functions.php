@@ -181,10 +181,6 @@ function rolo_company_details($company_id) {
 				</li>
 			</ul>
 
-        <li>
-    		<a class="map" id ="rolo_company_address" href="http://maps.google.com/maps?f=q&hl=en&geocode=&q= <?php echo $company['rolo_company_address'];?> + <?php echo $company['rolo_company_city'];?> + <?php echo $company['rolo_company_state'];?> + <?php echo $company['rolo_company_zip'];?> + <?php echo $company['rolo_company_country']; ?> &ie=UTF8&iwloc=addr" target="_blank"><span>Map</span></a>
-		</li>
-	
         <li class="email url-field"><a class="email" href="mailto:<?php echo $company['rolo_company_email'];?>"><?php echo $company['rolo_company_email'];?> </a><span id="rolo_company_email" class="edit-icon" style=""><?php echo $company['rolo_company_email']; ?></span></li>
 
         <li>
