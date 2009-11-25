@@ -43,53 +43,12 @@ $locale_file = TEMPLATEPATH . "/languages/$locale.php";
 if ( is_readable($locale_file) )
     require_once($locale_file);
 
-// Get the page number
-function get_page_number() {
-    if (get_query_var('paged')) {
-        print ' | ' . __( 'Page ' , 'rolopress') . get_query_var('paged');
-    }
-} // end get_page_number
 
-// For category lists on category archives: Returns other categories except the current one (redundant)
-function cats_meow($glue) {
-    $current_cat = single_cat_title( '', false );
-    $separator = "\n";
-    $cats = explode( $separator, get_the_category_list($separator) );
-    foreach ( $cats as $i => $str ) {
-        if ( strstr( $str, ">$current_cat<" ) ) {
-            unset($cats[$i]);
-            break;
-        }
-    }
-    if ( empty($cats) )
-        return false;
-
-    return trim(join( $glue, $cats ));
-} // end cats_meow
-
-// For tag lists on tag archives: Returns other tags except the current one (redundant)
-function tag_ur_it($glue) {
-    $current_tag = single_tag_title( '', '',  false );
-    $separator = "\n";
-    $tags = explode( $separator, get_the_tag_list( "", "$separator", "" ) );
-    foreach ( $tags as $i => $str ) {
-        if ( strstr( $str, ">$current_tag<" ) ) {
-            unset($tags[$i]);
-            break;
-        }
-    }
-    if ( empty($tags) )
-        return false;
-
-    return trim(join( $glue, $tags ));
-} // end tag_ur_it
-
-add_action('template_redirect', 'rolo_add_script');
 
 /**
- * Add JavaScript to the theme on needed pages
+ * Add JavaScript to the theme on needed pages and only if user has proper permissions
  */
-function rolo_add_script() {
+	function rolo_add_script() {
     //TODO: Need to include JS only in required pages.
     
 //    if (is_page(array('Add Contact','Add Company', 'Edit Company', 'Edit Contact'))) {
@@ -99,7 +58,10 @@ function rolo_add_script() {
         wp_enqueue_script( 'suggest' );
 //    }
     wp_enqueue_script( 'jeip', get_bloginfo('template_directory') . '/js/jeip.js', array('jquery'), '', true );
-}
+	}
+	
+if ( current_user_can('edit_posts') ) { add_action('template_redirect', 'rolo_add_script'); } // only load if user has proper permissions 
+
 
 // This is a dirty way to get the path in js. TODO: need to have a proper way to fix it.
 add_action('wp_footer', 'rolo_print_script');

@@ -40,7 +40,8 @@
 					<div class="entry-main group">
 						<?php if ( rolo_type_is( 'contact' ) ) rolo_contact_header(get_the_ID()); ?>
 						<?php if ( rolo_type_is( 'company' ) ) rolo_company_header(get_the_ID()); ?>
-                    <?php wp_link_pages('before=<div class="page-link">' . __( 'Pages:', 'rolopress' ) . '&after=</div>') ?>
+						
+						<?php wp_link_pages('before=<div class="page-link">' . __( 'Pages:', 'rolopress' ) . '&after=</div>') ?>
 					</div><!-- .entry-main -->
 
 					<div class="entry-meta">

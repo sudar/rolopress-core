@@ -21,7 +21,7 @@ class Rolo_Widget_Contact_Details extends WP_Widget {
 
 
 	function widget( $args, $instance ) {
-	if (is_single() && (rolo_type_is ('contact'))) { // only display when viewing contact page
+		if (is_single() && (rolo_type_is ('contact'))) { // only display when viewing contact page
 		extract( $args );
 		$title = apply_filters('widget_title', $instance['title'] );
 		echo $before_widget;

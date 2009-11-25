@@ -20,8 +20,11 @@
 
             <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
                 <div class="entry-main">
-
-                    <?php rolo_add_company();?>
+						<?php if ( current_user_can('publish_posts') ) { // only display if user has proper permissions
+							rolo_add_company();
+							} else {
+							 _e('Sorry, you don\'t have permission to view this page.');
+							};?>
 
                 </div><!-- .entry-main -->
             </div><!-- #post-<?php the_ID(); ?> -->

@@ -23,7 +23,7 @@ function rolo_contact_header($contact_id) {
 			<li class="fn"><a href="<?php the_permalink();?>"><?php echo $contact['rolo_contact_first_name'] . ' ' . $contact['rolo_contact_last_name'];?></a></li>
 			<li>
 				<span class="title" id="rolo_contact_title"><?php echo $contact['rolo_contact_title'];?></span>
-				<span class="org"><?php echo get_the_term_list($contact_id, 'company', __('')); ?></span>
+				<span class="org"><?php echo get_the_term_list($contact_id, 'company', __('')); ?></span>		
             </li>
 			 <li class="email url-field"><a class="email" href="mailto:<?php echo $contact['rolo_contact_email'];?>"><?php echo $contact['rolo_contact_email'];?> </a><span id="rolo_contact_email" class="edit-icon" style=""><?php echo $contact['rolo_contact_email']; ?></span></li>
     </ul><!-- vcard -->
@@ -54,13 +54,16 @@ function rolo_contact_details($contact_id) {
 			<li class="fn"><?php echo $contact['rolo_contact_first_name'] . ' ' . $contact['rolo_contact_last_name'];?></li>
             <li class="title" id="rolo_contact_title"><?php echo $contact['rolo_contact_title'];?></li>
 			<li class="org"><span class="value"><?php echo get_the_term_list($contact_id, 'company'); ?></span></li>
-        <li class="adr label group">
+				
+			<ul class="adr map label"><span class="type"><?php _e('Map', 'rolopress'); ?></span><a class="url" href="http://maps.google.com/maps?f=q&source=s_q&geocode=&q=<?php echo $contact['rolo_contact_address'] . "+" . $contact['rolo_contact_city']  . "+" . $contact['rolo_contact_state']  . "+" . $contact['rolo_contact_zip']  . "+" . $contact['rolo_contact_country'];?> ">Map</a>
+				<li class="adr group">
                 <span class="street-address" id="rolo_contact_address"><?php echo $contact['rolo_contact_address']; ?></span>
                 <span class="locality" id="rolo_contact_city"><?php echo $contact['rolo_contact_city']; ?></span>
                 <abbr class="region" id ="rolo_contact_state" title="<?php echo $contact['rolo_contact_state']; ?>"><?php echo $contact['rolo_contact_state']; ?></abbr>
                 <span class="postal-code" id="rolo_contact_zip" ><?php echo $contact['rolo_contact_zip']; ?></span>
                 <span class="country-name" id="rolo_contact_country" ><?php echo $contact['rolo_contact_country']; ?></span>
-		</li>
+				</li>
+			</ul>
         <li class="email url-field group"><a class="email" href="mailto:<?php echo $contact['rolo_contact_email'];?>"><?php echo $contact['rolo_contact_email'];?> </a><span id="rolo_contact_email" class="edit-icon" style=""><?php echo $contact['rolo_contact_email']; ?></span></li>
         <li>
              <ul class="tel group">
@@ -87,9 +90,9 @@ function rolo_contact_details($contact_id) {
             </ul>
         </li>
 		
-        <li>
-            <li class="website url-field group"><span class="type"><?php _e('Website', 'rolopress'); ?></span> <a class="url" href="<?php echo $contact['rolo_contact_website']; ?>"><?php echo $contact['rolo_contact_website']; ?></a><span id="rolo_contact_website" class="edit-icon" style=""><?php echo $contact['rolo_contact_website']; ?></li>
-        </li>
+            <li class="website url-field group"><span class="type"><?php _e('Website', 'rolopress'); ?></span><a class="url" href="<?php echo $contact['rolo_contact_website']; ?>"><?php echo $contact['rolo_contact_website']; ?></a><span id="rolo_contact_website" class="edit-icon" style=""><?php echo $contact['rolo_contact_website']; ?></span>
+			</li>
+
 		
         </ul><!-- vcard -->
     </form>
@@ -120,7 +123,7 @@ function rolo_company_header($company_id) {
 		
 			<li class="email url-field"><a class="email" href="mailto:<?php echo $company['rolo_company_email'];?>"><?php echo $company['rolo_company_email'];?> </a><span id="rolo_company_email" class="edit-icon" style=""><?php echo $company['rolo_company_email']; ?></span></li>
 		
-            <li class="website url-field group"><span class="type"><?php _e('Website', 'rolopress'); ?></span> <a class="url" href="<?php echo $company['rolo_company_website']; ?>"><?php echo $company['rolo_company_website']; ?></a><span id="rolo_company_website" class="edit-icon" style=""><?php echo $company['rolo_company_website']; ?></li>
+            <li class="website url-field group"><span class="type"><?php _e('Website', 'rolopress'); ?></span> <a class="url" href="<?php echo $company['rolo_company_website']; ?>"><?php echo $company['rolo_company_website']; ?></a><span id="rolo_company_website" class="edit-icon" style=""><?php echo $company['rolo_company_website']; ?></span></li>
 
 </ul><!-- vcard -->
 
@@ -188,9 +191,9 @@ function rolo_company_details($company_id) {
             </ul>
         </li>
 
-        <li>
-    		<li class="website url-field group"><span class="type"><?php _e('Website', 'rolopress'); ?></span> <a class="url" href="<?php echo $company['rolo_company_website']; ?>"><?php echo $company['rolo_company_website']; ?></a><span id="rolo_company_website" class="edit-icon" style=""><?php echo $company['rolo_company_website']; ?></li>
-        </li>
+    		<li class="website url-field group"><span class="type"><?php _e('Website', 'rolopress'); ?></span> <a class="url" href="<?php echo $company['rolo_company_website']; ?>"><?php echo $company['rolo_company_website']; ?></a><span id="rolo_company_website" class="edit-icon" style=""><?php echo $company['rolo_company_website']; ?></span>
+			</li>
+
     </ul><!-- vcard -->
     </form>
 <?php
@@ -331,9 +334,11 @@ function rolopress_default_menu() {
 					</ul>
 					<ul class="menu_item menu_main">
 					<li><a title="contacts" class="contacts" href="/type/contact"><span><?php _e('Contacts ', 'rolopress'); ?></span></a></li>
-					<?php $add_contact_page = get_page_by_title('Add Contact'); $id= $add_contact_page->ID; wp_list_pages("include=$id & title_li=");?>
+					<?php if ( current_user_can('publish_posts') ) { // only display if user has proper permissions
+						$add_contact_page = get_page_by_title('Add Contact'); $id= $add_contact_page->ID; wp_list_pages("include=$id & title_li=");};?>
 					<li><a title="companies" class="companies" href="/type/company"><span><?php _e('Companies ', 'rolopress'); ?></span></a></li>	
-					<?php $add_company_page = get_page_by_title('Add Company'); $id= $add_company_page->ID; wp_list_pages("include=$id & title_li=");?>
+					<?php if ( current_user_can('publish_posts') ) { // only display if user has proper permissions
+						$add_company_page = get_page_by_title('Add Company'); $id= $add_company_page->ID; wp_list_pages("include=$id & title_li=");};?>
 					
 					</ul>
 					<ul class="menu_item sub_menu alignright">
@@ -452,6 +457,48 @@ function rolo_type_is( $type, $_post = null ) {
 
 	return $r;
 }
+
+// Get the page number
+function get_page_number() {
+    if (get_query_var('paged')) {
+        print ' | ' . __( 'Page ' , 'rolopress') . get_query_var('paged');
+    }
+} // end get_page_number
+
+// For category lists on category archives: Returns other categories except the current one (redundant)
+function cats_meow($glue) {
+    $current_cat = single_cat_title( '', false );
+    $separator = "\n";
+    $cats = explode( $separator, get_the_category_list($separator) );
+    foreach ( $cats as $i => $str ) {
+        if ( strstr( $str, ">$current_cat<" ) ) {
+            unset($cats[$i]);
+            break;
+        }
+    }
+    if ( empty($cats) )
+        return false;
+
+    return trim(join( $glue, $cats ));
+} // end cats_meow
+
+// For tag lists on tag archives: Returns other tags except the current one (redundant)
+function tag_ur_it($glue) {
+    $current_tag = single_tag_title( '', '',  false );
+    $separator = "\n";
+    $tags = explode( $separator, get_the_tag_list( "", "$separator", "" ) );
+    foreach ( $tags as $i => $str ) {
+        if ( strstr( $str, ">$current_tag<" ) ) {
+            unset($tags[$i]);
+            break;
+        }
+    }
+    if ( empty($tags) )
+        return false;
+
+    return trim(join( $glue, $tags ));
+} // end tag_ur_it
+
 
 
 ?>

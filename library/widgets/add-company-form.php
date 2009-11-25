@@ -21,6 +21,7 @@ class Rolo_Widget_Add_company extends WP_Widget {
 
 
 	function widget( $args, $instance ) {
+	if ( current_user_can('publish_posts') ) { // only display if user has proper permissions
 		extract( $args );
 		$title = apply_filters('widget_title', $instance['title'] );
 		echo $before_widget;
@@ -32,6 +33,7 @@ class Rolo_Widget_Add_company extends WP_Widget {
 			echo "\n\t\t\t\t" . '</ul><!-- .xoxo .add-company-form -->';
 
 		echo $after_widget;
+	}
 }
 
 	function update( $new_instance, $old_instance ) {

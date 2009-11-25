@@ -27,7 +27,8 @@
                 </h2>
 				
 				<ul class="item-list">
-<?php while ( have_posts() ) : the_post(); ?>
+
+				<?php while ( have_posts() ) : the_post(); ?>
 
 				<li id="post-<?php the_ID(); ?>" class="<?php rolopress_entry_class(); ?>">
 					<?php rolopress_before_entry(); // Before entry hook ?>     	
@@ -35,7 +36,7 @@
 					<div class="entry-main group">
 					<?php if ( rolo_type_is( 'contact' ) ) rolo_contact_header(get_the_ID()); ?>
 					<?php if ( rolo_type_is( 'company' ) ) rolo_company_header(get_the_ID()); ?>						
-                        <!-- rolo_contact-tax <?php rolo_contact_header(get_the_ID()); ?>  -->
+
                     <?php wp_link_pages('before=<div class="page-link">' . __( 'Pages:', 'rolopress' ) . '&after=</div>') ?>
 					</div><!-- .entry-main -->
 

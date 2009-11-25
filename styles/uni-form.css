@@ -332,7 +332,7 @@ acronym{
     display:none
 }
 
-.jeip-mouseover {
+.can-edit-items .jeip-mouseover {
     background:url(../img/forms/edit.png) no-repeat right;
 	padding-right:20px;
 }
@@ -343,7 +343,7 @@ span.edit-icon {
 	text-indent:-9999px;
 	width:16px;
 }
-li.url-field:hover .edit-icon {
+.can-edit-items li.url-field:hover .edit-icon {
 	display:inline-block;
 	background:transparent url(../img/forms/edit.png) no-repeat right center;
 	padding-right:0;
