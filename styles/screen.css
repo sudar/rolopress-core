@@ -9,6 +9,13 @@ body {
 li {
 list-style:none;
 }
+.error {
+text-align:center;
+background:yellow;
+margin:0;
+padding:1em;
+font-weight:bold;
+}
 
 /* =Header
 -------------------------------------------------------------- */

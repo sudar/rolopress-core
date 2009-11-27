@@ -339,6 +339,17 @@ function wt_get_ID_by_page_name($page_name)
 
 
 
+function rolopress_js_disabled() {
+		{ ?>
+		<noscript>
+		<p class="error">JavaScript is disabled.  For RoloPress to work properly, <a href="http://rolopress.com/forums/topic/inline-editing-not-working">please enable JavaScript.</a></p>
+		</noscript>
+		<?php }
+}
+add_action('rolopress_before_wrapper', 'rolopress_js_disabled');
+
+
+
 function rolopress_default_menu() {
 			{ ?>
 			<div id="menu">
