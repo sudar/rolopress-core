@@ -25,7 +25,7 @@
 						<?php if ( rolo_type_is( 'company' ) ) { rolo_company_header(get_the_ID());		
 							if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar("company-under-main") ); } ?>	
 
-						<?php the_content(); ?>							
+						<?php the_content(); ?>	
                  	
 					</div><!-- .entry-main -->
 					<div class="entry-utility group">

@@ -87,9 +87,10 @@ array
     'name' => 'website',
     'class' => 'website',
     'filter' => "rolo_contact_website",
-    'default_value' => "http://",
+    'default_value' => "",
     'title' => "Website",
-    'description' => ''
+    'description' => '',
+	'prefix' => 'http://'
     ),
     'im' =>
     array
@@ -110,9 +111,10 @@ array
     'name' => 'twitter',
     'class' => 'twitter',
     'filter' => "rolo_contact_twitter",
-    'default_value' => "http://twitter.com/",
+    'default_value' => "",
     'title' => "Twitter",
-    'description' => ''
+    'description' => '',
+	'prefix' => 'http://twitter.com/'
     ),
     "address" =>
     array
@@ -184,9 +186,10 @@ array
     'name' => 'website',
     'class' => 'website',
     'filter' => "rolo_company_website",
-    'default_value' => "http://",
+    'default_value' => "",
     'title' => "Website",
-    'description' => ''
+    'description' => '',
+	'prefix' => 'http://'
     ),
     'im' =>
     array
@@ -207,9 +210,10 @@ array
     'name' => 'twitter',
     'class' => 'twitter',
     'filter' => "rolo_company_twitter",
-    'default_value' => "http://twitter.com/",
+    'default_value' => "",
     'title' => "Twitter",
-    'description' => ''
+    'description' => '',
+	'prefix' => 'http://twitter.com/'
     ),
     "address" =>
     array

@@ -65,13 +65,18 @@ function _rolo_show_contact_fields() {
             $name = 'rolo_contact_' . $contact_field['name'];
             $class = $contact_field['class'];
 ?>
-        <div class="ctrlHolder">
+        <div class="ctrlHolder <?php echo $contact_field['class']?>">
             <label for="<?php echo $name;?>">
 <?php
                     if ($contact_field['mandatory'] == true) {
                         echo '<em>*</em>';
                     }
                     echo $contact_field['title'];
+					
+					if (isset($contact_field['prefix']) == true) {		
+						echo '<span class="prefix '; echo $contact_field['name']; echo '">'; echo $contact_field['prefix']; echo '</span>';
+						$class = $contact_field['class'] . " " . "input-prefix";
+                    }
 ?>
             </label>
             <input type="text" name="<?php echo $name;?>" value="<?php echo $default_value ;?>" size="55" tabindex="<?php echo $rolo_tab_index;?>" class="textInput <?php echo $class;?>" />

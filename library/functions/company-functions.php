@@ -69,13 +69,20 @@ function _rolo_show_company_fields() {
             $name  = 'rolo_company_' . $company_field['name'];
             $class = $company_field['class'];
 ?>
-        <div class="ctrlHolder">
+        <div class="ctrlHolder <?php echo $company_field['class']?>">
             <label for="<?php echo $name;?>">
 <?php
                 if ($company_field['mandatory'] == true) {
                     echo '<em>*</em>';
                 }
                 echo $company_field['title'];
+				
+				if (isset($company_field['prefix']) == true) {		
+						echo '<span class="prefix '; echo $company_field['name']; echo '">'; echo $company_field['prefix']; echo '</span>';
+						$class = $company_field['class'] . " " . "input-prefix";
+                    }
+					
+					
 ?>
             </label>
             <input type="text" name="<?php echo $name;?>" value="<?php echo $default_value ;?>" size="55" tabindex="<?php echo $rolo_tab_index;?>" class="textInput <?php echo $class;?>" />

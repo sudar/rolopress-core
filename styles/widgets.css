@@ -27,3 +27,31 @@ margin:2px 0;
 }
 .widget .form .inlineLabels .city {
 margin:0;
+}
+.widget .inlineLabels label,.widget .inlineLabels .label{
+	text-align: left;
+}
+.widget label em,.widget .label em{
+display:block;
+float:left;
+}
+.widget .website.input-prefix {
+width:74% !important;
+}
+.widget .ctrlHolder.website {
+width:122% !important;
+}
+.widget .prefix.website {
+margin-left:5px !important;
+color:gray;
+}
+.widget .twitter.input-prefix {
+width:74% !important;
+}
+.widget .ctrlHolder.twitter {
+width:122% !important;
+}
+.widget .prefix.twitter {
+margin-left:5px !important;
+color:gray;
+}

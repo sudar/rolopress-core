@@ -35,7 +35,8 @@
      margin:0; padding:0;
      clear:both;
      /* user prefs */
-     margin:0; padding:7px 4px;
+     margin:0;
+	 padding:7px 0;
 }
 
 .buttonHolder{
@@ -75,13 +76,14 @@
 }
 .inlineLabels label,.inlineLabels .label{
     float:left;
-    margin:.3em 0 0 0; padding:0;
+	margin:0.3em 0.5em 0 0;
+	padding:0;
     line-height:100%;
     /* user prefs */
     width:30%;
     font-weight:bold;
+	text-align: right;
 }
-
 .inlineLabels .textInput,.inlineLabels .fileUpload{
     float:left;
     /* user prefs */
@@ -93,9 +95,9 @@
     margin-right: 10px;
 }
 .inlineLabels .city {
-	margin-left:30%;
+	margin-left:31%;
 	margin-right:2%;
-	width:30%;
+	width:32%;
 }
 .inlineLabels .state {
     width:10%;
@@ -223,7 +225,7 @@ div.focused .formHint{
 /* Required asterisk styling, use if needed */
 label em, .label em{
 display:block;
-float:left;
+float:right;
 font-style:normal;
 font-weight:bold;
 left:0;
