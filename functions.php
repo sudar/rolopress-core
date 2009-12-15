@@ -1,5 +1,69 @@
 <?php
 
+/* Functions File
+ *
+ * Loads theme functions
+ * Defines constants
+ *
+ * @package RoloPress
+ * @subpackage Functions
+ */
+
+/* Load theme textdomain. 
+	load_theme_textdomain( 'rolopress' );*/
+
+/* Define constant paths (PHP files). 
+	define( ROLOPRESS_DIR, TEMPLATEPATH );
+	define( ROLOPRESS_LIBRARY, ROLOPRESS_DIR . '/library' );
+	define( ROLOPRESS_ADMIN, ROLOPRESS_LIBRARY . '/admin' );
+	define( ROLOPRESS_EXTENSIONS, ROLOPRESS_LIBRARY . '/extensions' );
+	define( ROLOPRESS_FUNCTIONS, ROLOPRESS_LIBRARY . '/functions' );
+	define( ROLOPRESS_LEGACY, ROLOPRESS_LIBRARY . '/legacy' );
+	define( ROLOPRESS_WIDGETS, ROLOPRESS_LIBRARY . '/widgets' );*/
+
+/* Define constant paths (other file types). 
+	$hybrid_dir = get_bloginfo( 'template_directory' );
+	define( ROLOPRESS_IMAGES, $hybrid_dir . '/library/images' );
+	define( ROLOPRESS_CSS, $hybrid_dir . '/library/css' );
+	define( ROLOPRESS_JS, $hybrid_dir . '/library/js' );*/
+
+/* Define child theme paths. 
+	define( ROLOPRESS_CHILD_DIR, get_stylesheet_directory() );
+	define( ROLOPRESS_CHILD_URL, get_stylesheet_directory_uri() );*/
+
+/* Load theme action and filter hooks 
+	require_once( ROLOPRESS_FUNCTIONS . '/hooks-actions.php' );
+	require_once( ROLOPRESS_FUNCTIONS . '/hooks-filters.php' );*/
+
+/* Load theme functions. 
+	require_once( ROLOPRESS_FUNCTIONS . '/comments.php' );
+	require_once( ROLOPRESS_FUNCTIONS . '/dynamic-classes.php' );
+	require_once( ROLOPRESS_FUNCTIONS . '/framework.php' );
+	require_once( ROLOPRESS_FUNCTIONS . '/media.php' );
+	require_once( ROLOPRESS_FUNCTIONS . '/shortcodes.php' );*/
+
+/* Load extensions (external projects). 
+	require_once( ROLOPRESS_EXTENSIONS . '/breadcrumb-trail.php' );
+	require_once( ROLOPRESS_EXTENSIONS . '/custom-field-series.php' );
+	require_once( ROLOPRESS_EXTENSIONS . '/get-the-image.php' );
+	require_once( ROLOPRESS_EXTENSIONS . '/get-the-object.php' );*/
+
+/* Load widgets and widget functions. 
+	require_once( ROLOPRESS_FUNCTIONS . '/widgets.php' );*/
+
+/* Load legacy functions for backwards compatibility. 
+	require_once( ROLOPRESS_LEGACY . '/deprecated.php' );*/
+
+/* Load admin files. */
+	if ( is_admin() ) :
+		require_once( ROLOPRESS_ADMIN . '/theme-settings.php' );
+		require_once( ROLOPRESS_ADMIN . '/meta-box.php' );
+	endif;
+
+/* Get theme settings. */
+	$hybrid_settings = get_option( 'hybrid_theme_settings' );
+	
+
 //change admin section to RoloPress style
 require_once( 'library/functions/admin.php' );
 
@@ -55,12 +119,12 @@ if ( is_readable($locale_file) )
     //TODO: Need to include JS only in required pages.
     
 //    if (is_page(array('Add Contact','Add Company', 'Edit Company', 'Edit Contact'))) {
-        wp_enqueue_script( 'uni-form', get_bloginfo('template_directory') . '/js/uni-form.jquery.js', array('jquery'), '', true );
-        wp_enqueue_script( 'rolopress-js', get_bloginfo('template_directory') . '/js/rolopress.js', array('jquery', 'uni-form'), '', true );
+        wp_enqueue_script( 'uni-form', get_bloginfo('template_directory') . '/library/js/uni-form.jquery.js', array('jquery'), '', true );
+        wp_enqueue_script( 'rolopress-js', get_bloginfo('template_directory') . '/library/js/rolopress.js', array('jquery', 'uni-form'), '', true );
         // Build in tag auto complete script - Code explanation at http://bit.ly/2vbemR
         wp_enqueue_script( 'suggest' );
 //    }
-    wp_enqueue_script( 'jeip', get_bloginfo('template_directory') . '/js/jeip.js', array('jquery'), '', true );
+    wp_enqueue_script( 'jeip', get_bloginfo('template_directory') . '/library/js/jeip.js', array('jquery'), '', true );
 	}
 	
 if ( current_user_can('edit_posts') ) { add_action('template_redirect', 'rolo_add_script'); } // only load if user has proper permissions 
