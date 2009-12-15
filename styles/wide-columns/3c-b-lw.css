@@ -1,0 +1,36 @@
+/*
+LAYOUT: Three-Column Left Wide/Right Standard Sidebar
+DESCRIPTION: Three-column fluid layout with a left wide sidebar and a standard right sidebar
+*/
+
+#container {
+	float: left;
+	width: 100%;
+}
+#info, .navigation {
+	margin: 0 180px 0 290px;
+}
+#primary {
+	overflow: hidden;
+	width: 280px;
+	float: left;
+}
+#secondary {
+	overflow: hidden;
+	width: 180px;
+	float: left;
+}
+#primary {
+	margin: 0 0 0 -100%;
+}
+* html #primary {
+	left:20px;
+	position:relative;
+}
+#secondary {
+	margin: 0 0 0 -180px;
+}
+#footer {
+	clear: left;
+	width: 100%;
+}

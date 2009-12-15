@@ -7,19 +7,20 @@ DESCRIPTION: Three-column fluid layout with two sidebars right of info
 	float: left;
 	width: 100%;
 }
-#info, .navigation {
-	margin: 0 600px 0 0;
+#info, .navigation  {
+	margin: 0 365px 0 0;
+	overflow:hidden;
 }
 #primary, #secondary {
 	float: left;
 	overflow: hidden;
-	width: 280px;
+	width: 180px;
 }
 #primary {
-	margin: 0 0 0 -580px;
+	margin: 0 0 0 -360px;
 }
 #secondary {
-	margin: 0 0 0 -280px;
+	margin: 0 0 0 -180px;
 }
 #footer {
 	clear: left;

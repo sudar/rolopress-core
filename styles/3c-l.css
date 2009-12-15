@@ -5,19 +5,20 @@ DESCRIPTION: Three-column fluid layout with two sidebars left of info
 
 #container {
 	float: right;
-	margin: 0 0 0 -600px;
+	margin: 0 0 0 -400px;
 	width: 100%;
 }
-#info , .navigation{
-	margin: 0 0 0 600px;
+#info, .navigation  {
+	margin: 0 0 0 380px;
+	overflow:hidden;
 }
 #primary, #secondary {
 	float: left;
 	overflow: hidden;
-	width: 280px;
+	width: 180px;
 }
 #primary {
-	margin: 0 20px 0 0;
+	margin: 0 5px 0 0;
 }
 #footer {
 	clear: both;

@@ -1,0 +1,27 @@
+/*
+LAYOUT: Three-Column Wide Sidebars (Right)
+DESCRIPTION: Three-column fluid layout with two wide sidebars right of info
+*/
+
+#container {
+	float: left;
+	width: 100%;
+}
+#info, .navigation {
+	margin: 0 565px 0 0;
+}
+#primary, #secondary {
+	float: left;
+	overflow: hidden;
+	width: 280px;
+}
+#primary {
+	margin: 0 0 0 -560px;
+}
+#secondary {
+	margin: 0 0 0 -280px;
+}
+#footer {
+	clear: left;
+	width: 100%;
+}

@@ -1,6 +1,6 @@
 /*
-LAYOUT: Three-Column
-DESCRIPTION: Three-column fluid layout with two sidebars on both sides of info
+LAYOUT: Three-Column Wide Sidebars
+DESCRIPTION: Three-column fluid layout with two wide sidebars on both sides of info
 */
 
 #container {
@@ -8,23 +8,22 @@ DESCRIPTION: Three-column fluid layout with two sidebars on both sides of info
 	width: 100%;
 }
 #info, .navigation {
-	margin: 0 190px;
-	overflow:hidden;
+	margin: 0 290px;
 }
 #primary, #secondary {
-	float: left;
 	overflow: hidden;
-	width: 180px;
+	width: 280px;
+	float: left;
 }
 #primary {
 	margin: 0 0 0 -100%;
 }
 * html #primary {
-	left: 20px;
-	position: relative;
+	left:20px;
+	position:relative;
 }
 #secondary {
-	margin: 0 0 0 -185px;
+	margin: 0 0 0 -290px;
 }
 #footer {
 	clear: left;

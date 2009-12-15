@@ -3,8 +3,8 @@
      
 -------------------------------------------------------------- */   
 
-body {
-    margin: 1.5em 5%;
+body, #wrapper {
+    margin: .5em 1%;
 }
 li {
 list-style:none;

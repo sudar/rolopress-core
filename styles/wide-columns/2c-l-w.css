@@ -1,0 +1,25 @@
+/*
+LAYOUT: Two-Column Wide Sidebars(Left)
+DESCRIPTION: Two-column fluid layout with one wide sidebar left of info
+*/
+
+#container {
+	float: right;
+	margin: 0 0 0 -300px;
+	width: 100%;
+}
+#info , .navigation{
+	margin: 0 0 0 290px;
+}
+#primary, #secondary {
+	float: left;
+	overflow: hidden;
+	width: 280px;
+}
+#secondary {
+	clear: left;
+}
+#footer {
+	clear: both;
+	width: 100%;
+}
