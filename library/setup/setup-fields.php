@@ -295,4 +295,14 @@ function rolo_save_postdata( $post_id ) {
 
 //add_action('admin_menu', 'rolo_create_meta_box');
 //add_action('save_post', 'rolo_save_postdata');
+
+
+/**
+ * Create taxonomies
+ */
+function rolo_create_taxonomy() {
+    register_taxonomy( 'type', 'post', array( 'hierarchical' => false, 'label' => __('Rolopress Type'), 'query_var' => true, 'rewrite' => true ) );
+    register_taxonomy( 'company', 'post', array( 'hierarchical' => false, 'label' => __('Company'), 'query_var' => true, 'rewrite' => true ) );
+}
+add_action('init', 'rolo_create_taxonomy', 0);
 ?>

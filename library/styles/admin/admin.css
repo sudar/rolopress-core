@@ -3,11 +3,11 @@ Styles for RoloPress admin screens
 */
 
 #login h1 a {
-	background:url(/wp-content/themes/rolopress-core/images/admin/rolo-login.gif) no-repeat top;
+	background:url(/wp-content/themes/rolopress-core/library/images/admin/rolo-login.gif) no-repeat top;
 }
 	 
 #header-logo {
-	background:transparent url(/wp-content/themes/rolopress-core/images/admin/rolopress-icon-small.gif) no-repeat scroll center center;
+	background:transparent url(/wp-content/themes/rolopress-core/library/images/admin/rolopress-icon-small.gif) no-repeat scroll center center;
 }
 #footer-rolo {
 	background: #464646;
