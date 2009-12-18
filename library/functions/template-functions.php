@@ -1,6 +1,6 @@
 <?php
 /**
- * Contains all the template functions used in theme
+ * Contains template functions used in theme
  */
   
 /**
@@ -18,7 +18,7 @@ function rolo_contact_header($contact_id) {
 ?>
     <ul id="hcard-<?php echo basename(get_permalink());?>" class="item-header">
 
-			<?php echo get_avatar (($contact['rolo_contact_email']),96,get_bloginfo('template_url') . "/library/images/icons/rolo-contact.jpg");?>
+			<?php echo get_avatar (($contact['rolo_contact_email']),96,ROLOPRESS_IMAGES . "/icons/rolo-contact.jpg");?>
 
 			<li class="fn"><a href="<?php the_permalink();?>"><?php echo $contact['rolo_contact_first_name'] . ' ' . $contact['rolo_contact_last_name'];?></a></li>
 			<li>
@@ -120,7 +120,7 @@ function rolo_company_header($company_id) {
 
 <ul id="hcard-<?php echo basename(get_permalink());?>" class="item-header">
 
-			<?php echo get_avatar (($company['rolo_company_email']),96,get_bloginfo('template_url') . "/library/images/icons/rolo-company.jpg");?>
+			<?php echo get_avatar (($company['rolo_company_email']),96,ROLOPRESS_IMAGES . "/icons/rolo-company.jpg");?>
 
 			<li class="fn">
 				<?php if (is_single()) : // show proper links on single or archive company pages ?>
@@ -444,7 +444,7 @@ function _rolo_show_contact_fields_old() {
                 }
 ?>
             </select>
-            <img src ="<?php echo get_bloginfo('template_directory') ?>/images/forms/add.png" class="rolo_add_ctrl" alt="<?php _e('Add another');?>" />
+            <img src ="<?php echo get_bloginfo('template_directory') ?>/library/images/forms/add.png" class="rolo_add_ctrl" alt="<?php _e('Add another');?>" />
 <?php
             }
 ?>

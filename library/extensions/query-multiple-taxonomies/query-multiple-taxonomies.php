@@ -45,4 +45,4 @@ function multiple_tax_fix($wp_query)
 
 	$wp_query->set('post__in', $ids);
 }
-
+?>

@@ -330,8 +330,8 @@ function rolo_setup_company_multiple($field_name, &$rolo_tab_index) {
                 $hidden = '';
             }
 ?>
-            <img src ="<?php echo get_bloginfo('template_directory') ?>/images/forms/delete.png" class="rolo_delete_ctrl" alt="<?php _e('Delete');?>" <?php echo $hidden;?> />
-            <img src ="<?php echo get_bloginfo('template_directory') ?>/images/forms/add.png" class="rolo_add_ctrl" alt="<?php _e('Add another');?>" />
+            <img src ="<?php echo get_bloginfo('template_directory') ?>/library/images/forms/delete.png" class="rolo_delete_ctrl" alt="<?php _e('Delete');?>" <?php echo $hidden;?> />
+            <img src ="<?php echo get_bloginfo('template_directory') ?>/library/images/forms/add.png" class="rolo_add_ctrl" alt="<?php _e('Add another');?>" />
         </div>
 <?php
     }

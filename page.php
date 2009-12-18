@@ -20,9 +20,7 @@
 <?php edit_post_link( __( 'Edit', 'rolopress' ), '<span class="edit-link">', '</span>' ) ?>
 					</div><!-- .entry-main -->
 					<?php rolopress_after_entry(); // After entry hook ?>
-				</div><!-- #post-<?php the_ID(); ?> -->			
-			
-<?php if ( get_post_custom_values('comments') ) comments_template() // Add a custom field with Name and Value of "comments" to enable comments on this page ?>			
+				</div><!-- #post-<?php the_ID(); ?> -->				
 			
 			</div><!-- #info -->		
 			<?php rolopress_after_info(); // After info hook ?>	

@@ -7,9 +7,8 @@
 */
 
 function rolo_admin_css() { //Admin CSS
-    $url = get_settings('siteurl');
-    $url = $url . '/wp-content/themes/rolopress-core/library/styles/admin/admin.css';
-    echo '<link rel="stylesheet" type="text/css" href="' . $url . '" />';
+    $admin_css = ROLOPRESS_CSS . '/admin/admin.css';
+    echo '<link rel="stylesheet" type="text/css" href="' . $admin_css . '" />';
 }
 function rolo_loginpage_logo_link($url) { // Return a url; in this case the homepage url of wordpress
      return get_bloginfo('wpurl');
@@ -18,8 +17,8 @@ function rolo_loginpage_logo_title($message){ // Return title text for the logo 
      return get_bloginfo('name');
 }
 function rolo_loginpage_head(){
-     $stylesheet_uri = get_bloginfo('template_url')."/library/styles/admin/admin.css";
-     echo '<link rel="stylesheet" href="'.$stylesheet_uri.'" type="text/css" media="screen" />';
+    $admin_css = ROLOPRESS_CSS . '/admin/admin.css';
+    echo '<link rel="stylesheet" type="text/css" href="' . $admin_css . '" media="screen" />';
 }
 function rolo_admin_footer() {
    echo '<div id="footer-rolo">Powered by <a href="http://www.rolopress.com">RoloPress</a>. | <a href="http://rolopress.com/documentation">Documentation</a> | <a href="http://rolopress.com/forums">Support</a></div>';

@@ -21,22 +21,22 @@ RoloPress Core theme framework is based on Shape Theme by Ian Stewart http://the
 
 
 /* Import a basic layout */
-@import url('styles/2c-r.css');
+@import url('library/styles/2c-r.css');
 
 /* Reset default browser styles */
-@import url('styles/reset.css');
+@import url('library/styles/reset.css');
 
 /* Rebuild default browser styles */
-@import url('styles/rebuild.css');
+@import url('library/styles/rebuild.css');
 
 /* Basic WordPress Styles */
-@import url('styles/wp.css');
+@import url('library/styles/wp.css');
 
 /* Default Screen Styles */
-@import url('styles/screen.css');
+@import url('library/styles/screen.css');
 
 /* Styles for Widget Areas */
-@import url('styles/widgets.css');
+@import url('library/styles/widgets.css');
 
 /* Styles for forms */
-@import url('styles/uni-form.css');
+@import url('library/styles/uni-form.css');
