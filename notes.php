@@ -4,7 +4,7 @@
  * Thanks to http://bavotasan.com/tutorials/how-to-add-nested-comments-to-your-wordpress-theme/
  */
  
- if ( is_user_logged_in() ) {
+
  
 // Do not delete these lines
 if (!empty($_SERVER['SCRIPT_FILENAME']) && 'notes.php' == basename($_SERVER['SCRIPT_FILENAME']))
@@ -43,6 +43,7 @@ return;
 
 <?php else : // this is displayed if there are no notes so far ?>
 
+
 <?php if ('open' == $post->comment_status) : ?>
 <!-- If comments (notes) are open, but there are no comments (notes). -->
 
@@ -53,6 +54,8 @@ return;
 <?php endif; ?>
 </div>
 <?php endif; ?>
+
+<?php if ( is_user_logged_in() ) { ?>
 
 <?php if ('open' == $post->comment_status) : ?>
 
@@ -99,9 +102,9 @@ return;
 <?php endif; // If registration required and not logged in ?>
 </div>
 
-<?php endif; // if you delete this the sky will fall on your head ?>
+<?php endif; // if you delete this the sky will fall on your head 
 
-
+}; ?>
 
 
 
@@ -154,5 +157,5 @@ function my_replylink($c='',$post=null) {
   return $o;
 }
 add_filter('comment_reply_link', 'my_replylink');
-}
+
 ?>
