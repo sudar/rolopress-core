@@ -4,6 +4,8 @@
  * Thanks to http://bavotasan.com/tutorials/how-to-add-nested-comments-to-your-wordpress-theme/
  */
  
+ if ( is_user_logged_in() ) {
+ 
 // Do not delete these lines
 if (!empty($_SERVER['SCRIPT_FILENAME']) && 'notes.php' == basename($_SERVER['SCRIPT_FILENAME']))
 die ('Please do not load this page directly. Thanks!');
@@ -152,4 +154,5 @@ function my_replylink($c='',$post=null) {
   return $o;
 }
 add_filter('comment_reply_link', 'my_replylink');
+}
 ?>
