@@ -55,7 +55,7 @@ return;
 </div>
 <?php endif; ?>
 
-<?php if ( is_user_logged_in() ) { ?>
+<?php if ( current_user_can('edit_posts') ) { ?>
 
 <?php if ('open' == $post->comment_status) : ?>
 
