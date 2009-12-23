@@ -32,9 +32,6 @@
 /* Load hooks and filters */
 	require_once( ROLOPRESS_FUNCTIONS . '/hooks-filters.php' );
 	
-/* Change admin section to RoloPress style */
-	require_once( ROLOPRESS_FUNCTIONS . '/admin.php' );
-
 /* Run default setup */
 	require_once( ROLOPRESS_SETUP . '/add-pages.php' );
 	require_once( ROLOPRESS_SETUP . '/setup-fields.php' );
@@ -54,7 +51,10 @@
 	require_once( ROLOPRESS_EXTENSIONS . '/query-multiple-taxonomies/query-multiple-taxonomies.php' );
 	
 /* Load javascript - only if user has proper permissions */
-	if ( current_user_can('edit_posts') ) { require_once( ROLOPRESS_INCLUDES . '/js-load.php' ); 	} 
+	if ( current_user_can('edit_posts') ) { require_once( ROLOPRESS_INCLUDES . '/js-load.php' ); } 
+	
+/* Change admin section to RoloPress style */
+	if (function_exists ('login_header') || is_admin()) require_once( ROLOPRESS_FUNCTIONS . '/admin.php' ); // only load if viewing admin
 	
 
 
