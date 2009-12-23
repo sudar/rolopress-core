@@ -7,7 +7,7 @@ Styles for RoloPress admin screens
 }
 	 
 #header-logo {
-	background:transparent url(/wp-content/themes/rolopress-core/library/images/admin/rolopress-icon-small.gif) no-repeat scroll center center;
+	background:transparent url(/wp-content/themes/rolopress-core/library/images/admin/rolopress-icon-bk.gif) no-repeat scroll center center;
 }
 #footer-rolo {
 	background: #464646;
@@ -20,4 +20,8 @@ Styles for RoloPress admin screens
 #footer-rolo a:link, #footer-rolo a:visited {
 color:#CCCCCC;
 text-decoration:none;
+}
+.rolo_widget_icon { /* appears in default widgets */
+float:left;
+padding:0 5px 0 0 ;
 }

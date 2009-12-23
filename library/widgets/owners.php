@@ -81,7 +81,12 @@ class Rolo_Widget_Owners extends WP_Widget {
 		//Defaults
 		$defaults = array( 'title' => __('Owners', 'rolopress'), 'optioncount' => false, 'exclude_admin' => false, 'show_fullname' => true, 'hide_empty' => true, 'style' => 'list', 'html' => true );
 		$instance = wp_parse_args( (array) $instance, $defaults ); ?>
-
+		
+		<div style="float:left;width:98%;">
+		<p><img class="rolo_widget_icon" src= <?php echo ROLOPRESS_IMAGES  . '/admin/rolopress-icon.gif' ?> />
+		Displays a list of users (owners) that have created items.  Best for multiuser installs where you would want to see what items each user created.
+		</p>
+		</div>
 		<div style="float:left;width:48%;">
 		<p>
 			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e('Title:', 'rolopress'); ?></label>

@@ -50,6 +50,11 @@ class Rolo_Widget_Contact_Details extends WP_Widget {
 		$defaults = array( 'title' => __('Contact Details', 'rolopress'), 'initial' => false );
 		$instance = wp_parse_args( (array) $instance, $defaults ); ?>
 
+		<div style="float:left;width:98%;">
+		<p><img class="rolo_widget_icon" src= <?php echo ROLOPRESS_IMAGES  . '/admin/rolopress-icon.gif' ?> />
+		Displays the details for an individual contact. A good place to place this widget is the Primary or Secondary sidebars, or Contact:Under Main.<br/><em>This is a Smart Widget, which means it only displays when it is supposed to: when you view an individual company page.</em>
+		</p>
+		</div>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e('Title:', 'rolopress'); ?></label>
 			<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo $instance['title']; ?>" />

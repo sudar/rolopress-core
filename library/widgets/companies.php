@@ -98,9 +98,14 @@ class Rolo_Widget_Companies extends WP_Widget {
 	function form( $instance ) {
 
 		//Defaults
-		$defaults = array( 'title' => __('Companies', 'rolopress'), 'format' => 'flat', 'unit' => 'pt', 'smallest' => 8, 'largest' => 22, 'link' => 'view', 'number' => 45, 'taxonomy' => 'company'  );
+		$defaults = array( 'title' => __('Companies', 'rolopress'), 'format' => 'list', 'unit' => 'px', 'smallest' => 12, 'largest' => 12, 'link' => 'view', 'number' => 45, 'taxonomy' => 'company'  );
 		$instance = wp_parse_args( (array) $instance, $defaults ); ?>
 
+		<div style="float:left;width:98%;">
+		<p><img class="rolo_widget_icon" src= <?php echo ROLOPRESS_IMAGES  . '/admin/rolopress-icon.gif' ?> />
+		Displays your Companies as a list by default.  But can also be used to create a Company Cloud. To display a cloud change the "Format" to "Flat", and change the smallest and largest font sizes.
+		</p>
+		</div>
 		<div style="float:left;width:48%;">
 		<p>
 			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e('Title:', 'rolopress'); ?></label>

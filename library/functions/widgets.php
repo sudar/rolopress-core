@@ -9,7 +9,42 @@
  * @package RoloPress
  * @subpackage Widgets
  */
+
  
+ 
+
+// Debug: Makes sure no widgets are registered already. If so, be gone.
+//update_option( 'sidebars_widgets', NULL );
+
+$current_theme = get_option( 'template' ); // variable stores the current theme
+$target_theme = 'rolopress-core'; // variable stores the theme we want to target
+$debug = false; // skip the ladie, da.
+
+/**
+ * $preset_widgets:
+ * A two-dimensional array that stores all active sidebars and their active widgets
+ *
+ * Qiktip: Sidebars and widgets are identified by their unique ID
+*/
+$preset_widgets = array (
+	'primary'  => array( 'Companies', 'Recent Notes' ),
+	'secondary'  => array( 'Contact Details', 'Company Details' )
+);
+
+// this checks to see if the user is trying to change themes, if so,
+// compare that theme with our target theme.
+if ( isset( $_GET['activated'] ) && $current_theme == $target_theme || $debug ) {
+	update_option( 'sidebars_widgets', $preset_widgets );
+}
+
+// Debug: What widgets/widget areas are active?
+// Uncomment the next line and find out for yourself buddy ;P
+//var_dump( get_option( 'sidebars_widgets' ) );
+
+
+
+
+
  
  /**
  * Unregister WP widgets

@@ -14,7 +14,7 @@ class Rolo_Widget_Search extends WP_Widget {
 
 	function Rolo_Widget_Search() {
 		$widget_ops = array( 'classname' => 'search', 'description' => __('An advanced widget that gives you total control over the output of your search form.', 'rolopress') );
-		$control_ops = array( 'id_base' => 'rolopress-search' );
+		$control_ops = array( 'width' => 500, 'height' => 350, 'id_base' => 'rolopress-search' );
 		$this->WP_Widget( 'rolopress-search', __('Search', 'rolopress'), $widget_ops, $control_ops );
 	}
 

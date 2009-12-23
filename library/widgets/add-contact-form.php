@@ -49,6 +49,11 @@ class Rolo_Widget_Add_Contact extends WP_Widget {
 		$defaults = array( 'title' => __('Add Contact Form', 'rolopress'), 'initial' => false );
 		$instance = wp_parse_args( (array) $instance, $defaults ); ?>
 
+		<div style="float:left;width:98%;">
+		<p><img class="rolo_widget_icon" src= <?php echo ROLOPRESS_IMAGES  . '/admin/rolopress-icon.gif' ?> />
+		Displays the Add Contact Form.  Great for a sidebar or a Widgets page.
+		</p>
+		</div>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e('Title:', 'rolopress'); ?></label>
 			<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo $instance['title']; ?>" />
