@@ -1,19 +1,20 @@
 <?php
-/*
-Auto create pages needed for RoloPress
-
-Special thanks to Sarah G for her help with this code
-http://www.stuffbysarah.net/wordpress-plugins/
-*/
-
-// Code based on http://www.nabble.com/Activation-hook-exist-for-themes--td25211004.html
-if ( is_admin() && isset($_GET['activated'] ) && $pagenow == "themes.php" ) {
-    rolo_create_initial_pages();
-}
+/**
+ * Default Pages
+ *
+ * Auto create pages needed for RoloPress
+ *
+ * Special thanks to Sarah G for her help with this code
+ * http://www.stuffbysarah.net/wordpress-plugins
+ *
+ * @package RoloPress
+ */
+ 
 
 /**
  * Create initial pages
  * @global object $wpdb
+ * @since 0.1
  */
 function rolo_create_initial_pages() {
     global $wpdb;

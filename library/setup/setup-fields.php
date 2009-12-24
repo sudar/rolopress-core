@@ -1,13 +1,12 @@
 <?php
+/**
+ * Custom Fields and Taxonomies
+ *
+ * Auto create custom fields and taxonomies
+ *
+ * @package RoloPress
+ */
 
-/* 
-
-Auto create custom fields for RoloPress
-
-Special thanks to
-WeFunction.com for their tutorial: http://wefunction.com/2008/10/tutorial-creating-custom-write-panels-in-wordpress/
-and David Yeiser for the inspiration: http://artisanthemes.com/themes/wp-contact-manager/
-*/
 
 //TODO - We should make the contact_fields array plugable.
 //TODO - The meta key name should be added to the contact_fields array.
@@ -242,9 +241,9 @@ array
 );
 
 /**
- *
  * @global <type> $post
  * @global <type> $contact_fields
+ * @since 0.1
  */
 function rolo_append_meta_box() {
     global $post, $contact_fields;
@@ -299,10 +298,12 @@ function rolo_save_postdata( $post_id ) {
 
 /**
  * Create taxonomies
+ * @since 0.1
  */
 function rolo_create_taxonomy() {
     register_taxonomy( 'type', 'post', array( 'hierarchical' => false, 'label' => __('Rolopress Type'), 'query_var' => true, 'rewrite' => true ) );
     register_taxonomy( 'company', 'post', array( 'hierarchical' => false, 'label' => __('Company'), 'query_var' => true, 'rewrite' => true ) );
 }
 add_action('init', 'rolo_create_taxonomy', 0);
+
 ?>

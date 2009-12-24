@@ -1,10 +1,15 @@
 <?php
-
 /**
+ * Notes Functions
+ *
  * Save notes information to database
  *
  * @return int notes(comment) id
+ *
+ * @package RoloPress
+ * @subpackage Functions
  */
+
 function _rolo_save_contact_notes() {
     global $wpdb;
 

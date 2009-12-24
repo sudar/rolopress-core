@@ -1,12 +1,16 @@
 <?php
-/*
- * Rolopress - Adds function related to setting up and saving companies
+/**
+ * Company setup and saving
+ *
+ * Adds function related to setting up and saving companies
  *
  * @package RoloPress
+ * @subpackage Functions
  */
 
 /**
  * Template function for adding new company
+ * @since 0.1
  */
 function rolo_add_company() {
 
@@ -42,6 +46,7 @@ function rolo_add_company() {
  * Show the list of company fields in add company page
  *
  * @global array $company_fields List of company fields
+ * @since 0.1
  */
 function _rolo_show_company_fields() {
 	global $company_fields;
@@ -106,6 +111,7 @@ function _rolo_show_company_fields() {
  *
  * @global array $company_fields List of company fields
  * @return string|boolean Post id if succesful and false if on error
+ * @since 0.1
  */
 function _rolo_save_company_fields() {
 	global $company_fields;
@@ -162,6 +168,7 @@ function _rolo_save_company_fields() {
  * Show add notes field
  *
  * @param <type> $company_id
+ * @since 0.1
  */
 function _rolo_show_company_notes($company_id) {
 ?>
@@ -197,6 +204,7 @@ function _rolo_show_company_notes($company_id) {
  * Save notes information to database
  *
  * @return int notes(comment) id
+ * @since 0.1
  */
 function _rolo_save_company_notes() {
     global $wpdb;
@@ -235,6 +243,7 @@ function _rolo_save_company_notes() {
  *
  * @global <type> $company_fields
  * @param <type> $field_name
+ * @since 0.1
  */
 function rolo_setup_company_address($field_name, &$rolo_tab_index) {
     global $company_fields;
@@ -271,6 +280,7 @@ function rolo_setup_company_address($field_name, &$rolo_tab_index) {
  *
  * @param <type> $field_name
  * @param <type> $post_id
+ * @since 0.1
  */
 function rolo_save_company_address($field_name, $post_id, &$new_company) {
     // TODO - Validate fields
@@ -343,6 +353,7 @@ function rolo_setup_company_multiple($field_name, &$rolo_tab_index) {
  * @global <type> $company_fields
  * @param <type> $field_name
  * @param <type> $post_id
+ * @since 0.1
  */
 function rolo_save_company_multiple($field_name, $post_id, &$new_company) {
     global $company_fields;
@@ -365,6 +376,7 @@ function rolo_save_company_multiple($field_name, $post_id, &$new_company) {
  * @global array $company_fields List of company fields
  * @param string $field_name Field Name to be shown
  * @param <type> $rolo_tab_index
+ * @since 0.1
  */
 function rolo_setup_company_info($field_name, &$rolo_tab_index) {
     global $company_fields;
@@ -392,6 +404,7 @@ function rolo_setup_company_info($field_name, &$rolo_tab_index) {
  * @global array $company_fields List of company fields
  * @param string $field_name Field Name to be saved
  * @param id $post_id Post ID
+ * @since 0.1
  */
 function rolo_save_company_info($field_name, $post_id) {
     global $company_fields;
@@ -407,6 +420,7 @@ function rolo_save_company_info($field_name, $post_id) {
 
 /**
  * callback function for inline company edits
+ * @since 0.1
  */
 function rolo_edit_company_callback() {
     $new_value = $_POST['new_value'];

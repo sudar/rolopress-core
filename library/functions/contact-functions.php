@@ -1,17 +1,23 @@
 <?php
-/* 
- * Rolopress - Adds function related to setting up and saving contacts
+/**
+ * Contact setup and saving
+ *
+ * Adds function related to setting up and saving contacts
+ *
+ * @package RoloPress
+ * @subpackage Functions
  */
 
 /**
- * Template function for adding new contact
+ * Template function for adding new contacts
+ * @since 0.1
  */
 function rolo_add_contact() {
 
     $user = wp_get_current_user();
     if ( $user->ID ) {
 
-        //TODO - Check user cababilites
+        //TODO - Check user capabilites
         //TODO - Verify nounce here
 
         if (isset($_POST['rp_add_contact']) && $_POST['rp_add_contact'] == 'add_contact') {
@@ -38,6 +44,7 @@ function rolo_add_contact() {
 /**
  * Show the list of contact fields in add contact page
  * @global array $company_fields List of contact fields
+ * @since 0.1
  */
 function _rolo_show_contact_fields() {
 	global $contact_fields;
@@ -100,6 +107,7 @@ function _rolo_show_contact_fields() {
  *
  * @global array $company_fields List of contact fields
  * @return string|boolean Post id if succesful and false if on error
+ * @since 0.1
  */
 function _rolo_save_contact_fields() {
 	global $contact_fields;
@@ -160,6 +168,7 @@ function _rolo_save_contact_fields() {
  * Show add notes field
  *
  * @param <type> $contact_id
+ * @since 0.1
  */
 function _rolo_show_contact_notes($contact_id) {
 ?>
@@ -196,6 +205,7 @@ function _rolo_show_contact_notes($contact_id) {
  *
  * @global <type> $contact_fields
  * @param <type> $field_name
+ * @since 0.1
  */
 function rolo_setup_contact_address($field_name, &$rolo_tab_index) {
     global $contact_fields;
@@ -235,6 +245,7 @@ function rolo_setup_contact_address($field_name, &$rolo_tab_index) {
  *
  * @param <type> $field_name
  * @param <type> $post_id
+ * @since 0.1
  */
 function rolo_save_contact_address($field_name, $post_id, &$new_contact) {
     // TODO - Validate fields
@@ -252,6 +263,7 @@ function rolo_save_contact_address($field_name, $post_id, &$new_contact) {
  *
  * @global <type> $contact_fields
  * @param <type> $field_name
+ * @since 0.1
  */
 function rolo_setup_contact_multiple($field_name, &$rolo_tab_index) {
     global $contact_fields;
@@ -308,6 +320,7 @@ function rolo_setup_contact_multiple($field_name, &$rolo_tab_index) {
  * @global <type> $contact_fields
  * @param <type> $field_name
  * @param <type> $post_id
+ * @since 0.1
  */
 function rolo_save_contact_multiple($field_name, $post_id, &$new_contact) {
     global $contact_fields;
@@ -331,6 +344,7 @@ function rolo_save_contact_multiple($field_name, $post_id, &$new_contact) {
  * @global array $contact_fields List of contact fields
  * @param string $field_name Field Name to be shown
  * @param <type> $rolo_tab_index
+ * @since 0.1
  */
 function rolo_setup_contact_info($field_name, &$rolo_tab_index) {
     global $contact_fields;
@@ -358,6 +372,7 @@ function rolo_setup_contact_info($field_name, &$rolo_tab_index) {
  * @global array $contact_fields List of contact fields
  * @param string $field_name Field Name to be saved
  * @param id $post_id Post ID
+ * @since 0.1
  */
 function rolo_save_contact_info($field_name, $post_id) {
     global $contact_fields;
@@ -377,6 +392,7 @@ function rolo_save_contact_info($field_name, $post_id) {
  * @global array $contact_fields List of contact fields
  * @param string $field_name Field Name to be shown
  * @param <type> $rolo_tab_index
+ * @since 0.1
  */
 function rolo_setup_contact_company($field_name, &$rolo_tab_index) {
     global $contact_fields;
@@ -405,6 +421,7 @@ function rolo_setup_contact_company($field_name, &$rolo_tab_index) {
  * @global array $contact_fields List of contact fields
  * @param string $field_name Field Name to be saved
  * @param id $post_id Post ID
+ * @since 0.1
  */
 function rolo_save_contact_company($field_name, $post_id) {
     global $contact_fields;
@@ -421,6 +438,7 @@ function rolo_save_contact_company($field_name, $post_id) {
 
 /**
  * callback function for inline contact edits
+ * @since 0.1
  */
 function rolo_edit_contact_callback() {
     $new_value = $_POST['new_value'];

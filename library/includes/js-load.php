@@ -1,11 +1,11 @@
 <?php
 
-/* Load Javascript
+/* Load Javascript with proper permissions
  *
  * Should only load if user can edit posts
  *
  * @package RoloPress
- * @subpackage Javascript
+ * @subpackage Functions
  */
  
 

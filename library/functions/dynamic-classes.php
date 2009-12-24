@@ -1,5 +1,7 @@
 <?php
 /**
+ * Dynamic Classes
+ *
  * Adds contextual classes to major theme elements.
  * This gives a near unlimited amount of control over design elements.
  *
@@ -15,8 +17,8 @@
 
 /**
  * Creates a set of classes for each site entry. Each entry is 
- * given the class of 'hentry'. Posts are given category, tag, and 
- * author classes. Alternates post classes of odd, even, and alt are added.
+ * given the class of 'hentry'. Items are given category, tag, and 
+ * author classes. Alternates item classes of odd, even, and alt are added.
  *
  * Mostly relies on conditional tags but several other functions are key.
  * @link http://codex.wordpress.org/Conditional_Tags

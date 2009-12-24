@@ -1,12 +1,24 @@
 <?php
 /**
+ * Template Functions
+ *
  * Contains template functions used in theme
- */
-  
-/**
+ *
  * Print summary information about contact
  * @param <type> $contact_id
  * @return <type>
+ *
+ * @package RoloPress
+ * @subpackage Functions
+ */
+  
+/**
+ * Displays a summarized version of contact information
+ *
+ * @param int $contact_id
+ * @return <type>
+ *
+ * @since 0.1
  */
 function rolo_contact_header($contact_id) {
     if (!$contact_id) {
@@ -32,10 +44,12 @@ function rolo_contact_header($contact_id) {
 }
 
 /**
- * Display contact details
+ * Displays a contact detail information
  *
  * @param int $contact_id
  * @return <type>
+ *
+ * @since 0.1
  */
 function rolo_contact_details($contact_id) {
     //TODO Need to display the information in Microformat friendly format
@@ -101,9 +115,12 @@ function rolo_contact_details($contact_id) {
 }
 
 /**
- * Print summary information about company
+ * Displays a summarized version of company information
+ *
  * @param <type> $company_id
  * @return <type>
+ *
+ * @since 0.1
  */
 function rolo_company_header($company_id) {
 
@@ -141,10 +158,12 @@ function rolo_company_header($company_id) {
 }
 
 /**
- * Display company details
+ * Displays company detail information
  *
  * @param int $company_id
  * @return <type>
+ *
+ * @since 0.1
  */
 function rolo_company_details($company_id) {
     //TODO Need to display the information in Microformat friendly format
@@ -279,7 +298,7 @@ function rolo_contact_mobile_phone($contact_id) {
 }
 
 /**
- * Get Contact home phone
+ * Get contact home phone
  * @param <type> $contact_id
  * @return <type>
  */
@@ -288,7 +307,7 @@ function rolo_contact_home_phone($contact_id) {
 }
 
 /**
- * Get Contact work Phone
+ * Get contact work Phone
  * @param <type> $contact_id
  * @return <type>
  */
@@ -338,7 +357,12 @@ function wt_get_ID_by_page_name($page_name)
 }
 
 
-
+/**
+ * Displays Javascript disabled warning
+ *
+ *
+ * @since 0.1
+ */
 function rolopress_js_disabled() {
 		{ ?>
 		<noscript>
@@ -349,7 +373,11 @@ function rolopress_js_disabled() {
 add_action('rolopress_before_wrapper', 'rolopress_js_disabled');
 
 
-
+/**
+ * Assembles default menu
+ *
+ * @since 0.1
+ */
 function rolopress_default_menu() {
 			{ ?>
 			<div id="menu">
@@ -387,7 +415,6 @@ function rolopress_default_menu() {
 };
 
 add_action('rolopress_before_wrapper', 'rolopress_default_menu');
-
 
 
 /**
@@ -462,9 +489,14 @@ function _rolo_show_contact_fields_old() {
 <?php
 }
 
-
-// Identifies taxonomy type
-// thanks to Justin Tadlock: http://wordpress.org/support/topic/281899
+/**
+ * Identifies taxonomy type
+ *
+ * Use to identify the item type and do something.
+ * Example: if ( rolo_type_is( 'contact' ) ) { do something }	
+ *
+ * @credits: Justin Tadlock: http://wordpress.org/support/topic/281899
+ */
 function rolo_type_is( $type, $_post = null ) {
 	if ( empty( $type ) )
 		return false;
@@ -485,14 +517,18 @@ function rolo_type_is( $type, $_post = null ) {
 	return $r;
 }
 
-// Get the page number
+/**
+ * Get the page number
+ */
 function get_page_number() {
     if (get_query_var('paged')) {
         print ' | ' . __( 'Page ' , 'rolopress') . get_query_var('paged');
     }
-} // end get_page_number
+}
 
-// For category lists on category archives: Returns other categories except the current one (redundant)
+/**
+ * For category lists on category archives: Returns other categories except the current one (redundant)
+ */
 function cats_meow($glue) {
     $current_cat = single_cat_title( '', false );
     $separator = "\n";
@@ -507,9 +543,11 @@ function cats_meow($glue) {
         return false;
 
     return trim(join( $glue, $cats ));
-} // end cats_meow
+}
 
-// For tag lists on tag archives: Returns other tags except the current one (redundant)
+/**
+ * For tag lists on tag archives: Returns other tags except the current one (redundant)
+ */
 function tag_ur_it($glue) {
     $current_tag = single_tag_title( '', '',  false );
     $separator = "\n";
@@ -524,10 +562,6 @@ function tag_ur_it($glue) {
         return false;
 
     return trim(join( $glue, $tags ));
-} // end tag_ur_it
-
-
-
-
+}
 
 ?>
