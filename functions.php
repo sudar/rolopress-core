@@ -29,8 +29,8 @@
 	define( ROLOPRESS_CHILD_DIR, get_stylesheet_directory() );
 	define( ROLOPRESS_CHILD_URL, get_stylesheet_directory_uri() );
 
-/* Load hooks and filters */
-	require_once( ROLOPRESS_FUNCTIONS . '/hooks-filters.php' );
+/* Load action hooks */
+	require_once( ROLOPRESS_FUNCTIONS . '/hooks-actions.php' );
 	
 /* Run default setup */
 	require_once( ROLOPRESS_SETUP . '/add-pages.php' );
