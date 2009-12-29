@@ -17,7 +17,7 @@ function rolo_add_company() {
     $user = wp_get_current_user();
     if ( $user->ID ) {
 
-        //TODO - Check user cababilites
+        //TODO - Check user capabilites
         //TODO - Verify nounce here
 
         if (isset($_POST['rp_add_company']) && $_POST['rp_add_company'] == 'add_company') {
@@ -118,12 +118,6 @@ function _rolo_save_company_fields() {
 
     //TODO - Check whether the current use is logged in or not
     //TODO - Check for nounce
-
-    // Verify
-//    if ( !wp_verify_nonce( $_POST[$company_field['name'].'_noncename'], plugin_basename(__FILE__) )) {
-//        return false;
-//        }
-
     // TODO Validation
     $company_name = $_POST['rolo_company_name'];
 
@@ -262,6 +256,9 @@ function rolo_setup_company_address($field_name, &$rolo_tab_index) {
             <textarea rows="3" cols="20" name ="rolo_company_address" tabindex="<?php echo $rolo_tab_index++;?>" class="textArea address" ></textarea>
         </div>
 
+<?php
+        //TODO: Set the default values in a proper way
+?>
         <div class="ctrlHolder">
             <input type="text" name="rolo_company_city" value="<?php _e('City', 'rolopress') ;?>"  size="30" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput city" onChange=applet onFocus="this.value='';this.onfocus='';" />
             <input type="text" name="rolo_company_state" value="<?php _e('State', 'rolopress') ;?>" size="15" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput state" onChange=applet onFocus="this.value='';this.onfocus='';" />
@@ -290,6 +287,11 @@ function rolo_save_company_address($field_name, $post_id, &$new_company) {
     $new_company['rolo_company_state'] = ($_POST['rolo_company_state'] == 'State') ? '' : $_POST['rolo_company_state'];
     $new_company['rolo_company_zip'] = ($_POST['rolo_company_zip'] == 'Zip') ? '' : $_POST['rolo_company_zip'];
     $new_company['rolo_company_country'] = ($_POST['rolo_company_country'] == 'Country') ? '' : $_POST['rolo_company_country'];
+    // store the rest as custom taxonomies
+    wp_set_post_terms($post_id, ($_POST['rolo_contact_city'] == 'City') ? '' : $_POST['rolo_contact_city'], 'city');
+    wp_set_post_terms($post_id, ($_POST['rolo_contact_state'] == 'State') ? '' : $_POST['rolo_contact_state'], 'state');
+    wp_set_post_terms($post_id, ($_POST['rolo_contact_zip'] == 'Zip') ? '' : $_POST['rolo_contact_zip'], 'zip');
+    wp_set_post_terms($post_id, ($_POST['rolo_contact_country'] == 'Country') ? '' : $_POST['rolo_contact_country'], 'country');
 }
 
 /**
@@ -432,19 +434,8 @@ function rolo_edit_company_callback() {
 
     $old_values[$id] = $new_value;
     update_post_meta($company_id, 'rolo_company', $old_values);
-
-    $results = array(
-        'is_error' => false,
-        'error_text' => '',
-        'html' => $new_value
-    );
-
-    include_once(ABSPATH . 'wp-includes/js/tinymce/plugins/spellchecker/classes/utils/JSON.php');
-
-    $json = new Moxiecode_JSON();
-    $results = $json->encode($results);
-
-    die($results);
+    
+    _rolo_edit_callback_success($new_value);
 }
 
 add_action('wp_ajax_rolo_edit_company', 'rolo_edit_company_callback');

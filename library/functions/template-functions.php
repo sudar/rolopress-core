@@ -4,10 +4,6 @@
  *
  * Contains template functions used in theme
  *
- * Print summary information about contact
- * @param <type> $contact_id
- * @return <type>
- *
  * @package RoloPress
  * @subpackage Functions
  */
@@ -59,12 +55,10 @@ function rolo_contact_details($contact_id) {
 
     $contact = get_post_meta($contact_id, 'rolo_contact');
     $contact = $contact[0];
-
-    $city = get_the_terms($contact_id, 'city');
 //    print_r($contact);
 ?>
     <form id="contact-form">
-        <input type="hidden" name="rolo_contact_id" id="rolo_contact_id" value ="<?php echo $contact_id;?>" />
+        <input type="hidden" name="rolo_post_id" id="rolo_post_id" value ="<?php echo $contact_id;?>" />
         <ul id="hcard-<?php echo basename(get_permalink());?>" class="vcard">
 
 			<li class="fn"><?php echo $contact['rolo_contact_first_name'] . ' ' . $contact['rolo_contact_last_name'];?></li>
@@ -75,7 +69,7 @@ function rolo_contact_details($contact_id) {
 				<li class="adr group">
                 <span class="street-address" id="rolo_contact_address"><?php echo $contact['rolo_contact_address']; ?></span>
                 <span class="locality" id="city"><?php echo rolo_get_term_list($contact_id, 'city') ?></span>
-                <abbr class="region" id ="state" ><?php echo rolo_get_term_list($contact_id, 'state'); ?></abbr>
+                <abbr class="region" id ="state" title ="<?php echo rolo_get_term_list($contact_id, 'state'); ?>" ><?php echo rolo_get_term_list($contact_id, 'state'); ?></abbr>
                 <span class="postal-code" id="zip" ><?php echo rolo_get_term_list($contact_id, 'zip'); ?></span>
                 <span class="country-name" id="country" ><?php echo rolo_get_term_list($contact_id, 'country'); ?></span>
 				</li>
@@ -175,12 +169,11 @@ function rolo_company_details($company_id) {
 
     $company = get_post_meta($company_id, 'rolo_company');
     $company = $company[0];
-	$post_id = get_post($post->ID); // get current company id
     $slug = $post_id->post_name; // define slug as $slug
 //    print_r($company);
 ?>
     <form id="company-form">
-        <input type="hidden" name="rolo_company_id" id="rolo_company_id" value ="<?php echo $company_id;?>" />
+        <input type="hidden" name="rolo_post_id" id="rolo_post_id" value ="<?php echo $company_id;?>" />
         <ul id="hcard-<?php echo basename(get_permalink());?>" class="vcard">
 
         <li class="fn">
@@ -195,10 +188,10 @@ function rolo_company_details($company_id) {
 			<ul class="adr map label"><span class="type"><?php _e('Map', 'rolopress'); ?></span><a class="url" href="http://maps.google.com/maps?f=q&source=s_q&geocode=&q=<?php echo $company['rolo_company_address'] . "+" . $company['rolo_company_city']  . "+" . $company['rolo_company_state']  . "+" . $company['rolo_company_zip']  . "+" . $company['rolo_company_country'];?> ">Map</a>
 				<li class="adr group">
                 <span class="street-address" id="rolo_company_address"><?php echo $company['rolo_company_address']; ?></span>
-                <span class="locality" id="rolo_company_city"><?php echo $company['rolo_company_city']; ?></span>
-                <abbr class="region" id ="rolo_company_state" title="<?php echo $company['rolo_company_state']; ?>"><?php echo $company['rolo_company_state']; ?></abbr>
-                <span class="postal-code" id="rolo_company_zip" ><?php echo $company['rolo_company_zip']; ?></span>
-                <span class="country-name" id="rolo_company_country" ><?php echo $company['rolo_company_country']; ?></span>
+                <span class="locality" id="city"><?php echo rolo_get_term_list($company_id, 'city') ?></span>
+                <abbr class="region" id ="state" title ="<?php echo rolo_get_term_list($company_id, 'state'); ?>" ><?php echo rolo_get_term_list($company_id, 'state'); ?></abbr>
+                <span class="postal-code" id="zip" ><?php echo rolo_get_term_list($company_id, 'zip'); ?></span>
+                <span class="country-name" id="country" ><?php echo rolo_get_term_list($company_id, 'country'); ?></span>
 				</li>
 			</ul>
 
@@ -245,11 +238,13 @@ function rolo_company_details($company_id) {
  * @since 1.0
  */
 function rolo_get_term_list($post_id, $taxonomy) {
-    $terms = get_the_terms($post_id, $taxonomy);
     $actual_terms = array();
-	foreach ( $terms as $term ) {
-        $actual_terms[] = $term->name;
-	}
+    $terms = get_the_terms($post_id, $taxonomy);
+    if (is_array($terms)) {
+        foreach ( $terms as $term ) {
+            $actual_terms[] = $term->name;
+        }
+    }
     return join(',' , $actual_terms);
 }
 

@@ -422,12 +422,27 @@ function rolo_save_contact_company($field_name, $post_id) {
     global $contact_fields;
 
     $company_field = $contact_fields[$field_name];
+    $company_name = $_POST['rolo_contact_' . $company_field['name']];
 
-    $company = $_POST['rolo_contact_' . $company_field['name']];
-
-    if ($company != '') {
+    if ($company_name != '') {
        // Set the custom taxonmy for the post
-        wp_set_post_terms($post_id, $company, 'company');
+        wp_set_post_terms($post_id, $company_name, 'company');
+
+        $company_id = get_post_by_title($company_name);
+        if (!$company_id) {
+            // create an empty post for company
+            $new_post = array();
+
+            $new_post['post_title'] = $company_name;
+            $new_post['post_type'] = 'post';
+            $new_post['post_status'] = 'publish';
+
+            $company_id = wp_insert_post($new_post);
+
+            // Set the custom taxonmy for the post
+            wp_set_post_terms($company_id, 'Company', 'type');
+            wp_set_post_terms($company_id, $company_name, 'company');
+        }
     }
 }
 
