@@ -49,7 +49,6 @@ function rolo_add_contact() {
 function _rolo_show_contact_fields() {
 	global $contact_fields;
 	$rolo_tab_index = 1000;
-//                <input type="hidden" name="<?php echo $name.'_noncename';? >" id="< ?php echo $name.'_noncename';? >" value="< ? php echo wp_create_nonce( plugin_basename(__FILE__) ); ? >" />
 ?>
 <form action="" method="post" class="uniForm inlineLabels" id="contact-add">
     <div id="errorMsg">
@@ -59,7 +58,6 @@ function _rolo_show_contact_fields() {
     </div>
 
     <fieldset class="inlineLabels">
-
 
 <?php
 	foreach($contact_fields as $contact_field) {
@@ -114,11 +112,6 @@ function _rolo_save_contact_fields() {
 
     //TODO - Check whether the current use is logged in or not
     //TODO - Check for nounce
-
-    // Verify
-//    if ( !wp_verify_nonce( $_POST[$contact_field['name'].'_noncename'], plugin_basename(__FILE__) )) {
-//        return false;
-//        }
 
     $new_post = array();
 
@@ -250,12 +243,14 @@ function rolo_setup_contact_address($field_name, &$rolo_tab_index) {
 function rolo_save_contact_address($field_name, $post_id, &$new_contact) {
     // TODO - Validate fields
 
+    // store the address in custom field
     $new_contact['rolo_contact_address'] = $_POST['rolo_contact_address'];
-    $new_contact['rolo_contact_city'] = ($_POST['rolo_contact_city'] == 'City') ? '' : $_POST['rolo_contact_city'];
-    $new_contact['rolo_contact_state'] = ($_POST['rolo_contact_state'] == 'State') ? '' : $_POST['rolo_contact_state'];
-    $new_contact['rolo_contact_zip'] = ($_POST['rolo_contact_zip'] == 'Zip') ? '' : $_POST['rolo_contact_zip'];
-    $new_contact['rolo_contact_country'] = ($_POST['rolo_contact_country'] == 'Country') ? '' : $_POST['rolo_contact_country'];
-
+    
+    // store the rest as custom taxonomies
+    wp_set_post_terms($post_id, ($_POST['rolo_contact_city'] == 'City') ? '' : $_POST['rolo_contact_city'], 'city');
+    wp_set_post_terms($post_id, ($_POST['rolo_contact_state'] == 'State') ? '' : $_POST['rolo_contact_state'], 'state');
+    wp_set_post_terms($post_id, ($_POST['rolo_contact_zip'] == 'Zip') ? '' : $_POST['rolo_contact_zip'], 'zip');
+    wp_set_post_terms($post_id, ($_POST['rolo_contact_country'] == 'Country') ? '' : $_POST['rolo_contact_country'], 'country');
 }
 
 /**
@@ -451,6 +446,35 @@ function rolo_edit_contact_callback() {
     $old_values[$id] = $new_value;
     update_post_meta($contact_id, 'rolo_contact', $old_values);
 
+    _rolo_edit_callback_success($new_value);
+}
+
+add_action('wp_ajax_rolo_edit_contact', 'rolo_edit_contact_callback');
+add_action('wp_ajax_nopriv_rolo_edit_contact', 'rolo_edit_contact_callback');
+
+/**
+ * callback function for inline address edits
+ * @since 0.1
+ */
+function rolo_edit_address_callback() {
+    $new_value = $_POST['new_value'];
+    $post_id = $_POST['id_field'];
+    $id = $_POST['id'];
+
+    wp_set_post_terms($post_id, $new_value, $id);
+
+    _rolo_edit_callback_success($new_value);
+}
+
+add_action('wp_ajax_rolo_edit_address', 'rolo_edit_address_callback');
+add_action('wp_ajax_nopriv_rolo_edit_address', 'rolo_edit_address_callback');
+
+/**
+ * helper function for callback function
+ * @param <type> $new_value 
+ * @since 0.1
+ */
+function _rolo_edit_callback_success($new_value) {
     $results = array(
         'is_error' => false,
         'error_text' => '',
@@ -464,8 +488,4 @@ function rolo_edit_contact_callback() {
 
     die($results);
 }
-
-add_action('wp_ajax_rolo_edit_contact', 'rolo_edit_contact_callback');
-add_action('wp_ajax_nopriv_rolo_edit_contact', 'rolo_edit_contact_callback');
-
 ?>

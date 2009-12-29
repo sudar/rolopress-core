@@ -59,6 +59,8 @@ function rolo_contact_details($contact_id) {
 
     $contact = get_post_meta($contact_id, 'rolo_contact');
     $contact = $contact[0];
+
+    $city = get_the_terms($contact_id, 'city');
 //    print_r($contact);
 ?>
     <form id="contact-form">
@@ -72,10 +74,10 @@ function rolo_contact_details($contact_id) {
 			<ul class="adr map label"><span class="type"><?php _e('Map', 'rolopress'); ?></span><a class="url" href="http://maps.google.com/maps?f=q&source=s_q&geocode=&q=<?php echo $contact['rolo_contact_address'] . "+" . $contact['rolo_contact_city']  . "+" . $contact['rolo_contact_state']  . "+" . $contact['rolo_contact_zip']  . "+" . $contact['rolo_contact_country'];?> ">Map</a>
 				<li class="adr group">
                 <span class="street-address" id="rolo_contact_address"><?php echo $contact['rolo_contact_address']; ?></span>
-                <span class="locality" id="rolo_contact_city"><?php echo $contact['rolo_contact_city']; ?></span>
-                <abbr class="region" id ="rolo_contact_state" title="<?php echo $contact['rolo_contact_state']; ?>"><?php echo $contact['rolo_contact_state']; ?></abbr>
-                <span class="postal-code" id="rolo_contact_zip" ><?php echo $contact['rolo_contact_zip']; ?></span>
-                <span class="country-name" id="rolo_contact_country" ><?php echo $contact['rolo_contact_country']; ?></span>
+                <span class="locality" id="city"><?php echo rolo_get_term_list($contact_id, 'city') ?></span>
+                <abbr class="region" id ="state" ><?php echo rolo_get_term_list($contact_id, 'state'); ?></abbr>
+                <span class="postal-code" id="zip" ><?php echo rolo_get_term_list($contact_id, 'zip'); ?></span>
+                <span class="country-name" id="country" ><?php echo rolo_get_term_list($contact_id, 'country'); ?></span>
 				</li>
 			</ul>
         <li class="email url-field group"><a class="email" href="mailto:<?php echo $contact['rolo_contact_email'];?>"><?php echo $contact['rolo_contact_email'];?> </a><span id="rolo_contact_email" class="edit-icon" style=""><?php echo $contact['rolo_contact_email']; ?></span></li>
@@ -232,6 +234,23 @@ function rolo_company_details($company_id) {
     </ul><!-- vcard -->
     </form>
 <?php
+}
+
+/**
+ *
+ * @param <type> $post_id
+ * @param <type> $taxonomy
+ * @return <type>
+ *
+ * @since 1.0
+ */
+function rolo_get_term_list($post_id, $taxonomy) {
+    $terms = get_the_terms($post_id, $taxonomy);
+    $actual_terms = array();
+	foreach ( $terms as $term ) {
+        $actual_terms[] = $term->name;
+	}
+    return join(',' , $actual_terms);
 }
 
 /**
@@ -420,6 +439,8 @@ add_action('rolopress_before_wrapper', 'rolopress_default_menu');
 /**
  * Show the list of contact fields in add contact page
  * @global array $new_meta_boxes List of contact fields
+ * 
+ * @@deprecated
  */
 function _rolo_show_contact_fields_old() {
 	global $contact_fields;
