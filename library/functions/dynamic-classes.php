@@ -413,10 +413,7 @@ function rolopress_document_title( $doctitle ) {
 
 	$separator = ':';
 
-	if ( is_singular() && !is_attachment() ) :
-		$doctitle = wp_specialchars( get_post_meta( $wp_query->post->ID, 'Title', true ), true );
-
-	elseif ( is_home() ) :
+	if ( is_home() ) :
 		$doctitle = get_bloginfo( 'name' ) . $separator . ' ' . get_bloginfo( 'description' );
 
 	elseif ( is_attachment() ) :
@@ -430,7 +427,7 @@ function rolopress_document_title( $doctitle ) {
 
 	elseif ( is_tax() ) :
 		$term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
-		$doctitle = $term->name;
+		$doctitle = $term->taxonomy . ": " . $term->name;
 
 	elseif ( is_author() ) :
 		$doctitle = get_the_author_meta( 'display_name', get_query_var( 'author' ) );
@@ -473,7 +470,13 @@ function rolopress_document_title( $doctitle ) {
 	if ( ( ( $page = $wp_query->get( 'paged' ) ) || ( $page = $wp_query->get( 'page' ) ) ) && $page > 1 )
 		$doctitle = sprintf( __('%1$s Page %2$s', 'rolopress'), $doctitle . $separator, $page );
 
+		
+	$doctitle=ucwords($doctitle); // captialize all words
 	return apply_filters( 'rolopress_document_title', $doctitle );
+	
 }
+
+/* WordPress title wp_title(). */
+	add_filter( 'wp_title', 'rolopress_document_title' );
 
 ?>

@@ -62,5 +62,6 @@ function rolo_create_initial_pages() {
         }
     }
 }
+add_action('init', 'rolo_create_initial_pages', 0);
 
 ?>

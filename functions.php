@@ -2,8 +2,11 @@
 /**
  * Functions File
  *
- * Loads theme functions
- * Defines constants
+ * Define constants
+ * Auto setup up custom fields and custom taxonomies
+ * Auto create pages
+ * Load theme functions
+ * Load extensions
  *
  * @package RoloPress
  * @subpackage Functions
@@ -34,14 +37,16 @@ require_once( ROLOPRESS_FUNCTIONS . '/compat.php' );
 // Load action hooks
 require_once( ROLOPRESS_FUNCTIONS . '/hooks-actions.php' );
 
-// Run default setup
+// Setup custom fields and custom taxonomies
 require_once( ROLOPRESS_SETUP . '/setup-fields.php' );
 
+// Run setup -- only when theme is activated
 // Code based on http://www.nabble.com/Activation-hook-exist-for-themes--td25211004.html
 if ( is_admin() && isset($_GET['activated'] ) && $pagenow == "themes.php" ) {
     require_once( ROLOPRESS_SETUP . '/add-pages.php' );
+	require_once( ROLOPRESS_INCLUDES . '/settings.php' ); 
 }
-
+	
 // Load RoloPress functions
 require_once( ROLOPRESS_FUNCTIONS . '/template-functions.php' );
 require_once( ROLOPRESS_FUNCTIONS . '/contact-functions.php' );
