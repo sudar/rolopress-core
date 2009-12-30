@@ -1,19 +1,19 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" <?php language_attributes(); ?>>
 <head profile="http://www.w3.org/2006/03/hcard">
-<title><?php wp_title( '' ); ?></title>
-	
-		
+<title><?php rolopress_document_title(); ?></title>
+
+
 	<?php rolopress_head(); // rolopress head hook ?>
 	<?php wp_head(); // wordpress head hook ?>
-	
+
 	<meta http-equiv="content-type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" />
-	<link rel="stylesheet" type="text/css" href="<?php bloginfo('stylesheet_url'); ?>" />	
+	<link rel="stylesheet" type="text/css" href="<?php bloginfo('stylesheet_url'); ?>" />
 	<link rel="alternate" type="application/rss+xml" href="<?php bloginfo('rss2_url'); ?>" title="<?php printf( __( '%s latest posts', 'rolopress' ), wp_specialchars( get_bloginfo('name'), 1 ) ); ?>" />
 	<link rel="alternate" type="application/rss+xml" href="<?php bloginfo('comments_rss2_url') ?>" title="<?php printf( __( '%s latest comments', 'rolopress' ), wp_specialchars( get_bloginfo('name'), 1 ) ); ?>" />
-	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />	
-    		
-        
+	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
+
+
 </head>
 
 <body class="<?php rolopress_body_class() ?>">

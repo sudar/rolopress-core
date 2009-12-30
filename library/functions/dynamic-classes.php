@@ -5,478 +5,384 @@
  * Adds contextual classes to major theme elements.
  * This gives a near unlimited amount of control over design elements.
  *
- * Many of the functions behind this come from the great Sandbox theme.
+ * Many of the ideas behind this come from the great Sandbox theme.
  * @link http://www.plaintxt.org/themes/sandbox
  *
- * This file was taken from the Hybrid theme because it's so good!
- * @link http://themehybrid.com/
+ * The majority of this code was borrowed from the rolopress theme because it's so good!
+ * @link http://themerolopress.com/
  *
  * @package RoloPress
  * @subpackage Functions
  */
+ 
 
 /**
- * Creates a set of classes for each site entry. Each entry is 
- * given the class of 'hentry'. Items are given category, tag, and 
- * author classes. Alternates item classes of odd, even, and alt are added.
+ * @since 0.1
+ * @global $wp_query The current page's query object.
+ * @global $rolopress The global rolopress object.
+ * @return array $rolopress->context Several contexts based on the current page.
+ */
+function rolopress_get_context() {
+	global $wp_query, $rolopress;
+
+	/* If $rolopress->context has been set, don't run through the conditionals again. Just return the variable. */
+	if ( is_array( $rolopress->context ) )
+		return $rolopress->context;
+
+	$rolopress->context = array();
+
+	/* Front page of the site. */
+	if ( is_front_page() )
+		$rolopress->context[] = 'frontpage';
+
+	/* Blog page. */
+	if ( is_home() ) {
+		$rolopress->context[] = 'home';
+	}
+
+	/* Singular views. */
+	elseif ( is_singular() ) {
+		$rolopress->context[] = 'singular';
+		$rolopress->context[] = "singular-{$wp_query->post->post_type}";
+		$rolopress->context[] = "singular-{$wp_query->post->post_type}-{$wp_query->post->ID}";		
+		
+			
+		if ( is_single() ) { // add Type for single items
+		// get the taxonomies, strip the links and make them lower case to match the other classes
+		$terms_as_text = strtolower(strip_tags( get_the_term_list( $wp_query->post->ID, 'type','' ,'' ) ) );
+		$rolopress->context[] =  "type-" . $terms_as_text;
+		}
+	}
+
+	/* Archive views. */
+	elseif ( is_archive() ) {
+		$rolopress->context[] = 'archive';
+
+		/* Taxonomy archives. */
+		if ( is_tax() || is_category() || is_tag() ) {
+			$term = $wp_query->get_queried_object();
+			$rolopress->context[] = 'taxonomy';
+			$rolopress->context[] = 'taxonomy-' . $term->taxonomy;
+			$rolopress->context[] = "{$term->taxonomy}-" . sanitize_html_class( $term->slug, $term->term_id );
+		}
+
+		/* User/author archives. */
+		elseif ( is_author() ) {
+			$rolopress->context[] = 'user';
+			$rolopress->context[] = 'user-' . sanitize_html_class( get_the_author_meta( 'user_nicename', get_query_var( 'author' ) ), $wp_query->get_queried_object_id() );
+		}
+
+		/* Time/Date archives. */
+		else {
+			if ( is_date() ) {
+				$rolopress->context[] = 'date';
+				if ( is_year() )
+					$rolopress->context[] = 'year';
+				if ( is_month() )
+					$rolopress->context[] = 'month';
+				if ( get_query_var( 'w' ) )
+					$rolopress->context[] = 'week';
+				if ( is_day() )
+					$rolopress->context[] = 'day';
+			}
+			if ( is_time() ) {
+				$rolopress->context[] = 'time';
+				if ( get_query_var( 'hour' ) )
+					$rolopress->context[] = 'hour';
+				if ( get_query_var( 'minute' ) )
+					$rolopress->context[] = 'minute';
+			}
+		}
+	}
+
+	/* Search results. */
+	elseif ( is_search() ) {
+		$rolopress->context[] = 'search';
+	}
+
+	/* Error 404 pages. */
+	elseif ( is_404() ) {
+		$rolopress->context[] = 'error-404';
+	}
+
+	return $rolopress->context;
+}
+
+/**
+ * Creates a set of classes for each site entry upon display. Each entry is given the class of 
+ * 'hentry'. Posts are given category, tag, and author classes. Alternate post classes of odd, 
+ * even, and alt are added.
  *
- * Mostly relies on conditional tags but several other functions are key.
- * @link http://codex.wordpress.org/Conditional_Tags
- * @link http://codex.wordpress.org/Template_Tags/get_the_category
- * @link http://codex.wordpress.org/Template_Tags/get_the_tags
- *
+ * @since 0.1
+ * @global $post The current post's DB object.
+ * @param string|array $class Additional classes for more control.
+ * @return string $class
  */
 function rolopress_entry_class( $class = '' ) {
 	global $post;
 	static $post_alt;
 
-	$args = array(
-		'entry_tax' => array( 'category', 'post_tag' )
-	);
+	/* Add hentry for microformats compliance and the post type. */
+	$classes = array( 'hentry', $post->post_type );
 
-	/* Microformats. */
-	$classes[] = 'hentry';
+	/* Item alt class. */
+	$classes[] = 'item-' . ++$post_alt;
+	$classes[] = ( $post_alt % 2 ) ? 'odd' : 'even alt';
 
-	/* Post type. For backwards compatibility w/stylesheets, all entries should be given a class of 'post'. */
-	if ( $post->post_type != 'post' )
-		$classes[] = 'post';
-	$classes[] = $post->post_type;
-
-	/* Post alt class. */
-	$classes[] = 'post-' . ++$post_alt;
-
-	if ( $post_alt % 2 )
-		$classes[] = 'odd';
-	else
-		$classes[] = 'even alt';
+	/* Owner class. */
+	$classes[] = 'owner-' . sanitize_html_class( get_the_author_meta( 'user_nicename' ), get_the_author_meta( 'ID' ) );
 
 	/* Sticky class (only on home/blog page). */
-	if( is_sticky() && is_home() )
+	if ( is_home() && is_sticky() )
 		$classes[] = 'sticky';
-
-	/* Author class. */
-	if ( !is_attachment() )
-		$classes[] = 'author-' . sanitize_html_class( get_the_author_meta( 'user_nicename' ), get_the_author_meta( 'ID' ) );
 
 	/* Password-protected posts. */
 	if ( post_password_required() )
 		$classes[] = 'protected';
 
-	/* Add each taxonomy as a class. */
-	if ( $post->post_type == 'post' ) :
+	/* Add category and post tag terms as classes. */
+	if ( 'post' == $post->post_type ) {
 
-		foreach ( $args['entry_tax'] as $tax ) :
+		foreach ( array( 'category', 'post_tag' ) as $tax ) {
 
-			foreach ( (array)get_the_terms( $post->ID, $tax ) as $term ) :
-				if ( !empty( $term->slug ) ) :
+			foreach ( (array)get_the_terms( $post->ID, $tax ) as $term ) {
+				if ( !empty( $term->slug ) )
 					$classes[] = $tax . '-' . sanitize_html_class( $term->slug, $term->term_id );
-				endif;
-			endforeach;
-
-		endforeach;
-
-	endif;
+			}
+		}
+	}
 
 	/* User-created classes. */
-	if ( !empty( $class ) ) :
+	if ( !empty( $class ) ) {
 		if ( !is_array( $class ) )
 			$class = preg_split( '#\s+#', $class );
 		$classes = array_merge( $classes, $class );
-	endif;
+	}
 
 	/* Join all the classes into one string and echo them. */
 	$class = join( ' ', $classes );
 
-	echo apply_filters( 'rolopress_entry_class', $class );
+	echo apply_filters( 'entry_class', $class );
 }
 
 /**
- * Sets a class for each note. Sets alt, odd/even, and author/user classes. 
- * Adds author, user, and reader classes. Needs more work because WP, by 
- * default, assigns even/odd backwards (Odd should come first, even second).
+ * Sets a class for each note. Sets alt, odd/even, and owner/user classes. Adds owner, user, 
+ * and reader classes. Needs more work because WP, by default, assigns even/odd backwards 
+ * (Odd should come first, even second).
  *
- * @link http://codex.wordpress.org/Template_Tags/get_comment_author_url
- * @link http://codex.wordpress.org/Function_Reference/get_userdata
- *
- * @todo Find a better way to get the user's role b/c these can be custom.
+ * @since 0.1
+ * @global $wpdb WordPress DB access object.
+ * @global $comment The current comment's DB object.
  */
 function rolopress_note_class() {
-	global $comment, $wpdb, $wp_roles;
-	static $comment_alt;
-	$classes = array();
+	global $post, $comment, $rolopress;
 
 	/* Gets default WP comment classes. */
-	$classes = str_replace( array( 'byuser', 'bypostauthor' ), '', get_comment_class() );
+	$classes = get_comment_class();
 
-	/* User classes to match user role.  Major props to Ptah Dunbar for original idea. @link http://wpframework.com */
-	if ( $comment->user_id > 0 && $user = get_userdata( $comment->user_id ) ) :
+	/* Get the comment type. */
+	$classes[] = get_comment_type();
 
-		/* Set a class with the commenter's role. */
-		$capabilities = $user->{$wpdb->prefix . 'capabilities'};
+	/* User classes to match user role and user. */
+	if ( $comment->user_id > 0 ) {
 
-		if ( !isset( $wp_roles ) ) :
-			$wp_roles = new WP_Roles();
-		endif;
+		/* Create new user object. */
+		$user = new WP_User( $comment->user_id );
 
-		foreach ( $wp_roles->role_names as $role => $name ) :
+		/* Set a class with the user's role. */
+		if ( is_array( $user->roles ) ) {
+			foreach ( $user->roles as $role )
+				$classes[] = "role-{$role}";
+		}
 
-			if ( is_array( $capabilities) && array_key_exists( $role, $capabilities ) ) :
-				$classes[] = $role . ' ' . $role . '-' . sanitize_html_class( $user->user_nicename, $user->user_id );
-			endif;
+		/* Set a class with the user's name. */
+		$classes[] = 'user-' . sanitize_html_class( $user->user_nicename, $user->user_id );
+	}
 
-		endforeach;
-
-		/* Comment by the entry/post author. */
-		if ( $post = get_post( $post_id ) ) :
-			if ( $comment->user_id === $post->post_author )
-				$classes[] = 'entry-author';
-		endif;
-
-	else :
-		/* If not a registered user */
+	/* If not a registered user */
+	else {
 		$classes[] = 'reader';
+	}
 
-	endif;
-
-	/* @link http://microid.org */
-	$email = get_comment_author_email();
-	$url = get_comment_author_url();
-	if ( !empty( $email ) && !empty( $url ) )
-		$classes[] = 'microid-mailto+http:sha1:' . sha1( sha1( 'mailto:'.$email ) . sha1( $url ) );
+	/* Comment by the entry/item author. */
+	if ( $post = get_post( $post_id ) ) {
+		if ( $comment->user_id === $post->post_author )
+			$classes[] = 'entry-author';
+	}
 
 	/* Join all the classes into one string and echo them. */
 	$class = join( ' ', $classes );
 
-	echo apply_filters( 'rolopress_note_class', $class );
+	echo apply_filters( "{$rolopress->prefix}_comment_class", $class );
 }
 
 /**
  * Provides classes for the <body> element depending on page context.
  *
- * Mostly relies on conditional tags but several other functions are key
- * @link http://codex.wordpress.org/Conditional_Tags
- * @link http://codex.wordpress.org/Template_Tags/get_the_category
- * @link http://codex.wordpress.org/Template_Tags/get_the_tags
- * @link http://codex.wordpress.org/Function_Reference/get_userdata
- * @link http://codex.wordpress.org/Function_Reference/get_post_mime_type
- * @link http://codex.wordpress.org/Function_Reference/get_post_meta
- *
+ * @since 0.1
+ * @uses $wp_query
+ * @param string|array $class Additional classes for more control.
+ * @return string
  */
 function rolopress_body_class( $class = '' ) {
-	global $wp_query;
-
-	$classes = array();
+	global $wp_query, $is_lynx, $is_gecko, $is_firefox, $is_IE, $is_opera, $is_NS4, $is_safari, $is_chrome;
 
 	/* Text direction (which direction does the text flow). */
-	if ( 'rtl' == get_bloginfo( 'text_direction' ) )
-		$classes[] = 'rtl';
-	else
-		$classes[] = 'ltr';
+	$classes = array( 'rolopress', get_bloginfo( 'text_direction' ), get_locale() );
 
 	/* Date classes. */
 	$time = time() + ( get_option( 'gmt_offset' ) * 3600 );
-	$classes[] = 'y' . gmdate( 'Y', $time );
-	$classes[] = 'm' . gmdate( 'm', $time );
-	$classes[] = 'd' . gmdate( 'd', $time );
-	$classes[] = 'h' . gmdate( 'H', $time );
-	$classes[] = strtolower( gmdate( 'l', $time ) );
+	foreach ( array( 'Y', 'm', 'd', 'H', 'l' ) as $type )
+		$classes[] = str_replace( 'l', '', strtolower( $type . gmdate( $type, $time ) ) );
 
 	/* Is the current user logged in. */
-	if ( is_user_logged_in() )
-		$classes[] = 'logged-in';
-	else
-		$classes[] = 'not-logged-in';
-		
-	/* Can the current user edit items. */
-	if ( current_user_can('edit_posts') )
-		$classes[] = 'can-edit-items';
-		
-	/* Can the current user add items. */
-	if ( current_user_can('publish_posts') )
-		$classes[] = 'can-add-items';	
+	$classes[] = ( is_user_logged_in() ) ? 'logged-in' : 'not-logged-in';
 
-	/* Basic classes generated by is_* functions. */
-	if ( is_front_page() )
-		$classes[] = 'home front-page';
-	if ( is_home() )
-		$classes[] = 'blog';
-	if ( is_archive() )
-		$classes[] = 'archive';
-	if ( is_date() )
-		$classes[] = 'date';
-	if ( is_tax() )
-		$classes[] = 'taxonomy';
-	if ( is_author() )
-		$classes[] = 'author';
-	if ( is_singular() )
-		$classes[] = 'singular';
-	if ( is_404() )
-		$classes[] = 'error-404';
-	if ( is_paged() )
-		$classes[] = 'paged';
-	if ( is_preview() && is_single() )
-		$classes[] = 'preview preview-single';
-	if ( is_preview() && is_page() )
-		$classes[] = 'preview preview-page';
+	/* Merge base contextual classes with $classes. */
+	$classes = array_merge( $classes, rolopress_get_context() );
 
-	/* Attachments. */
-	if ( is_attachment() ) :
-		$classes[] = 'attachment attachment-' . $wp_query->post->ID;
-		$mime_type = explode( '/', get_post_mime_type() );
-		foreach ( $mime_type as $type ) :
-			$classes[] = 'attachment-' . $type;
-		endforeach;
+	/* Singular post (post_type) classes. */
+	if ( is_singular() ) {
+	
+		/* Checks for custom template. */
+		$template = str_replace( '.php', '', get_post_meta( $wp_query->post->ID, "_wp_{$wp_query->post->post_type}_template", true ) );
+		if ( $template )
+			$classes[] = "{$wp_query->post->post_type}-template-{$template}";
 
-	/* Single posts. */
-	elseif ( is_single() ) :
-		$classes[] = 'single single-' . $wp_query->post->ID;
-		if ( is_sticky( $wp_query->post->ID ) ) :
-			$classes[] = 'single-sticky';
-		endif;
+		/* Attachment mime types. */
+		if ( is_attachment() ) {
+			foreach ( explode( '/', get_post_mime_type() ) as $type )
+				$classes[] = "attachment-{$type}";
+		}
 
-		foreach ( (array)get_the_category( $wp_query->post->ID ) as $cat ) :
-			$classes[] = 'single-category-' . sanitize_html_class( $cat->slug, $cat->term_id );
-		endforeach;
-
-		$wp_query->in_the_loop = true;
-		foreach ( ( array )get_the_tags( $wp_query->post->ID ) as $tag ) :
-				$classes[] = 'single-post_tag-' . sanitize_html_class( $tag->slug, $tag->term_id );
-		endforeach;
-		$wp_query->in_the_loop = false;
-
-		$classes[] = 'single-author-' . get_the_author_meta( 'user_nicename', $wp_query->post->post_author );
-
-	/* Pages. */
-	elseif ( is_page() ) :
-		$classes[] = 'page page-' . $wp_query->post->ID;
-
-		if ( is_page_template() ) :
-			$classes[] = 'page-template page-template-' . str_replace( '.php', '', get_post_meta( $wp_query->post->ID, '_wp_page_template', true ) );
-		endif;
-
-		$classes[] = 'page-author-' . get_the_author_meta( 'user_nicename', $wp_query->post->post_author );
-
-	/* Archives (author, category, date, tag). */
-	elseif ( is_author() ) :
-		$classes[] = 'author-' . get_the_author_meta( 'user_nicename', get_query_var( 'author' ) );
-
-	/* Taxomonies (tags, categories, etc.). */
-	elseif ( is_tax() || is_category() || is_tag() ) :
-		$term = $wp_query->get_queried_object();
-		$classes[] = $term->taxonomy . ' ' . $term->taxonomy . '-' . sanitize_html_class( $term->slug, $term->term_id );
-
-	/* Time and date. */
-	elseif ( is_time() ) :
-		$classes[] = 'time';
-
-	elseif ( is_day() ) :
-		$classes[] = 'day';
-
-	elseif ( get_query_var( 'w' ) ) :
-		$classes[] = 'week';
-
-	elseif ( is_month() ) :
-		$classes[] = 'month';
-
-	elseif ( is_year() ) :
-		$classes[] = 'year';
-
-	/* Search results. */
-	elseif ( is_search() ) :
-		if ( have_posts() ) :
-			$classes[] = 'search search-results';
-		else :
-			$classes[] = 'search search-no-results';
-		endif;
-
-	endif;
+		/* Deprecated classes. */
+		elseif ( is_page() )
+			$classes[] = "page-{$wp_query->post->ID}"; // Use singular-page-ID
+		elseif ( is_single() )
+			$classes[] = "single-{$wp_query->post->ID}"; // Use singular-post-ID
+	}
 
 	/* Paged views. */
-	if ( ( ( $page = $wp_query->get('paged') ) || ( $page = $wp_query->get('page') ) ) && $page > 1 ) :
+	if ( ( ( $page = $wp_query->get( 'paged' ) ) || ( $page = $wp_query->get( 'page' ) ) ) && $page > 1 ) {
 		$page = intval( $page );
-		$classes[] = 'paged-' . $page;
+		$classes[] = 'paged paged-' . $page;
+	}
 
-		if ( is_front_page() )
-			$classes[] = 'home-paged home-paged-' . $page . ' front-page-paged front-page-paged-' . $page;
-		if ( is_home() )
-			$classes[] = 'blog-paged blog-paged-' . $page;
-		if ( is_single() )
-			$classes[] = 'single-paged single-paged-' . $page;
-		elseif ( is_page() )
-			$classes[] = 'page-paged page-paged-' . $page;
-		elseif ( is_category() )
-			$classes[] = 'category-paged category-paged-' . $page;
-		elseif ( is_tag() )
-			$classes[] = 'post_tag-paged post_tag-paged-' . $page;
-		elseif ( is_date() )
-			$classes[] = 'date-paged date-paged-' . $page;
-		elseif ( is_author() )
-			$classes[] = 'author-paged author-paged-' . $page;
-		elseif ( is_search() )
-			$classes[] = 'search-paged search-paged-' . $page;
-	endif;
-
-	/* Browser and OS detection.  Major props to Ptah Dunbar. @link http://wpframework.com */
-	$browser = $_SERVER[ 'HTTP_USER_AGENT' ];
-
-	/* OS detection. */
-	if ( preg_match( "/Windows/", $browser ) )
-		$classes[] = 'windows';
-	elseif ( preg_match( "/Mac/", $browser ) )
-		$classes[] = 'mac';
-	elseif ( preg_match( "/Linux/", $browser ) )
-		$classes[] = 'linux';
-	else
-		$classes[] = 'unknown-os';
-
-	/* Chrome */
-	if ( preg_match( "/Chrome/", $browser ) ) :
-		preg_match( "/Chrome\/(\d.\d)/si", $browser, $matches );
-		$classes[] = 'chrome chrome-' . str_replace( ".", "-", $matches[1] );
-
-	/* Safari */
-	elseif ( preg_match( "/Safari/", $browser ) ) :
-		preg_match( "/Version\/(\d.\d)/si", $browser, $matches );
-		$classes[] = 'safari safari-' . str_replace( ".", "-", $matches[1] );
-
-	/* Opera */
-	elseif ( preg_match( "/Opera/", $browser ) ) :
-		preg_match( "/Opera\/(\d.\d)/si", $browser, $matches );
-		$classes[] = 'opera opera-' . str_replace( ".", "-", $matches[1] );
-
-	/* Internet Explorer */
-	elseif ( preg_match( "/MSIE/", $browser ) ) :
-		$classes[] = 'msie';
-		if ( preg_match( "/MSIE 6.0/", $browser ) ) :
-			$classes[] = 'ie6';
-		elseif ( preg_match( "/MSIE 7.0/", $browser ) ) :
-			$classs[] = 'ie7';
-		elseif ( preg_match( "/MSIE 8.0/", $browser ) ) :
-			$classes[] = 'ie8';
-		endif;
-
-	/* Firefox */
-	elseif ( preg_match( "/Firefox/", $browser ) && preg_match( "/Gecko/", $browser ) ) :
-		preg_match( "/Firefox\/(\d)/si", $browser, $matches );
-		$classes[] = 'firefox firefox-' . str_replace( ".", "-", $matches[1] );
-
-	/* Unknown browser */
-	else :
-		$classes[] = 'unknown-browser';
-
-	endif;
+	/* Browser detection. */
+	$browsers = array( 	'gecko' => $is_gecko, 'firefox' => $is_firefox, 'opera' => $is_opera, 'lynx' => $is_lynx, 'ns4' => $is_NS4, 'safari' => $is_safari, 'chrome' => $is_chrome, 'msie' => $is_IE );
+	foreach ( $browsers as $key => $value ) {
+		if ( $value ) {
+			$classes[] = $key;
+			break;
+		}
+	}
 
 	/* rolopress theme widgets detection. */
-	if ( is_sidebar_active( 'primary' ) ) :
-		$classes[] = 'primary-active';
-	else :
-		$classes[] = 'primary-inactive';
-		$primary = 'inactive';
-	endif;
-
-	if ( is_sidebar_active( 'secondary' ) ) :
-		$classes[] = 'secondary-active';
-	else :
-		$classes[] = 'secondary-inactive';
-		$secondary = 'inactive';
-	endif;
-
-	if ( is_sidebar_active( 'subsidiary' ) ) :
-		$classes[] = 'subsidiary-active';
-	else :
-		$classes[] = 'subsidiary-inactive';
-		$subsidiary = 'inactive';
-	endif;
-
-	if ( $primary == 'inactive' && $secondary == 'inactive' && $subsidiary == 'inactive' )
-		$classes[] = 'no-widgets';
+	 // Need to handle better.  Widget areas register as active if they contain smart widgets, even if the widgets are not visible
+	 
+	if ( is_singular () ) { /* Detect widgets in single page widget areas */
+			foreach ( array( 'contact-under-main', 'company-under-main' ) as $sidebar )
+			$classes[] = ( is_sidebar_active( $sidebar ) ) ? "{$sidebar}-widgets-active" : "{$sidebar}-widgets-inactive";
+		}
+	if ( is_page_template('widgets.php' || 'widgets-no-sidebar.php' ) ) { /* Detect widgets on widget template pages */
+			foreach ( array( 'widget-page') as $sidebar )
+			$classes[] = ( is_sidebar_active( $sidebar ) ) ? "{$sidebar}-widgets-active" : "{$sidebar}-widgets-inactive";
+		}		
+		
+	foreach ( array( 'menu', 'primary', 'secondary' ) as $sidebar ) /* Detect widgets everywhere else */
+		$classes[] = ( is_sidebar_active( $sidebar ) ) ? "{$sidebar}-widgets-active" : "{$sidebar}-widgets-inactive";
 
 	/* Input class. */
-	if ( !empty( $class ) ) :
+	if ( !empty( $class ) ) {
 		if ( !is_array( $class ) )
 			$class = preg_split( '#\s+#', $class );
 		$classes = array_merge( $classes, $class );
-	endif;
+	}
 
 	/* Join all the classes into one string. */
 	$class = join( ' ', $classes );
 
 	/* Print the body class. */
-	echo apply_filters( 'rolopress_body_class', $class );
+	echo apply_filters( 'body_class', $class );
 }
 
+
 /**
- * Function for handling what the browser title should be.
+ * Function for handling what the browser/search engine title should be. Tries to handle every 
+ * situation to make for the best SEO.
+ *
+ * @since 0.1
+ * @global $wp_query
  */
-function rolopress_document_title( $doctitle ) {
-	global $wp_query, $rolopress_settings;
+function rolopress_document_title() {
+	global $wp_query;
 
 	$separator = ':';
 
-	if ( is_home() ) :
+	if ( is_front_page() && is_home() )
 		$doctitle = get_bloginfo( 'name' ) . $separator . ' ' . get_bloginfo( 'description' );
 
-	elseif ( is_attachment() ) :
-		$doctitle = single_post_title( false, false );
+	elseif ( is_home() || is_singular() ) {
+		$id = $wp_query->get_queried_object_id();
 
-	elseif ( is_category() ) :
-		$doctitle = single_cat_title( false, false );
+		$doctitle = get_post_meta( $id, 'Title', true );
 
-	elseif ( is_tag() ) :
-		$doctitle = single_tag_title( false, false );
+		if ( !$doctitle && is_front_page() )
+			$doctitle = get_bloginfo( 'name' ) . $separator . ' ' . get_bloginfo( 'description' );
+		elseif ( !$doctitle )
+			$doctitle = get_post_field( 'post_title', $id );
+	}
 
-	elseif ( is_tax() ) :
-		$term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
-		$doctitle = $term->taxonomy . ": " . $term->name;
+	elseif ( is_archive() ) {
 
-	elseif ( is_author() ) :
-		$doctitle = get_the_author_meta( 'display_name', get_query_var( 'author' ) );
+		if ( is_category() || is_tag() || is_tax() ) {
+			$term = $wp_query->get_queried_object();
+			$doctitle = $term->name . " List";
+		}
 
-	elseif ( is_search() ) :
-		$doctitle = sprintf( __('Search results for &quot;%1$s&quot;', 'rolopress'), esc_attr( get_search_query() ) );
+		elseif ( is_author() )
+			$doctitle = get_the_author_meta( 'display_name', get_query_var( 'author' ) );
 
-	elseif ( get_query_var( 'minute' ) && get_query_var( 'hour' ) ) :
-		$doctitle = sprintf( __('Archive for %1$s', 'rolopress'), get_the_time( __('g:i a', 'rolopress') ) );
+		elseif ( is_date () ) {
+			if ( get_query_var( 'minute' ) && get_query_var( 'hour' ) )
+				$doctitle = sprintf( __( 'Archive for %1$s', 'rolopress' ), get_the_time( __( 'g:i a', 'rolopress' ) ) );
 
-	elseif ( get_query_var( 'minute' ) ) :
-		$doctitle = sprintf( __('Archive for minute %1$s', 'rolopress'), get_the_time( __('i', 'rolopress') ) );
+			elseif ( get_query_var( 'minute' ) )
+				$doctitle = sprintf( __( 'Archive for minute %1$s', 'rolopress' ), get_the_time( __( 'i', 'rolopress' ) ) );
 
-	elseif ( get_query_var( 'hour' ) ) :
-		$doctitle = sprintf( __('Archive for %1$s', 'rolopress'), get_the_time( __('g a', 'rolopress') ) );
+			elseif ( get_query_var( 'hour' ) )
+				$doctitle = sprintf( __( 'Archive for %1$s', 'rolopress' ), get_the_time( __( 'g a', 'rolopress' ) ) );
 
-	elseif ( is_day() ) :
-		$doctitle = sprintf( __('Archive for %1$s', 'rolopress'), get_the_time( __('F jS, Y', 'rolopress') ) );
+			elseif ( is_day() )
+				$doctitle = sprintf( __( 'Archive for %1$s', 'rolopress' ), get_the_time( __( 'F jS, Y', 'rolopress' ) ) );
 
-	elseif ( get_query_var( 'w' ) ) :
-		$doctitle = sprintf( __('Archive for week %1$s of %2$s', 'rolopress'), get_the_time( __('W', 'rolopress') ), get_the_time( __('Y', 'rolopress') ) );
+			elseif ( get_query_var( 'w' ) )
+				$doctitle = sprintf( __( 'Archive for week %1$s of %2$s', 'rolopress' ), get_the_time( __( 'W', 'rolopress' ) ), get_the_time( __( 'Y', 'rolopress' ) ) );
 
-	elseif ( is_month() ) :
-		$doctitle = sprintf( __('Archive for %1$s', 'rolopress'), single_month_title( ' ', false) );
+			elseif ( is_month() )
+				$doctitle = sprintf( __( 'Archive for %1$s', 'rolopress'), single_month_title( ' ', false) );
 
-	elseif ( is_year() ) :
-		$doctitle = sprintf( __('Archive for %1$s', 'rolopress'), get_the_time( __('Y', 'rolopress') ) );
+			elseif ( is_year() )
+				$doctitle = sprintf( __( 'Archive for %1$s', 'rolopress' ), get_the_time( __( 'Y', 'rolopress' ) ) );
+		}
+	}
 
-	elseif ( is_404() ) :
-		$doctitle = __('404 Not Found', 'rolopress');
+	elseif ( is_search() )
+		$doctitle = sprintf( __( 'Search results for &quot;%1$s&quot;', 'rolopress' ), esc_attr( get_search_query() ) );
 
-	endif;
-
-	if ( !$doctitle && is_front_page() )
-		$doctitle = get_bloginfo( 'name' ) . $separator . ' ' . get_bloginfo( 'description' );
-	elseif ( !$doctitle && is_singular() )
-		$doctitle = single_post_title( false, false );
+	elseif ( is_404() )
+		$doctitle = __( '404 Not Found', 'rolopress' );
+		
 
 	/* If paged. */
 	if ( ( ( $page = $wp_query->get( 'paged' ) ) || ( $page = $wp_query->get( 'page' ) ) ) && $page > 1 )
-		$doctitle = sprintf( __('%1$s Page %2$s', 'rolopress'), $doctitle . $separator, $page );
-
+		$doctitle = sprintf( __( '%1$s Page %2$s', rolopress ), $doctitle . $separator, $page );
 		
-	$doctitle=ucwords($doctitle); // captialize all words
-	return apply_filters( 'rolopress_document_title', $doctitle );
-	
-}
 
-/* WordPress title wp_title(). */
-	add_filter( 'wp_title', 'rolopress_document_title' );
+	/* Apply the wp_title filters so we're compatible with plugins. */
+	$doctitle = apply_filters( 'wp_title', $doctitle, $separator, '' );
+
+	echo apply_filters( 'document_title', esc_attr( $doctitle ) );
+}
 
 ?>
