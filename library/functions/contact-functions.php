@@ -86,7 +86,7 @@ function _rolo_show_edit_contact_form($contact_id) {
     $contact = get_post_meta($contact_id, 'rolo_contact');
     $contact = $contact[0];
 ?>
-<form action="" method="post" class="uniForm inlineLabels" id="contact-add">
+<form action="" method="post" class="uniForm inlineLabels" id="contact-edit">
     <div id="errorMsg">
         <h3><?php _e('Oops!, We Have a Problem.');?></h3>
         <ol>
@@ -360,7 +360,6 @@ function rolo_save_contact_address($field_name, $post_id, &$new_contact) {
     // store the address in custom field
     $new_contact['rolo_contact_address'] = $_POST['rolo_contact_address'];
 
-
     // store the rest as custom taxonomies
     wp_set_post_terms($post_id, ($_POST['rolo_contact_city'] == 'City') ? '' : $_POST['rolo_contact_city'], 'city');
     wp_set_post_terms($post_id, ($_POST['rolo_contact_state'] == 'State') ? '' : $_POST['rolo_contact_state'], 'state');
@@ -471,11 +470,10 @@ function rolo_setup_contact_info($field_name, &$rolo_tab_index, $contact_id ='')
     $info_field = $contact_fields[$field_name];
     $name = 'rolo_contact_' . $info_field['name'];
 
-    $contact = get_post_meta($contact_id, 'rolo_contact');
-    $contact = $contact[0];
+    $contact = &get_post($contact_id);
 
-    if (isset($contact[$name])) {
-        $current_value = $contact[$name];
+    if (isset($contact->post_content)) {
+        $current_value = $contact->post_content;
     } else {
         $current_value = '';
     }

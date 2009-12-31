@@ -44,28 +44,28 @@ jQuery(document).ready(function() {
     });
 
     //on focus tricks
-    jQuery('div.ctrlHolder input[name="rolo_contact_city"]').focus(function () {
+    jQuery('div.ctrlHolder input[name="rolo_contact_city"], div.ctrlHolder input[name="rolo_company_city"]').focus(function () {
         var $this = jQuery(this);
         if ($this.val() == 'City') {
             $this.val('');
         }
     });
 
-    jQuery('div.ctrlHolder input[name="rolo_contact_state"]').focus(function () {
+    jQuery('div.ctrlHolder input[name="rolo_contact_state"], div.ctrlHolder input[name="rolo_company_state"]').focus(function () {
         var $this = jQuery(this);
         if ($this.val() == 'State') {
             $this.val('');
         }
     });
 
-    jQuery('div.ctrlHolder input[name="rolo_contact_zip"]').focus(function () {
+    jQuery('div.ctrlHolder input[name="rolo_contact_zip"], div.ctrlHolder input[name="rolo_company_zip"]').focus(function () {
         var $this = jQuery(this);
         if ($this.val() == 'Zip') {
             $this.val('');
         }
     });
 
-    jQuery('div.ctrlHolder input[name="rolo_contact_country"]').focus(function () {
+    jQuery('div.ctrlHolder input[name="rolo_contact_country"], div.ctrlHolder input[name="rolo_company_country"]').focus(function () {
         var $this = jQuery(this);
         if ($this.val() == 'Country') {
             $this.val('');

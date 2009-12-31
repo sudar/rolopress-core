@@ -21,8 +21,7 @@
             <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
                 <div class="entry-main">
 <?php               if ( current_user_can('publish_posts') ) { // only display if user has proper permissions
-                        $post_id = $_GET['id'];
-                        rolo_edit_company($post_id);
+                        rolo_edit_company();
                     } else {
                          _e("Sorry, you don't have permission to view this page.");
                     }

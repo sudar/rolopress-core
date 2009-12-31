@@ -47,34 +47,95 @@ function rolo_add_company() {
  *
  * @since 0.1
  */
-function rolo_edit_company($post_id) {
+function rolo_edit_company() {
+    $company_id =  (isset($_GET['id'])) ? $_GET['id'] : 0;
+    $company = &get_post($company_id);
 
-    $user = wp_get_current_user();
-    if ( $user->ID ) {
+    if ($company) {
 
         //TODO - Check user capabilites
         //TODO - Verify nounce here
 
-        if (isset($_POST['rp_add_company']) && $_POST['rp_add_company'] == 'add_company') {
+        if (isset($_POST['rp_edit_company']) && $_POST['rp_edit_company'] == 'edit_company') {
             $company_id = _rolo_save_company_fields();
             if ($company_id) {
                 echo __("company information successfully added.");
-//                _rolo_show_company_notes($company_id);
             } else {
                 echo __("There was some problem in inserting the company info");
     //            TODO - Handle Error properly
             }
-        } elseif (isset($_POST['rp_add_notes']) && $_POST['rp_add_notes'] == 'add_notes') {
-            if (_rolo_save_company_notes()) {
-                echo __("Notes successfully added.");
-            } else {
-    //            TODO - Handle Error properly
-                echo __("There was some problem in inserting the notes");
-            }
         } else {
-            _rolo_show_company_fields();
+            _rolo_show_edit_company_form($company_id);
         }
+    } else {
+        // TODO: should redirect properly
     }
+}
+
+/**
+ * Show the list of company fields in edit company page
+ *
+ * @global array $company_fields List of company fields
+ * @param <type> $company_id
+ *
+ * @since 0.1
+ */
+function _rolo_show_edit_company_form($company_id) {
+	global $company_fields;
+	$rolo_tab_index = 1000;
+
+    $company = get_post_meta($company_id, 'rolo_company');
+    $company = $company[0];
+?>
+<form action="" method="post" class="uniForm inlineLabels" id="company-edit">
+    <div id="errorMsg">
+        <h3><?php _e('Oops!, We Have a Problem.');?></h3>
+        <ol>
+        </ol>
+    </div>
+
+    <fieldset class="inlineLabels">
+
+<?php
+	foreach($company_fields as $company_field) {
+
+        if (function_exists($company_field['setup_function'])){
+            call_user_func_array($company_field['setup_function'], array($company_field['name'], &$rolo_tab_index, $company_id));
+        } else {
+
+            $name = 'rolo_company_' . $company_field['name'];
+            $current_value = $company[$name];
+            $class = $company_field['class'];
+?>
+        <div class="ctrlHolder <?php echo $company_field['class']?>">
+            <label for="<?php echo $name;?>">
+<?php
+                    if ($company_field['mandatory'] == true) {
+                        echo '<em>*</em>';
+                    }
+                    echo $company_field['title'];
+
+					if (isset($company_field['prefix']) == true) {
+						echo '<span class="prefix '; echo $company_field['name']; echo '">'; echo $company_field['prefix']; echo '</span>';
+						$class = $company_field['class'] . " " . "input-prefix";
+                    }
+?>
+            </label>
+            <input type="text" name="<?php echo $name;?>" value="<?php echo $current_value ;?>" size="55" tabindex="<?php echo $rolo_tab_index;?>" class="textInput <?php echo $class;?>" />
+        </div>
+<?php
+            $rolo_tab_index++;
+        }
+	}
+?>
+    </fieldset>
+   <div class="buttonHolder">
+       <input type="hidden" name="company_id" value="<?php echo $company_id;?>" />
+      <input type="hidden" name="rp_edit_company" value="edit_company" />
+      <button type="submit" name="submit" id="submit" class="submitButton" tabindex="<?php echo $rolo_tab_index++;?>" ><?php _e('Edit company');?></button>
+   </div>
+</form>
+<?php
 }
 
 /**
@@ -154,15 +215,21 @@ function _rolo_save_company_fields() {
     //TODO - Check whether the current use is logged in or not
     //TODO - Check for nounce
     // TODO Validation
+
     $company_name = $_POST['rolo_company_name'];
 
-    $new_post = array();
+    $post_id = 0;
+    if (isset($_POST['company_id'])) {
+        $post_id = $_POST['company_id'];
+    } else {
+        $new_post = array();
 
-    $new_post['post_title'] = $company_name;
-    $new_post['post_type'] = 'post';
-    $new_post['post_status'] = 'publish';
+        $new_post['post_title'] = $company_name;
+        $new_post['post_type'] = 'post';
+        $new_post['post_status'] = 'publish';
 
-    $post_id = wp_insert_post($new_post);
+        $post_id = wp_insert_post($new_post);
+    }
 
     if ($post_id) {
         $new_company = array();
@@ -274,10 +341,15 @@ function _rolo_save_company_notes() {
  * @param <type> $field_name
  * @since 0.1
  */
-function rolo_setup_company_address($field_name, &$rolo_tab_index) {
+function rolo_setup_company_address($field_name, &$rolo_tab_index, $company_id = '') {
     global $company_fields;
 
     $address_field = $company_fields[$field_name];
+    $company = get_post_meta($company_id, 'rolo_company');
+    $company = $company[0];
+
+    $current_value = $company['rolo_company_address'];
+
 ?>
         <div class="ctrlHolder">
             <label for="rolo_company_address">
@@ -288,21 +360,29 @@ function rolo_setup_company_address($field_name, &$rolo_tab_index) {
                 echo $address_field['title'];
 ?>
             </label>
-            <textarea rows="3" cols="20" name ="rolo_company_address" tabindex="<?php echo $rolo_tab_index++;?>" class="textArea address" ></textarea>
+            <textarea rows="3" cols="20" name ="rolo_company_address" tabindex="<?php echo $rolo_tab_index++;?>" class="textArea address" ><?php echo $current_value;?></textarea>
         </div>
 
 <?php
-        //TODO: Set the default values in a proper way
+        $city = rolo_get_term_list($company_id, 'city');
+        $state = rolo_get_term_list($company_id, 'state');
+        $zip = rolo_get_term_list($company_id, 'zip');
+        $country = rolo_get_term_list($company_id, 'country');
+
+        $city = ($city == '') ? 'City' : $city;
+        $state = ($state == '') ? 'State' : $state;
+        $zip = ($zip == '') ? 'Zip' : $zip;
+        $country = ($country == '') ? 'Country' : $country;
 ?>
         <div class="ctrlHolder">
-            <input type="text" name="rolo_company_city" value="<?php _e('City', 'rolopress') ;?>"  size="30" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput city" onChange=applet onFocus="this.value='';this.onfocus='';" />
-            <input type="text" name="rolo_company_state" value="<?php _e('State', 'rolopress') ;?>" size="15" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput state" onChange=applet onFocus="this.value='';this.onfocus='';" />
-            <input type="text" name="rolo_company_zip" value="<?php echo _e('Zip', 'rolopress') ;?>" size="10" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput zip" onChange=applet onFocus="this.value='';this.onfocus='';" />
+            <input type="text" name="rolo_company_city" value="<?php echo $city ;?>" size="30" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput city" />
+            <input type="text" name="rolo_company_state" value="<?php echo $state ;?>" size="15" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput state" />
+            <input type="text" name="rolo_company_zip" value="<?php echo $zip ;?>" size="10" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput zip" />
         </div>
 
         <div class="ctrlHolder">
             <label for="rolo_company_country"></label>
-            <input type="text" name="rolo_company_country" value="<?php _e('Country', 'rolopress') ;?>" size="55" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput country" onChange=applet onFocus="this.value='';this.onfocus='';" />
+            <input type="text" name="rolo_company_country" value="<?php echo $country ;?>" size="55" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput country" />
         </div>
 <?php
 }
@@ -316,17 +396,14 @@ function rolo_setup_company_address($field_name, &$rolo_tab_index) {
  */
 function rolo_save_company_address($field_name, $post_id, &$new_company) {
     // TODO - Validate fields
-
+    // store the address in custom field
     $new_company['rolo_company_address'] = $_POST['rolo_company_address'];
-    $new_company['rolo_company_city'] = ($_POST['rolo_company_city'] == 'City') ? '' : $_POST['rolo_company_city'];
-    $new_company['rolo_company_state'] = ($_POST['rolo_company_state'] == 'State') ? '' : $_POST['rolo_company_state'];
-    $new_company['rolo_company_zip'] = ($_POST['rolo_company_zip'] == 'Zip') ? '' : $_POST['rolo_company_zip'];
-    $new_company['rolo_company_country'] = ($_POST['rolo_company_country'] == 'Country') ? '' : $_POST['rolo_company_country'];
+    
     // store the rest as custom taxonomies
-    wp_set_post_terms($post_id, ($_POST['rolo_contact_city'] == 'City') ? '' : $_POST['rolo_contact_city'], 'city');
-    wp_set_post_terms($post_id, ($_POST['rolo_contact_state'] == 'State') ? '' : $_POST['rolo_contact_state'], 'state');
-    wp_set_post_terms($post_id, ($_POST['rolo_contact_zip'] == 'Zip') ? '' : $_POST['rolo_contact_zip'], 'zip');
-    wp_set_post_terms($post_id, ($_POST['rolo_contact_country'] == 'Country') ? '' : $_POST['rolo_contact_country'], 'country');
+    wp_set_post_terms($post_id, ($_POST['rolo_company_city'] == 'City') ? '' : $_POST['rolo_company_city'], 'city');
+    wp_set_post_terms($post_id, ($_POST['rolo_company_state'] == 'State') ? '' : $_POST['rolo_company_state'], 'state');
+    wp_set_post_terms($post_id, ($_POST['rolo_company_zip'] == 'Zip') ? '' : $_POST['rolo_company_zip'], 'zip');
+    wp_set_post_terms($post_id, ($_POST['rolo_company_country'] == 'Country') ? '' : $_POST['rolo_company_country'], 'country');
 }
 
 /**
@@ -335,7 +412,7 @@ function rolo_save_company_address($field_name, $post_id, &$new_company) {
  * @global <type> $company_fields
  * @param <type> $field_name
  */
-function rolo_setup_company_multiple($field_name, &$rolo_tab_index) {
+function rolo_setup_company_multiple($field_name, &$rolo_tab_index, $company_id = '') {
     global $company_fields;
 
     $multiple_field = $company_fields[$field_name];
@@ -345,6 +422,9 @@ function rolo_setup_company_multiple($field_name, &$rolo_tab_index) {
     foreach ($multiples as $option) {
         $options .= "<option value ='$option'>$option</option>";
     }
+
+    $company = get_post_meta($company_id, 'rolo_company');
+    $company = $company[0];
 
     for ($i = 0 ; $i < count($multiples) ; $i++) {
 
@@ -360,13 +440,19 @@ function rolo_setup_company_multiple($field_name, &$rolo_tab_index) {
             $ctrl_class = ' multipleInput ctrlHidden ' . $multiple_field['name'];
             $title = '';
         }
+
+        if (isset($company['rolo_company_' . $field_name . '_' . $multiple])) {
+            $current_value = $company['rolo_company_' . $field_name . '_' . $multiple];
+        } else {
+            $current_value = '';
+        }
 ?>
         <div class="ctrlHolder<?php echo $ctrl_class;?>">
 
             <label for="<?php echo $name;?>">
                 <?php echo $title;?>
             </label>
-            <input type="text" name="<?php echo $name;?>" value="<?php echo $meta_box_value ;?>" size="55" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput <?php echo $class;?>" />
+            <input type="text" name="<?php echo $name;?>" value="<?php echo $current_value ;?>" size="55" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput <?php echo $class;?>" />
             <select name="<?php echo $select_name;?>" tabindex="<?php echo $rolo_tab_index++;?>">
                 <?php echo $options;?>
             </select>
@@ -415,11 +501,19 @@ function rolo_save_company_multiple($field_name, $post_id, &$new_company) {
  * @param <type> $rolo_tab_index
  * @since 0.1
  */
-function rolo_setup_company_info($field_name, &$rolo_tab_index) {
+function rolo_setup_company_info($field_name, &$rolo_tab_index, $company_id = '') {
     global $company_fields;
 
     $info_field = $company_fields[$field_name];
     $name = 'rolo_company_' . $info_field['name'];
+
+    $company = get_post($company_id);
+
+    if (isset($company->post_content)) {
+        $current_value = $company->post_content;
+    } else {
+        $current_value = '';
+    }
 ?>
     <div class="ctrlHolder">
         <label for="<?php echo $name;?>">
@@ -430,7 +524,7 @@ function rolo_setup_company_info($field_name, &$rolo_tab_index) {
             echo $info_field['title'];
 ?>
         </label>
-        <textarea rows="3" cols="20" name ="<?php echo $name; ?>" tabindex="<?php echo $rolo_tab_index++;?>" class="textArea info" ></textarea>
+        <textarea rows="3" cols="20" name ="<?php echo $name; ?>" tabindex="<?php echo $rolo_tab_index++;?>" class="textArea info" ><?php echo $current_value;?></textarea>
     </div>
 <?php
 }
