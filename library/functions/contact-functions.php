@@ -46,9 +46,8 @@ function rolo_add_contact() {
  *
  * @since 0.1
  */
-function rolo_edit_contact($post_id) {
-echo "id = " + $post_id;
-
+function rolo_edit_contact($contact_id) {
+    $contact = get_post($contact_id);
     $user = wp_get_current_user();
     if ( $user->ID ) {
 
