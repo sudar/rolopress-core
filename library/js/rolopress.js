@@ -43,6 +43,35 @@ jQuery(document).ready(function() {
        $this.parent('.ctrlHolder').hide().trigger('hide');
     });
 
+    //on focus tricks
+    jQuery('div.ctrlHolder input[name="rolo_contact_city"]').focus(function () {
+        var $this = jQuery(this);
+        if ($this.val() == 'City') {
+            $this.val('');
+        }
+    });
+
+    jQuery('div.ctrlHolder input[name="rolo_contact_state"]').focus(function () {
+        var $this = jQuery(this);
+        if ($this.val() == 'State') {
+            $this.val('');
+        }
+    });
+
+    jQuery('div.ctrlHolder input[name="rolo_contact_zip"]').focus(function () {
+        var $this = jQuery(this);
+        if ($this.val() == 'Zip') {
+            $this.val('');
+        }
+    });
+
+    jQuery('div.ctrlHolder input[name="rolo_contact_country"]').focus(function () {
+        var $this = jQuery(this);
+        if ($this.val() == 'Country') {
+            $this.val('');
+        }
+    });
+
     jQuery('input.company').suggest(wpurl + "/wp-admin/admin-ajax.php?action=ajax-tag-search&tax=company", {multiple:false});
 
     // Edit in place for contacts

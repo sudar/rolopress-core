@@ -46,33 +46,95 @@ function rolo_add_contact() {
  *
  * @since 0.1
  */
-function rolo_edit_contact($contact_id) {
-    $contact = get_post($contact_id);
-    $user = wp_get_current_user();
-    if ( $user->ID ) {
+function rolo_edit_contact() {
+    $contact_id =  (isset($_GET['id'])) ? $_GET['id'] : 0;
+    $contact = &get_post($contact_id);
+
+    if ($contact) {
 
         //TODO - Check user capabilites
         //TODO - Verify nounce here
 
-//        if (isset($_POST['rp_add_contact']) && $_POST['rp_add_contact'] == 'add_contact') {
-//            $contact_id = _rolo_save_contact_fields();
-//            if ($contact_id) {
-//                echo __("Contact information successfully added.");
-//            } else {
-//                echo __("There was some problem in inserting the contact info");
-//    //            TODO - Handle Error properly
-//            }
-//        } elseif (isset($_POST['rp_add_notes']) && $_POST['rp_add_notes'] == 'add_notes') {
-//            if (_rolo_save_contact_notes()) {
-//                echo __("Notes successfully added.");
-//            } else {
-//    //            TODO - Handle Error properly
-//                echo __("There was some problem in inserting the notes");
-//            }
-//        } else {
-//            _rolo_show_contact_fields();
-//        }
+        if (isset($_POST['rp_edit_contact']) && $_POST['rp_edit_contact'] == 'edit_contact') {
+            $contact_id = _rolo_save_contact_fields();
+            if ($contact_id) {
+                echo __("Contact information successfully added.");
+            } else {
+                echo __("There was some problem in inserting the contact info");
+    //            TODO - Handle Error properly
+            }
+        } else {
+            _rolo_show_edit_contact_form($contact_id);
+        }
+    } else {
+        // TODO: should redirect properly
     }
+}
+
+/**
+ * Show the list of contact fields in edit contact page
+ * 
+ * @global array $company_fields List of contact fields
+ * @param <type> $contact_id
+ *
+ * @since 0.1
+ */
+function _rolo_show_edit_contact_form($contact_id) {
+	global $contact_fields;
+	$rolo_tab_index = 1000;
+
+    $contact = get_post_meta($contact_id, 'rolo_contact');
+    $contact = $contact[0];
+?>
+<form action="" method="post" class="uniForm inlineLabels" id="contact-add">
+    <div id="errorMsg">
+        <h3><?php _e('Oops!, We Have a Problem.');?></h3>
+        <ol>
+        </ol>
+    </div>
+
+    <fieldset class="inlineLabels">
+
+<?php
+	foreach($contact_fields as $contact_field) {
+
+        if (function_exists($contact_field['setup_function'])){
+            call_user_func_array($contact_field['setup_function'], array($contact_field['name'], &$rolo_tab_index, $contact_id));
+        } else {
+
+            $name = 'rolo_contact_' . $contact_field['name'];
+            $current_value = $contact[$name];
+            $class = $contact_field['class'];
+?>
+        <div class="ctrlHolder <?php echo $contact_field['class']?>">
+            <label for="<?php echo $name;?>">
+<?php
+                    if ($contact_field['mandatory'] == true) {
+                        echo '<em>*</em>';
+                    }
+                    echo $contact_field['title'];
+					
+					if (isset($contact_field['prefix']) == true) {		
+						echo '<span class="prefix '; echo $contact_field['name']; echo '">'; echo $contact_field['prefix']; echo '</span>';
+						$class = $contact_field['class'] . " " . "input-prefix";
+                    }
+?>
+            </label>
+            <input type="text" name="<?php echo $name;?>" value="<?php echo $current_value ;?>" size="55" tabindex="<?php echo $rolo_tab_index;?>" class="textInput <?php echo $class;?>" />
+        </div>
+<?php
+            $rolo_tab_index++;
+        }
+	}
+?>
+    </fieldset>
+   <div class="buttonHolder">
+       <input type="hidden" name="contact_id" value="<?php echo $contact_id;?>" />
+      <input type="hidden" name="rp_edit_contact" value="edit_contact" />
+      <button type="submit" name="submit" id="submit" class="submitButton" tabindex="<?php echo $rolo_tab_index++;?>" ><?php _e('Edit Contact');?></button>
+   </div>
+</form>
+<?php
 }
 
 /**
@@ -111,8 +173,8 @@ function _rolo_show_contact_fields() {
                         echo '<em>*</em>';
                     }
                     echo $contact_field['title'];
-					
-					if (isset($contact_field['prefix']) == true) {		
+
+					if (isset($contact_field['prefix']) == true) {
 						echo '<span class="prefix '; echo $contact_field['name']; echo '">'; echo $contact_field['prefix']; echo '</span>';
 						$class = $contact_field['class'] . " " . "input-prefix";
                     }
@@ -146,18 +208,23 @@ function _rolo_save_contact_fields() {
 
     //TODO - Check whether the current use is logged in or not
     //TODO - Check for nounce
+    $post_id = 0;
 
-    $new_post = array();
+    if (isset($_POST['contact_id'])) {
+        $post_id = $_POST['contact_id'];
+    } else {
+        $new_post = array();
 
-    $new_post['post_title'] = $_POST['rolo_contact_first_name'];
-    if (isset($_POST['rolo_contact_last_name'])) {
-        $new_post['post_title'] .= ' ' . $_POST['rolo_contact_last_name'];
+        $new_post['post_title'] = $_POST['rolo_contact_first_name'];
+        if (isset($_POST['rolo_contact_last_name'])) {
+            $new_post['post_title'] .= ' ' . $_POST['rolo_contact_last_name'];
+        }
+
+        $new_post['post_type'] = 'post';
+        $new_post['post_status'] = 'publish';
+
+        $post_id = wp_insert_post($new_post);
     }
-
-    $new_post['post_type'] = 'post';
-    $new_post['post_status'] = 'publish';
-
-    $post_id = wp_insert_post($new_post);
 
     // Store only first name and last name as seperate custom fields
     update_post_meta($post_id, 'rolo_contact_first_name', $_POST['rolo_contact_first_name']);
@@ -234,10 +301,15 @@ function _rolo_show_contact_notes($contact_id) {
  * @param <type> $field_name
  * @since 0.1
  */
-function rolo_setup_contact_address($field_name, &$rolo_tab_index) {
+function rolo_setup_contact_address($field_name, &$rolo_tab_index, $contact_id = '') {
     global $contact_fields;
 
     $address_field = $contact_fields[$field_name];
+
+    $contact = get_post_meta($contact_id, 'rolo_contact');
+    $contact = $contact[0];
+
+    $current_value = $contact['rolo_contact_address'];
 ?>
         <div class="ctrlHolder">
             <label for="rolo_contact_address">
@@ -248,21 +320,29 @@ function rolo_setup_contact_address($field_name, &$rolo_tab_index) {
                 echo $address_field['title'];
 ?>
             </label>
-            <textarea rows="3" cols="20" name ="rolo_contact_address" tabindex="<?php echo $rolo_tab_index++;?>" class="textArea address" ></textarea>
+            <textarea rows="3" cols="20" name ="rolo_contact_address" tabindex="<?php echo $rolo_tab_index++;?>" class="textArea address" ><?php echo $current_value;?></textarea>
         </div>
 
 <?php
-        //TODO: Set the default values in a proper way
+        $city = rolo_get_term_list($contact_id, 'city');
+        $state = rolo_get_term_list($contact_id, 'state');
+        $zip = rolo_get_term_list($contact_id, 'zip');
+        $country = rolo_get_term_list($contact_id, 'country');
+
+        $city = ($city == '') ? 'City' : $city;
+        $state = ($state == '') ? 'State' : $state;
+        $zip = ($zip == '') ? 'Zip' : $zip;
+        $country = ($country == '') ? 'Country' : $country;
 ?>
         <div class="ctrlHolder">
-            <input type="text" name="rolo_contact_city" value="<?php _e('City', 'rolopress') ;?>" size="30" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput city" onChange=applet onFocus="this.value='';this.onfocus='';" />
-            <input type="text" name="rolo_contact_state" value="<?php _e('State', 'rolopress') ;?>" size="15" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput state" onChange=applet onFocus="this.value='';this.onfocus='';" />
-            <input type="text" name="rolo_contact_zip" value="<?php _e('Zip', 'rolopress') ;?>" size="10" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput zip" onChange=applet onFocus="this.value='';this.onfocus='';" />
+            <input type="text" name="rolo_contact_city" value="<?php echo $city ;?>" size="30" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput city" />
+            <input type="text" name="rolo_contact_state" value="<?php echo $state ;?>" size="15" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput state" />
+            <input type="text" name="rolo_contact_zip" value="<?php echo $zip ;?>" size="10" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput zip" />
         </div>
 
         <div class="ctrlHolder">
             <label for="rolo_contact_country"></label>
-            <input type="text" name="rolo_contact_country" value="<?php _e('Country', 'rolopress') ;?>" size="55" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput country" onChange=applet onFocus="this.value='';this.onfocus='';" />
+            <input type="text" name="rolo_contact_country" value="<?php echo $country ;?>" size="55" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput country" />
         </div>
 <?php
 }
@@ -279,7 +359,8 @@ function rolo_save_contact_address($field_name, $post_id, &$new_contact) {
 
     // store the address in custom field
     $new_contact['rolo_contact_address'] = $_POST['rolo_contact_address'];
-    
+
+
     // store the rest as custom taxonomies
     wp_set_post_terms($post_id, ($_POST['rolo_contact_city'] == 'City') ? '' : $_POST['rolo_contact_city'], 'city');
     wp_set_post_terms($post_id, ($_POST['rolo_contact_state'] == 'State') ? '' : $_POST['rolo_contact_state'], 'state');
@@ -294,7 +375,7 @@ function rolo_save_contact_address($field_name, $post_id, &$new_contact) {
  * @param <type> $field_name
  * @since 0.1
  */
-function rolo_setup_contact_multiple($field_name, &$rolo_tab_index) {
+function rolo_setup_contact_multiple($field_name, &$rolo_tab_index, $contact_id = '') {
     global $contact_fields;
 
     $multiple_field = $contact_fields[$field_name];
@@ -304,6 +385,9 @@ function rolo_setup_contact_multiple($field_name, &$rolo_tab_index) {
     foreach ($multiples as $option) {
         $options .= "<option value ='$option'>$option</option>";
     }
+
+    $contact = get_post_meta($contact_id, 'rolo_contact');
+    $contact = $contact[0];
 
     for ($i = 0 ; $i < count($multiples) ; $i++) {
 
@@ -319,13 +403,19 @@ function rolo_setup_contact_multiple($field_name, &$rolo_tab_index) {
             $ctrl_class = ' multipleInput ctrlHidden ' . $multiple_field['name'];
             $title = '';
         }
+
+        if (isset($contact['rolo_contact_' . $field_name . '_' . $multiple])) {
+            $current_value = $contact['rolo_contact_' . $field_name . '_' . $multiple];
+        } else {
+            $current_value = '';
+        }
 ?>
         <div class="ctrlHolder<?php echo $ctrl_class;?>">
 
             <label for="<?php echo $name;?>">
                 <?php echo $title;?>
             </label>
-            <input type="text" name="<?php echo $name;?>" value="<?php echo $meta_box_value ;?>" size="55" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput <?php echo $class;?>" />
+            <input type="text" name="<?php echo $name;?>" value="<?php echo $current_value ;?>" size="55" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput <?php echo $class;?>" />
             <select name="<?php echo $select_name;?>" tabindex="<?php echo $rolo_tab_index++;?>">
                 <?php echo $options;?>
             </select>
@@ -375,11 +465,20 @@ function rolo_save_contact_multiple($field_name, $post_id, &$new_contact) {
  * @param <type> $rolo_tab_index
  * @since 0.1
  */
-function rolo_setup_contact_info($field_name, &$rolo_tab_index) {
+function rolo_setup_contact_info($field_name, &$rolo_tab_index, $contact_id ='') {
     global $contact_fields;
 
     $info_field = $contact_fields[$field_name];
     $name = 'rolo_contact_' . $info_field['name'];
+
+    $contact = get_post_meta($contact_id, 'rolo_contact');
+    $contact = $contact[0];
+
+    if (isset($contact[$name])) {
+        $current_value = $contact[$name];
+    } else {
+        $current_value = '';
+    }
 ?>
     <div class="ctrlHolder">
         <label for="<?php echo $name;?>">
@@ -390,7 +489,7 @@ function rolo_setup_contact_info($field_name, &$rolo_tab_index) {
             echo $info_field['title'];
 ?>
         </label>
-        <textarea rows="3" cols="20" name ="<?php echo $name; ?>" tabindex="<?php echo $rolo_tab_index++;?>" class="textArea info" ></textarea>
+        <textarea rows="3" cols="20" name ="<?php echo $name; ?>" tabindex="<?php echo $rolo_tab_index++;?>" class="textArea info" ><?php echo $current_value;?></textarea>
     </div>
 <?php
 }
@@ -423,12 +522,16 @@ function rolo_save_contact_info($field_name, $post_id) {
  * @param <type> $rolo_tab_index
  * @since 0.1
  */
-function rolo_setup_contact_company($field_name, &$rolo_tab_index) {
+function rolo_setup_contact_company($field_name, &$rolo_tab_index, $contact_id = '') {
     global $contact_fields;
 
     $company_field = $contact_fields[$field_name];
     $name = 'rolo_contact_' . $company_field['name'];
-    $default_value = $company_field['default_value'];
+    if ($contact_id > 0) {
+        $current_value = rolo_get_term_list($contact_id, 'company');
+    } else {
+        $current_value = $company_field['default_value'];
+    }
 ?>
     <div class="ctrlHolder">
         <label for="<?php echo $name;?>">
@@ -439,7 +542,7 @@ function rolo_setup_contact_company($field_name, &$rolo_tab_index) {
             echo $company_field['title'];
 ?>
         </label>
-        <input type="text" name="<?php echo $name;?>" value="<?php echo $default_value ;?>" size="55" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput company" />
+        <input type="text" name="<?php echo $name;?>" value="<?php echo $current_value ;?>" size="55" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput company" />
     </div>
 <?php
 }
