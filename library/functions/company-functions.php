@@ -47,7 +47,7 @@ function rolo_add_company() {
  *
  * @since 0.1
  */
-function rolo_add_company($post_id) {
+function rolo_edit_company($post_id) {
 
     $user = wp_get_current_user();
     if ( $user->ID ) {
