@@ -42,6 +42,41 @@ function rolo_add_contact() {
 }
 
 /**
+ * Template function for adding editing contacts
+ *
+ * @since 0.1
+ */
+function rolo_edit_contact($post_id) {
+echo "id = " + $post_id;
+
+    $user = wp_get_current_user();
+    if ( $user->ID ) {
+
+        //TODO - Check user capabilites
+        //TODO - Verify nounce here
+
+//        if (isset($_POST['rp_add_contact']) && $_POST['rp_add_contact'] == 'add_contact') {
+//            $contact_id = _rolo_save_contact_fields();
+//            if ($contact_id) {
+//                echo __("Contact information successfully added.");
+//            } else {
+//                echo __("There was some problem in inserting the contact info");
+//    //            TODO - Handle Error properly
+//            }
+//        } elseif (isset($_POST['rp_add_notes']) && $_POST['rp_add_notes'] == 'add_notes') {
+//            if (_rolo_save_contact_notes()) {
+//                echo __("Notes successfully added.");
+//            } else {
+//    //            TODO - Handle Error properly
+//                echo __("There was some problem in inserting the notes");
+//            }
+//        } else {
+//            _rolo_show_contact_fields();
+//        }
+    }
+}
+
+/**
  * Show the list of contact fields in add contact page
  * @global array $company_fields List of contact fields
  * @since 0.1

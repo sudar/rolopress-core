@@ -15,13 +15,14 @@
         <?php rolopress_before_info(); // Before info hook ?>
         <div id="info">
             <?php rolopress_before_info_content(); // Before info content hook ?>
-            <h2 class="page-title"><?php _e('Add Company');?></h2>
+            <h2 class="page-title"><?php _e('Edit Company');?></h2>
             <?php the_post(); ?>
 
             <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
                 <div class="entry-main">
 <?php               if ( current_user_can('publish_posts') ) { // only display if user has proper permissions
-                        rolo_add_company();
+                        $post_id = $_GET['id'];
+                        rolo_edit_company($post_id);
                     } else {
                          _e("Sorry, you don't have permission to view this page.");
                     }

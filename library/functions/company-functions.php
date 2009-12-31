@@ -43,6 +43,41 @@ function rolo_add_company() {
 }
 
 /**
+ * Template function for editing existing company
+ *
+ * @since 0.1
+ */
+function rolo_add_company($post_id) {
+
+    $user = wp_get_current_user();
+    if ( $user->ID ) {
+
+        //TODO - Check user capabilites
+        //TODO - Verify nounce here
+
+        if (isset($_POST['rp_add_company']) && $_POST['rp_add_company'] == 'add_company') {
+            $company_id = _rolo_save_company_fields();
+            if ($company_id) {
+                echo __("company information successfully added.");
+//                _rolo_show_company_notes($company_id);
+            } else {
+                echo __("There was some problem in inserting the company info");
+    //            TODO - Handle Error properly
+            }
+        } elseif (isset($_POST['rp_add_notes']) && $_POST['rp_add_notes'] == 'add_notes') {
+            if (_rolo_save_company_notes()) {
+                echo __("Notes successfully added.");
+            } else {
+    //            TODO - Handle Error properly
+                echo __("There was some problem in inserting the notes");
+            }
+        } else {
+            _rolo_show_company_fields();
+        }
+    }
+}
+
+/**
  * Show the list of company fields in add company page
  *
  * @global array $company_fields List of company fields
