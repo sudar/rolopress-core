@@ -13,23 +13,23 @@
  */
 
 // Define constant paths
-define( ROLOPRESS_DIR, TEMPLATEPATH );
-define( ROLOPRESS_LIBRARY, ROLOPRESS_DIR . '/library' );
-define( ROLOPRESS_EXTENSIONS, ROLOPRESS_LIBRARY . '/extensions' );
-define( ROLOPRESS_FUNCTIONS, ROLOPRESS_LIBRARY . '/functions' );
-define( ROLOPRESS_SETUP, ROLOPRESS_LIBRARY . '/setup' );
-define( ROLOPRESS_WIDGETS, ROLOPRESS_LIBRARY . '/widgets' );
-define( ROLOPRESS_INCLUDES, ROLOPRESS_LIBRARY . '/includes' );
+define( 'ROLOPRESS_DIR', TEMPLATEPATH );
+define( 'ROLOPRESS_LIBRARY', ROLOPRESS_DIR . '/library' );
+define( 'ROLOPRESS_EXTENSIONS', ROLOPRESS_LIBRARY . '/extensions' );
+define( 'ROLOPRESS_FUNCTIONS', ROLOPRESS_LIBRARY . '/functions' );
+define( 'ROLOPRESS_SETUP', ROLOPRESS_LIBRARY . '/setup' );
+define( 'ROLOPRESS_WIDGETS', ROLOPRESS_LIBRARY . '/widgets' );
+define( 'ROLOPRESS_INCLUDES', ROLOPRESS_LIBRARY . '/includes' );
 
 // Define constant paths (other file types)
 $rolopress_dir = get_bloginfo( 'template_directory' );
-define( ROLOPRESS_IMAGES, $rolopress_dir . '/library/images' );
-define( ROLOPRESS_CSS, $rolopress_dir . '/library/styles' );
-define( ROLOPRESS_JS, $rolopress_dir . '/library/js' );
+define( 'ROLOPRESS_IMAGES', $rolopress_dir . '/library/images' );
+define( 'ROLOPRESS_CSS', $rolopress_dir . '/library/styles' );
+define( 'ROLOPRESS_JS', $rolopress_dir . '/library/js' );
 
 // Define child theme paths
-define( ROLOPRESS_CHILD_DIR, get_stylesheet_directory() );
-define( ROLOPRESS_CHILD_URL, get_stylesheet_directory_uri() );
+define( 'ROLOPRESS_CHILD_DIR', get_stylesheet_directory() );
+define( 'ROLOPRESS_CHILD_URL', get_stylesheet_directory_uri() );
 
 // Load compatability function
 require_once( ROLOPRESS_FUNCTIONS . '/compat.php' );
