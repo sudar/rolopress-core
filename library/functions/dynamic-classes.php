@@ -26,7 +26,7 @@ function rolopress_get_context() {
 	global $wp_query, $rolopress;
 
 	/* If $rolopress->context has been set, don't run through the conditionals again. Just return the variable. */
-	if ( is_array( $rolopress->context ) )
+	if ($rolopress && is_array( $rolopress->context ) )
 		return $rolopress->context;
 
 	$rolopress->context = array();
