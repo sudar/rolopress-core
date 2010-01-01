@@ -28,11 +28,8 @@ class Rolo_Widget_Contact_Details extends WP_Widget {
 		
 		if ( $title )
 			echo "\n\t\t\t" . $before_title . $title . $after_title;
-			echo "\n\t\t\t" . '<ul id="hcard-<?php echo basename(get_permalink());?>" class="vcard">';
-					if ( rolo_type_is( 'contact' ) ) rolo_contact_details(get_the_ID());
-			echo "\n\t\t\t" . '</ul><!-- .vcard -->';
-
-		echo $after_widget;
+				if ( rolo_type_is( 'contact' ) ) rolo_contact_details(get_the_ID());
+			echo $after_widget;
 	} 
 }
 

@@ -119,7 +119,7 @@ function is_sidebar_active( $index = 1 ) {
 /**
  * Preset Widget Areas
  *
- * Credits:  http://ptahdunbar.com/wordpress/droppin-knowledge-on-wordpress-how-to-preset-widgets-to-widget-areas/
+ * @credits:  http://ptahdunbar.com/wordpress/droppin-knowledge-on-wordpress-how-to-preset-widgets-to-widget-areas/
  */
 
 // Debug: Makes sure no widgets are registered already. If so, be gone.

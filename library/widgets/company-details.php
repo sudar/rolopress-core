@@ -12,11 +12,13 @@
 
 class Rolo_Widget_Company_Details extends WP_Widget {
 
+
 	function Rolo_Widget_Company_Details() {
 		$widget_ops = array( 'classname' => 'company-details', 'description' => __('Displays all details for your company.', 'rolopress') );
 		$control_ops = array( 'width' => 230, 'height' => 350, 'id_base' => 'rolopress-company-details' );
 		$this->WP_Widget( 'rolopress-company-details', __('Company Details', 'rolopress'), $widget_ops, $control_ops );
 	}
+
 
 	function widget( $args, $instance ) {
 		if (is_single() && (rolo_type_is ('company'))) { // only display when viewing company page
@@ -24,16 +26,15 @@ class Rolo_Widget_Company_Details extends WP_Widget {
 		$title = apply_filters('widget_title', $instance['title'] );
 		echo $before_widget;
 		
-		
 		if ( $title )
 			echo "\n\t\t\t" . $before_title . $title . $after_title;
-			echo "\n\t\t\t" . '<ul id="hcard-<?php echo basename(get_permalink());?>" class="vcard">';
-					if ( rolo_type_is( 'company' ) ) rolo_company_details(get_the_ID());
-			echo "\n\t\t\t" . '</ul><!-- .vcard -->';
-
-		echo $after_widget;
-	}
+				if ( rolo_type_is( 'company' ) ) rolo_company_details(get_the_ID());
+			echo $after_widget;
+	} 
 }
+	
+			
+
 
 	function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;

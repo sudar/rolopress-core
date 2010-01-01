@@ -131,7 +131,7 @@ $GLOBALS['comment'] = $comment; ?>
 </div><!-- /comment -->
 <div class="note-meta notemetadata">
 <a href="<?php echo htmlspecialchars(get_comment_link( $comment->comment_ID )) ?>">
-<span class="note-author vcard">
+<span class="note-author">
 <?php printf(__('<span class="added-by">Added by: </span><cite class="commenter">%s</cite><span class="added-on"> on </span>'), get_comment_author_link()) ?>
 </span>
 <span class="note-date-time">

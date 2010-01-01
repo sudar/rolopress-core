@@ -17,12 +17,12 @@
     //TODO: Need to include JS only in required pages.
     
 //    if (is_page(array('Add Contact','Add Company', 'Edit Company', 'Edit Contact'))) {
-        wp_enqueue_script( 'uni-form', get_bloginfo('template_directory') . '/library/js/uni-form.jquery.js', array('jquery'), '', true );
-        wp_enqueue_script( 'rolopress-js', get_bloginfo('template_directory') . '/library/js/rolopress.js', array('jquery', 'uni-form'), '', true );
+        wp_enqueue_script( 'uni-form', ROLOPRESS_JS . '/uni-form.jquery.js', array('jquery'), '', true );
+        wp_enqueue_script( 'rolopress-js', ROLOPRESS_JS . '/rolopress.js', array('jquery', 'uni-form'), '', true );
         // Build in tag auto complete script - Code explanation at http://bit.ly/2vbemR
         wp_enqueue_script( 'suggest' );
 //    }
-    wp_enqueue_script( 'jeip', get_bloginfo('template_directory') . '/library/js/jeip.js', array('jquery'), '', true );
+    wp_enqueue_script( 'jeip', ROLOPRESS_JS . '/jeip.js', array('jquery'), '', true );
 	}
 	
  add_action('template_redirect', 'rolo_add_script'); 

@@ -237,6 +237,16 @@ function rolopress_body_class( $class = '' ) {
 
 	/* Is the current user logged in. */
 	$classes[] = ( is_user_logged_in() ) ? 'logged-in' : 'not-logged-in';
+	
+	/* Can the current user edit items. */
+	if ( current_user_can('edit_posts') )
+		$classes[] = 'can-edit-items';
+		
+	/* Can the current user add items. */
+	if ( current_user_can('publish_posts') )
+		$classes[] = 'can-add-items';	
+		
+		
 
 	/* Merge base contextual classes with $classes. */
 	$classes = array_merge( $classes, rolopress_get_context() );

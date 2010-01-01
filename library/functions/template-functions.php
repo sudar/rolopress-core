@@ -26,9 +26,9 @@ function rolo_contact_header($contact_id) {
 ?>
     <ul id="hcard-<?php echo basename(get_permalink());?>" class="item-header">
 
-			<?php echo get_avatar (($contact['rolo_contact_email']),96,ROLOPRESS_IMAGES . "/icons/rolo-contact.jpg");?>
+			<li><?php echo get_avatar (($contact['rolo_contact_email']),96,ROLOPRESS_IMAGES . "/icons/rolo-contact.jpg");?></li>
 
-			<li class="fn"><a href="<?php the_permalink();?>"><?php echo $contact['rolo_contact_first_name'] . ' ' . $contact['rolo_contact_last_name'];?></a></li>
+			<li><a class="fn" href="<?php the_permalink();?>"><?php echo $contact['rolo_contact_first_name'] . ' ' . $contact['rolo_contact_last_name'];?></a></li>
 			<li>
 				<span class="title" id="rolo_contact_title"><?php echo $contact['rolo_contact_title'];?></span>
 				<span class="org"><?php echo get_the_term_list($contact_id, 'company', __('')); ?></span>		
@@ -59,7 +59,7 @@ function rolo_contact_details($contact_id) {
 ?>
     <form id="contact-form">
         <input type="hidden" name="rolo_post_id" id="rolo_post_id" value ="<?php echo $contact_id;?>" />
-        <ul id="hcard-<?php echo basename(get_permalink());?>" class="vcard">
+		<ul id="vcard-<?php basename(get_permalink());?>" class="vcard">
 
 			<li class="fn"><?php echo $contact['rolo_contact_first_name'] . ' ' . $contact['rolo_contact_last_name'];?></li>
             <li class="title" id="rolo_contact_title"><?php echo $contact['rolo_contact_title'];?></li>
@@ -133,16 +133,16 @@ function rolo_company_header($company_id) {
 
 <ul id="hcard-<?php echo basename(get_permalink());?>" class="item-header">
 
-			<?php echo get_avatar (($company['rolo_company_email']),96,ROLOPRESS_IMAGES . "/icons/rolo-company.jpg");?>
+			<li><?php echo get_avatar (($company['rolo_company_email']),96,ROLOPRESS_IMAGES . "/icons/rolo-company.jpg");?></li>
 
-			<li class="fn">
+			<li>
 				<?php if (is_single()) : // show proper links on single or archive company pages ?>
-					<a href="<?php get_bloginfo('url');?>/company/<?php echo $slug; ?>"><?php echo $company['rolo_company_name'];?>
+					<a class="fn" href="<?php get_bloginfo('url');?>/company/<?php echo $slug; ?>"><?php echo $company['rolo_company_name'];?>
 				<?php else: ?>
-					<a href="<?php the_permalink();?>"><?php echo $company['rolo_company_name'];?>			
+					<a class="fn" href="<?php the_permalink();?>"><?php echo $company['rolo_company_name'];?>			
 				<?php endif;?>
 					</a>
-			</li>	
+			</li>
 		
 			<li class="email url-field"><a class="email" href="mailto:<?php echo $company['rolo_company_email'];?>"><?php echo $company['rolo_company_email'];?> </a><span id="rolo_company_email" class="edit-icon" style=""><?php echo $company['rolo_company_email']; ?></span></li>
 		
@@ -174,7 +174,7 @@ function rolo_company_details($company_id) {
 ?>
     <form id="company-form">
         <input type="hidden" name="rolo_post_id" id="rolo_post_id" value ="<?php echo $company_id;?>" />
-        <ul id="hcard-<?php echo basename(get_permalink());?>" class="vcard">
+		<ul id="vcard-<?php basename(get_permalink());?>" class="vcard">
 
         <li class="fn">
 				<?php if (is_single()) : // show proper links on single or archive company pages ?>
@@ -185,7 +185,7 @@ function rolo_company_details($company_id) {
 					</a>
 			</li>	
 			
-			<ul class="adr map label"><span class="type"><?php _e('Map', 'rolopress'); ?></span><a class="url" href="http://maps.google.com/maps?f=q&source=s_q&geocode=&q=<?php echo $company['rolo_company_address'] . "+" . $company['rolo_company_city']  . "+" . $company['rolo_company_state']  . "+" . $company['rolo_company_zip']  . "+" . $company['rolo_company_country'];?> ">Map</a>
+			<li class="adr map label"><span class="type"><?php _e('Map', 'rolopress'); ?></span><a class="url" href="http://maps.google.com/maps?f=q&source=s_q&geocode=&q=<?php echo $company['rolo_company_address'] . "+" . $company['rolo_company_city']  . "+" . $company['rolo_company_state']  . "+" . $company['rolo_company_zip']  . "+" . $company['rolo_company_country'];?> ">Map</a>
 				<li class="adr group">
                 <span class="street-address" id="rolo_company_address"><?php echo $company['rolo_company_address']; ?></span>
                 <span class="locality" id="city"><?php echo rolo_get_term_list($company_id, 'city') ?></span>
@@ -193,7 +193,7 @@ function rolo_company_details($company_id) {
                 <span class="postal-code" id="zip" ><?php echo rolo_get_term_list($company_id, 'zip'); ?></span>
                 <span class="country-name" id="country" ><?php echo rolo_get_term_list($company_id, 'country'); ?></span>
 				</li>
-			</ul>
+			</li>
 
         <li class="email url-field"><a class="email" href="mailto:<?php echo $company['rolo_company_email'];?>"><?php echo $company['rolo_company_email'];?> </a><span id="rolo_company_email" class="edit-icon" style=""><?php echo $company['rolo_company_email']; ?></span></li>
 
