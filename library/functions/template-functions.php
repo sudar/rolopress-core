@@ -47,14 +47,11 @@ function rolo_contact_header($contact_id) {
  * @since 0.1
  */
 function rolo_contact_details($contact_id) {
-    //TODO Need to display the information in Microformat friendly format
     if (!$contact_id) {
         return false;
     }
 
-    $contact = get_post_meta($contact_id, 'rolo_contact');
-    $contact = $contact[0];
-//    print_r($contact);
+    $contact = get_post_meta($contact_id, 'rolo_contact', true);
 ?>
     <form id="contact-form">
         <input type="hidden" name="rolo_post_id" id="rolo_post_id" value ="<?php echo $contact_id;?>" />
@@ -68,11 +65,11 @@ function rolo_contact_details($contact_id) {
                 <ul class="adr map label">
                     <li>
                         <span class="type"><?php _e('Map', 'rolopress'); ?></span>
-                        <a class="url" href="http://maps.google.com/maps?f=q&source=s_q&geocode=&q=<?php echo $contact['rolo_contact_address'] . "+" . $contact['rolo_contact_city']  . "+" . $contact['rolo_contact_state']  . "+" . $contact['rolo_contact_zip']  . "+" . $contact['rolo_contact_country'];?> ">Map</a>
+                        <a class="url" href="http://maps.google.com/maps?f=q&source=s_q&geocode=&q=<?php echo $contact['rolo_contact_address'] . " " . rolo_get_term_list($contact_id, 'city') . " " . rolo_get_term_list($contact_id, 'state') . " " . rolo_get_term_list($contact_id, 'country') . " " . rolo_get_term_list($contact_id, 'zip');?> "><?php _e('Map');?></a>
                     </li>
                     <li class="adr group">
                         <span class="street-address" id="rolo_contact_address"><?php echo $contact['rolo_contact_address']; ?></span>
-                        <span class="locality" id="city"><?php echo rolo_get_term_list($contact_id, 'city') ?></span>
+                        <span class="locality" id="city"><?php echo rolo_get_term_list($contact_id, 'city'); ?></span>
                         <abbr class="region" id ="state" title ="<?php echo rolo_get_term_list($contact_id, 'state'); ?>" ><?php echo rolo_get_term_list($contact_id, 'state'); ?></abbr>
                         <span class="postal-code" id="zip" ><?php echo rolo_get_term_list($contact_id, 'zip'); ?></span>
                         <span class="country-name" id="country" ><?php echo rolo_get_term_list($contact_id, 'country'); ?></span>
@@ -151,13 +148,11 @@ function rolo_company_header($company_id) {
  * @since 0.1
  */
 function rolo_company_details($company_id) {
-    //TODO Need to display the information in Microformat friendly format
     if (!$company_id) {
         return false;
     }
 
-    $company = get_post_meta($company_id, 'rolo_company');
-    $company = $company[0];
+    $company = get_post_meta($company_id, 'rolo_company', true);
     $slug = $post_id->post_name; // define slug as $slug
 //    print_r($company);
 ?>
@@ -174,11 +169,11 @@ function rolo_company_details($company_id) {
 			</li>	
 			
 			<li class="adr map label">
-                <span class="type"><?php _e('Map', 'rolopress'); ?></span><a class="url" href="http://maps.google.com/maps?f=q&source=s_q&geocode=&q=<?php echo $company['rolo_company_address'] . "+" . $company['rolo_company_city']  . "+" . $company['rolo_company_state']  . "+" . $company['rolo_company_zip']  . "+" . $company['rolo_company_country'];?> ">Map</a>
+                <span class="type"><?php _e('Map', 'rolopress'); ?></span><a class="url" href="http://maps.google.com/maps?f=q&source=s_q&geocode=&q=<?php echo $company['rolo_company_address'] . " " . rolo_get_term_list($company_id, 'city') . " " . rolo_get_term_list($company_id, 'state') . " " . rolo_get_term_list($company_id, 'country')  . " " . rolo_get_term_list($company_id, 'zip');?> "><?php _e('Map');?></a>
                 <ul>
                     <li class="adr group">
                     <span class="street-address" id="rolo_company_address"><?php echo $company['rolo_company_address']; ?></span>
-                    <span class="locality" id="city"><?php echo rolo_get_term_list($company_id, 'city') ?></span>
+                    <span class="locality" id="city"><?php echo rolo_get_term_list($company_id, 'city'); ?></span>
                     <abbr class="region" id ="state" title ="<?php echo rolo_get_term_list($company_id, 'state'); ?>" ><?php echo rolo_get_term_list($company_id, 'state'); ?></abbr>
                     <span class="postal-code" id="zip" ><?php echo rolo_get_term_list($company_id, 'zip'); ?></span>
                     <span class="country-name" id="country" ><?php echo rolo_get_term_list($company_id, 'country'); ?></span>

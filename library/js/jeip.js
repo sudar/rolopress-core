@@ -302,6 +302,10 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 					}
 					else {
 						$( self ).html( data.html );
+                        // for url fields
+                        if ($(self).hasClass('edit-icon')) {
+                            $(self).prev('a').html(data.html);
+                        }
 					}
 
 					$( "#saving-" + self.id ).fadeOut( "fast" );
