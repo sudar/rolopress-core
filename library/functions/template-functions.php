@@ -35,7 +35,6 @@ function rolo_contact_header($contact_id) {
             </li>
 			 <li class="email url-field"><a class="email" href="mailto:<?php echo $contact['rolo_contact_email'];?>"><?php echo $contact['rolo_contact_email'];?> </a><span id="rolo_contact_email" class="edit-icon" style=""><?php echo $contact['rolo_contact_email']; ?></span></li>
     </ul><!-- vcard -->
-
 <?php
 }
 
@@ -74,39 +73,28 @@ function rolo_contact_details($contact_id) {
                 <span class="country-name" id="country" ><?php echo rolo_get_term_list($contact_id, 'country'); ?></span>
 				</li>
 			</ul>
-        <li class="email url-field group"><a class="email" href="mailto:<?php echo $contact['rolo_contact_email'];?>"><?php echo $contact['rolo_contact_email'];?> </a><span id="rolo_contact_email" class="edit-icon" style=""><?php echo $contact['rolo_contact_email']; ?></span></li>
-        <li>
-             <ul class="tel group">
-                 <li class="tel tel-mobile"><span class="type"><?php _e('Mobile', 'rolopress'); ?></span>: <span class="value" id="rolo_contact_phone_Mobile"><?php echo $contact['rolo_contact_phone_Mobile']; ?></span></li>
-                 <li class="tel tel-home"><span class="type"><?php _e('Home', 'rolopress'); ?></span>: <span class="value" id="rolo_contact_phone_Home"><?php echo $contact['rolo_contact_phone_Home']; ?></span></li>
-                 <li class="tel tel-work"><span class="type"><?php _e('Work', 'rolopress'); ?></span>: <span class="value" id="rolo_contact_phone_Work"><?php echo $contact['rolo_contact_phone_Work']; ?></span></li>
-                <li class="tel tel-fax"><span class="type"><?php _e('Fax', 'rolopress'); ?></span>: <span class="value" id="rolo_contact_phone_Fax"><?php echo $contact['rolo_contact_phone_Fax']; ?></span></li>
-                <li class="tel tel-other"><span class="type"><?php _e('Other', 'rolopress'); ?></span>: <span class="value" id="rolo_contact_phone_Other"><?php echo $contact['rolo_contact_phone_Other']; ?></span></li>
-            </ul>
-        </li>
-		
-        <li>
-            <ul class="im social group">
-			
-				<li class="social social-yahoo url-field"><span class="type"><?php _e('Yahoo', 'rolopress'); ?></span>: <a class="yahoo" href="ymsgr:sendIM?<?php echo $contact['rolo_contact_im_Yahoo']; ?>"><?php echo $contact['rolo_contact_im_Yahoo']; ?></a><span id="rolo_contact_im_Yahoo" class="edit-icon" style=""><?php echo $contact['rolo_contact_im_Yahoo']; ?></span></li>
-				
-				<li class="social social-msn url-field"><span class="type"><?php _e('MSN', 'rolopress'); ?></span>: <a class="msn" href="msnim:chat?contact=<?php echo $contact['rolo_contact_im_MSN']; ?>"><?php echo $contact['rolo_contact_im_MSN']; ?></a><span id="rolo_contact_im_MSN" class="edit-icon" style=""><?php echo $contact['rolo_contact_im_MSN']; ?></span></li>
-								
-				<li class="social social-aim url-field"><span class="type"><?php _e('AIM', 'rolopress'); ?></span>: <a class="aim" href="aim:goIM?<?php echo $contact['rolo_contact_im_AOL']; ?>"><?php echo $contact['rolo_contact_im_AOL']; ?></a><span id="rolo_contact_im_AOL" class="edit-icon" style=""><?php echo $contact['rolo_contact_im_AOL']; ?></span></li>
-												
-				<li class="social social-gtalk url-field"><span class="type"><?php _e('GTalk', 'rolopress'); ?></span>: <a class="gtalk" href="gtalk:chat?jid=<?php echo $contact['rolo_contact_im_GTalk']; ?>"><?php echo $contact['rolo_contact_im_GTalk']; ?></a><span id="rolo_contact_im_GTalk" class="edit-icon" style=""><?php echo $contact['rolo_contact_im_Yahoo']; ?></span></li>
-																
-				<li class="social social-twitter url-field"><span class="type"><?php _e('Twitter', 'rolopress'); ?></span> <a class="twitter" href="http://www.twitter.com/<?php echo $contact['rolo_contact_twitter']; ?>"><?php echo $contact['rolo_contact_twitter']; ?></a><span id="rolo_contact_twitter" class="edit-icon" style=""><?php echo $contact['rolo_contact_twitter']; ?></span></li>
-            </ul>
-        </li>
-		
-            <li class="website url-field group"><span class="type"><?php _e('Website', 'rolopress'); ?></span><a class="url" href="http://<?php echo $contact['rolo_contact_website']; ?>"><?php echo $contact['rolo_contact_website']; ?></a><span id="rolo_contact_website" class="edit-icon" style=""><?php echo $contact['rolo_contact_website']; ?></span>
-			</li>
-
-		
+            <li class="email url-field group"><a class="email" href="mailto:<?php echo $contact['rolo_contact_email'];?>"><?php echo $contact['rolo_contact_email'];?> </a><span id="rolo_contact_email" class="edit-icon" style=""><?php echo $contact['rolo_contact_email']; ?></span></li>
+            <li>
+                 <ul class="tel group">
+                     <li class="tel tel-mobile"><span class="type"><?php _e('Mobile', 'rolopress'); ?></span>: <span class="value" id="rolo_contact_phone_Mobile"><?php echo $contact['rolo_contact_phone_Mobile']; ?></span></li>
+                     <li class="tel tel-home"><span class="type"><?php _e('Home', 'rolopress'); ?></span>: <span class="value" id="rolo_contact_phone_Home"><?php echo $contact['rolo_contact_phone_Home']; ?></span></li>
+                     <li class="tel tel-work"><span class="type"><?php _e('Work', 'rolopress'); ?></span>: <span class="value" id="rolo_contact_phone_Work"><?php echo $contact['rolo_contact_phone_Work']; ?></span></li>
+                    <li class="tel tel-fax"><span class="type"><?php _e('Fax', 'rolopress'); ?></span>: <span class="value" id="rolo_contact_phone_Fax"><?php echo $contact['rolo_contact_phone_Fax']; ?></span></li>
+                    <li class="tel tel-other"><span class="type"><?php _e('Other', 'rolopress'); ?></span>: <span class="value" id="rolo_contact_phone_Other"><?php echo $contact['rolo_contact_phone_Other']; ?></span></li>
+                </ul>
+            </li>
+            <li>
+                <ul class="im social group">
+                    <li class="social social-yahoo url-field"><span class="type"><?php _e('Yahoo', 'rolopress'); ?></span>: <a class="yahoo" href="ymsgr:sendIM?<?php echo $contact['rolo_contact_im_Yahoo']; ?>"><?php echo $contact['rolo_contact_im_Yahoo']; ?></a><span id="rolo_contact_im_Yahoo" class="edit-icon" style=""><?php echo $contact['rolo_contact_im_Yahoo']; ?></span></li>
+                    <li class="social social-msn url-field"><span class="type"><?php _e('MSN', 'rolopress'); ?></span>: <a class="msn" href="msnim:chat?contact=<?php echo $contact['rolo_contact_im_MSN']; ?>"><?php echo $contact['rolo_contact_im_MSN']; ?></a><span id="rolo_contact_im_MSN" class="edit-icon" style=""><?php echo $contact['rolo_contact_im_MSN']; ?></span></li>
+                    <li class="social social-aim url-field"><span class="type"><?php _e('AIM', 'rolopress'); ?></span>: <a class="aim" href="aim:goIM?<?php echo $contact['rolo_contact_im_AOL']; ?>"><?php echo $contact['rolo_contact_im_AOL']; ?></a><span id="rolo_contact_im_AOL" class="edit-icon" style=""><?php echo $contact['rolo_contact_im_AOL']; ?></span></li>
+                    <li class="social social-gtalk url-field"><span class="type"><?php _e('GTalk', 'rolopress'); ?></span>: <a class="gtalk" href="gtalk:chat?jid=<?php echo $contact['rolo_contact_im_GTalk']; ?>"><?php echo $contact['rolo_contact_im_GTalk']; ?></a><span id="rolo_contact_im_GTalk" class="edit-icon" style=""><?php echo $contact['rolo_contact_im_Yahoo']; ?></span></li>
+                    <li class="social social-twitter url-field"><span class="type"><?php _e('Twitter', 'rolopress'); ?></span> <a class="twitter" href="http://www.twitter.com/<?php echo $contact['rolo_contact_twitter']; ?>"><?php echo $contact['rolo_contact_twitter']; ?></a><span id="rolo_contact_twitter" class="edit-icon" style=""><?php echo $contact['rolo_contact_twitter']; ?></span></li>
+                </ul>
+            </li>
+            <li class="website url-field group"><span class="type"><?php _e('Website', 'rolopress'); ?></span><a class="url" href="http://<?php echo $contact['rolo_contact_website']; ?>"><?php echo $contact['rolo_contact_website']; ?></a><span id="rolo_contact_website" class="edit-icon" style=""><?php echo $contact['rolo_contact_website']; ?></span></li>
         </ul><!-- vcard -->
     </form>
-
 <?php
 }
 
@@ -130,26 +118,22 @@ function rolo_company_header($company_id) {
     $slug = $post_id->post_name; // define slug as $slug
 
 ?>
-
-<ul id="hcard-<?php echo basename(get_permalink());?>" class="item-header">
+    <ul id="hcard-<?php echo basename(get_permalink());?>" class="item-header">
 
 			<li><?php echo get_avatar (($company['rolo_company_email']),96,ROLOPRESS_IMAGES . "/icons/rolo-company.jpg");?></li>
-
 			<li>
-				<?php if (is_single()) : // show proper links on single or archive company pages ?>
-					<a class="fn" href="<?php get_bloginfo('url');?>/company/<?php echo $slug; ?>"><?php echo $company['rolo_company_name'];?>
-				<?php else: ?>
-					<a class="fn" href="<?php the_permalink();?>"><?php echo $company['rolo_company_name'];?>			
-				<?php endif;?>
-					</a>
+                <a class="fn"
+                    <?php if (is_single()) : // show proper links on single or archive company pages ?>
+                        href="<?php get_bloginfo('url');?>/company/<?php echo $slug; ?>"><?php echo $company['rolo_company_name'];?>
+                    <?php else: ?>
+                        href="<?php the_permalink();?>"><?php echo $company['rolo_company_name'];?>
+                    <?php endif;?>
+                </a>
 			</li>
 		
 			<li class="email url-field"><a class="email" href="mailto:<?php echo $company['rolo_company_email'];?>"><?php echo $company['rolo_company_email'];?> </a><span id="rolo_company_email" class="edit-icon" style=""><?php echo $company['rolo_company_email']; ?></span></li>
-		
             <li class="website url-field group"><span class="type"><?php _e('Website', 'rolopress'); ?></span> <a class="url" href="http://<?php echo $company['rolo_company_website']; ?>"><?php echo $company['rolo_company_website']; ?></a><span id="rolo_company_website" class="edit-icon" style=""><?php echo $company['rolo_company_website']; ?></span></li>
-
-</ul><!-- vcard -->
-
+    </ul><!-- vcard -->
 <?php
 }
 
@@ -176,54 +160,49 @@ function rolo_company_details($company_id) {
         <input type="hidden" name="rolo_post_id" id="rolo_post_id" value ="<?php echo $company_id;?>" />
 		<ul id="vcard-<?php basename(get_permalink());?>" class="vcard">
 
-        <li class="fn">
+            <li class="fn">
 				<?php if (is_single()) : // show proper links on single or archive company pages ?>
-					<a href="<?php get_bloginfo('url');?>/company/<?php echo $slug; ?>"><?php echo $company['rolo_company_name'];?>
+					<a href="<?php get_bloginfo('url');?>/company/<?php echo $slug; ?>"><?php echo $company['rolo_company_name'];?></a>
 				<?php else: ?>
-					<a href="<?php the_permalink();?>"><?php echo $company['rolo_company_name'];?>			
+					<a href="<?php the_permalink();?>"><?php echo $company['rolo_company_name'];?></a>
 				<?php endif;?>
-					</a>
 			</li>	
 			
-			<li class="adr map label"><span class="type"><?php _e('Map', 'rolopress'); ?></span><a class="url" href="http://maps.google.com/maps?f=q&source=s_q&geocode=&q=<?php echo $company['rolo_company_address'] . "+" . $company['rolo_company_city']  . "+" . $company['rolo_company_state']  . "+" . $company['rolo_company_zip']  . "+" . $company['rolo_company_country'];?> ">Map</a>
-				<li class="adr group">
-                <span class="street-address" id="rolo_company_address"><?php echo $company['rolo_company_address']; ?></span>
-                <span class="locality" id="city"><?php echo rolo_get_term_list($company_id, 'city') ?></span>
-                <abbr class="region" id ="state" title ="<?php echo rolo_get_term_list($company_id, 'state'); ?>" ><?php echo rolo_get_term_list($company_id, 'state'); ?></abbr>
-                <span class="postal-code" id="zip" ><?php echo rolo_get_term_list($company_id, 'zip'); ?></span>
-                <span class="country-name" id="country" ><?php echo rolo_get_term_list($company_id, 'country'); ?></span>
-				</li>
+			<li class="adr map label">
+                <span class="type"><?php _e('Map', 'rolopress'); ?></span><a class="url" href="http://maps.google.com/maps?f=q&source=s_q&geocode=&q=<?php echo $company['rolo_company_address'] . "+" . $company['rolo_company_city']  . "+" . $company['rolo_company_state']  . "+" . $company['rolo_company_zip']  . "+" . $company['rolo_company_country'];?> ">Map</a>
+                <ul>
+                    <li class="adr group">
+                    <span class="street-address" id="rolo_company_address"><?php echo $company['rolo_company_address']; ?></span>
+                    <span class="locality" id="city"><?php echo rolo_get_term_list($company_id, 'city') ?></span>
+                    <abbr class="region" id ="state" title ="<?php echo rolo_get_term_list($company_id, 'state'); ?>" ><?php echo rolo_get_term_list($company_id, 'state'); ?></abbr>
+                    <span class="postal-code" id="zip" ><?php echo rolo_get_term_list($company_id, 'zip'); ?></span>
+                    <span class="country-name" id="country" ><?php echo rolo_get_term_list($company_id, 'country'); ?></span>
+                    </li>
+                </ul>
 			</li>
 
-        <li class="email url-field"><a class="email" href="mailto:<?php echo $company['rolo_company_email'];?>"><?php echo $company['rolo_company_email'];?> </a><span id="rolo_company_email" class="edit-icon" style=""><?php echo $company['rolo_company_email']; ?></span></li>
+            <li class="email url-field"><a class="email" href="mailto:<?php echo $company['rolo_company_email'];?>"><?php echo $company['rolo_company_email'];?> </a><span id="rolo_company_email" class="edit-icon" style=""><?php echo $company['rolo_company_email']; ?></span></li>
 
-        <li>
-             <ul class="tel group">
-                 <li class="tel tel-mobile"><span class="type"><?php _e('Mobile', 'rolopress'); ?></span>: <span class="value" id="rolo_company_phone_Mobile"><?php echo $company['rolo_company_phone_Mobile']; ?></span></li>
-                <li class="tel tel-work"><span class="type"><?php _e('Work', 'rolopress'); ?></span>: <span class="value" id="rolo_company_phone_Work"><?php echo $company['rolo_company_phone_Work']; ?></span></li>
-                <li class="tel tel-fax"><span class="type"><?php _e('Fax', 'rolopress'); ?></span>: <span class="value" id="rolo_company_phone_Fax"><?php echo $company['rolo_company_phone_Fax']; ?></span></li>
-                <li class="tel tel-other"><span class="type"><?php _e('Other', 'rolopress'); ?></span>: <span class="value" id="rolo_company_phone_Other"><?php echo $company['rolo_company_phone_Other']; ?></span></li>
-			</ul>
-		</li>
+            <li>
+                <ul class="tel group">
+                    <li class="tel tel-mobile"><span class="type"><?php _e('Mobile', 'rolopress'); ?></span>: <span class="value" id="rolo_company_phone_Mobile"><?php echo $company['rolo_company_phone_Mobile']; ?></span></li>
+                    <li class="tel tel-work"><span class="type"><?php _e('Work', 'rolopress'); ?></span>: <span class="value" id="rolo_company_phone_Work"><?php echo $company['rolo_company_phone_Work']; ?></span></li>
+                    <li class="tel tel-fax"><span class="type"><?php _e('Fax', 'rolopress'); ?></span>: <span class="value" id="rolo_company_phone_Fax"><?php echo $company['rolo_company_phone_Fax']; ?></span></li>
+                    <li class="tel tel-other"><span class="type"><?php _e('Other', 'rolopress'); ?></span>: <span class="value" id="rolo_company_phone_Other"><?php echo $company['rolo_company_phone_Other']; ?></span></li>
+                </ul>
+            </li>
 
-        <li>
-            <ul class="im social group">
-			
-				<li class="social social-yahoo url-field"><span class="type"><?php _e('Yahoo', 'rolopress'); ?></span>: <a class="yahoo" href="ymsgr:sendIM?<?php echo $company['rolo_company_im_Yahoo']; ?>"><?php echo $company['rolo_company_im_Yahoo']; ?></a><span id="rolo_company_im_Yahoo" class="edit-icon" style=""><?php echo $company['rolo_company_im_Yahoo']; ?></span></li>
-				
-				<li class="social social-msn url-field"><span class="type"><?php _e('MSN', 'rolopress'); ?></span>: <a class="msn" href="msnim:chat?company=<?php echo $company['rolo_company_im_MSN']; ?>"><?php echo $company['rolo_company_im_MSN']; ?></a><span id="rolo_company_im_MSN" class="edit-icon" style=""><?php echo $company['rolo_company_im_MSN']; ?></span></li>
-								
-				<li class="social social-aim url-field"><span class="type"><?php _e('AIM', 'rolopress'); ?></span>: <a class="aim" href="aim:goIM?<?php echo $company['rolo_company_im_AOL']; ?>"><?php echo $company['rolo_company_im_AOL']; ?></a><span id="rolo_company_im_AOL" class="edit-icon" style=""><?php echo $company['rolo_company_im_AOL']; ?></span></li>
-												
-				<li class="social social-gtalk url-field"><span class="type"><?php _e('GTalk', 'rolopress'); ?></span>: <a class="gtalk" href="gtalk:chat?jid=<?php echo $company['rolo_company_im_GTalk']; ?>"><?php echo $company['rolo_company_im_GTalk']; ?></a><span id="rolo_company_im_GTalk" class="edit-icon" style=""><?php echo $company['rolo_company_im_Yahoo']; ?></span></li>
-																
-				<li class="social social-twitter url-field"><span class="type"><?php _e('Twitter', 'rolopress'); ?></span> <a class="twitter" href="http://www.twitter.com/<?php echo $company['rolo_company_twitter']; ?>"><?php echo $company['rolo_company_twitter']; ?></a><span id="rolo_company_twitter" class="edit-icon" style=""><?php echo $company['rolo_company_twitter']; ?></span></li>
-            </ul>
-        </li>
+            <li>
+                <ul class="im social group">
+                    <li class="social social-yahoo url-field"><span class="type"><?php _e('Yahoo', 'rolopress'); ?></span>: <a class="yahoo" href="ymsgr:sendIM?<?php echo $company['rolo_company_im_Yahoo']; ?>"><?php echo $company['rolo_company_im_Yahoo']; ?></a><span id="rolo_company_im_Yahoo" class="edit-icon" style=""><?php echo $company['rolo_company_im_Yahoo']; ?></span></li>
+                    <li class="social social-msn url-field"><span class="type"><?php _e('MSN', 'rolopress'); ?></span>: <a class="msn" href="msnim:chat?company=<?php echo $company['rolo_company_im_MSN']; ?>"><?php echo $company['rolo_company_im_MSN']; ?></a><span id="rolo_company_im_MSN" class="edit-icon" style=""><?php echo $company['rolo_company_im_MSN']; ?></span></li>
+                    <li class="social social-aim url-field"><span class="type"><?php _e('AIM', 'rolopress'); ?></span>: <a class="aim" href="aim:goIM?<?php echo $company['rolo_company_im_AOL']; ?>"><?php echo $company['rolo_company_im_AOL']; ?></a><span id="rolo_company_im_AOL" class="edit-icon" style=""><?php echo $company['rolo_company_im_AOL']; ?></span></li>
+                    <li class="social social-gtalk url-field"><span class="type"><?php _e('GTalk', 'rolopress'); ?></span>: <a class="gtalk" href="gtalk:chat?jid=<?php echo $company['rolo_company_im_GTalk']; ?>"><?php echo $company['rolo_company_im_GTalk']; ?></a><span id="rolo_company_im_GTalk" class="edit-icon" style=""><?php echo $company['rolo_company_im_Yahoo']; ?></span></li>
+                    <li class="social social-twitter url-field"><span class="type"><?php _e('Twitter', 'rolopress'); ?></span> <a class="twitter" href="http://www.twitter.com/<?php echo $company['rolo_company_twitter']; ?>"><?php echo $company['rolo_company_twitter']; ?></a><span id="rolo_company_twitter" class="edit-icon" style=""><?php echo $company['rolo_company_twitter']; ?></span></li>
+                </ul>
+            </li>
 
-    		<li class="website url-field group"><span class="type"><?php _e('Website', 'rolopress'); ?></span> <a class="url" href="http://<?php echo $company['rolo_company_website']; ?>"><?php echo $company['rolo_company_website']; ?></a><span id="rolo_company_website" class="edit-icon" style=""><?php echo $company['rolo_company_website']; ?></span>
-			</li>
-
+    		<li class="website url-field group"><span class="type"><?php _e('Website', 'rolopress'); ?></span> <a class="url" href="http://<?php echo $company['rolo_company_website']; ?>"><?php echo $company['rolo_company_website']; ?></a><span id="rolo_company_website" class="edit-icon" style=""><?php echo $company['rolo_company_website']; ?></span></li>
     </ul><!-- vcard -->
     </form>
 <?php
@@ -363,29 +342,25 @@ function _rolo_get_field($post_id, $field_name) {
     return apply_filters($contact_fields[$field_name]['filter'], $value);
 }
 
-function wt_get_ID_by_page_name($page_name)
-{
+function wt_get_ID_by_page_name($page_name) {
 	global $wpdb;
 	$page_name_id = $wpdb->get_var("SELECT ID FROM $wpdb->posts WHERE post_name = '".$page_name."'");
 	return $page_name_id;
 }
 
-
 /**
  * Displays Javascript disabled warning
- *
  *
  * @since 0.1
  */
 function rolopress_js_disabled() {
-		{ ?>
-		<noscript>
-		<p class="error">JavaScript is disabled.  For RoloPress to work properly, <a href="http://rolopress.com/forums/topic/inline-editing-not-working">please enable JavaScript.</a></p>
-		</noscript>
-		<?php }
+?>
+    <noscript>
+        <p class="error"><?php __('JavaScript is disabled. For RoloPress to work properly, <a href="http://rolopress.com/forums/topic/inline-editing-not-working">please enable JavaScript.</a>');?></p>
+    </noscript>
+<?php
 }
 add_action('rolopress_before_wrapper', 'rolopress_js_disabled');
-
 
 /**
  * Assembles default menu
@@ -393,117 +368,58 @@ add_action('rolopress_before_wrapper', 'rolopress_js_disabled');
  * @since 0.1
  */
 function rolopress_default_menu() {
-			{ ?>
-			<div id="menu">
-			<?php }
-				if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('menu') ) : {
-					{ ?>
-                    <ul class="menu_item site-title">
-					<li id="app-title"><span><a href="<?php bloginfo( 'url' ) ?>/" title="<?php bloginfo( 'name' ) ?>" rel="home"><?php bloginfo( 'name' ) ?></a></span></li>
-					</ul>
-					<ul class="menu_item menu_main">
-					<li><a title="contacts" class="contacts" href="<?php echo get_term_link('Contact', 'type'); ?>"><span><?php _e('Contacts ', 'rolopress'); ?></span></a></li>
-					<?php if ( current_user_can('publish_posts') ) { // only display if user has proper permissions
-						$add_contact_page = get_page_by_title('Add Contact'); $id= $add_contact_page->ID; wp_list_pages("include=$id & title_li=");};?>
-					<li><a title="companies" class="companies" href="<?php echo get_term_link('Company', 'type'); ?>"><span><?php _e('Companies ', 'rolopress'); ?></span></a></li>
-					<?php if ( current_user_can('publish_posts') ) { // only display if user has proper permissions
-						$add_company_page = get_page_by_title('Add Company'); $id= $add_company_page->ID; wp_list_pages("include=$id & title_li=");};?>
-					
-					</ul>
-					<ul class="menu_item sub_menu alignright">
-						<li><form id="searchform" method="get" action="<?php bloginfo('home') ?>">
-						<input id="s" name="s" type="text" value="<?php echo wp_specialchars(stripslashes($_GET['s']), true) ?>" size="20" tabindex="1" />
-					 	<input id="searchsubmit" name="searchsubmit" type="submit" value="<?php _e('Search', 'rolopress') ?>" tabindex="2" />
-						</form></li>
-						<?php global $user_ID, $user_identity, $user_level ?>
-						<?php if ( $user_level >= 1 ) : ?>
-							<li><a title="settings" href="<?php bloginfo('url') ?>/wp-admin/"><span>Settings</span></a></li>
-						<?php endif // $user_level >= 1 ?>
-						<li><?php wp_loginout(); ?></li>
-					</ul>
-				<?php }
-
-}
-			endif; 
-				{ ?>  </div> <?php }
-};
-
-add_action('rolopress_before_wrapper', 'rolopress_default_menu');
-
-
-/**
- * Show the list of contact fields in add contact page
- * @global array $new_meta_boxes List of contact fields
- * 
- * @@deprecated
- */
-function _rolo_show_contact_fields_old() {
-	global $contact_fields;
-	$rolo_tab_index = 1000;
 ?>
-<form action="" method="post" class="uniForm inlineLabels">
-    <div id="errorMsg">
-        <h3><?php _e('Oops!, We Have a Problem.');?></h3>
-        <ol>
-        </ol>
-    </div>
-
-    <fieldset class="inlineLabels">
-    
-<?php
-	foreach($contact_fields as $meta_box) {
-
-        $meta_box_value = $meta_box['std'];
-        if (isset ($meta_box['multiple'])) {
-            $multiples = $meta_box['multiple'];
-            $name = $meta_box['name'] . $multiples[0];
-
-            $ctrl_class = 'multipleInput ' . $meta_box['name'];
-        } else {
-            $name = $meta_box['name'];
-            $ctrl_class = "";
-        }
+    <div id="menu">
+<?php 
+    if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('menu') ) {
 ?>
-        <div class="ctrlHolder">
-            <input type="hidden" name="<?php echo $name.'_noncename';?>" id="<?php echo $name.'_noncename';?>" value="<?php echo wp_create_nonce( plugin_basename(__FILE__) );?>" />
-            <label for="<?php echo $name.'_rolo_value';?>">
-<?php
-                if ($meta_box['mandatory'] == true) {
-                    echo '<em>*</em>';
-                }
-                echo $meta_box['title'];
-?>
-            </label>
-            <input type="text" name="<?php echo $name.'_rolo_value';?>" value="<?php echo $meta_box_value ;?>" size="55" tabindex="<?php echo $rolo_tab_index;?>" class="textInput <?php echo $ctrl_class; ?>" />
-<?php
-            if (isset ($meta_box['multiple'])) {
-?>
-            <select>
-<?php
-                foreach ($multiples as $multiple) {
-?>
-                    <option value ="<?php echo $multiple ?>"><?php echo $multiple; ?></option>
-<?php
-                }
-?>
-            </select>
-            <img src ="<?php echo get_bloginfo('template_directory') ?>/library/images/forms/add.png" class="rolo_add_ctrl" alt="<?php _e('Add another');?>" />
-<?php
+        <ul class="menu_item site-title">
+            <li id="app-title"><span><a href="<?php bloginfo( 'url' ) ?>/" title="<?php bloginfo( 'name' ) ?>" rel="home"><?php bloginfo( 'name' ) ?></a></span></li>
+        </ul>
+        <ul class="menu_item menu_main">
+            <li>
+                <a title="contacts" class="contacts" href="<?php echo get_term_link('Contact', 'type'); ?>"><span><?php _e('Contacts ', 'rolopress'); ?></span></a>
+            </li>
+<?php   
+            if ( current_user_can('publish_posts') ) {
+              // only display if user has proper permissions
+               $add_contact_page = get_page_by_title('Add Contact');
+               $id= $add_contact_page->ID;
+               wp_list_pages("include=$id & title_li=");
             }
 ?>
-        </div>
-<?php
-		$rolo_tab_index++;
-	}
+            <li>
+                <a title="companies" class="companies" href="<?php echo get_term_link('Company', 'type'); ?>"><span><?php _e('Companies ', 'rolopress'); ?></span></a>
+            </li>
+<?php 
+            if ( current_user_can('publish_posts') ) {
+                // only display if user has proper permissions
+                $add_company_page = get_page_by_title('Add Company');
+                $id= $add_company_page->ID;
+                wp_list_pages("include=$id & title_li=");
+            }
 ?>
-    </fieldset>
-   <div class="buttonHolder">
-      <input type="hidden" name="rp_add_contact" value="add_contact" />
-      <button type="submit" name="submit" id="submit" class="submitButton"><?php _e('Add Contact');?></button>
-   </div>
-</form>
+        </ul>
+        <ul class="menu_item sub_menu alignright">
+            <li>
+                <form id="searchform" method="get" action="<?php bloginfo('home') ?>">
+                    <input id="s" name="s" type="text" value="<?php echo wp_specialchars(stripslashes($_GET['s']), true) ?>" size="20" tabindex="1" />
+                    <input id="searchsubmit" name="searchsubmit" type="submit" value="<?php _e('Search', 'rolopress') ?>" tabindex="2" />
+                </form>
+            </li>
+            <?php global $user_ID, $user_identity, $user_level ?>
+            <?php if ( $user_level >= 1 ) : ?>
+                <li><a title="settings" href="<?php bloginfo('url') ?>/wp-admin/"><span>Settings</span></a></li>
+            <?php endif // $user_level >= 1 ?>
+            <li><?php wp_loginout(); ?></li>
+        </ul>
+<?php
+    }
+?>
+    </div>
 <?php
 }
+add_action('rolopress_before_wrapper', 'rolopress_default_menu');
 
 /**
  * Identifies taxonomy type
@@ -579,5 +495,4 @@ function tag_ur_it($glue) {
 
     return trim(join( $glue, $tags ));
 }
-
 ?>
