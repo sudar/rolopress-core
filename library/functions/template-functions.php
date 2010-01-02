@@ -64,15 +64,20 @@ function rolo_contact_details($contact_id) {
             <li class="title" id="rolo_contact_title"><?php echo $contact['rolo_contact_title'];?></li>
 			<li class="org"><span class="value"><?php echo get_the_term_list($contact_id, 'company'); ?></span></li>
 				
-			<ul class="adr map label"><span class="type"><?php _e('Map', 'rolopress'); ?></span><a class="url" href="http://maps.google.com/maps?f=q&source=s_q&geocode=&q=<?php echo $contact['rolo_contact_address'] . "+" . $contact['rolo_contact_city']  . "+" . $contact['rolo_contact_state']  . "+" . $contact['rolo_contact_zip']  . "+" . $contact['rolo_contact_country'];?> ">Map</a>
-				<li class="adr group">
-                <span class="street-address" id="rolo_contact_address"><?php echo $contact['rolo_contact_address']; ?></span>
-                <span class="locality" id="city"><?php echo rolo_get_term_list($contact_id, 'city') ?></span>
-                <abbr class="region" id ="state" title ="<?php echo rolo_get_term_list($contact_id, 'state'); ?>" ><?php echo rolo_get_term_list($contact_id, 'state'); ?></abbr>
-                <span class="postal-code" id="zip" ><?php echo rolo_get_term_list($contact_id, 'zip'); ?></span>
-                <span class="country-name" id="country" ><?php echo rolo_get_term_list($contact_id, 'country'); ?></span>
-				</li>
-			</ul>
+            <li>
+                <ul class="adr map label">
+                    <li>
+                        <span class="type"><?php _e('Map', 'rolopress'); ?></span>
+                        <a class="url" href="http://maps.google.com/maps?f=q&source=s_q&geocode=&q=<?php echo $contact['rolo_contact_address'] . "+" . $contact['rolo_contact_city']  . "+" . $contact['rolo_contact_state']  . "+" . $contact['rolo_contact_zip']  . "+" . $contact['rolo_contact_country'];?> ">Map</a>
+                    </li>
+                    <li class="adr group">
+                        <span class="street-address" id="rolo_contact_address"><?php echo $contact['rolo_contact_address']; ?></span>
+                        <span class="locality" id="city"><?php echo rolo_get_term_list($contact_id, 'city') ?></span>
+                        <abbr class="region" id ="state" title ="<?php echo rolo_get_term_list($contact_id, 'state'); ?>" ><?php echo rolo_get_term_list($contact_id, 'state'); ?></abbr>
+                        <span class="postal-code" id="zip" ><?php echo rolo_get_term_list($contact_id, 'zip'); ?></span>
+                        <span class="country-name" id="country" ><?php echo rolo_get_term_list($contact_id, 'country'); ?></span>
+                    </li>
+    			</ul>
             <li class="email url-field group"><a class="email" href="mailto:<?php echo $contact['rolo_contact_email'];?>"><?php echo $contact['rolo_contact_email'];?> </a><span id="rolo_contact_email" class="edit-icon" style=""><?php echo $contact['rolo_contact_email']; ?></span></li>
             <li>
                  <ul class="tel group">
