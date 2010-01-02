@@ -470,7 +470,9 @@ function rolo_setup_contact_info($field_name, &$rolo_tab_index, $contact_id ='')
     $info_field = $contact_fields[$field_name];
     $name = 'rolo_contact_' . $info_field['name'];
 
-    $contact = &get_post($contact_id);
+    if ($contact_id > 0) {
+        $contact = get_post($contact_id);
+    }
 
     if (isset($contact->post_content)) {
         $current_value = $contact->post_content;

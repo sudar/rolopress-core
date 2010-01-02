@@ -507,7 +507,9 @@ function rolo_setup_company_info($field_name, &$rolo_tab_index, $company_id = ''
     $info_field = $company_fields[$field_name];
     $name = 'rolo_company_' . $info_field['name'];
 
-    $company = get_post($company_id);
+    if ($company_id > 0) {
+        $company = get_post($company_id);
+    }
 
     if (isset($company->post_content)) {
         $current_value = $company->post_content;
