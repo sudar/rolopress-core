@@ -345,11 +345,13 @@ function rolo_setup_company_address($field_name, &$rolo_tab_index, $company_id =
     global $company_fields;
 
     $address_field = $company_fields[$field_name];
-    $company = get_post_meta($company_id, 'rolo_company');
-    $company = $company[0];
-
-    $current_value = $company['rolo_company_address'];
-
+    $company = get_post_meta($company_id, 'rolo_company', true);
+    
+    if (isset($company['rolo_company_address'])) {
+        $current_value = $company['rolo_company_address'];
+    } else {
+        $current_value = '';
+    }
 ?>
         <div class="ctrlHolder">
             <label for="rolo_company_address">
@@ -423,8 +425,7 @@ function rolo_setup_company_multiple($field_name, &$rolo_tab_index, $company_id 
         $options .= "<option value ='$option'>$option</option>";
     }
 
-    $company = get_post_meta($company_id, 'rolo_company');
-    $company = $company[0];
+    $company = get_post_meta($company_id, 'rolo_company', true);
 
     for ($i = 0 ; $i < count($multiples) ; $i++) {
 

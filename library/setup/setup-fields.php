@@ -22,6 +22,8 @@ array
     'default_value' => '',
     'title' => "First Name",
     'description' => '',
+    'setup_function' => '',
+    'save_function' => '',
     'mandatory' => true
     ),
     "last_name"=>
@@ -33,6 +35,8 @@ array
     'default_value' => '',
     'title' => "Last Name",
     'description' => '',
+    'setup_function' => '',
+    'save_function' => '',
     'mandatory' => true
     ),
     'title' =>
@@ -43,7 +47,10 @@ array
     'filter' => "rolo_contact_title",
     'default_value' => '',
     'title' => 'Title',
-    'description' => ''
+    'description' => '',
+    'setup_function' => '',
+    'save_function' => '',
+    'mandatory' => false
     ),
     "company" =>
     array
@@ -55,7 +62,8 @@ array
     'title' => "Company",
     'description' => '',
     'setup_function' => 'rolo_setup_contact_company',
-    'save_function' => 'rolo_save_contact_company'
+    'save_function' => 'rolo_save_contact_company',
+    'mandatory' => false
     ),
     "email" =>
     array
@@ -65,7 +73,10 @@ array
     'filter' => "rolo_contact_email",
     'default_value' => '',
     'title' => "Email",
-    'description' => ''
+    'description' => '',
+    'setup_function' => '',
+    'save_function' => '',
+    'mandatory' => false
     ),
     "phone" =>
     array
@@ -78,7 +89,8 @@ array
     'title' => "Phone",
     'description' => '',
     'setup_function' => 'rolo_setup_contact_multiple',
-    'save_function' => 'rolo_save_contact_multiple'
+    'save_function' => 'rolo_save_contact_multiple',
+    'mandatory' => false
     ),
     "website" =>
     array
@@ -89,7 +101,10 @@ array
     'default_value' => "",
     'title' => "Website",
     'description' => '',
-	'prefix' => 'http://'
+    'setup_function' => '',
+    'save_function' => '',
+	'prefix' => 'http://',
+    'mandatory' => false
     ),
     'im' =>
     array
@@ -102,7 +117,8 @@ array
     'title' => "IM",
     'description' => '',
     'setup_function' => 'rolo_setup_contact_multiple',
-    'save_function' => 'rolo_save_contact_multiple'
+    'save_function' => 'rolo_save_contact_multiple',
+    'mandatory' => false
     ),
     'twitter' =>
     array
@@ -113,7 +129,10 @@ array
     'default_value' => "",
     'title' => "Twitter",
     'description' => '',
-	'prefix' => 'http://twitter.com/'
+    'setup_function' => '',
+    'save_function' => '',
+	'prefix' => 'http://twitter.com/',
+    'mandatory' => false
     ),
     "address" =>
     array
@@ -125,7 +144,8 @@ array
     'title' => "Address",
     'description' => '',
     "setup_function" => 'rolo_setup_contact_address',
-    'save_function' => 'rolo_save_contact_address'
+    'save_function' => 'rolo_save_contact_address',
+    'mandatory' => false
     ),
     'info' =>
     array
@@ -137,7 +157,8 @@ array
     'title' => "Background Info",
     'description' => '',
     'setup_function' => 'rolo_setup_contact_info',
-    'save_function' => 'rolo_save_contact_info'
+    'save_function' => 'rolo_save_contact_info',
+    'mandatory' => false
     )
 );
 
@@ -153,6 +174,8 @@ array
     'default_value' => '',
     'title' => "Company name",
     'description' => '',
+    'setup_function' => '',
+    'save_function' => '',
     'mandatory' => true
     ),
     "email" =>
@@ -164,6 +187,8 @@ array
     'default_value' => '',
     'title' => "Email",
     'description' => '',
+    'setup_function' => '',
+    'save_function' => '',
     'mandatory' => false
     ),
     "phone" =>
@@ -177,7 +202,8 @@ array
     'title' => "Phone",
     'description' => '',
     'setup_function' => 'rolo_setup_company_multiple',
-    'save_function' => 'rolo_save_company_multiple'
+    'save_function' => 'rolo_save_company_multiple',
+    'mandatory' => false
     ),
     "website" =>
     array
@@ -188,7 +214,10 @@ array
     'default_value' => "",
     'title' => "Website",
     'description' => '',
-	'prefix' => 'http://'
+    'setup_function' => '',
+    'save_function' => '',
+	'prefix' => 'http://',
+    'mandatory' => false
     ),
     'im' =>
     array
@@ -201,7 +230,8 @@ array
     'title' => "IM",
     'description' => '',
     'setup_function' => 'rolo_setup_company_multiple',
-    'save_function' => 'rolo_save_company_multiple'
+    'save_function' => 'rolo_save_company_multiple',
+    'mandatory' => false
     ),
     'twitter' =>
     array
@@ -212,7 +242,10 @@ array
     'default_value' => "",
     'title' => "Twitter",
     'description' => '',
-	'prefix' => 'http://twitter.com/'
+    'setup_function' => '',
+    'save_function' => '',
+	'prefix' => 'http://twitter.com/',
+    'mandatory' => false
     ),
     "address" =>
     array
@@ -224,7 +257,8 @@ array
     'title' => "Address",
     'description' => '',
     "setup_function" => 'rolo_setup_company_address',
-    'save_function' => 'rolo_save_company_address'
+    'save_function' => 'rolo_save_company_address',
+    'mandatory' => false
     ),
     'info' =>
     array
@@ -236,7 +270,8 @@ array
     'title' => "Background Info",
     'description' => '',
     'setup_function' => 'rolo_setup_company_info',
-    'save_function' => 'rolo_save_company_info'
+    'save_function' => 'rolo_save_company_info',
+    'mandatory' => false
     )
 );
 

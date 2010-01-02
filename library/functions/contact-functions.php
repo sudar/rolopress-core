@@ -306,10 +306,13 @@ function rolo_setup_contact_address($field_name, &$rolo_tab_index, $contact_id =
 
     $address_field = $contact_fields[$field_name];
 
-    $contact = get_post_meta($contact_id, 'rolo_contact');
-    $contact = $contact[0];
+    $contact = get_post_meta($contact_id, 'rolo_contact', true);
 
-    $current_value = $contact['rolo_contact_address'];
+    if (isset($contact['rolo_contact_address'])) {
+        $current_value = $contact['rolo_contact_address'];
+    } else {
+        $current_value = '';
+    }
 ?>
         <div class="ctrlHolder">
             <label for="rolo_contact_address">
@@ -385,8 +388,7 @@ function rolo_setup_contact_multiple($field_name, &$rolo_tab_index, $contact_id 
         $options .= "<option value ='$option'>$option</option>";
     }
 
-    $contact = get_post_meta($contact_id, 'rolo_contact');
-    $contact = $contact[0];
+    $contact = get_post_meta($contact_id, 'rolo_contact', true);
 
     for ($i = 0 ; $i < count($multiples) ; $i++) {
 

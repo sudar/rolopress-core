@@ -117,8 +117,8 @@ function rolo_company_header($company_id) {
         return false;
     }
 
-    $company = get_post_meta($company_id, 'rolo_company');
-    $company = $company[0];
+    $company = get_post_meta($company_id, 'rolo_company', true);
+    
 	$post_id = get_post($post->ID); // get current company id
     $slug = $post_id->post_name; // define slug as $slug
 
@@ -407,8 +407,15 @@ function rolopress_default_menu() {
         </ul>
         <ul class="menu_item sub_menu alignright">
             <li>
-                <form id="searchform" method="get" action="<?php bloginfo('home') ?>">
-                    <input id="s" name="s" type="text" value="<?php echo wp_specialchars(stripslashes($_GET['s']), true) ?>" size="20" tabindex="1" />
+                <form id="searchform" method="get" action="<?php bloginfo('url') ?>">
+<?php
+                    if (isset($_GET['s'])) {
+                        $s = $_GET['s'];
+                    } else {
+                        $s = '';
+                    }
+?>
+                    <input id="s" name="s" type="text" value="<?php echo wp_specialchars(stripslashes($s), true) ?>" size="20" tabindex="1" />
                     <input id="searchsubmit" name="searchsubmit" type="submit" value="<?php _e('Search', 'rolopress') ?>" tabindex="2" />
                 </form>
             </li>
