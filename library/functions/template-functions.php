@@ -402,10 +402,10 @@ function rolopress_default_menu() {
 					<li id="app-title"><span><a href="<?php bloginfo( 'url' ) ?>/" title="<?php bloginfo( 'name' ) ?>" rel="home"><?php bloginfo( 'name' ) ?></a></span></li>
 					</ul>
 					<ul class="menu_item menu_main">
-					<li><a title="contacts" class="contacts" href="/type/contact"><span><?php _e('Contacts ', 'rolopress'); ?></span></a></li>
+					<li><a title="contacts" class="contacts" href="<?php echo get_term_link('Contact', 'type'); ?>"><span><?php _e('Contacts ', 'rolopress'); ?></span></a></li>
 					<?php if ( current_user_can('publish_posts') ) { // only display if user has proper permissions
 						$add_contact_page = get_page_by_title('Add Contact'); $id= $add_contact_page->ID; wp_list_pages("include=$id & title_li=");};?>
-					<li><a title="companies" class="companies" href="/type/company"><span><?php _e('Companies ', 'rolopress'); ?></span></a></li>	
+					<li><a title="companies" class="companies" href="<?php echo get_term_link('Company', 'type'); ?>"><span><?php _e('Companies ', 'rolopress'); ?></span></a></li>
 					<?php if ( current_user_can('publish_posts') ) { // only display if user has proper permissions
 						$add_company_page = get_page_by_title('Add Company'); $id= $add_company_page->ID; wp_list_pages("include=$id & title_li=");};?>
 					
