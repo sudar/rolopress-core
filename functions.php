@@ -44,7 +44,7 @@ require_once( ROLOPRESS_SETUP . '/setup-fields.php' );
 // Code based on http://www.nabble.com/Activation-hook-exist-for-themes--td25211004.html
 if ( is_admin() && isset($_GET['activated'] ) && $pagenow == "themes.php" ) {
     require_once( ROLOPRESS_SETUP . '/add-pages.php' );
-	require_once( ROLOPRESS_INCLUDES . '/settings.php' ); 
+	require_once( ROLOPRESS_SETUP . '/settings.php' );
 }
 	
 // Load RoloPress functions
