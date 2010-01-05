@@ -6,7 +6,7 @@
         <div id="main">
 			<?php rolopress_before_info(); // Before info hook ?>
 			<div id="info">
-<?php the_post(); ?>
+            <?php the_post(); ?>
  			<h2 class="page-title">
             <?php _e(get_the_term_list( $post->ID, 'type', ' ', ', ', ': ' ));?><?php the_title(); ?>
             </h2>
@@ -29,12 +29,33 @@
                  	
 					</div><!-- .entry-main -->
 					<div class="entry-utility group">
-<?php if ( $cats_meow = cats_meow(', ') ) : // Returns categories other than the one queried ?>
+                    <?php if ( $cats_meow = cats_meow(', ') ) : // Returns categories other than the one queried ?>
 						<span class="cat-links"><?php printf( __( 'Also assigned to %s', 'rolopress' ), $cats_meow ) ?></span>
 						<span class="meta-sep"> | </span>
-<?php endif ?>
-						<?php the_tags( '<span class="tag-links"><span class="entry-utility-prep entry-utility-prep-tag-links">' . __('Tagged: ', 'rolopress' ) . '</span>', ", ", "</span>\n\t\t\t\t\t\t<span class=\"meta-sep\">|</span>\n" ) ?>
-						<?php if ( comments_open() ) : ?><span class="notes-link"><?php comments_popup_link( __( 'Write a Note', 'rolopress' ), __( '1 Note', 'rolopress' ), __( '% Notes', 'rolopress' ) ) ?></span><?php endif;?>
+                    <?php endif ?>
+                        
+                    <?php the_tags( '<span class="tag-links"><span class="entry-utility-prep entry-utility-prep-tag-links">' . __('Tagged: ', 'rolopress' ) . '</span>', ", ", "</span>\n\t\t\t\t\t\t<span class=\"meta-sep\">|</span>\n" ) ?>
+                    <?php if ( current_user_can('edit_posts') ) { ?>
+                        <span>
+                        <?php
+                        if (rolo_type_is('contact')) {
+                            $edit_contact_page = get_page_by_title('Edit Contact');
+                        ?>
+                            <a href="<?php echo get_permalink($edit_contact_page->ID) . '?id=' . get_the_ID(); ?>" ><?php _e('Edit', 'rolopress'); ?></a>
+                        <?php
+                        }
+                        if (rolo_type_is('company')) {
+                            $edit_company_page = get_page_by_title('Edit Company');
+                        ?>
+                            <a href="<?php echo get_permalink($edit_company_page->ID) . '?id=' . get_the_ID(); ?>" ><?php _e('Edit', 'rolopress'); ?></a>
+                        <?php
+                        }
+                        ?>
+                        </span>
+                    <?php
+                    }
+                    ?>
+                    <?php if ( comments_open() ) : ?><span class="notes-link"><?php comments_popup_link( __( 'Write a Note', 'rolopress' ), __( '1 Note', 'rolopress' ), __( '% Notes', 'rolopress' ) ) ?></span><?php endif;?>
 					</div><!-- #entry-utility -->	
                     <?php rolopress_after_entry(); // After entry hook ?>
                     </div><!-- #post-<?php the_ID(); ?> -->
