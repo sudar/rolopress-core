@@ -136,7 +136,7 @@ $debug = false; // skip the ladie, da.
  * Qiktip: Sidebars and widgets are identified by their unique ID
 */
 $preset_widgets = array (
-	'primary'  => array( 'Companies', 'Recent Notes' ),
+	'primary'  => array( 'Recent Items', 'Companies', 'Recent Notes' ),
 	'secondary'  => array( 'Contact Details', 'Company Details' )
 );
 

@@ -61,20 +61,18 @@ function rolo_contact_details($contact_id) {
             <li class="title" id="rolo_contact_title"><?php echo $contact['rolo_contact_title'];?></li>
 			<li class="org"><span class="value"><?php echo get_the_term_list($contact_id, 'company'); ?></span></li>
 				
-            <li>
-                <ul class="adr map label">
-                    <li>
-                        <span class="type"><?php _e('Map', 'rolopress'); ?></span>
-                        <a class="url" href="http://maps.google.com/maps?f=q&source=s_q&geocode=&q=<?php echo $contact['rolo_contact_address'] . " " . rolo_get_term_list($contact_id, 'city') . " " . rolo_get_term_list($contact_id, 'state') . " " . rolo_get_term_list($contact_id, 'country') . " " . rolo_get_term_list($contact_id, 'zip');?> "><?php _e('Map');?></a>
-                    </li>
-                    <li class="adr group">
-                        <span class="street-address" id="rolo_contact_address"><?php echo $contact['rolo_contact_address']; ?></span>
-                        <span class="locality" id="city"><?php echo rolo_get_term_list($contact_id, 'city'); ?></span>
-                        <abbr class="region" id ="state" title ="<?php echo rolo_get_term_list($contact_id, 'state'); ?>" ><?php echo rolo_get_term_list($contact_id, 'state'); ?></abbr>
-                        <span class="postal-code" id="zip" ><?php echo rolo_get_term_list($contact_id, 'zip'); ?></span>
-                        <span class="country-name" id="country" ><?php echo rolo_get_term_list($contact_id, 'country'); ?></span>
-                    </li>
-    			</ul>
+			<li class="map"><a class="url" href="http://maps.google.com/maps?f=q&source=s_q&geocode=&q=<?php echo $company['rolo_company_address'] . " " . rolo_get_term_list($company_id, 'city') . " " . rolo_get_term_list($company_id, 'state') . " " . rolo_get_term_list($company_id, 'country')  . " " . rolo_get_term_list($company_id, 'zip');?> "><span>Map</span></a></li>
+									   
+			<li>
+				<ul class="adr group">
+					<li class="street-address" id="rolo_contact_address"><?php echo $contact['rolo_contact_address']; ?></li>
+                    <li class="url-field"><span class="type"><?php _e('City', 'rolopress'); ?></span><?php echo get_the_term_list($contact_id, 'city', '', '', '');?><span id="city" class="locality edit-icon" style=""><?php echo rolo_get_term_list($contact_id, 'city'); ?></span></li>
+					<li class="url-field"><span class="type"><?php _e('State', 'rolopress'); ?></span><?php echo get_the_term_list($contact_id, 'state', '', '', '');?><span id="state" class="region edit-icon" style=""><?php echo rolo_get_term_list($contact_id, 'state'); ?></span></li>
+                    <li class="url-field"><span class="type"><?php _e('Zip', 'rolopress'); ?></span><?php echo get_the_term_list($contact_id, 'zip', '', '', '');?></a><span id="zip" class="postal-code edit-icon" style=""><?php echo rolo_get_term_list($contact_id, 'zip'); ?></span></li>
+                    <li class="url-field"><span class="type"><?php _e('Country', 'rolopress'); ?></span><?php echo get_the_term_list($contact_id, 'country', '', '', '');?><span id="country" class="country-name edit-icon" style=""><?php echo rolo_get_term_list($contact_id, 'country'); ?></span></li>
+				</ul>
+			</li>
+			
             <li class="email url-field group"><a class="email" href="mailto:<?php echo $contact['rolo_contact_email'];?>"><?php echo $contact['rolo_contact_email'];?> </a><span id="rolo_contact_email" class="edit-icon" style=""><?php echo $contact['rolo_contact_email']; ?></span></li>
             <li>
                  <ul class="tel group">
@@ -139,6 +137,7 @@ function rolo_company_header($company_id) {
 <?php
 }
 
+
 /**
  * Displays company detail information
  *
@@ -160,25 +159,27 @@ function rolo_company_details($company_id) {
         <input type="hidden" name="rolo_post_id" id="rolo_post_id" value ="<?php echo $company_id;?>" />
 		<ul id="vcard-<?php basename(get_permalink());?>" class="vcard">
 
-            <li class="fn">
-				<?php if (is_single()) : // show proper links on single or archive company pages ?>
-					<a href="<?php get_bloginfo('url');?>/company/<?php echo $slug; ?>"><?php echo $company['rolo_company_name'];?></a>
-				<?php else: ?>
-					<a href="<?php the_permalink();?>"><?php echo $company['rolo_company_name'];?></a>
-				<?php endif;?>
-			</li>	
-			
-			<li class="adr map label">
-                <span class="type"><?php _e('Map', 'rolopress'); ?></span><a class="url" href="http://maps.google.com/maps?f=q&source=s_q&geocode=&q=<?php echo $company['rolo_company_address'] . " " . rolo_get_term_list($company_id, 'city') . " " . rolo_get_term_list($company_id, 'state') . " " . rolo_get_term_list($company_id, 'country')  . " " . rolo_get_term_list($company_id, 'zip');?> "><?php _e('Map');?></a>
-                <ul>
-                    <li class="adr group">
-                    <span class="street-address" id="rolo_company_address"><?php echo $company['rolo_company_address']; ?></span>
-                    <span class="locality" id="city"><?php echo rolo_get_term_list($company_id, 'city'); ?></span>
-                    <abbr class="region" id ="state" title ="<?php echo rolo_get_term_list($company_id, 'state'); ?>" ><?php echo rolo_get_term_list($company_id, 'state'); ?></abbr>
-                    <span class="postal-code" id="zip" ><?php echo rolo_get_term_list($company_id, 'zip'); ?></span>
-                    <span class="country-name" id="country" ><?php echo rolo_get_term_list($company_id, 'country'); ?></span>
-                    </li>
-                </ul>
+			<li>
+                 <a class="fn"
+                    <?php if (is_single()) : // show proper links on single or archive company pages ?>
+                        href="<?php echo get_term_link($company['rolo_company_name'], 'company'); ?>"><?php echo $company['rolo_company_name'];?>
+                    <?php else: ?>
+                        href="<?php the_permalink();?>"><?php echo $company['rolo_company_name'];?>
+                    <?php endif;?>
+                </a>
+			</li>
+	               
+			<li class="map"><a class="url" href="http://maps.google.com/maps?f=q&source=s_q&geocode=&q=<?php echo $company['rolo_company_address'] . " " . rolo_get_term_list($company_id, 'city') . " " . rolo_get_term_list($company_id, 'state') . " " . rolo_get_term_list($company_id, 'country')  . " " . rolo_get_term_list($company_id, 'zip');?> "><span>Map</span></a></li>
+									   
+			<li>
+				<ul class="adr group">
+					<li class="street-address" id="rolo_company_address"><?php echo $company['rolo_company_address']; ?></li>
+                   	<li class="url-field"><span class="type"><?php _e('City', 'rolopress'); ?></span><?php echo get_the_term_list($company_id, 'city', '', '', '');?><span id="city" class="locality edit-icon" style=""><?php echo rolo_get_term_list($company_id, 'city'); ?></span></li>
+                    <li class="url-field"><span class="type"><?php _e('State', 'rolopress'); ?></span><?php echo get_the_term_list($company_id, 'state', '', '', '');?><span id="state" class="region edit-icon" style=""><?php echo rolo_get_term_list($company_id, 'state'); ?></span></li>
+                    <li class="url-field"><span class="type"><?php _e('Zip', 'rolopress'); ?></span><?php echo get_the_term_list($company_id, 'zip', '', '', '');?></a><span id="zip" class="postal-code edit-icon" style=""><?php echo rolo_get_term_list($company_id, 'zip'); ?></span></li>
+                    <li class="url-field"><span class="type"><?php _e('Country', 'rolopress'); ?></span><?php echo get_the_term_list($company_id, 'country', '', '', '');?><span id="country" class="country-name edit-icon" style=""><?php echo rolo_get_term_list($company_id, 'country'); ?></span></li>
+				
+				</ul>
 			</li>
 
             <li class="email url-field"><a class="email" href="mailto:<?php echo $company['rolo_company_email'];?>"><?php echo $company['rolo_company_email'];?> </a><span id="rolo_company_email" class="edit-icon" style=""><?php echo $company['rolo_company_email']; ?></span></li>
@@ -356,7 +357,7 @@ function wt_get_ID_by_page_name($page_name) {
 function rolopress_js_disabled() {
 ?>
     <noscript>
-        <p class="error"><?php __('JavaScript is disabled. For RoloPress to work properly, <a href="http://rolopress.com/forums/topic/inline-editing-not-working">please enable JavaScript.</a>');?></p>
+        <p class="error"><?php _e('JavaScript is disabled. For RoloPress to work properly, <a href="http://rolopress.com/forums/topic/inline-editing-not-working">please enable JavaScript.</a>');?></p>
     </noscript>
 <?php
 }
