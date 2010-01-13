@@ -105,7 +105,7 @@ class Rolo_Widget_Recent_Items extends WP_Widget {
 
 		<div style="float:left;width:98%;">
 		<p><img class="rolo_widget_icon" src= <?php echo ROLOPRESS_IMAGES  . '/admin/rolopress-icon.gif' ?> />
-		Displays your recently created items.
+		<?php _e('Displays your recently created items.', 'rolopress'); ?>
 		</p>
 		</div>
 		<div style="float:left;width:48%;">

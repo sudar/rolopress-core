@@ -9,6 +9,8 @@
  * @package RoloPress
  * @subpackage Widgets
  */
+ 
+
 
 class Rolo_Widget_Pages extends WP_Widget {
 
@@ -17,6 +19,8 @@ class Rolo_Widget_Pages extends WP_Widget {
 		$control_ops = array( 'width' => 500, 'height' => 350, 'id_base' => 'rolopress-pages' );
 		$this->WP_Widget( 'rolopress-pages', __('Pages', 'rolopress'), $widget_ops, $control_ops );
 	}
+	
+	
 
 	function widget( $args, $instance ) {
 		extract( $args );
@@ -42,6 +46,11 @@ class Rolo_Widget_Pages extends WP_Widget {
 
 		if ( !$date_format )
 			$date_format = get_option( 'date_format' );
+			
+
+		// Remove the "Edit Company" and "Edit Contact" pages from the widget because they cannot be accessed directly.
+		$edit_company_page =rolo_get_ID_by_page_title('Edit Company');
+		$edit_contact_page =rolo_get_ID_by_page_title('Edit Contact');
 
 		$pages = array(
 			'depth' => $depth,
@@ -50,7 +59,7 @@ class Rolo_Widget_Pages extends WP_Widget {
 			'show_date' => $show_date,
 			'date_format' => $date_format,
 			'child_of' => $child_of,
-			'exclude' => $exclude,
+			'exclude' => $exclude . $edit_company_page . "," . $edit_contact_page,
 			'include' => $include,
 			'hierarchical' => $hierarchical,
 			'meta_key' => $meta_key,
@@ -110,6 +119,11 @@ class Rolo_Widget_Pages extends WP_Widget {
 		$defaults = array( 'title' => __('Pages', 'rolopress'), 'hierarchical' => true, 'sort_column' => 'post_title', 'sort_order' => 'ASC', 'date_format' => get_option( 'date_format' ) );
 		$instance = wp_parse_args( (array) $instance, $defaults ); ?>
 
+		<div style="float:left;width:98%;">
+		<p><img class="rolo_widget_icon" src= <?php echo ROLOPRESS_IMAGES  . '/admin/rolopress-icon.gif' ?> />
+		<?php _e('Displays Pages with appropriate RoloPress options.', 'rolopress'); ?>
+		</p>
+		</div>
 		<div style="float:left;width:31%;">
 		<p>
 			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e('Title:','rolopress'); ?></label>
@@ -141,6 +155,7 @@ class Rolo_Widget_Pages extends WP_Widget {
 		<p>
 			<label for="<?php echo $this->get_field_id( 'exclude' ); ?>"><?php _e('Exclude:', 'rolopress'); ?> <code>exclude</code></label>
 			<input id="<?php echo $this->get_field_id( 'exclude' ); ?>" name="<?php echo $this->get_field_name( 'exclude' ); ?>" type="text" value="<?php echo $instance['exclude']; ?>" style="width:100%;" />
+			<small>"Edit Contact" and "Edit Company" pages are automatically excluded, since they should not be accessed directly.</small>
 		</p>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'exclude_tree' ); ?>"><?php _e('Exclude Tree:', 'rolopress'); ?> <code>exclude_tree</code></label>

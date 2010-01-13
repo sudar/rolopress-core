@@ -2,13 +2,21 @@
 Styles for RoloPress admin screens
 */
 
+
+/* =Login
+-------------------------------------------------------------- */
 #login h1 a {
 	background:url(/wp-content/themes/rolopress-core/library/images/admin/rolo-login.gif) no-repeat top;
 }
-	 
+
+/* =Header
+-------------------------------------------------------------- */ 
 #header-logo {
 	background:transparent url(/wp-content/themes/rolopress-core/library/images/admin/rolopress-icon-bk.gif) no-repeat scroll center center;
 }
+
+/* =Footer
+-------------------------------------------------------------- */
 #footer-rolo {
 	background: #464646;
 	padding-left: 15px;
@@ -21,6 +29,15 @@ Styles for RoloPress admin screens
 color:#CCCCCC;
 text-decoration:none;
 }
+
+/* =Edit Posts
+-------------------------------------------------------------- */
+img.avatar {
+border:1px solid #E1E1E1
+}
+
+/* =Widgets
+-------------------------------------------------------------- */
 .rolo_widget_icon { /* appears in default widgets */
 float:left;
 padding:0 5px 0 0 ;

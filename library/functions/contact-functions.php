@@ -642,4 +642,5 @@ function _rolo_edit_callback_success($new_value) {
 
     die($results);
 }
+
 ?>

@@ -34,7 +34,32 @@
 						<span class="meta-sep"> | </span>
 <?php endif ?>
 						<?php the_tags( '<span class="tag-links"><span class="entry-utility-prep entry-utility-prep-tag-links">' . __('Tagged: ', 'rolopress' ) . '</span>', ", ", "</span>\n\t\t\t\t\t\t<span class=\"meta-sep\">|</span>\n" ) ?>
-						<?php if ( comments_open() ) : ?><span class="notes-link"><?php comments_popup_link( __( 'Write a Note', 'rolopress' ), __( '1 Note', 'rolopress' ), __( '% Notes', 'rolopress' ) ) ?></span><?php endif;?>
+						
+						<?php if ( current_user_can('edit_posts') ) { ?>
+							<span class="edit-item">
+							<?php
+							if (rolo_type_is('contact')) { 
+								$edit_contact_page = get_page_by_title('Edit Contact'); ?>
+								<a href="<?php echo get_permalink($edit_contact_page->ID) . '?id=' . get_the_ID(); ?>" ><?php _e('Edit', 'rolopress'); ?></a>
+								<?php
+							}
+							if (rolo_type_is('company')) {
+								$edit_company_page = get_page_by_title('Edit Company');?>
+								<a href="<?php echo get_permalink($edit_company_page->ID) . '?id=' . get_the_ID(); ?>" ><?php _e('Edit', 'rolopress'); ?></a>
+								<?php
+							} ?>
+							</span>
+						<?php
+						} ?>
+						
+						<?php if ( comments_open() ) : 
+							if (is_user_logged_in() ) { // only allow logged in users to write notes ?>
+								<span class="notes-link"><?php comments_popup_link( __( 'Write a Note', 'rolopress' ), __( '1 Note', 'rolopress' ), __( '% Notes', 'rolopress' ) ) ?></span><?php
+							} else { ?>
+								<span class="notes-link"><?php comments_popup_link( __( '', 'rolopress' ), __( '1 Note', 'rolopress' ), __( '% Notes', 'rolopress' ) ) ?></span><?php
+							};
+						endif;?>
+						
 					</div><!-- #entry-utility -->	
                     <?php rolopress_after_entry(); // After entry hook ?>
                     </div><!-- #post-<?php the_ID(); ?> -->

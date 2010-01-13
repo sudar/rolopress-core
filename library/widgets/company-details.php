@@ -51,7 +51,7 @@ class Rolo_Widget_Company_Details extends WP_Widget {
 
 		<div style="float:left;width:98%;">
 		<p><img class="rolo_widget_icon" src= <?php echo ROLOPRESS_IMAGES  . '/admin/rolopress-icon.gif' ?> />
-		Displays the details for an individual company. A good place to place this widget is the Primary or Secondary sidebars, or Company:Under Main.<br/><em>This is a Smart Widget, which means it only displays when it is supposed to: when you view an individual company page.</em>
+		<?php _e('Displays the details for an individual company. A good place to place this widget is the Primary or Secondary sidebars, or Company:Under Main.<br/><em>This is a Smart Widget, which means it only displays when it is supposed to: when you view an individual company page.</em>', 'rolopress'); ?>
 		</p>
 		</div>
 		<p>
