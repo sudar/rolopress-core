@@ -280,12 +280,12 @@ array
  * @since 0.1
  */
 function rolo_create_taxonomy() {
-    register_taxonomy( 'type', 'post', array( 'hierarchical' => false, 'label' => __('Rolopress Type'), 'query_var' => true, 'rewrite' => true ) );
-    register_taxonomy( 'company', 'post', array( 'hierarchical' => false, 'label' => __('Company'), 'query_var' => true, 'rewrite' => true ) );
-    register_taxonomy( 'city', 'post', array( 'hierarchical' => false, 'label' => __('City'), 'query_var' => true, 'rewrite' => true ) );
-    register_taxonomy( 'state', 'post', array( 'hierarchical' => false, 'label' => __('State'), 'query_var' => true, 'rewrite' => true ) );
-    register_taxonomy( 'zip', 'post', array( 'hierarchical' => false, 'label' => __('Zip'), 'query_var' => true, 'rewrite' => true ) );
-    register_taxonomy( 'country', 'post', array( 'hierarchical' => false, 'label' => __('Country'), 'query_var' => true, 'rewrite' => true ) );
+    register_taxonomy( 'type', 'post', array( 'hierarchical' => false, 'label' => __('Rolopress Type', 'rolopress'), 'query_var' => true, 'rewrite' => true ) );
+    register_taxonomy( 'company', 'post', array( 'hierarchical' => false, 'label' => __('Company', 'rolopress'), 'query_var' => true, 'rewrite' => true ) );
+    register_taxonomy( 'city', 'post', array( 'hierarchical' => false, 'label' => __('City', 'rolopress'), 'query_var' => true, 'rewrite' => true ) );
+    register_taxonomy( 'state', 'post', array( 'hierarchical' => false, 'label' => __('State', 'rolopress'), 'query_var' => true, 'rewrite' => true ) );
+    register_taxonomy( 'zip', 'post', array( 'hierarchical' => false, 'label' => __('Zip', 'rolopress'), 'query_var' => true, 'rewrite' => true ) );
+    register_taxonomy( 'country', 'post', array( 'hierarchical' => false, 'label' => __('Country', 'rolopress'), 'query_var' => true, 'rewrite' => true ) );
 }
 add_action('init', 'rolo_create_taxonomy', 0);
 

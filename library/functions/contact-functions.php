@@ -23,17 +23,17 @@ function rolo_add_contact() {
         if (isset($_POST['rp_add_contact']) && $_POST['rp_add_contact'] == 'add_contact') {
             $contact_id = _rolo_save_contact_fields();
             if ($contact_id) {
-                echo __("Contact information successfully added.");
+                echo __("Contact information successfully added.", 'rolopress');
             } else {
-                echo __("There was some problem in inserting the contact info");
+                echo __("There was some problem in inserting the contact info", 'rolopress');
     //            TODO - Handle Error properly
             }
         } elseif (isset($_POST['rp_add_notes']) && $_POST['rp_add_notes'] == 'add_notes') {
             if (_rolo_save_contact_notes()) {
-                echo __("Notes successfully added.");
+                echo __("Notes successfully added.", 'rolopress');
             } else {
     //            TODO - Handle Error properly
-                echo __("There was some problem in inserting the notes");
+                echo __("There was some problem in inserting the notes", 'rolopress');
             }
         } else {
             _rolo_show_contact_fields();
@@ -58,9 +58,9 @@ function rolo_edit_contact() {
         if (isset($_POST['rp_edit_contact']) && $_POST['rp_edit_contact'] == 'edit_contact') {
             $contact_id = _rolo_save_contact_fields();
             if ($contact_id) {
-                echo __("Contact information successfully added.");
+                echo __("Contact information successfully added.", 'rolopress');
             } else {
-                echo __("There was some problem in inserting the contact info");
+                echo __("There was some problem in inserting the contact info", 'rolopress');
     //            TODO - Handle Error properly
             }
         } else {
@@ -88,7 +88,7 @@ function _rolo_show_edit_contact_form($contact_id) {
 ?>
 <form action="" method="post" class="uniForm inlineLabels" id="contact-edit">
     <div id="errorMsg">
-        <h3><?php _e('Oops!, We Have a Problem.');?></h3>
+        <h3><?php _e('Oops!, We Have a Problem.', 'rolopress');?></h3>
         <ol>
         </ol>
     </div>
@@ -131,7 +131,7 @@ function _rolo_show_edit_contact_form($contact_id) {
    <div class="buttonHolder">
        <input type="hidden" name="contact_id" value="<?php echo $contact_id;?>" />
       <input type="hidden" name="rp_edit_contact" value="edit_contact" />
-      <button type="submit" name="submit" id="submit" class="submitButton" tabindex="<?php echo $rolo_tab_index++;?>" ><?php _e('Edit Contact');?></button>
+      <button type="submit" name="submit" id="submit" class="submitButton" tabindex="<?php echo $rolo_tab_index++;?>" ><?php _e('Edit Contact', 'rolopress');?></button>
    </div>
 </form>
 <?php
@@ -148,7 +148,7 @@ function _rolo_show_contact_fields() {
 ?>
 <form action="" method="post" class="uniForm inlineLabels" id="contact-add">
     <div id="errorMsg">
-        <h3><?php _e('Oops!, We Have a Problem.');?></h3>
+        <h3><?php _e('Oops!, We Have a Problem.', 'rolopress');?></h3>
         <ol>
         </ol>
     </div>
@@ -190,7 +190,7 @@ function _rolo_show_contact_fields() {
     </fieldset>
    <div class="buttonHolder">
       <input type="hidden" name="rp_add_contact" value="add_contact" />
-      <button type="submit" name="submit" id="submit" class="submitButton" tabindex="<?php echo $rolo_tab_index++;?>" ><?php _e('Add Contact');?></button>
+      <button type="submit" name="submit" id="submit" class="submitButton" tabindex="<?php echo $rolo_tab_index++;?>" ><?php _e('Add Contact', 'rolopress');?></button>
    </div>
 </form>
 <?php
@@ -268,18 +268,18 @@ function _rolo_show_contact_notes($contact_id) {
 ?>
 <form action="" method="post" class="uniForm inlineLabels">
     <div id="errorMsg">
-        <h3><?php _e('Oops!, We Have a Problem.');?></h3>
+        <h3><?php _e('Oops!, We Have a Problem.', 'rolopress');?></h3>
         <ol>
         </ol>
     </div>
 
     <fieldset class="inlineLabels">
 
-      <legend><?php _e('Add notes');?></legend>
+      <legend><?php _e('Add notes', 'rolopress');?></legend>
 
         <div class="ctrlHolder">
             <label for="rolo_contact_notes">
-                <?php _e('Notes');?>
+                <?php _e('Notes', 'rolopress');?>
             </label>
             <textarea rows="3" cols="20" name ="rolo_contact_notes" class="textArea notes"></textarea>
         </div>
@@ -287,7 +287,7 @@ function _rolo_show_contact_notes($contact_id) {
    <div class="buttonHolder">
       <input type="hidden" name="rp_add_notes" value="add_notes" />
       <input type="hidden" name="rolo_contact_id" value="<?php echo $contact_id; ?>" />
-      <button type="submit" name="submit" id="submit" class="submitButton"><?php _e('Add Notes');?></button>
+      <button type="submit" name="submit" id="submit" class="submitButton"><?php _e('Add Notes', 'rolopress');?></button>
    </div>
 
 </form>
@@ -427,8 +427,8 @@ function rolo_setup_contact_multiple($field_name, &$rolo_tab_index, $contact_id 
                 $hidden = '';
             }
 ?>
-            <img src ="<?php echo get_bloginfo('template_directory') ?>/library/images/forms/delete.png" class="rolo_delete_ctrl" alt="<?php _e('Delete');?>" <?php echo $hidden;?> />
-            <img src ="<?php echo get_bloginfo('template_directory') ?>/library/images/forms/add.png" class="rolo_add_ctrl" alt="<?php _e('Add another');?>" />
+            <img src ="<?php echo get_bloginfo('template_directory') ?>/library/images/forms/delete.png" class="rolo_delete_ctrl" alt="<?php _e('Delete', 'rolopress');?>" <?php echo $hidden;?> />
+            <img src ="<?php echo get_bloginfo('template_directory') ?>/library/images/forms/add.png" class="rolo_add_ctrl" alt="<?php _e('Add another', 'rolopress');?>" />
         </div>
 <?php
     }

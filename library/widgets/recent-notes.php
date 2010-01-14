@@ -11,7 +11,7 @@ class Rolo_Widget_Recent_Notes extends WP_Widget {
 
 	function Rolo_Widget_Recent_Notes() {
 		$widget_ops = array('classname' => 'recent-notes', 'description' => __('Displays Your Most Recent Notes', 'rolopress') );
-		$this->WP_Widget('recent-notes', __('Recent Notes'), $widget_ops);
+		$this->WP_Widget('recent-notes', __('Recent Notes', 'rolopress'), $widget_ops);
 		$this->alt_option_name = 'widget_recent_notes';
 
 		add_action( 'comment_post', array(&$this, 'flush_widget_cache') );
@@ -27,7 +27,7 @@ class Rolo_Widget_Recent_Notes extends WP_Widget {
 		global $wpdb, $comments, $comment;
 
 		extract($args, EXTR_SKIP);
-		$title = apply_filters('widget_title', empty($instance['title']) ? __('Recent Notes') : $instance['title']);
+		$title = apply_filters('widget_title', empty($instance['title']) ? __('Recent Notes', 'rolopress') : $instance['title']);
 		if ( !$number = (int) $instance['number'] )
 			$number = 5;
 		else if ( $number < 1 )
@@ -85,12 +85,12 @@ class Rolo_Widget_Recent_Notes extends WP_Widget {
 		</p>
 		</div>
 		
-		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:'); ?></label>
+		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:', 'rolopress'); ?></label>
 		<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" /></p>
 
-		<p><label for="<?php echo $this->get_field_id('number'); ?>"><?php _e('Number of notes to show:'); ?></label>
+		<p><label for="<?php echo $this->get_field_id('number'); ?>"><?php _e('Number of notes to show:', 'rolopress'); ?></label>
 		<input id="<?php echo $this->get_field_id('number'); ?>" name="<?php echo $this->get_field_name('number'); ?>" type="text" value="<?php echo $number; ?>" size="3" /><br />
-		<small><?php _e('(at most 15)'); ?></small></p>
+		<small><?php _e('(at most 15)', 'rolopress'); ?></small></p>
 <?php
 	}
 }

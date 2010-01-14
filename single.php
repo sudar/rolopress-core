@@ -8,7 +8,7 @@
 			<div id="info">
             <?php the_post(); ?>
  			<h2 class="page-title">
-            <?php _e(get_the_term_list( $post->ID, 'type', ' ', ', ', ': ' ));?><?php the_title(); ?>
+            <?php _e(get_the_term_list( $post->ID, 'type', ' ', ', ', ': ' ), 'rolopress');?><?php the_title(); ?>
             </h2>
             <div id="entry-<?php the_ID(); ?>" class="<?php rolopress_entry_class(); ?>">
             <?php rolopress_before_entry(); // Before entry hook ?>

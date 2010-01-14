@@ -115,7 +115,7 @@ add_action('wp_dashboard_setup', 'rolo_admin_custom_dashboard_widgets');
  */
 function rolo_admin_setup_custom_column($defaults) {
     unset($defaults['date']);
-	$defaults['image'] = __('Image'); // adds new column to column array
+	$defaults['image'] = __('Image', 'rolopress'); // adds new column to column array
 	return $defaults;
 }
 add_filter('manage_posts_columns', 'rolo_admin_setup_custom_column');

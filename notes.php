@@ -117,7 +117,7 @@ $GLOBALS['comment'] = $comment; ?>
 <div id="comment-<?php comment_ID(); ?>" class="note">
 
 <?php if ($comment->comment_approved == '0') : ?>
-<em><?php _e('Your note is awaiting moderation.') ?></em>
+<em><?php _e('Your note is awaiting moderation.', 'rolopress') ?></em>
 <br />
 <?php endif; ?>
 
@@ -132,10 +132,10 @@ $GLOBALS['comment'] = $comment; ?>
 <div class="note-meta notemetadata">
 <a href="<?php echo htmlspecialchars(get_comment_link( $comment->comment_ID )) ?>">
 <span class="note-author">
-<?php printf(__('<span class="added-by">Added by: </span><cite class="commenter">%s</cite><span class="added-on"> on </span>'), get_comment_author_link()) ?>
+<?php printf(__('<span class="added-by">Added by: </span><cite class="commenter">%s</cite><span class="added-on"> on </span>', 'rolopress'), get_comment_author_link()) ?>
 </span>
 <span class="note-date-time">
-<?php printf(__('%1$s at %2$s'), get_comment_date(),get_comment_time()) ?></span></a>
+<?php printf(__('%1$s at %2$s', 'rolopress'), get_comment_date(),get_comment_time()) ?></span></a>
 </div><!-- note-meta -->
 
 <?php

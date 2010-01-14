@@ -8,7 +8,7 @@
 			<?php rolopress_before_info(); // Before info hook ?>
 			<div id="info">		
             	
-                <h2 class="page-title"><?php _e( 'Not Found', 'rolopress' ); ?></h2>
+                <h2 class="page-title"><?php _e( 'Not Found' , 'rolopress'); ?></h2>
 			
 				<div id="post-0" class="post error404 not-found">
 					<?php rolopress_before_entry(); // Before entry hook ?>

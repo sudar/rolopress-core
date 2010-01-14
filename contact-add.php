@@ -15,7 +15,7 @@
         <?php rolopress_before_info(); // Before info hook ?>
         <div id="info">
             <?php rolopress_before_info_content(); // Before info content hook ?>
-            <h2 class="page-title"><?php _e('Add Contact');?></h2>
+            <h2 class="page-title"><?php _e('Add Contact', 'rolopress');?></h2>
             <?php the_post(); ?>
 
             <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -24,7 +24,7 @@
 <?php               if ( current_user_can('publish_posts') ) { // only display if user has proper permissions
                         rolo_add_contact();
                     } else {
-                         _e("Sorry, you don't have permission to view this page.");
+                         _e("Sorry, you don't have permission to view this page.", 'rolopress');
                     }
 ?>
                 </div><!-- .entry-main -->

@@ -23,18 +23,18 @@ function rolo_add_company() {
         if (isset($_POST['rp_add_company']) && $_POST['rp_add_company'] == 'add_company') {
             $company_id = _rolo_save_company_fields();
             if ($company_id) {
-                echo __("company information successfully added.");
+                echo __("company information successfully added.", 'rolopress');
 //                _rolo_show_company_notes($company_id);
             } else {
-                echo __("There was some problem in inserting the company info");
+                echo __("There was some problem in inserting the company info", 'rolopress');
     //            TODO - Handle Error properly
             }
         } elseif (isset($_POST['rp_add_notes']) && $_POST['rp_add_notes'] == 'add_notes') {
             if (_rolo_save_company_notes()) {
-                echo __("Notes successfully added.");
+                echo __("Notes successfully added.", 'rolopress');
             } else {
     //            TODO - Handle Error properly
-                echo __("There was some problem in inserting the notes");
+                echo __("There was some problem in inserting the notes", 'rolopress');
             }
         } else {
             _rolo_show_company_fields();
@@ -59,9 +59,9 @@ function rolo_edit_company() {
         if (isset($_POST['rp_edit_company']) && $_POST['rp_edit_company'] == 'edit_company') {
             $company_id = _rolo_save_company_fields();
             if ($company_id) {
-                echo __("company information successfully added.");
+                echo __("company information successfully added.", 'rolopress');
             } else {
-                echo __("There was some problem in inserting the company info");
+                echo __("There was some problem in inserting the company info", 'rolopress');
     //            TODO - Handle Error properly
             }
         } else {
@@ -89,7 +89,7 @@ function _rolo_show_edit_company_form($company_id) {
 ?>
 <form action="" method="post" class="uniForm inlineLabels" id="company-edit">
     <div id="errorMsg">
-        <h3><?php _e('Oops!, We Have a Problem.');?></h3>
+        <h3><?php _e('Oops!, We Have a Problem.', 'rolopress');?></h3>
         <ol>
         </ol>
     </div>
@@ -132,7 +132,7 @@ function _rolo_show_edit_company_form($company_id) {
    <div class="buttonHolder">
        <input type="hidden" name="company_id" value="<?php echo $company_id;?>" />
       <input type="hidden" name="rp_edit_company" value="edit_company" />
-      <button type="submit" name="submit" id="submit" class="submitButton" tabindex="<?php echo $rolo_tab_index++;?>" ><?php _e('Edit company');?></button>
+      <button type="submit" name="submit" id="submit" class="submitButton" tabindex="<?php echo $rolo_tab_index++;?>" ><?php _e('Edit company', 'rolopress');?></button>
    </div>
 </form>
 <?php
@@ -151,7 +151,7 @@ function _rolo_show_company_fields() {
 ?>
 <form action="" method="post" class="uniForm inlineLabels" id="company-add">
     <div id="errorMsg">
-        <h3><?php _e('Oops!, We Have a Problem.');?></h3>
+        <h3><?php _e('Oops!, We Have a Problem.', 'rolopress');?></h3>
         <ol>
         </ol>
     </div>
@@ -196,7 +196,7 @@ function _rolo_show_company_fields() {
     </fieldset>
    <div class="buttonHolder">
       <input type="hidden" name="rp_add_company" value="add_company" />
-      <button type="submit" name="submit" id="submit" class="submitButton" tabindex="<?php echo $rolo_tab_index++;?>" ><?php _e('Add company');?></button>
+      <button type="submit" name="submit" id="submit" class="submitButton" tabindex="<?php echo $rolo_tab_index++;?>" ><?php _e('Add company', 'rolopress');?></button>
    </div>
 </form>
 <?php
@@ -270,18 +270,18 @@ function _rolo_show_company_notes($company_id) {
 ?>
 <form action="" method="post" class="uniForm inlineLabels">
     <div id="errorMsg">
-        <h3><?php _e('Oops!, We Have a Problem.');?></h3>
+        <h3><?php _e('Oops!, We Have a Problem.', 'rolopress');?></h3>
         <ol>
         </ol>
     </div>
 
     <fieldset class="inlineLabels">
 
-      <legend><?php _e('Add notes');?></legend>
+      <legend><?php _e('Add notes', 'rolopress');?></legend>
 
         <div class="ctrlHolder">
             <label for="rolo_company_notes">
-                <?php _e('Notes');?>
+                <?php _e('Notes', 'rolopress');?>
             </label>
             <textarea rows="3" cols="20" name ="rolo_company_notes" class="textArea notes"></textarea>
         </div>
@@ -289,7 +289,7 @@ function _rolo_show_company_notes($company_id) {
    <div class="buttonHolder">
       <input type="hidden" name="rp_add_notes" value="add_notes" />
       <input type="hidden" name="rolo_company_id" value="<?php echo $company_id; ?>" />
-      <button type="submit" name="submit" id="submit" class="submitButton"><?php _e('Add Notes');?></button>
+      <button type="submit" name="submit" id="submit" class="submitButton"><?php _e('Add Notes', 'rolopress');?></button>
    </div>
 
 </form>
@@ -464,8 +464,8 @@ function rolo_setup_company_multiple($field_name, &$rolo_tab_index, $company_id 
                 $hidden = '';
             }
 ?>
-            <img src ="<?php echo get_bloginfo('template_directory') ?>/library/images/forms/delete.png" class="rolo_delete_ctrl" alt="<?php _e('Delete');?>" <?php echo $hidden;?> />
-            <img src ="<?php echo get_bloginfo('template_directory') ?>/library/images/forms/add.png" class="rolo_add_ctrl" alt="<?php _e('Add another');?>" />
+            <img src ="<?php echo get_bloginfo('template_directory') ?>/library/images/forms/delete.png" class="rolo_delete_ctrl" alt="<?php _e('Delete', 'rolopress');?>" <?php echo $hidden;?> />
+            <img src ="<?php echo get_bloginfo('template_directory') ?>/library/images/forms/add.png" class="rolo_add_ctrl" alt="<?php _e('Add another', 'rolopress');?>" />
         </div>
 <?php
     }

@@ -52,14 +52,14 @@ Class se_admin {
 			
 		if($_POST['action'] == "save") 
 		{
-			echo "<div class=\"updated fade\" id=\"limitcatsupdatenotice\"><p>" . __('Your default search settings have been <strong>updated</strong> by RoloSearch. </p><p> What are you waiting for? Go check out the new search results!', 'RoloSearch') . "</p></div>";
+			echo "<div class=\"updated fade\" id=\"limitcatsupdatenotice\"><p>" . __('Your default search settings have been <strong>updated</strong> by RoloSearch. </p><p> What are you waiting for? Go check out the new search results!', 'RoloSearch', 'rolopress') . "</p></div>";
 			update_option("se_options", $new_options);
 
 		}
 		
 		if($_POST['action'] == "reset") 
 		{ 
-			echo "<div class=\"updated fade\" id=\"limitcatsupdatenotice\"><p>" . __('Your default search settings have been <strong>updated</strong> by RoloSearch. </p><p> What are you waiting for? Go check out the new search results!', 'RoloSearch') . "</p></div>";
+			echo "<div class=\"updated fade\" id=\"limitcatsupdatenotice\"><p>" . __('Your default search settings have been <strong>updated</strong> by RoloSearch. </p><p> What are you waiting for? Go check out the new search results!', 'RoloSearch', 'rolopress') . "</p></div>";
 			delete_option("se_options", $new_options);
 		}
 		
@@ -69,12 +69,12 @@ Class se_admin {
 		?>
 
 	<div class="wrap">
-		<h2><?php _e('RoloSearch Version:', 'RoloSearch'); ?> <?php echo $this->rs_version; ?></h2>
+		<h2><?php _e('RoloSearch Version:', 'RoloSearch', 'rolopress'); ?> <?php echo $this->rs_version; ?></h2>
 			<form method="post">
 		
 				<div style="float: right; margin-bottom:10px; padding:0; " id="top-update" class="submit">
 					<input type="hidden" name="action" value="save" />
-					<input type="submit" value="<?php _e('Update Options', 'RoloSearch') ?>" />
+					<input type="submit" value="<?php _e('Update Options', 'RoloSearch', 'rolopress') ?>" />
 				</div>
 
 				
@@ -82,7 +82,7 @@ Class se_admin {
 				<table class="widefat fixed">
 					<thead>
 						<tr class="title">
-							<th scope="col" class="manage-column"><?php _e('Basic Configuration', 'RoloSearch'); ?></th>
+							<th scope="col" class="manage-column"><?php _e('Basic Configuration', 'RoloSearch', 'rolopress'); ?></th>
 							<th scope="col" class="manage-column"></th>
 						</tr>
 					</thead>
@@ -90,10 +90,10 @@ Class se_admin {
 					// Show options for 2.5 and below
 					if ($wp_version <= '2.5') : ?>
 					<tr class="mainrow"> 
-				        <td class="titledesc"><?php _e('Search every page','RoloSearch'); ?>:<br/><small></small></td>
+				        <td class="titledesc"><?php _e('Search every page','RoloSearch', 'rolopress'); ?>:<br/><small></small></td>
 				        <td class="forminp">
 				            <select id="search_pages" name="search_pages">
-							<option<?php if ($options['se_use_page_search'] == 'Yes') { echo ' selected="selected"'; } ?> value="Yes"><?php _e('Yes', 'RoloSearch'); ?></option>
+							<option<?php if ($options['se_use_page_search'] == 'Yes') { echo ' selected="selected"'; } ?> value="Yes"><?php _e('Yes', 'RoloSearch', 'rolopress'); ?></option>
 							<option<?php if ($options['se_use_page_search'] == 'No') { echo ' selected="selected"'; } ?> value="No">&nbsp;&nbsp;</option>
 				            </select>
 							
@@ -101,10 +101,10 @@ Class se_admin {
 				    </tr>
 					
 					<tr class="mainrow"> 
-				        <td class="titledesc">&nbsp;&nbsp;&nbsp;<?php _e('Search approved pages only','RoloSearch'); ?>:</td>
+				        <td class="titledesc">&nbsp;&nbsp;&nbsp;<?php _e('Search approved pages only','RoloSearch', 'rolopress'); ?>:</td>
 				        <td class="forminp">
 				            <select id="appvd_pages" name="appvd_pages">
-							<option<?php if ($options['se_approved_pages_only'] == 'Yes') { echo ' selected="selected"'; } ?> value="Yes"><?php _e('Yes', 'RoloSearch'); ?></option>
+							<option<?php if ($options['se_approved_pages_only'] == 'Yes') { echo ' selected="selected"'; } ?> value="Yes"><?php _e('Yes', 'RoloSearch', 'rolopress'); ?></option>
 							<option<?php if ($options['se_approved_pages_only'] == 'No') { echo ' selected="selected"'; } ?> value="No">&nbsp;&nbsp;</option>
 				            </select>
 							<br/><small></small>
@@ -115,10 +115,10 @@ Class se_admin {
 					// Show tags only for WP 2.3+
 					if ($wp_version >= '2.3') : ?>
 					<tr class="mainrow"> 
-				        <td class="titledesc"><?php _e('Search every tag name','RoloSearch'); ?>:</td>
+				        <td class="titledesc"><?php _e('Search every tag name','RoloSearch', 'rolopress'); ?>:</td>
 				        <td class="forminp">
 				            <select id="search_tags" name="search_tags" >
-								<option<?php if ($options['se_use_tag_search'] == 'Yes') { echo ' selected="selected"'; } ?> value="Yes"><?php _e('Yes', 'RoloSearch'); ?></option>
+								<option<?php if ($options['se_use_tag_search'] == 'Yes') { echo ' selected="selected"'; } ?> value="Yes"><?php _e('Yes', 'RoloSearch', 'rolopress'); ?></option>
 				                <option<?php if ($options['se_use_tag_search'] == 'No') { echo ' selected="selected"'; } ?> value="No">&nbsp;&nbsp;</option>				            
 							</select>
 							<br/><small></small>
@@ -129,10 +129,10 @@ Class se_admin {
 					// Show categories only for WP 2.5+
 					if ($wp_version >= '2.5') : ?>
 					<tr class="mainrow">
-				        <td class="titledesc"><?php _e('Search every category name and description','RoloSearch'); ?>:</td>
+				        <td class="titledesc"><?php _e('Search every category name and description','RoloSearch', 'rolopress'); ?>:</td>
 				        <td class="forminp">
 				            <select id="search_categories" name="search_categories">
-							<option<?php if ($options['se_use_category_search'] == 'Yes') { echo ' selected="selected"'; } ?> value="Yes"><?php _e('Yes', 'RoloSearch'); ?></option>
+							<option<?php if ($options['se_use_category_search'] == 'Yes') { echo ' selected="selected"'; } ?> value="Yes"><?php _e('Yes', 'RoloSearch', 'rolopress'); ?></option>
 							<option<?php if ($options['se_use_category_search'] == 'No') { echo ' selected="selected"'; } ?> value="No">&nbsp;&nbsp;</option>
 				            </select>
 							<br/><small></small>
@@ -140,40 +140,40 @@ Class se_admin {
 				    </tr>
 					<?php endif; ?>
 					<tr class="mainrow"> 
-				        <td class="titledesc"><?php _e('Search every note','RoloSearch'); ?>:</td>
+				        <td class="titledesc"><?php _e('Search every note','RoloSearch', 'rolopress'); ?>:</td>
 				        <td class="forminp">
 				            <select name="search_comments" id="search_comments">
-							<option<?php if ($options['se_use_comment_search'] == 'Yes') { echo ' selected="selected"'; } ?> value="Yes"><?php _e('Yes', 'RoloSearch'); ?></option>
+							<option<?php if ($options['se_use_comment_search'] == 'Yes') { echo ' selected="selected"'; } ?> value="Yes"><?php _e('Yes', 'RoloSearch', 'rolopress'); ?></option>
 							<option<?php if ($options['se_use_comment_search'] == 'No') { echo ' selected="selected"'; } ?> value="No">&nbsp;&nbsp;</option>
 				            </select>
 							<br/><small></small>
 				        </td>
 				    </tr>
 					<tr class="mainrow"> 
-				        <td class="titledesc">&nbsp;&nbsp;&nbsp;<?php _e('Search note authors','RoloSearch'); ?>:</td>
+				        <td class="titledesc">&nbsp;&nbsp;&nbsp;<?php _e('Search note authors','RoloSearch', 'rolopress'); ?>:</td>
 				        <td class="forminp">
 				            <select id="search_cmt_authors" name="search_cmt_authors">
-							<option<?php if ($options['se_use_cmt_authors'] == 'Yes') { echo ' selected="selected"'; } ?> value="Yes"><?php _e('Yes', 'RoloSearch'); ?></option>
+							<option<?php if ($options['se_use_cmt_authors'] == 'Yes') { echo ' selected="selected"'; } ?> value="Yes"><?php _e('Yes', 'RoloSearch', 'rolopress'); ?></option>
 							<option<?php if ($options['se_use_cmt_authors'] == 'No') { echo ' selected="selected"'; } ?> value="No">&nbsp;&nbsp;</option>
 				            </select>
 							<br/><small></small>
 				        </td>
 				    </tr>
 					<tr class="mainrow"> 
-				        <td class="titledesc">&nbsp;&nbsp;&nbsp;<?php _e('Search approved notes only','RoloSearch'); ?>:</td>
+				        <td class="titledesc">&nbsp;&nbsp;&nbsp;<?php _e('Search approved notes only','RoloSearch', 'rolopress'); ?>:</td>
 				        <td class="forminp">
 				            <select id="appvd_comments" name="appvd_comments">
-							<option<?php if ($options['se_approved_comments_only'] == 'Yes') { echo ' selected="selected"'; } ?> value="Yes"><?php _e('Yes', 'RoloSearch'); ?></option>
+							<option<?php if ($options['se_approved_comments_only'] == 'Yes') { echo ' selected="selected"'; } ?> value="Yes"><?php _e('Yes', 'RoloSearch', 'rolopress'); ?></option>
 							<option<?php if ($options['se_approved_comments_only'] == 'No') { echo ' selected="selected"'; } ?> value="No">&nbsp;&nbsp;</option>
 				            </select>
 							<br/><small></small>
 				        </td>
 				    </tr>
 					<tr class="mainrow"> 
-				        <td class="titledesc"><?php _e('Search every excerpt','RoloSearch'); ?>:</td>
+				        <td class="titledesc"><?php _e('Search every excerpt','RoloSearch', 'rolopress'); ?>:</td>
 				        <td class="forminp">
 				            <select id="search_excerpt" name="search_excerpt">
-							<option <?php if ($options['se_use_excerpt_search'] == 'Yes') { echo ' selected="selected"'; } ?> selected value="Yes"><?php _e('Yes', 'RoloSearch'); ?></option>
+							<option <?php if ($options['se_use_excerpt_search'] == 'Yes') { echo ' selected="selected"'; } ?> selected value="Yes"><?php _e('Yes', 'RoloSearch', 'rolopress'); ?></option>
 							<option<?php if ($options['se_use_excerpt_search'] == 'No') { echo ' selected="selected"'; } ?> value="No">&nbsp;&nbsp;</option>
 				            </select>
 							<br/><small></small>
@@ -183,10 +183,10 @@ Class se_admin {
 					// Show categories only for WP 2.5+
 					if ($wp_version >= '2.5') : ?>
 					<tr class="mainrow"> 
-				        <td class="titledesc"><?php _e('Search every draft','RoloSearch'); ?>:</td>
+				        <td class="titledesc"><?php _e('Search every draft','RoloSearch', 'rolopress'); ?>:</td>
 				        <td class="forminp">
 				            <select id="search_drafts" name="search_drafts">
-							<option<?php if ($options['se_use_draft_search'] == 'Yes') { echo ' selected="selected"'; } ?> value="Yes"><?php _e('Yes', 'RoloSearch'); ?></option>
+							<option<?php if ($options['se_use_draft_search'] == 'Yes') { echo ' selected="selected"'; } ?> value="Yes"><?php _e('Yes', 'RoloSearch', 'rolopress'); ?></option>
 							<option<?php if ($options['se_use_draft_search'] == 'No') { echo ' selected="selected"'; } ?> value="No">&nbsp;&nbsp;</option>
 				            </select>
 							<br/><small></small>
@@ -194,50 +194,50 @@ Class se_admin {
 				    </tr>
 					<?php endif; ?>
 					<tr class="mainrow"> 
-				        <td class="titledesc"><?php _e('Search every attachment','RoloSearch'); ?>:<br/><small><?php _e('(post type = attachment)','RoloSearch'); ?></small></td>
+				        <td class="titledesc"><?php _e('Search every attachment','RoloSearch', 'rolopress'); ?>:<br/><small><?php _e('(post type = attachment)','RoloSearch', 'rolopress'); ?></small></td>
 				        <td class="forminp">
 				            <select id="search_attachments" name="search_attachments">
-							<option<?php if ($options['se_use_attachment_search'] == 'Yes') { echo ' selected="selected"'; } ?> value="Yes"><?php _e('Yes', 'RoloSearch'); ?></option>
+							<option<?php if ($options['se_use_attachment_search'] == 'Yes') { echo ' selected="selected"'; } ?> value="Yes"><?php _e('Yes', 'RoloSearch', 'rolopress'); ?></option>
 							<option<?php if ($options['se_use_attachment_search'] == 'No') { echo ' selected="selected"'; } ?> value="No">&nbsp;&nbsp;</option>
 				            </select>
 							<br/><small></small>
 				        </td>
 				    </tr>
 					<tr class="mainrow"> 
-				        <td class="titledesc"><?php _e('Search Item Details','RoloSearch'); ?>:<br/></td>
+				        <td class="titledesc"><?php _e('Search Item Details','RoloSearch', 'rolopress'); ?>:<br/></td>
 				        <td class="forminp">
 				            <select id="search_metadata" name="search_metadata">
-							<option<?php if ($options['se_use_metadata_search'] == 'Yes') { echo ' selected="selected"'; } ?> value="Yes"><?php _e('Yes', 'RoloSearch'); ?></option>
+							<option<?php if ($options['se_use_metadata_search'] == 'Yes') { echo ' selected="selected"'; } ?> value="Yes"><?php _e('Yes', 'RoloSearch', 'rolopress'); ?></option>
 							<option<?php if ($options['se_use_metadata_search'] == 'No') { echo ' selected="selected"'; } ?> value="No">&nbsp;&nbsp;</option>
 				            </select>
 							
 				        </td>
 				    </tr>
 					<tr class="mainrow"> 
-				        <td class="titledesc"><?php _e('Search every item owner','RoloSearch'); ?>:</td>
+				        <td class="titledesc"><?php _e('Search every item owner','RoloSearch', 'rolopress'); ?>:</td>
 				        <td class="forminp">
 				            <select id="search_authors" name="search_authors">
-							<option<?php if ($options['se_use_authors'] == 'Yes') { echo ' selected="selected"'; } ?> value="Yes"><?php _e('Yes', 'RoloSearch'); ?></option>
+							<option<?php if ($options['se_use_authors'] == 'Yes') { echo ' selected="selected"'; } ?> value="Yes"><?php _e('Yes', 'RoloSearch', 'rolopress'); ?></option>
 							<option<?php if ($options['se_use_authors'] == 'No') { echo ' selected="selected"'; } ?> value="No">&nbsp;&nbsp;</option>
 				            </select>
 							<br/><small></small>
 				        </td>
 				    </tr>
 					<tr class="mainrow"> 
-				        <td class="titledesc"><?php _e('Highlight Search Terms','RoloSearch'); ?>:</td>
+				        <td class="titledesc"><?php _e('Highlight Search Terms','RoloSearch', 'rolopress'); ?>:</td>
 				        <td class="forminp">
 				            <select id="search_highlight" name="search_highlight">
-							<option<?php if ($options['se_use_highlight'] == 'Yes') { echo ' selected="selected"'; } ?> value="Yes"><?php _e('Yes', 'RoloSearch'); ?></option>
+							<option<?php if ($options['se_use_highlight'] == 'Yes') { echo ' selected="selected"'; } ?> value="Yes"><?php _e('Yes', 'RoloSearch', 'rolopress'); ?></option>
 							<option<?php if ($options['se_use_highlight'] == 'No') { echo ' selected="selected"'; } ?> value="No">&nbsp;&nbsp;</option>
 							</select>
 							<br/><small></small>
 				        </td>
 				    </tr>
 					<tr class="mainrow"> 
-					    <td class="titledesc">&nbsp;&nbsp;&nbsp;<?php _e('Highlight Background Color','RoloSearch'); ?>:</td>
+					    <td class="titledesc">&nbsp;&nbsp;&nbsp;<?php _e('Highlight Background Color','RoloSearch', 'rolopress'); ?>:</td>
 					    <td class="forminp">
 					        <input type="text" id="highlight_color" name="highlight_color" value="<?php echo $options['se_highlight_color'];?>" />
-						    <br/><small><?php _e('Examples:<br/>\'#FFF984\' or \'red\'','RoloSearch'); ?></small>
+						    <br/><small><?php _e('Examples:<br/>\'#FFF984\' or \'red\'','RoloSearch', 'rolopress'); ?></small>
 					    </td>
 					</tr>
 				
@@ -247,31 +247,31 @@ Class se_admin {
 				<table class="widefat">
 					<thead>
 						<tr class="title">
-							<th scope="col" class="manage-column"><?php _e('Advanced Configuration - Exclusion', 'RoloSearch'); ?></th>
+							<th scope="col" class="manage-column"><?php _e('Advanced Configuration - Exclusion', 'RoloSearch', 'rolopress'); ?></th>
 							<th scope="col" class="manage-column"></th>
 						</tr>
 					</thead>
 				
 					<tr class="mainrow"> 
-					    <td class="titledesc"><?php _e('Exclude some post or page IDs','RoloSearch'); ?>:</td>
+					    <td class="titledesc"><?php _e('Exclude some post or page IDs','RoloSearch', 'rolopress'); ?>:</td>
 					    <td class="forminp">
 					        <input type="text" id="exclude_posts_list" name="exclude_posts_list" value="<?php echo $options['se_exclude_posts_list'];?>" />
-						    <br/><small><?php _e('Comma separated Post IDs (example: 1, 5, 9)','RoloSearch'); ?></small>
+						    <br/><small><?php _e('Comma separated Post IDs (example: 1, 5, 9)','RoloSearch', 'rolopress'); ?></small>
 					    </td>
 					</tr>
 					<tr class="mainrow"> 
-					    <td class="titledesc"><?php _e('Exclude Categories','RoloSearch'); ?>:</td>
+					    <td class="titledesc"><?php _e('Exclude Categories','RoloSearch', 'rolopress'); ?>:</td>
 					    <td class="forminp">
 					        <input type="text" id="exclude_categories_list" name="exclude_categories_list" value="<?php echo $options['se_exclude_categories_list'];?>" />
-						    <br/><small><?php _e('Comma separated category IDs (example: 1, 4)','RoloSearch'); ?></small>
+						    <br/><small><?php _e('Comma separated category IDs (example: 1, 4)','RoloSearch', 'rolopress'); ?></small>
 					    </td>
 					</tr>
 					<tr class="mainrow"> 
-					    <td class="titledesc"><?php _e('Full Highlight Style','RoloSearch'); ?>:</td>
+					    <td class="titledesc"><?php _e('Full Highlight Style','RoloSearch', 'rolopress'); ?>:</td>
 					    <td class="forminp">
-					        <small><?php _e('Important: \'Highlight Background Color\' must be blank to use this advanced styling.', 'RoloSearch') ?></small><br/>
+					        <small><?php _e('Important: \'Highlight Background Color\' must be blank to use this advanced styling.', 'RoloSearch', 'rolopress') ?></small><br/>
 							<input type="text" id="highlight_style" name="highlight_style" value="<?php echo $options['se_highlight_style'];?>" />
-						    <br/><small><?php _e('Example:<br/>background-color: #FFF984; font-weight: bold; color: #000; padding: 0 1px;','RoloSearch'); ?></small>
+						    <br/><small><?php _e('Example:<br/>background-color: #FFF984; font-weight: bold; color: #000; padding: 0 1px;','RoloSearch', 'rolopress'); ?></small>
 					    </td>
 					</tr>
 				</table>
@@ -279,14 +279,14 @@ Class se_admin {
 
 		<p class="submit">
 			<input type="hidden" name="action" value="save" />
-			<input type="submit" value="<?php _e('Update Options', 'RoloSearch') ?>" />
+			<input type="submit" value="<?php _e('Update Options', 'RoloSearch', 'rolopress') ?>" />
 		</p>
 	</form>
 
 
 		<div style="float: left; margin:0; padding:0; " class="submit">
 			<form method="post">
-				<input name="reset" type="submit" value="<?php _e('Reset Button', 'RoloSearch') ?>" />
+				<input name="reset" type="submit" value="<?php _e('Reset Button', 'RoloSearch', 'rolopress') ?>" />
 				<input type="hidden" name="action" value="reset" />
 			</form><br/><br/>
 		<div style="clear:both;"></div>
@@ -299,20 +299,20 @@ Class se_admin {
 				<table class="widefat">
 					<thead>
 						<tr class="title">
-							<th scope="col" class="manage-column"><?php _e('Test Search Form', 'RoloSearch'); ?></th>
+							<th scope="col" class="manage-column"><?php _e('Test Search Form', 'RoloSearch', 'rolopress'); ?></th>
 							<th scope="col" class="manage-column"></th>
 						</tr>
 					</thead>
 				
 					<tr class="mainrow"> 
 						<td class="thanks">
-							<p><?php _e('Use this search form to run a live search test.', 'RoloSearch'); ?></p>
+							<p><?php _e('Use this search form to run a live search test.', 'RoloSearch', 'rolopress'); ?></p>
 						</td>
 						<td>
 							<form method="get" id="searchform" action="<?php bloginfo('home'); ?>">
 							<p class="srch submit">
 								<input type="text" class="srch-txt" value="<?php echo wp_specialchars($s, 1); ?>" name="s" id="s" size="30" />
-								<input type="submit" class="SE5_btn" id="searchsubmit" value="<?php _e('Run Test Search', 'RoloSearch'); ?>" />
+								<input type="submit" class="SE5_btn" id="searchsubmit" value="<?php _e('Run Test Search', 'RoloSearch', 'rolopress'); ?>" />
 							</p>
 			      			</form>
 						</td>
@@ -325,7 +325,7 @@ Class se_admin {
 
 			
 			<div style="float: left; padding-top:4px;">
-			<h5><?php _e('RoloSearch Version: ', 'RoloSearch'); ?> <?php echo $this->rs_version; ?> <?php _e('was based on Search Everything Version: ', 'RoloSearch'); ?> <?php echo $this->se_version; ?>: <?php _e('Developed by Dan Cameron of', 'RoloSearch'); ?> <a href="http://sproutventure.com?search-everything" title="Custom WordPress Development"><?php _e('Sprout Venture', 'RoloSearch'); ?></a>.</h5>
+			<h5><?php _e('RoloSearch Version: ', 'RoloSearch', 'rolopress'); ?> <?php echo $this->rs_version; ?> <?php _e('was based on Search Everything Version: ', 'RoloSearch', 'rolopress'); ?> <?php echo $this->se_version; ?>: <?php _e('Developed by Dan Cameron of', 'RoloSearch', 'rolopress'); ?> <a href="http://sproutventure.com?search-everything" title="Custom WordPress Development"><?php _e('Sprout Venture', 'RoloSearch', 'rolopress'); ?></a>.</h5>
 		</div>
 
 		<?php

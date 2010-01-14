@@ -440,7 +440,7 @@ function rolopress_document_title() {
 
 	/* If paged. */
 	if ( ( ( $page = $wp_query->get( 'paged' ) ) || ( $page = $wp_query->get( 'page' ) ) ) && $page > 1 )
-		$doctitle = sprintf( __( '%1$s Page %2$s', rolopress ), $doctitle . $separator, $page );
+		$doctitle = sprintf( __( '%1$s Page %2$s', rolopress , 'rolopress'), $doctitle . $separator, $page );
 		
 
 	/* Apply the wp_title filters so we're compatible with plugins. */

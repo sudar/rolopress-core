@@ -34,7 +34,7 @@ function rolo_contact_header($contact_id) {
 			if ($contact['rolo_contact_title'] != "") { ?>
 				<span class="title" id="rolo_contact_title"><?php echo $contact['rolo_contact_title'];?></span><?php }
 			if (get_the_term_list($contact_id, 'company') != "") { ?>
-				<span class="org"><?php echo get_the_term_list($contact_id, 'company', __('')); ?></span><?php }
+				<span class="org"><?php echo get_the_term_list($contact_id, 'company', __('', 'rolopress')); ?></span><?php }
 			?>
             </li>
 			<?php if ($contact['rolo_contact_email'] != "") { ?><li class="email url-field"><a class="email" href="mailto:<?php echo $contact['rolo_contact_email'];?>"><?php echo $contact['rolo_contact_email'];?> </a><span id="rolo_contact_email" class="edit-icon" style=""><?php echo $contact['rolo_contact_email']; ?></span></li><?php } ?>
@@ -67,7 +67,7 @@ function rolo_contact_details($contact_id) {
 			<li class="title" id="rolo_contact_title"><?php echo $contact['rolo_contact_title'];?></li><?php }
 			?>
 			<?php if (get_the_term_list($contact_id, 'company') != "") { ?>
-			<li class="org"><span class="value"><?php echo get_the_term_list($contact_id, 'company', __('')); ?></span></li><?php }
+			<li class="org"><span class="value"><?php echo get_the_term_list($contact_id, 'company', __('', 'rolopress')); ?></span></li><?php }
 			?>
 				
 			<?php $rolo_contact_full_address = $contact['rolo_contact_address'] . get_the_term_list($contact_id, 'city', '', '', '') . get_the_term_list($contact_id, 'state', '', '', '') . get_the_term_list($contact_id, 'zip', '', '', '') . get_the_term_list($contact_id, 'country', '', '', '');
@@ -390,7 +390,7 @@ function rolopress_js_disabled() {
 
     if (is_user_logged_in() ) { // only display if user is logged in ?>
 		<noscript>
-        <p class="error"><?php _e('JavaScript is disabled. For RoloPress to work properly, <a href="http://rolopress.com/forums/topic/inline-editing-not-working">please enable JavaScript.</a>');?></p>
+        <p class="error"><?php _e('JavaScript is disabled. For RoloPress to work properly, <a href="http://rolopress.com/forums/topic/inline-editing-not-working">please enable JavaScript.</a>', 'rolopress');?></p>
     </noscript>
 <?php }
 }
