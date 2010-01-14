@@ -490,7 +490,9 @@ function rolo_save_company_multiple($field_name, $post_id, &$new_company) {
     $multiple_field_selects = $_POST[$multiple_field['name'] . '_select'];
 
     for ($i = 0 ; $i < count($multiple_field_values) ; $i++) {
-        $new_company ['rolo_company_' . $multiple_field['name'] . '_' . $multiple_field_selects[$i]] = $multiple_field_values[$i];
+        if ($multiple_field_values[$i] != '') {
+            $new_company ['rolo_company_' . $multiple_field['name'] . '_' . $multiple_field_selects[$i]] = $multiple_field_values[$i];
+        }
     }
 }
 

@@ -453,8 +453,9 @@ function rolo_save_contact_multiple($field_name, $post_id, &$new_contact) {
     $multiple_field_selects = $_POST[$multiple_field['name'] . '_select'];
 
     for ($i = 0 ; $i < count($multiple_field_values) ; $i++) {
-//        update_post_meta($post_id, 'rolo_contact_' . $multiple_field['name'] . '_' . $multiple_field_selects[$i], $multiple_field_values[$i]);
-        $new_contact['rolo_contact_' . $multiple_field['name'] . '_' . $multiple_field_selects[$i]] = $multiple_field_values[$i];
+        if ($multiple_field_values[$i] != '') {
+            $new_contact['rolo_contact_' . $multiple_field['name'] . '_' . $multiple_field_selects[$i]] = $multiple_field_values[$i];
+        }
     }
 }
 
