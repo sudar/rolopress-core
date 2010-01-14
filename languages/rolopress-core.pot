@@ -1,0 +1,1234 @@
+# Translation of the WordPress theme RoloPress Core Beta 1.1 by <a href="http://slipfire.com/">SlipFire</a> &amp; <a href="http://sudarmuthu.com/">Sudar Muthu</a>.
+# Copyright (C) 2010 <a href="http://slipfire.com/">SlipFire</a> &amp; <a href="http://sudarmuthu.com/">Sudar Muthu</a>
+# This file is distributed under the same license as the RoloPress Core package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
+#
+#: archive.php:68 author.php:57 category.php:61 index.php:51
+#: library/functions/template-functions.php:37
+#: library/functions/template-functions.php:70 search.php:57 single.php:62
+#: tag.php:58 taxonomy-company.php:70 taxonomy-type.php:70 taxonomy.php:66
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: RoloPress Core Beta 1.1\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/rolopress-core\n"
+"POT-Creation-Date: 2010-01-14 16:51+0000\n"
+"PO-Revision-Date: 2010-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: 404.php:11
+msgid "Not Found"
+msgstr ""
+
+#: 404.php:16
+msgid ""
+"Apologies, but we were unable to find what you were looking for. Perhaps "
+"searching will help."
+msgstr ""
+
+#: archive.php:17
+#, php-format
+msgid "Items Created On: <span>%s</span>"
+msgstr ""
+
+#: archive.php:19 archive.php:21
+#, php-format
+msgid "Items Created In: <span>%s</span>"
+msgstr ""
+
+#: archive.php:23
+msgid "Blog Archives"
+msgstr ""
+
+#: archive.php:30 archive.php:85 author.php:14 author.php:74 category.php:17
+#: category.php:78 index.php:10 index.php:69 search.php:12 search.php:73
+#: tag.php:16 tag.php:75 taxonomy-company.php:17 taxonomy-company.php:131
+#: taxonomy-type.php:17 taxonomy-type.php:88 taxonomy.php:17 taxonomy.php:83
+msgid "Next <span class=\"meta-nav\">&raquo;</span>"
+msgstr ""
+
+#: archive.php:31 archive.php:86 author.php:15 author.php:75 category.php:18
+#: category.php:79 index.php:11 index.php:70 search.php:13 search.php:74
+#: tag.php:17 tag.php:76 taxonomy-company.php:18 taxonomy-company.php:132
+#: taxonomy-type.php:18 taxonomy-type.php:89 taxonomy.php:18 taxonomy.php:84
+msgid "<span class=\"meta-nav\">&laquo;</span> Previous"
+msgstr ""
+
+#: archive.php:50 attachment.php:22 author.php:39 category.php:43 index.php:33
+#: search.php:37 tag.php:40 taxonomy-company.php:48 taxonomy-company.php:98
+#: taxonomy-type.php:48 taxonomy.php:44
+msgid "By "
+msgstr ""
+
+#: archive.php:51 attachment.php:23 author.php:40 category.php:44 index.php:34
+#: search.php:38 tag.php:41 taxonomy-company.php:49 taxonomy-company.php:99
+#: taxonomy-type.php:49 taxonomy.php:45
+#, php-format
+msgid "View all posts by %s"
+msgstr ""
+
+#: archive.php:53 author.php:42 category.php:46 index.php:36 search.php:40
+#: tag.php:43
+msgid "Created on "
+msgstr ""
+
+#: archive.php:59 author.php:48 category.php:52 index.php:42 search.php:48
+#: single.php:33 tag.php:49 taxonomy-company.php:61 taxonomy-company.php:111
+#: taxonomy-type.php:61 taxonomy.php:57
+#, php-format
+msgid "Also assigned to %s"
+msgstr ""
+
+#: archive.php:62 author.php:51 category.php:55 index.php:45 search.php:51
+#: single.php:37 tag.php:52 taxonomy-company.php:64 taxonomy-company.php:114
+#: taxonomy-type.php:64 taxonomy.php:60
+msgid "Tagged: "
+msgstr ""
+
+#: archive.php:66 author.php:55 category.php:59 index.php:49 search.php:55
+#: single.php:60 tag.php:56 taxonomy-company.php:68 taxonomy-company.php:115
+#: taxonomy-type.php:68 taxonomy.php:64
+msgid "Write a Note"
+msgstr ""
+
+#: archive.php:66 archive.php:68 author.php:55 author.php:57 category.php:59
+#: category.php:61 index.php:49 index.php:51 search.php:55 search.php:57
+#: single.php:60 single.php:62 tag.php:56 tag.php:58 taxonomy-company.php:68
+#: taxonomy-company.php:70 taxonomy-company.php:115 taxonomy-type.php:68
+#: taxonomy-type.php:70 taxonomy.php:64 taxonomy.php:66
+msgid "1 Note"
+msgstr ""
+
+#: archive.php:66 archive.php:68 author.php:55 author.php:57 category.php:59
+#: category.php:61 index.php:49 index.php:51 search.php:55 search.php:57
+#: single.php:60 single.php:62 tag.php:56 tag.php:58 taxonomy-company.php:68
+#: taxonomy-company.php:70 taxonomy-company.php:115 taxonomy-type.php:68
+#: taxonomy-type.php:70 taxonomy.php:64 taxonomy.php:66
+msgid "% Notes"
+msgstr ""
+
+#: attachment.php:15
+#, php-format
+msgid "Return to %s"
+msgstr ""
+
+#: attachment.php:25 taxonomy-company.php:51 taxonomy-company.php:101
+#: taxonomy-type.php:51 taxonomy.php:47
+msgid "Published "
+msgstr ""
+
+#: attachment.php:27 attachment.php:64 page.php:20 single.php:44 single.php:50
+msgid "Edit"
+msgstr ""
+
+#: attachment.php:42 taxonomy-company.php:56 taxonomy-company.php:106
+#: taxonomy-type.php:56 taxonomy.php:52
+msgid "Continue reading <span class=\"meta-nav\">&raquo;</span>"
+msgstr ""
+
+#: attachment.php:43 page.php:19 taxonomy-company.php:44
+#: taxonomy-company.php:94 taxonomy-type.php:44 taxonomy.php:40
+msgid "Pages:"
+msgstr ""
+
+#: attachment.php:48
+#, php-format
+msgid ""
+"This entry has been assigned to %1$s%2$s. Bookmark the <a href=\"%3$s\" "
+"title=\"Permalink to %4$s\" rel=\"bookmark\">permalink</a>. Follow any notes "
+"here with the <a href=\"%5$s\" title=\"Comments RSS to %4$s\" rel=\"alternate"
+"\" type=\"application/rss+xml\">RSS feed for this item</a>."
+msgstr ""
+
+#: attachment.php:50
+msgid " and tagged "
+msgstr ""
+
+#: attachment.php:56
+#, php-format
+msgid ""
+"<a class=\"comment-link\" href=\"#respond\" title=\"Add a note\">Add a note</"
+"a> or leave a trackback: <a class=\"trackback-link\" href=\"%s\" title="
+"\"Trackback URL for your item\" rel=\"trackback\">Trackback URL</a>."
+msgstr ""
+
+#: attachment.php:58
+#, php-format
+msgid ""
+"Notes are closed, but you can leave a trackback: <a class=\"trackback-link\" "
+"href=\"%s\" title=\"Trackback URL for your item\" rel=\"trackback"
+"\">Trackback URL</a>."
+msgstr ""
+
+#: attachment.php:60
+msgid ""
+"Trackbacks are closed, but you can <a class=\"comment-link\" href=\"#respond"
+"\" title=\"Add a note\">Add a note</a>."
+msgstr ""
+
+#: attachment.php:62
+msgid "Both notes and trackbacks are currently closed."
+msgstr ""
+
+#: author.php:21
+#, php-format
+msgid "Items Owned By: <span class=\"vcard\">%s</span>"
+msgstr ""
+
+#: category.php:26
+msgid "Items Categorized As:"
+msgstr ""
+
+#: company-add.php:18
+msgid "Add Company"
+msgstr ""
+
+#: company-add.php:26 company-edit.php:26 contact-add.php:27
+#: contact-edit.php:26
+msgid "Sorry, you don't have permission to view this page."
+msgstr ""
+
+#: company-edit.php:18
+msgid "Edit Company"
+msgstr ""
+
+#: contact-add.php:18 library/functions/contact-functions.php:193
+msgid "Add Contact"
+msgstr ""
+
+#: contact-edit.php:18 library/functions/contact-functions.php:134
+msgid "Edit Contact"
+msgstr ""
+
+#: footer.php:10
+msgid "Powered by "
+msgstr ""
+
+#: footer.php:10
+msgid "RoloPress"
+msgstr ""
+
+#: header.php:12
+#, php-format
+msgid "%s latest posts"
+msgstr ""
+
+#: header.php:13
+#, php-format
+msgid "%s latest comments"
+msgstr ""
+
+#: header.php:30
+msgid "Skip to main"
+msgstr ""
+
+#: index.php:18
+msgid "All Items"
+msgstr ""
+
+#: library/extensions/rolosearch/options.php:55
+#: library/extensions/rolosearch/options.php:62
+msgid ""
+"Your default search settings have been <strong>updated</strong> by "
+"RoloSearch. </p><p> What are you waiting for? Go check out the new search "
+"results!"
+msgstr ""
+
+#: library/extensions/rolosearch/options.php:72
+msgid "RoloSearch Version:"
+msgstr ""
+
+#: library/extensions/rolosearch/options.php:77
+#: library/extensions/rolosearch/options.php:282
+msgid "Update Options"
+msgstr ""
+
+#: library/extensions/rolosearch/options.php:85
+msgid "Basic Configuration"
+msgstr ""
+
+#: library/extensions/rolosearch/options.php:93
+msgid "Search every page"
+msgstr ""
+
+#: library/extensions/rolosearch/options.php:96
+#: library/extensions/rolosearch/options.php:107
+#: library/extensions/rolosearch/options.php:121
+#: library/extensions/rolosearch/options.php:135
+#: library/extensions/rolosearch/options.php:146
+#: library/extensions/rolosearch/options.php:156
+#: library/extensions/rolosearch/options.php:166
+#: library/extensions/rolosearch/options.php:176
+#: library/extensions/rolosearch/options.php:189
+#: library/extensions/rolosearch/options.php:200
+#: library/extensions/rolosearch/options.php:210
+#: library/extensions/rolosearch/options.php:220
+#: library/extensions/rolosearch/options.php:230
+msgid "Yes"
+msgstr ""
+
+#: library/extensions/rolosearch/options.php:104
+msgid "Search approved pages only"
+msgstr ""
+
+#: library/extensions/rolosearch/options.php:118
+msgid "Search every tag name"
+msgstr ""
+
+#: library/extensions/rolosearch/options.php:132
+msgid "Search every category name and description"
+msgstr ""
+
+#: library/extensions/rolosearch/options.php:143
+msgid "Search every note"
+msgstr ""
+
+#: library/extensions/rolosearch/options.php:153
+msgid "Search note authors"
+msgstr ""
+
+#: library/extensions/rolosearch/options.php:163
+msgid "Search approved notes only"
+msgstr ""
+
+#: library/extensions/rolosearch/options.php:173
+msgid "Search every excerpt"
+msgstr ""
+
+#: library/extensions/rolosearch/options.php:186
+msgid "Search every draft"
+msgstr ""
+
+#: library/extensions/rolosearch/options.php:197
+msgid "Search every attachment"
+msgstr ""
+
+#: library/extensions/rolosearch/options.php:197
+msgid "(post type = attachment)"
+msgstr ""
+
+#: library/extensions/rolosearch/options.php:207
+msgid "Search Item Details"
+msgstr ""
+
+#: library/extensions/rolosearch/options.php:217
+msgid "Search every item owner"
+msgstr ""
+
+#: library/extensions/rolosearch/options.php:227
+msgid "Highlight Search Terms"
+msgstr ""
+
+#: library/extensions/rolosearch/options.php:237
+msgid "Highlight Background Color"
+msgstr ""
+
+#: library/extensions/rolosearch/options.php:240
+msgid "Examples:<br/>'#FFF984' or 'red'"
+msgstr ""
+
+#: library/extensions/rolosearch/options.php:250
+msgid "Advanced Configuration - Exclusion"
+msgstr ""
+
+#: library/extensions/rolosearch/options.php:256
+msgid "Exclude some post or page IDs"
+msgstr ""
+
+#: library/extensions/rolosearch/options.php:259
+msgid "Comma separated Post IDs (example: 1, 5, 9)"
+msgstr ""
+
+#: library/extensions/rolosearch/options.php:263
+msgid "Exclude Categories"
+msgstr ""
+
+#: library/extensions/rolosearch/options.php:266
+msgid "Comma separated category IDs (example: 1, 4)"
+msgstr ""
+
+#: library/extensions/rolosearch/options.php:270
+msgid "Full Highlight Style"
+msgstr ""
+
+#: library/extensions/rolosearch/options.php:272
+msgid ""
+"Important: 'Highlight Background Color' must be blank to use this advanced "
+"styling."
+msgstr ""
+
+#: library/extensions/rolosearch/options.php:274
+msgid ""
+"Example:<br/>background-color: #FFF984; font-weight: bold; color: #000; "
+"padding: 0 1px;"
+msgstr ""
+
+#: library/extensions/rolosearch/options.php:289
+msgid "Reset Button"
+msgstr ""
+
+#: library/extensions/rolosearch/options.php:302
+msgid "Test Search Form"
+msgstr ""
+
+#: library/extensions/rolosearch/options.php:309
+msgid "Use this search form to run a live search test."
+msgstr ""
+
+#: library/extensions/rolosearch/options.php:315
+msgid "Run Test Search"
+msgstr ""
+
+#: library/extensions/rolosearch/options.php:328
+msgid "RoloSearch Version: "
+msgstr ""
+
+#: library/extensions/rolosearch/options.php:328
+msgid "was based on Search Everything Version: "
+msgstr ""
+
+#: library/extensions/rolosearch/options.php:328
+msgid "Developed by Dan Cameron of"
+msgstr ""
+
+#: library/extensions/rolosearch/options.php:328
+msgid "Sprout Venture"
+msgstr ""
+
+#: library/functions/admin.php:118
+msgid "Image"
+msgstr ""
+
+#: library/functions/company-functions.php:26
+#: library/functions/company-functions.php:62
+msgid "company information successfully added."
+msgstr ""
+
+#: library/functions/company-functions.php:29
+#: library/functions/company-functions.php:64
+msgid "There was some problem in inserting the company info"
+msgstr ""
+
+#: library/functions/company-functions.php:34
+#: library/functions/contact-functions.php:33
+msgid "Notes successfully added."
+msgstr ""
+
+#: library/functions/company-functions.php:37
+#: library/functions/contact-functions.php:36
+msgid "There was some problem in inserting the notes"
+msgstr ""
+
+#: library/functions/company-functions.php:92
+#: library/functions/company-functions.php:154
+#: library/functions/company-functions.php:273
+#: library/functions/contact-functions.php:91
+#: library/functions/contact-functions.php:151
+#: library/functions/contact-functions.php:271
+msgid "Oops!, We Have a Problem."
+msgstr ""
+
+#: library/functions/company-functions.php:135
+msgid "Edit company"
+msgstr ""
+
+#: library/functions/company-functions.php:199
+msgid "Add company"
+msgstr ""
+
+#: library/functions/company-functions.php:280
+#: library/functions/contact-functions.php:278
+msgid "Add notes"
+msgstr ""
+
+#: library/functions/company-functions.php:284
+#: library/functions/contact-functions.php:282
+msgid "Notes"
+msgstr ""
+
+#: library/functions/company-functions.php:292
+#: library/functions/contact-functions.php:290
+msgid "Add Notes"
+msgstr ""
+
+#: library/functions/company-functions.php:467
+#: library/functions/contact-functions.php:430
+msgid "Delete"
+msgstr ""
+
+#: library/functions/company-functions.php:468
+#: library/functions/contact-functions.php:431
+msgid "Add another"
+msgstr ""
+
+#: library/functions/contact-functions.php:26
+#: library/functions/contact-functions.php:61
+msgid "Contact information successfully added."
+msgstr ""
+
+#: library/functions/contact-functions.php:28
+#: library/functions/contact-functions.php:63
+msgid "There was some problem in inserting the contact info"
+msgstr ""
+
+#: library/functions/dynamic-classes.php:412
+#: library/functions/dynamic-classes.php:418
+#: library/functions/dynamic-classes.php:421
+#: library/functions/dynamic-classes.php:427
+#: library/functions/dynamic-classes.php:430
+#, php-format
+msgid "Archive for %1$s"
+msgstr ""
+
+#: library/functions/dynamic-classes.php:412
+msgid "g:i a"
+msgstr ""
+
+#: library/functions/dynamic-classes.php:415
+#, php-format
+msgid "Archive for minute %1$s"
+msgstr ""
+
+#: library/functions/dynamic-classes.php:415
+msgid "i"
+msgstr ""
+
+#: library/functions/dynamic-classes.php:418
+msgid "g a"
+msgstr ""
+
+#: library/functions/dynamic-classes.php:421
+msgid "F jS, Y"
+msgstr ""
+
+#: library/functions/dynamic-classes.php:424
+#, php-format
+msgid "Archive for week %1$s of %2$s"
+msgstr ""
+
+#: library/functions/dynamic-classes.php:424
+msgid "W"
+msgstr ""
+
+#: library/functions/dynamic-classes.php:424
+#: library/functions/dynamic-classes.php:430
+msgid "Y"
+msgstr ""
+
+#: library/functions/dynamic-classes.php:435
+#, php-format
+msgid "Search results for &quot;%1$s&quot;"
+msgstr ""
+
+#: library/functions/dynamic-classes.php:438
+msgid "404 Not Found"
+msgstr ""
+
+#: library/functions/dynamic-classes.php:443
+#, php-format
+msgid "%1$s Page %2$s"
+msgstr ""
+
+#: library/functions/template-functions.php:82
+#: library/functions/template-functions.php:203
+#: library/setup/setup-fields.php:285
+msgid "City"
+msgstr ""
+
+#: library/functions/template-functions.php:83
+#: library/functions/template-functions.php:204
+#: library/setup/setup-fields.php:286
+msgid "State"
+msgstr ""
+
+#: library/functions/template-functions.php:84
+#: library/functions/template-functions.php:205
+#: library/setup/setup-fields.php:287
+msgid "Zip"
+msgstr ""
+
+#: library/functions/template-functions.php:85
+#: library/functions/template-functions.php:206
+#: library/setup/setup-fields.php:288
+msgid "Country"
+msgstr ""
+
+#: library/functions/template-functions.php:94
+#: library/functions/template-functions.php:218
+msgid "Mobile"
+msgstr ""
+
+#: library/functions/template-functions.php:95 library/widgets/pages.php:85
+msgid "Home"
+msgstr ""
+
+#: library/functions/template-functions.php:96
+#: library/functions/template-functions.php:219
+msgid "Work"
+msgstr ""
+
+#: library/functions/template-functions.php:97
+#: library/functions/template-functions.php:220
+msgid "Fax"
+msgstr ""
+
+#: library/functions/template-functions.php:98
+#: library/functions/template-functions.php:221
+msgid "Other"
+msgstr ""
+
+#: library/functions/template-functions.php:105
+#: library/functions/template-functions.php:229
+msgid "Yahoo"
+msgstr ""
+
+#: library/functions/template-functions.php:106
+#: library/functions/template-functions.php:230
+msgid "MSN"
+msgstr ""
+
+#: library/functions/template-functions.php:107
+#: library/functions/template-functions.php:231
+msgid "AIM"
+msgstr ""
+
+#: library/functions/template-functions.php:108
+#: library/functions/template-functions.php:232
+msgid "GTalk"
+msgstr ""
+
+#: library/functions/template-functions.php:109
+#: library/functions/template-functions.php:233
+msgid "Twitter"
+msgstr ""
+
+#: library/functions/template-functions.php:113
+#: library/functions/template-functions.php:156
+#: library/functions/template-functions.php:238
+msgid "Website"
+msgstr ""
+
+#: library/functions/template-functions.php:393
+msgid ""
+"JavaScript is disabled. For RoloPress to work properly, <a href=\"http://"
+"rolopress.com/forums/topic/inline-editing-not-working\">please enable "
+"JavaScript.</a>"
+msgstr ""
+
+#: library/functions/template-functions.php:415
+msgid "Contacts "
+msgstr ""
+
+#: library/functions/template-functions.php:426
+msgid "Companies "
+msgstr ""
+
+#: library/functions/template-functions.php:448 library/widgets/search.php:18
+#: library/widgets/search.php:84
+msgid "Search"
+msgstr ""
+
+#: library/functions/template-functions.php:498
+msgid "Page "
+msgstr ""
+
+#: library/functions/widgets.php:27
+msgid "Menu"
+msgstr ""
+
+#: library/functions/widgets.php:27
+msgid "Adds items to the default menu"
+msgstr ""
+
+#: library/functions/widgets.php:29
+msgid "Primary"
+msgstr ""
+
+#: library/functions/widgets.php:29
+msgid ""
+"In 2-column themes, this area is located on top of the sidebar.  In 3-column "
+"themes, this area will appear on the left"
+msgstr ""
+
+#: library/functions/widgets.php:30
+msgid "Secondary"
+msgstr ""
+
+#: library/functions/widgets.php:30
+msgid ""
+"In 2-column themes, this area is located on bottom of the sidebar.  In 3-"
+"column themes, this area will appear on the right"
+msgstr ""
+
+#: library/functions/widgets.php:31
+msgid "Widget Page"
+msgstr ""
+
+#: library/functions/widgets.php:31
+msgid "Must be used with the WIDGETS or WIDGETS-NO-SIDEBAR Page templates."
+msgstr ""
+
+#: library/functions/widgets.php:32
+msgid "Contact: Under Main"
+msgstr ""
+
+#: library/functions/widgets.php:32
+msgid ""
+"Located under the contact header information on the single contact page."
+msgstr ""
+
+#: library/functions/widgets.php:33
+msgid "Company: Under Main"
+msgstr ""
+
+#: library/functions/widgets.php:33
+msgid ""
+"Located under the company header information on the single company page."
+msgstr ""
+
+#: library/setup/setup-fields.php:283
+msgid "Rolopress Type"
+msgstr ""
+
+#: library/setup/setup-fields.php:284
+msgid "Company"
+msgstr ""
+
+#: library/widgets/add-company-form.php:17
+msgid "Displays Add Company Form"
+msgstr ""
+
+#: library/widgets/add-company-form.php:19
+#: library/widgets/add-company-form.php:49
+msgid "Add Company Form"
+msgstr ""
+
+#: library/widgets/add-company-form.php:58
+#: library/widgets/add-contact-form.php:58 library/widgets/calendar.php:54
+#: library/widgets/categories.php:118 library/widgets/companies.php:111
+#: library/widgets/company-details.php:58
+#: library/widgets/contact-details.php:57 library/widgets/owners.php:92
+#: library/widgets/pages.php:129 library/widgets/recent-items.php:113
+#: library/widgets/recent-notes.php:88 library/widgets/search.php:89
+#: library/widgets/tags.php:99
+msgid "Title:"
+msgstr ""
+
+#: library/widgets/add-contact-form.php:17
+msgid "Displays Add Contact Form"
+msgstr ""
+
+#: library/widgets/add-contact-form.php:19
+#: library/widgets/add-contact-form.php:49
+msgid "Add Contact Form"
+msgstr ""
+
+#: library/widgets/add-contact-form.php:54
+msgid "Displays the Add Contact Form.  Great for a sidebar or a Widgets page."
+msgstr ""
+
+#: library/widgets/bookmarks.php:16
+msgid ""
+"An advanced widget that gives you total control over the output of your "
+"bookmarks (links)."
+msgstr ""
+
+#: library/widgets/bookmarks.php:18 library/widgets/bookmarks.php:89
+msgid "Bookmarks"
+msgstr ""
+
+#: library/widgets/bookmarks.php:134
+msgid "Categories:"
+msgstr ""
+
+#: library/widgets/bookmarks.php:138
+msgid "Exclude categories:"
+msgstr ""
+
+#: library/widgets/bookmarks.php:142
+msgid "Category:"
+msgstr ""
+
+#: library/widgets/bookmarks.php:150
+msgid "Category Order:"
+msgstr ""
+
+#: library/widgets/bookmarks.php:157
+msgid "Category Orderby:"
+msgstr ""
+
+#: library/widgets/bookmarks.php:166
+msgid "Class:"
+msgstr ""
+
+#: library/widgets/bookmarks.php:175 library/widgets/recent-items.php:117
+msgid "Limit:"
+msgstr ""
+
+#: library/widgets/bookmarks.php:179
+msgid "Include Bookmarks:"
+msgstr ""
+
+#: library/widgets/bookmarks.php:183
+msgid "Exclude Bookmarks:"
+msgstr ""
+
+#: library/widgets/bookmarks.php:187
+msgid "Bookmarks Order:"
+msgstr ""
+
+#: library/widgets/bookmarks.php:194
+msgid "Bookmarks Orderby:"
+msgstr ""
+
+#: library/widgets/bookmarks.php:212
+msgid "Between:"
+msgstr ""
+
+#: library/widgets/bookmarks.php:220 library/widgets/pages.php:191
+msgid "Before Link:"
+msgstr ""
+
+#: library/widgets/bookmarks.php:224 library/widgets/pages.php:195
+msgid "After Link:"
+msgstr ""
+
+#: library/widgets/bookmarks.php:229
+msgid "Categorize?"
+msgstr ""
+
+#: library/widgets/bookmarks.php:233
+msgid "Show description?"
+msgstr ""
+
+#: library/widgets/bookmarks.php:237
+msgid "Hide invisible?"
+msgstr ""
+
+#: library/widgets/bookmarks.php:241
+msgid "Show rating?"
+msgstr ""
+
+#: library/widgets/bookmarks.php:245
+msgid "Show updated?"
+msgstr ""
+
+#: library/widgets/bookmarks.php:249
+msgid "Show images?"
+msgstr ""
+
+#: library/widgets/bookmarks.php:253
+msgid "Show name?"
+msgstr ""
+
+#: library/widgets/bookmarks.php:257
+msgid "Show private?"
+msgstr ""
+
+#: library/widgets/calendar.php:16
+msgid ""
+"An advanced widget that gives you total control over the output of your "
+"calendar."
+msgstr ""
+
+#: library/widgets/calendar.php:18 library/widgets/calendar.php:50
+msgid "Calendar"
+msgstr ""
+
+#: library/widgets/calendar.php:59
+msgid "One-letter abbreviation?"
+msgstr ""
+
+#: library/widgets/categories.php:16
+msgid ""
+"An advanced widget that gives you total control over the output of your "
+"category links."
+msgstr ""
+
+#: library/widgets/categories.php:18 library/widgets/categories.php:113
+msgid "Categories"
+msgstr ""
+
+#: library/widgets/categories.php:45
+msgid "RSS"
+msgstr ""
+
+#: library/widgets/categories.php:122 library/widgets/owners.php:104
+msgid "Style:"
+msgstr ""
+
+#: library/widgets/categories.php:129 library/widgets/companies.php:122
+#: library/widgets/tags.php:121
+msgid "Order:"
+msgstr ""
+
+#: library/widgets/categories.php:136 library/widgets/companies.php:130
+#: library/widgets/pages.php:133 library/widgets/tags.php:129
+msgid "Order By:"
+msgstr ""
+
+#: library/widgets/categories.php:144 library/widgets/companies.php:165
+#: library/widgets/pages.php:168 library/widgets/tags.php:164
+msgid "Include:"
+msgstr ""
+
+#: library/widgets/categories.php:148 library/widgets/companies.php:161
+#: library/widgets/pages.php:156 library/widgets/tags.php:160
+msgid "Exclude:"
+msgstr ""
+
+#: library/widgets/categories.php:152 library/widgets/pages.php:161
+msgid "Exclude Tree:"
+msgstr ""
+
+#: library/widgets/categories.php:156 library/widgets/pages.php:152
+msgid "Depth:"
+msgstr ""
+
+#: library/widgets/categories.php:163 library/widgets/companies.php:137
+#: library/widgets/tags.php:136
+msgid "Number:"
+msgstr ""
+
+#: library/widgets/categories.php:167 library/widgets/pages.php:172
+msgid "Child Of:"
+msgstr ""
+
+#: library/widgets/categories.php:171
+msgid "Current Category:"
+msgstr ""
+
+#: library/widgets/categories.php:175 library/widgets/owners.php:100
+msgid "Feed Image:"
+msgstr ""
+
+#: library/widgets/categories.php:180 library/widgets/pages.php:212
+msgid "Hierarchical?"
+msgstr ""
+
+#: library/widgets/categories.php:184
+msgid "Use description for title?"
+msgstr ""
+
+#: library/widgets/categories.php:188
+msgid "Show last update?"
+msgstr ""
+
+#: library/widgets/categories.php:192
+msgid "Show count?"
+msgstr ""
+
+#: library/widgets/categories.php:196 library/widgets/owners.php:131
+msgid "Hide empty?"
+msgstr ""
+
+#: library/widgets/categories.php:200
+msgid "Show RSS feed?"
+msgstr ""
+
+#: library/widgets/companies.php:23
+msgid "An advanced widget to create a Company list or cloud."
+msgstr ""
+
+#: library/widgets/companies.php:25 library/widgets/companies.php:101
+msgid "Companies"
+msgstr ""
+
+#: library/widgets/companies.php:106
+msgid ""
+"Displays your Companies as a list by default.  But can also be used to "
+"create a Company Cloud. To display a cloud change the \"Format\" to \"Flat"
+"\", and change the smallest and largest font sizes."
+msgstr ""
+
+#: library/widgets/companies.php:115 library/widgets/recent-items.php:122
+#: library/widgets/tags.php:114
+msgid "Format:"
+msgstr ""
+
+#: library/widgets/companies.php:144 library/widgets/tags.php:143
+msgid "Largest:"
+msgstr ""
+
+#: library/widgets/companies.php:148 library/widgets/tags.php:147
+msgid "Smallest:"
+msgstr ""
+
+#: library/widgets/companies.php:152 library/widgets/tags.php:151
+msgid "Unit:"
+msgstr ""
+
+#: library/widgets/companies.php:169 library/widgets/tags.php:168
+msgid "Link:"
+msgstr ""
+
+#: library/widgets/company-details.php:17
+msgid "Displays all details for your company."
+msgstr ""
+
+#: library/widgets/company-details.php:19
+#: library/widgets/company-details.php:49
+msgid "Company Details"
+msgstr ""
+
+#: library/widgets/contact-details.php:17
+msgid "Displays all details for your contact."
+msgstr ""
+
+#: library/widgets/contact-details.php:19
+#: library/widgets/contact-details.php:48
+msgid "Contact Details"
+msgstr ""
+
+#: library/widgets/owners.php:16
+msgid ""
+"An advanced widget that gives you total control over the output of your item "
+"owner lists."
+msgstr ""
+
+#: library/widgets/owners.php:18 library/widgets/owners.php:82
+msgid "Owners"
+msgstr ""
+
+#: library/widgets/owners.php:96
+msgid "Feed:"
+msgstr ""
+
+#: library/widgets/owners.php:115
+msgid "<acronym title=\"Hypertext Markup Language\">HTML</acronym>?"
+msgstr ""
+
+#: library/widgets/owners.php:119 library/widgets/recent-items.php:142
+msgid "Show post count?"
+msgstr ""
+
+#: library/widgets/owners.php:123
+msgid "Exclude admin?"
+msgstr ""
+
+#: library/widgets/owners.php:127
+msgid "Show full name?"
+msgstr ""
+
+#: library/widgets/pages.php:18
+msgid ""
+"An advanced widget that gives you total control over the output of your page "
+"links."
+msgstr ""
+
+#: library/widgets/pages.php:20 library/widgets/pages.php:119
+msgid "Pages"
+msgstr ""
+
+#: library/widgets/pages.php:124
+msgid "Displays Pages with appropriate RoloPress options."
+msgstr ""
+
+#: library/widgets/pages.php:145
+msgid "Sort Order:"
+msgstr ""
+
+#: library/widgets/pages.php:176
+msgid "Authors:"
+msgstr ""
+
+#: library/widgets/pages.php:180
+msgid "Meta Key:"
+msgstr ""
+
+#: library/widgets/pages.php:184
+msgid "Meta Value:"
+msgstr ""
+
+#: library/widgets/pages.php:199
+msgid "Show date?:"
+msgstr ""
+
+#: library/widgets/pages.php:207
+msgid "Date Format:"
+msgstr ""
+
+#: library/widgets/pages.php:216
+msgid "Show home?"
+msgstr ""
+
+#: library/widgets/recent-items.php:16
+msgid ""
+"An advanced widget that gives you total control over the output of your "
+"recently created items."
+msgstr ""
+
+#: library/widgets/recent-items.php:18 library/widgets/recent-items.php:103
+msgid "Recent Items"
+msgstr ""
+
+#: library/widgets/recent-items.php:54
+msgid "Select Year"
+msgstr ""
+
+#: library/widgets/recent-items.php:56
+msgid "Select Month"
+msgstr ""
+
+#: library/widgets/recent-items.php:58
+msgid "Select Week"
+msgstr ""
+
+#: library/widgets/recent-items.php:60
+msgid "Select Day"
+msgstr ""
+
+#: library/widgets/recent-items.php:62
+msgid "Select Post"
+msgstr ""
+
+#: library/widgets/recent-items.php:133
+msgid "Before:"
+msgstr ""
+
+#: library/widgets/recent-items.php:137
+msgid "After:"
+msgstr ""
+
+#: library/widgets/recent-notes.php:13
+msgid "Displays Your Most Recent Notes"
+msgstr ""
+
+#: library/widgets/recent-notes.php:14 library/widgets/recent-notes.php:30
+#: library/widgets/recent-notes.php:74
+msgid "Recent Notes"
+msgstr ""
+
+#. translators: comments widget: 1: comment author, 2: post link
+#: library/widgets/recent-notes.php:51
+#, php-format
+msgctxt "widgets"
+msgid "%1$s : %2$s"
+msgstr ""
+
+#: library/widgets/recent-notes.php:91
+msgid "Number of notes to show:"
+msgstr ""
+
+#: library/widgets/recent-notes.php:93
+msgid "(at most 15)"
+msgstr ""
+
+#: library/widgets/search.php:16
+msgid ""
+"An advanced widget that gives you total control over the output of your "
+"search form."
+msgstr ""
+
+#: library/widgets/search.php:93
+msgid "Search Label:"
+msgstr ""
+
+#: library/widgets/search.php:97
+msgid "Search Text:"
+msgstr ""
+
+#: library/widgets/search.php:104
+msgid "Search Submit:"
+msgstr ""
+
+#: library/widgets/search.php:109
+msgid "Use theme's <code>searchform.php</code>?"
+msgstr ""
+
+#: library/widgets/tags.php:16
+msgid ""
+"An advanced widget that gives you total control over the output of your tags."
+msgstr ""
+
+#: library/widgets/tags.php:18 library/widgets/tags.php:94
+msgid "Tags"
+msgstr ""
+
+#: library/widgets/tags.php:103
+msgid "Taxonomy:"
+msgstr ""
+
+#: notes.php:64
+msgid "Add a Note"
+msgstr ""
+
+#: notes.php:64
+msgid "Add a Note Attachment"
+msgstr ""
+
+#: notes.php:67
+msgid "Cancel attachment to note"
+msgstr ""
+
+#: notes.php:120
+msgid "Your note is awaiting moderation."
+msgstr ""
+
+#: notes.php:135
+#, php-format
+msgid ""
+"<span class=\"added-by\">Added by: </span><cite class=\"commenter\">%s</"
+"cite><span class=\"added-on\"> on </span>"
+msgstr ""
+
+#: notes.php:138
+#, php-format
+msgid "%1$s at %2$s"
+msgstr ""
+
+#: search.php:20
+msgid "Search Results for: "
+msgstr ""
+
+#: search.php:81
+msgid "Nothing Found For: "
+msgstr ""
+
+#: search.php:85
+msgid ""
+"Sorry, but nothing matched your search criteria. Please try again with some "
+"different keywords."
+msgstr ""
+
+#: single.php:16
+msgid "Owner: "
+msgstr ""
+
+#: single.php:17
+#, php-format
+msgid "View all items by %s"
+msgstr ""
+
+#: tag.php:24
+msgid "Items Tagged As:"
+msgstr ""
+
+#. Theme Name of an extension
+msgid "RoloPress Core"
+msgstr ""
+
+#. Theme URI of an extension
+msgid "http://rolopress.com"
+msgstr ""
+
+#. Description of an extension
+msgid ""
+"Contact Manager parent theme for RoloPress. This theme should not be "
+"activated and used directly. You can <a href=\"http://rolopress.com/category/"
+"themes\">download RoloPress child themes here</a>."
+msgstr ""
+
+#. Author of an extension
+msgid ""
+"<a href=\"http://slipfire.com/\">SlipFire</a> &amp; <a href=\"http://"
+"sudarmuthu.com/\">Sudar Muthu</a>"
+msgstr ""
+
+#. Tags of an extension
+msgid "contact-manager, crm"
+msgstr ""
