@@ -32,6 +32,7 @@ class Rolo_Widget_Contact_Details extends WP_Widget {
 			echo $after_widget;
 	} 
 }
+	
 
 
 	function update( $new_instance, $old_instance ) {

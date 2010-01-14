@@ -103,7 +103,7 @@ class Rolo_Widget_Companies extends WP_Widget {
 
 		<div style="float:left;width:98%;">
 		<p><img class="rolo_widget_icon" src= <?php echo ROLOPRESS_IMAGES  . '/admin/rolopress-icon.gif' ?> />
-		Displays your Companies as a list by default.  But can also be used to create a Company Cloud. To display a cloud change the "Format" to "Flat", and change the smallest and largest font sizes.
+		<?php _e('Displays your Companies as a list by default.  But can also be used to create a Company Cloud. To display a cloud change the "Format" to "Flat", and change the smallest and largest font sizes.', 'rolopress'); ?>
 		</p>
 		</div>
 		<div style="float:left;width:48%;">

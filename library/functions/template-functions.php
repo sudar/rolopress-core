@@ -26,14 +26,18 @@ function rolo_contact_header($contact_id) {
 ?>
     <ul id="hcard-<?php echo basename(get_permalink());?>" class="item-header">
 
-			<li><?php echo get_avatar (($contact['rolo_contact_email']),96,ROLOPRESS_IMAGES . "/icons/rolo-contact.jpg");?></li>
+			<?php echo get_avatar (($contact['rolo_contact_email']),96,ROLOPRESS_IMAGES . "/icons/rolo-contact.jpg");?>
 
 			<li><a class="fn" href="<?php the_permalink();?>"><?php echo $contact['rolo_contact_first_name'] . ' ' . $contact['rolo_contact_last_name'];?></a></li>
 			<li>
-				<span class="title" id="rolo_contact_title"><?php echo $contact['rolo_contact_title'];?></span>
-				<span class="org"><?php echo get_the_term_list($contact_id, 'company', __('')); ?></span>		
+			<?php 
+			if ($contact['rolo_contact_title'] != "") { ?>
+				<span class="title" id="rolo_contact_title"><?php echo $contact['rolo_contact_title'];?></span><?php }
+			if (get_the_term_list($contact_id, 'company') != "") { ?>
+				<span class="org"><?php echo get_the_term_list($contact_id, 'company', __('')); ?></span><?php }
+			?>
             </li>
-			 <li class="email url-field"><a class="email" href="mailto:<?php echo $contact['rolo_contact_email'];?>"><?php echo $contact['rolo_contact_email'];?> </a><span id="rolo_contact_email" class="edit-icon" style=""><?php echo $contact['rolo_contact_email']; ?></span></li>
+			<?php if ($contact['rolo_contact_email'] != "") { ?><li class="email url-field"><a class="email" href="mailto:<?php echo $contact['rolo_contact_email'];?>"><?php echo $contact['rolo_contact_email'];?> </a><span id="rolo_contact_email" class="edit-icon" style=""><?php echo $contact['rolo_contact_email']; ?></span></li><?php } ?>
     </ul><!-- vcard -->
 <?php
 }
@@ -58,41 +62,55 @@ function rolo_contact_details($contact_id) {
 		<ul id="vcard-<?php basename(get_permalink());?>" class="vcard">
 
 			<li class="fn"><?php echo $contact['rolo_contact_first_name'] . ' ' . $contact['rolo_contact_last_name'];?></li>
-            <li class="title" id="rolo_contact_title"><?php echo $contact['rolo_contact_title'];?></li>
-			<li class="org"><span class="value"><?php echo get_the_term_list($contact_id, 'company'); ?></span></li>
+			
+			<?php if ($contact['rolo_contact_title'] != "") { ?>
+			<li class="title" id="rolo_contact_title"><?php echo $contact['rolo_contact_title'];?></li><?php }
+			?>
+			<?php if (get_the_term_list($contact_id, 'company') != "") { ?>
+			<li class="org"><span class="value"><?php echo get_the_term_list($contact_id, 'company', __('')); ?></span></li><?php }
+			?>
 				
-			<li class="map"><a class="url" href="http://maps.google.com/maps?f=q&source=s_q&geocode=&q=<?php echo $company['rolo_company_address'] . " " . rolo_get_term_list($company_id, 'city') . " " . rolo_get_term_list($company_id, 'state') . " " . rolo_get_term_list($company_id, 'country')  . " " . rolo_get_term_list($company_id, 'zip');?> "><span>Map</span></a></li>
+			<?php $rolo_contact_full_address = $contact['rolo_contact_address'] . get_the_term_list($contact_id, 'city', '', '', '') . get_the_term_list($contact_id, 'state', '', '', '') . get_the_term_list($contact_id, 'zip', '', '', '') . get_the_term_list($contact_id, 'country', '', '', '');
+				if ($rolo_contact_full_address != "") { ?>
+				<li class="map"><a class="url" href="http://maps.google.com/maps?f=q&source=s_q&geocode=&q=<?php echo $contact['rolo_contact_address'] . " " . rolo_get_term_list($contact_id, 'city') . " " . rolo_get_term_list($contact_id, 'state') . " " . rolo_get_term_list($contact_id, 'country')  . " " . rolo_get_term_list($contact_id, 'zip');?> "><span>Map</span></a></li><?php }
+			?>
 									   
 			<li>
 				<ul class="adr group">
-					<li class="street-address" id="rolo_contact_address"><?php echo $contact['rolo_contact_address']; ?></li>
-                    <li class="url-field"><span class="type"><?php _e('City', 'rolopress'); ?></span><?php echo get_the_term_list($contact_id, 'city', '', '', '');?><span id="city" class="locality edit-icon" style=""><?php echo rolo_get_term_list($contact_id, 'city'); ?></span></li>
-					<li class="url-field"><span class="type"><?php _e('State', 'rolopress'); ?></span><?php echo get_the_term_list($contact_id, 'state', '', '', '');?><span id="state" class="region edit-icon" style=""><?php echo rolo_get_term_list($contact_id, 'state'); ?></span></li>
-                    <li class="url-field"><span class="type"><?php _e('Zip', 'rolopress'); ?></span><?php echo get_the_term_list($contact_id, 'zip', '', '', '');?></a><span id="zip" class="postal-code edit-icon" style=""><?php echo rolo_get_term_list($contact_id, 'zip'); ?></span></li>
-                    <li class="url-field"><span class="type"><?php _e('Country', 'rolopress'); ?></span><?php echo get_the_term_list($contact_id, 'country', '', '', '');?><span id="country" class="country-name edit-icon" style=""><?php echo rolo_get_term_list($contact_id, 'country'); ?></span></li>
+				<?php
+					if ($contact['rolo_contact_address'] != "") { ?><li class="street-address" id="rolo_contact_address"><?php echo $contact['rolo_contact_address']; ?></li><?php }
+                    if (get_the_term_list($contact_id, 'city', '', '', '') != "") { ?><li class="url-field"><span class="type"><?php _e('City', 'rolopress'); ?></span><?php echo get_the_term_list($contact_id, 'city', '', '', '');?><span id="city" class="locality edit-icon" style=""><?php echo rolo_get_term_list($contact_id, 'city'); ?></span></li><?php }
+					if (get_the_term_list($contact_id, 'state', '', '', '') != "") { ?><li class="url-field"><span class="type"><?php _e('State', 'rolopress'); ?></span><?php echo get_the_term_list($contact_id, 'state', '', '', '');?><span id="state" class="region edit-icon" style=""><?php echo rolo_get_term_list($contact_id, 'state'); ?></span></li><?php }
+                    if (get_the_term_list($contact_id, 'zip', '', '', '') != "") { ?><li class="url-field"><span class="type"><?php _e('Zip', 'rolopress'); ?></span><?php echo get_the_term_list($contact_id, 'zip', '', '', '');?></a><span id="zip" class="postal-code edit-icon" style=""><?php echo rolo_get_term_list($contact_id, 'zip'); ?></span></li><?php }
+                    if (get_the_term_list($contact_id, 'country', '', '', '') != "") { ?><li class="url-field"><span class="type"><?php _e('Country', 'rolopress'); ?></span><?php echo get_the_term_list($contact_id, 'country', '', '', '');?><span id="country" class="country-name edit-icon" style=""><?php echo rolo_get_term_list($contact_id, 'country'); ?></span></li><?php }
+				?>
 				</ul>
 			</li>
 			
-            <li class="email url-field group"><a class="email" href="mailto:<?php echo $contact['rolo_contact_email'];?>"><?php echo $contact['rolo_contact_email'];?> </a><span id="rolo_contact_email" class="edit-icon" style=""><?php echo $contact['rolo_contact_email']; ?></span></li>
+			<?php if ($contact['rolo_contact_email'] != "") { ?><li class="email url-field group"><a class="email" href="mailto:<?php echo $contact['rolo_contact_email'];?>"><?php echo $contact['rolo_contact_email'];?> </a><span id="rolo_contact_email" class="edit-icon" style=""><?php echo $contact['rolo_contact_email']; ?></span></li><?php } ?>
             <li>
-                 <ul class="tel group">
-                     <li class="tel tel-mobile"><span class="type"><?php _e('Mobile', 'rolopress'); ?></span>: <span class="value" id="rolo_contact_phone_Mobile"><?php echo $contact['rolo_contact_phone_Mobile']; ?></span></li>
-                     <li class="tel tel-home"><span class="type"><?php _e('Home', 'rolopress'); ?></span>: <span class="value" id="rolo_contact_phone_Home"><?php echo $contact['rolo_contact_phone_Home']; ?></span></li>
-                     <li class="tel tel-work"><span class="type"><?php _e('Work', 'rolopress'); ?></span>: <span class="value" id="rolo_contact_phone_Work"><?php echo $contact['rolo_contact_phone_Work']; ?></span></li>
-                    <li class="tel tel-fax"><span class="type"><?php _e('Fax', 'rolopress'); ?></span>: <span class="value" id="rolo_contact_phone_Fax"><?php echo $contact['rolo_contact_phone_Fax']; ?></span></li>
-                    <li class="tel tel-other"><span class="type"><?php _e('Other', 'rolopress'); ?></span>: <span class="value" id="rolo_contact_phone_Other"><?php echo $contact['rolo_contact_phone_Other']; ?></span></li>
+				<ul class="tel group">
+				<?php
+					if ($contact['rolo_contact_phone_Mobile'] != "") { ?><li class="tel tel-mobile"><span class="type"><?php _e('Mobile', 'rolopress'); ?></span>: <span class="value" id="rolo_contact_phone_Mobile"><?php echo $contact['rolo_contact_phone_Mobile']; ?></span></li> <?php }
+					if ($contact['rolo_contact_phone_Home'] != "") { ?><li class="tel tel-home"><span class="type"><?php _e('Home', 'rolopress'); ?></span>: <span class="value" id="rolo_contact_phone_Home"><?php echo $contact['rolo_contact_phone_Home']; ?></span></li><?php }
+					if ($contact['rolo_contact_phone_Work'] != "") { ?><li class="tel tel-work"><span class="type"><?php _e('Work', 'rolopress'); ?></span>: <span class="value" id="rolo_contact_phone_Work"><?php echo $contact['rolo_contact_phone_Work']; ?></span></li><?php }
+					if ($contact['rolo_contact_phone_Fax'] != "") { ?><li class="tel tel-fax"><span class="type"><?php _e('Fax', 'rolopress'); ?></span>: <span class="value" id="rolo_contact_phone_Fax"><?php echo $contact['rolo_contact_phone_Fax']; ?></span></li><?php }
+					if ($contact['rolo_contact_phone_Other'] != "") { ?><li class="tel tel-other"><span class="type"><?php _e('Other', 'rolopress'); ?></span>: <span class="value" id="rolo_contact_phone_Other"><?php echo $contact['rolo_contact_phone_Other']; ?></span></li><?php }
+				?>
                 </ul>
             </li>
             <li>
                 <ul class="im social group">
-                    <li class="social social-yahoo url-field"><span class="type"><?php _e('Yahoo', 'rolopress'); ?></span>: <a class="yahoo" href="ymsgr:sendIM?<?php echo $contact['rolo_contact_im_Yahoo']; ?>"><?php echo $contact['rolo_contact_im_Yahoo']; ?></a><span id="rolo_contact_im_Yahoo" class="edit-icon" style=""><?php echo $contact['rolo_contact_im_Yahoo']; ?></span></li>
-                    <li class="social social-msn url-field"><span class="type"><?php _e('MSN', 'rolopress'); ?></span>: <a class="msn" href="msnim:chat?contact=<?php echo $contact['rolo_contact_im_MSN']; ?>"><?php echo $contact['rolo_contact_im_MSN']; ?></a><span id="rolo_contact_im_MSN" class="edit-icon" style=""><?php echo $contact['rolo_contact_im_MSN']; ?></span></li>
-                    <li class="social social-aim url-field"><span class="type"><?php _e('AIM', 'rolopress'); ?></span>: <a class="aim" href="aim:goIM?<?php echo $contact['rolo_contact_im_AOL']; ?>"><?php echo $contact['rolo_contact_im_AOL']; ?></a><span id="rolo_contact_im_AOL" class="edit-icon" style=""><?php echo $contact['rolo_contact_im_AOL']; ?></span></li>
-                    <li class="social social-gtalk url-field"><span class="type"><?php _e('GTalk', 'rolopress'); ?></span>: <a class="gtalk" href="gtalk:chat?jid=<?php echo $contact['rolo_contact_im_GTalk']; ?>"><?php echo $contact['rolo_contact_im_GTalk']; ?></a><span id="rolo_contact_im_GTalk" class="edit-icon" style=""><?php echo $contact['rolo_contact_im_Yahoo']; ?></span></li>
-                    <li class="social social-twitter url-field"><span class="type"><?php _e('Twitter', 'rolopress'); ?></span> <a class="twitter" href="http://www.twitter.com/<?php echo $contact['rolo_contact_twitter']; ?>"><?php echo $contact['rolo_contact_twitter']; ?></a><span id="rolo_contact_twitter" class="edit-icon" style=""><?php echo $contact['rolo_contact_twitter']; ?></span></li>
+				<?php
+					if ($contact['rolo_contact_im_Yahoo'] != "") { ?><li class="social social-yahoo url-field"><span class="type"><?php _e('Yahoo', 'rolopress'); ?></span> <a class="yahoo" href="ymsgr:sendIM?<?php echo $contact['rolo_contact_im_Yahoo']; ?>"><?php echo $contact['rolo_contact_im_Yahoo']; ?></a><span id="rolo_contact_im_Yahoo" class="edit-icon" style=""><?php echo $contact['rolo_contact_im_Yahoo']; ?></span></li><?php }
+					if ($contact['rolo_contact_im_MSN'] != "") { ?><li class="social social-msn url-field"><span class="type"><?php _e('MSN', 'rolopress'); ?></span> <a class="msn" href="msnim:chat?contact=<?php echo $contact['rolo_contact_im_MSN']; ?>"><?php echo $contact['rolo_contact_im_MSN']; ?></a><span id="rolo_contact_im_MSN" class="edit-icon" style=""><?php echo $contact['rolo_contact_im_MSN']; ?></span></li><?php }
+					if ($contact['rolo_contact_im_AOL'] != "") { ?><li class="social social-aim url-field"><span class="type"><?php _e('AIM', 'rolopress'); ?></span> <a class="aim" href="aim:goIM?<?php echo $contact['rolo_contact_im_AOL']; ?>"><?php echo $contact['rolo_contact_im_AOL']; ?></a><span id="rolo_contact_im_AOL" class="edit-icon" style=""><?php echo $contact['rolo_contact_im_AOL']; ?></span></li><?php }
+					if ($contact['rolo_contact_im_GTalk'] != "") { ?><li class="social social-gtalk url-field"><span class="type"><?php _e('GTalk', 'rolopress'); ?></span> <a class="gtalk" href="gtalk:chat?jid=<?php echo $contact['rolo_contact_im_GTalk']; ?>"><?php echo $contact['rolo_contact_im_GTalk']; ?></a><span id="rolo_contact_im_GTalk" class="edit-icon" style=""><?php echo $contact['rolo_contact_im_Yahoo']; ?></span></li><?php }
+					if ($contact['rolo_contact_twitter'] != "") { ?><li class="social social-twitter url-field"><span class="type"><?php _e('Twitter', 'rolopress'); ?></span> <a class="twitter" href="http://www.twitter.com/<?php echo $contact['rolo_contact_twitter']; ?>"><?php echo $contact['rolo_contact_twitter']; ?></a><span id="rolo_contact_twitter" class="edit-icon" style=""><?php echo $contact['rolo_contact_twitter']; ?></span></li><?php }
+				?>
                 </ul>
             </li>
-            <li class="website url-field group"><span class="type"><?php _e('Website', 'rolopress'); ?></span><a class="url" href="http://<?php echo $contact['rolo_contact_website']; ?>"><?php echo $contact['rolo_contact_website']; ?></a><span id="rolo_contact_website" class="edit-icon" style=""><?php echo $contact['rolo_contact_website']; ?></span></li>
+				<?php if ($contact['rolo_contact_website'] != "") { ?><li class="website url-field group"><span class="type"><?php _e('Website', 'rolopress'); ?></span><a class="url" href="http://<?php echo $contact['rolo_contact_website']; ?>"><?php echo $contact['rolo_contact_website']; ?></a><span id="rolo_contact_website" class="edit-icon" style=""><?php echo $contact['rolo_contact_website']; ?></span></li><?php } ?>
         </ul><!-- vcard -->
     </form>
 <?php
@@ -120,19 +138,23 @@ function rolo_company_header($company_id) {
 ?>
     <ul id="hcard-<?php echo basename(get_permalink());?>" class="item-header">
 
-			<li><?php echo get_avatar (($company['rolo_company_email']),96,ROLOPRESS_IMAGES . "/icons/rolo-company.jpg");?></li>
+			<?php echo get_avatar (($company['rolo_company_email']),96,ROLOPRESS_IMAGES . "/icons/rolo-company.jpg");?>
 			<li>
-                <a class="fn"
+                 <a class="fn"
                     <?php if (is_single()) : // show proper links on single or archive company pages ?>
-                        href="<?php get_bloginfo('url');?>/company/<?php echo $slug; ?>"><?php echo $company['rolo_company_name'];?>
+                        href="<?php echo get_term_link($company['rolo_company_name'], 'company'); ?>"><?php echo $company['rolo_company_name'];?>
                     <?php else: ?>
                         href="<?php the_permalink();?>"><?php echo $company['rolo_company_name'];?>
                     <?php endif;?>
                 </a>
 			</li>
 		
-			<li class="email url-field"><a class="email" href="mailto:<?php echo $company['rolo_company_email'];?>"><?php echo $company['rolo_company_email'];?> </a><span id="rolo_company_email" class="edit-icon" style=""><?php echo $company['rolo_company_email']; ?></span></li>
-            <li class="website url-field group"><span class="type"><?php _e('Website', 'rolopress'); ?></span> <a class="url" href="http://<?php echo $company['rolo_company_website']; ?>"><?php echo $company['rolo_company_website']; ?></a><span id="rolo_company_website" class="edit-icon" style=""><?php echo $company['rolo_company_website']; ?></span></li>
+			<?php 
+			if ($company['rolo_company_email'] != "") { ?>
+				<li class="email url-field"><a class="email" href="mailto:<?php echo $company['rolo_company_email'];?>"><?php echo $company['rolo_company_email'];?> </a><span id="rolo_company_email" class="edit-icon" style=""><?php echo $company['rolo_company_email']; ?></span></li><?php }
+			if ($company['rolo_company_website'] != "") { ?>
+				<li class="website url-field group"><span class="type"><?php _e('Website', 'rolopress'); ?></span> <a class="url" href="http://<?php echo $company['rolo_company_website']; ?>"><?php echo $company['rolo_company_website']; ?></a><span id="rolo_company_website" class="edit-icon" style=""><?php echo $company['rolo_company_website']; ?></span></li><?php }
+			?>
     </ul><!-- vcard -->
 <?php
 }
@@ -169,41 +191,51 @@ function rolo_company_details($company_id) {
                 </a>
 			</li>
 	               
-			<li class="map"><a class="url" href="http://maps.google.com/maps?f=q&source=s_q&geocode=&q=<?php echo $company['rolo_company_address'] . " " . rolo_get_term_list($company_id, 'city') . " " . rolo_get_term_list($company_id, 'state') . " " . rolo_get_term_list($company_id, 'country')  . " " . rolo_get_term_list($company_id, 'zip');?> "><span>Map</span></a></li>
-									   
+			<?php $rolo_company_full_address = $company['rolo_company_address'] . get_the_term_list($company_id, 'city', '', '', '') . get_the_term_list($company_id, 'state', '', '', '') . get_the_term_list($company_id, 'zip', '', '', '') . get_the_term_list($company_id, 'country', '', '', '');
+				if ($rolo_company_full_address != "") { ?>
+					<li class="map"><a class="url" href="http://maps.google.com/maps?f=q&source=s_q&geocode=&q=<?php echo $company['rolo_company_address'] . " " . rolo_get_term_list($company_id, 'city') . " " . rolo_get_term_list($company_id, 'state') . " " . rolo_get_term_list($company_id, 'country')  . " " . rolo_get_term_list($company_id, 'zip');?> "><span>Map</span></a></li><?php }
+			?>
+		
 			<li>
 				<ul class="adr group">
-					<li class="street-address" id="rolo_company_address"><?php echo $company['rolo_company_address']; ?></li>
-                   	<li class="url-field"><span class="type"><?php _e('City', 'rolopress'); ?></span><?php echo get_the_term_list($company_id, 'city', '', '', '');?><span id="city" class="locality edit-icon" style=""><?php echo rolo_get_term_list($company_id, 'city'); ?></span></li>
-                    <li class="url-field"><span class="type"><?php _e('State', 'rolopress'); ?></span><?php echo get_the_term_list($company_id, 'state', '', '', '');?><span id="state" class="region edit-icon" style=""><?php echo rolo_get_term_list($company_id, 'state'); ?></span></li>
-                    <li class="url-field"><span class="type"><?php _e('Zip', 'rolopress'); ?></span><?php echo get_the_term_list($company_id, 'zip', '', '', '');?></a><span id="zip" class="postal-code edit-icon" style=""><?php echo rolo_get_term_list($company_id, 'zip'); ?></span></li>
-                    <li class="url-field"><span class="type"><?php _e('Country', 'rolopress'); ?></span><?php echo get_the_term_list($company_id, 'country', '', '', '');?><span id="country" class="country-name edit-icon" style=""><?php echo rolo_get_term_list($company_id, 'country'); ?></span></li>
+				<?php
+					if ($company['rolo_company_address'] != "") { ?><li class="street-address" id="rolo_company_address"><?php echo $company['rolo_company_address']; ?></li><?php }
+                   	if (get_the_term_list($company_id, 'city', '', '', '') != "") { ?><li class="url-field"><span class="type"><?php _e('City', 'rolopress'); ?></span><?php echo get_the_term_list($company_id, 'city', '', '', '');?><span id="city" class="locality edit-icon" style=""><?php echo rolo_get_term_list($company_id, 'city'); ?></span></li><?php }
+                    if (get_the_term_list($company_id, 'city', '', '', '') != "") { ?><li class="url-field"><span class="type"><?php _e('State', 'rolopress'); ?></span><?php echo get_the_term_list($company_id, 'state', '', '', '');?><span id="state" class="region edit-icon" style=""><?php echo rolo_get_term_list($company_id, 'state'); ?></span></li><?php }
+                    if (get_the_term_list($company_id, 'city', '', '', '') != "") { ?><li class="url-field"><span class="type"><?php _e('Zip', 'rolopress'); ?></span><?php echo get_the_term_list($company_id, 'zip', '', '', '');?></a><span id="zip" class="postal-code edit-icon" style=""><?php echo rolo_get_term_list($company_id, 'zip'); ?></span></li><?php }
+                    if (get_the_term_list($company_id, 'city', '', '', '') != "") { ?><li class="url-field"><span class="type"><?php _e('Country', 'rolopress'); ?></span><?php echo get_the_term_list($company_id, 'country', '', '', '');?><span id="country" class="country-name edit-icon" style=""><?php echo rolo_get_term_list($company_id, 'country'); ?></span></li><?php }
+				?>
 				
 				</ul>
 			</li>
 
-            <li class="email url-field"><a class="email" href="mailto:<?php echo $company['rolo_company_email'];?>"><?php echo $company['rolo_company_email'];?> </a><span id="rolo_company_email" class="edit-icon" style=""><?php echo $company['rolo_company_email']; ?></span></li>
+
+            <?php if ($company['rolo_company_email'] != "") { ?><li class="email url-field"><a class="email" href="mailto:<?php echo $company['rolo_company_email'];?>"><?php echo $company['rolo_company_email'];?></a><span id="rolo_company_email" class="edit-icon" style=""><?php echo $company['rolo_company_email']; ?></span></li><?php } ?>
 
             <li>
                 <ul class="tel group">
-                    <li class="tel tel-mobile"><span class="type"><?php _e('Mobile', 'rolopress'); ?></span>: <span class="value" id="rolo_company_phone_Mobile"><?php echo $company['rolo_company_phone_Mobile']; ?></span></li>
-                    <li class="tel tel-work"><span class="type"><?php _e('Work', 'rolopress'); ?></span>: <span class="value" id="rolo_company_phone_Work"><?php echo $company['rolo_company_phone_Work']; ?></span></li>
-                    <li class="tel tel-fax"><span class="type"><?php _e('Fax', 'rolopress'); ?></span>: <span class="value" id="rolo_company_phone_Fax"><?php echo $company['rolo_company_phone_Fax']; ?></span></li>
-                    <li class="tel tel-other"><span class="type"><?php _e('Other', 'rolopress'); ?></span>: <span class="value" id="rolo_company_phone_Other"><?php echo $company['rolo_company_phone_Other']; ?></span></li>
+				<?php
+					if ($company['rolo_company_phone_Mobile'] != "") { ?><li class="tel tel-mobile"><span class="type"><?php _e('Mobile', 'rolopress'); ?></span>: <span class="value" id="rolo_company_phone_Mobile"><?php echo $company['rolo_company_phone_Mobile']; ?></span></li><?php }
+                    if ($company['rolo_company_phone_Work'] != "") { ?><li class="tel tel-work"><span class="type"><?php _e('Work', 'rolopress'); ?></span>: <span class="value" id="rolo_company_phone_Work"><?php echo $company['rolo_company_phone_Work']; ?></span></li><?php }
+                    if ($company['rolo_company_phone_Fax'] != "") { ?><li class="tel tel-fax"><span class="type"><?php _e('Fax', 'rolopress'); ?></span>: <span class="value" id="rolo_company_phone_Fax"><?php echo $company['rolo_company_phone_Fax']; ?></span></li><?php }
+                    if ($company['rolo_company_phone_Other'] != "") { ?><li class="tel tel-other"><span class="type"><?php _e('Other', 'rolopress'); ?></span>: <span class="value" id="rolo_company_phone_Other"><?php echo $company['rolo_company_phone_Other']; ?></span></li><?php }
+				?>
                 </ul>
             </li>
 
             <li>
                 <ul class="im social group">
-                    <li class="social social-yahoo url-field"><span class="type"><?php _e('Yahoo', 'rolopress'); ?></span>: <a class="yahoo" href="ymsgr:sendIM?<?php echo $company['rolo_company_im_Yahoo']; ?>"><?php echo $company['rolo_company_im_Yahoo']; ?></a><span id="rolo_company_im_Yahoo" class="edit-icon" style=""><?php echo $company['rolo_company_im_Yahoo']; ?></span></li>
-                    <li class="social social-msn url-field"><span class="type"><?php _e('MSN', 'rolopress'); ?></span>: <a class="msn" href="msnim:chat?company=<?php echo $company['rolo_company_im_MSN']; ?>"><?php echo $company['rolo_company_im_MSN']; ?></a><span id="rolo_company_im_MSN" class="edit-icon" style=""><?php echo $company['rolo_company_im_MSN']; ?></span></li>
-                    <li class="social social-aim url-field"><span class="type"><?php _e('AIM', 'rolopress'); ?></span>: <a class="aim" href="aim:goIM?<?php echo $company['rolo_company_im_AOL']; ?>"><?php echo $company['rolo_company_im_AOL']; ?></a><span id="rolo_company_im_AOL" class="edit-icon" style=""><?php echo $company['rolo_company_im_AOL']; ?></span></li>
-                    <li class="social social-gtalk url-field"><span class="type"><?php _e('GTalk', 'rolopress'); ?></span>: <a class="gtalk" href="gtalk:chat?jid=<?php echo $company['rolo_company_im_GTalk']; ?>"><?php echo $company['rolo_company_im_GTalk']; ?></a><span id="rolo_company_im_GTalk" class="edit-icon" style=""><?php echo $company['rolo_company_im_Yahoo']; ?></span></li>
-                    <li class="social social-twitter url-field"><span class="type"><?php _e('Twitter', 'rolopress'); ?></span> <a class="twitter" href="http://www.twitter.com/<?php echo $company['rolo_company_twitter']; ?>"><?php echo $company['rolo_company_twitter']; ?></a><span id="rolo_company_twitter" class="edit-icon" style=""><?php echo $company['rolo_company_twitter']; ?></span></li>
+				<?php
+					if ($company['rolo_company_im_Yahoo'] != "") { ?><li class="social social-yahoo url-field"><span class="type"><?php _e('Yahoo', 'rolopress'); ?></span>: <a class="yahoo" href="ymsgr:sendIM?<?php echo $company['rolo_company_im_Yahoo']; ?>"><?php echo $company['rolo_company_im_Yahoo']; ?></a><span id="rolo_company_im_Yahoo" class="edit-icon" style=""><?php echo $company['rolo_company_im_Yahoo']; ?></span></li><?php }
+                    if ($company['rolo_company_im_MSN'] != "") { ?><li class="social social-msn url-field"><span class="type"><?php _e('MSN', 'rolopress'); ?></span>: <a class="msn" href="msnim:chat?company=<?php echo $company['rolo_company_im_MSN']; ?>"><?php echo $company['rolo_company_im_MSN']; ?></a><span id="rolo_company_im_MSN" class="edit-icon" style=""><?php echo $company['rolo_company_im_MSN']; ?></span></li><?php }
+                    if ($company['rolo_company_im_AIM'] != "") { ?><li class="social social-aim url-field"><span class="type"><?php _e('AIM', 'rolopress'); ?></span>: <a class="aim" href="aim:goIM?<?php echo $company['rolo_company_im_AOL']; ?>"><?php echo $company['rolo_company_im_AOL']; ?></a><span id="rolo_company_im_AOL" class="edit-icon" style=""><?php echo $company['rolo_company_im_AOL']; ?></span></li><?php }
+                    if ($company['rolo_company_im_GTalk'] != "") { ?><li class="social social-gtalk url-field"><span class="type"><?php _e('GTalk', 'rolopress'); ?></span>: <a class="gtalk" href="gtalk:chat?jid=<?php echo $company['rolo_company_im_GTalk']; ?>"><?php echo $company['rolo_company_im_GTalk']; ?></a><span id="rolo_company_im_GTalk" class="edit-icon" style=""><?php echo $company['rolo_company_im_Yahoo']; ?></span></li><?php }
+					if ($company['rolo_company_im_twitter'] != "") { ?><li class="social social-twitter url-field"><span class="type"><?php _e('Twitter', 'rolopress'); ?></span> <a class="twitter" href="http://www.twitter.com/<?php echo $company['rolo_company_twitter']; ?>"><?php echo $company['rolo_company_twitter']; ?></a><span id="rolo_company_twitter" class="edit-icon" style=""><?php echo $company['rolo_company_twitter']; ?></span></li><?php }
+				?>
                 </ul>
             </li>
 
-    		<li class="website url-field group"><span class="type"><?php _e('Website', 'rolopress'); ?></span> <a class="url" href="http://<?php echo $company['rolo_company_website']; ?>"><?php echo $company['rolo_company_website']; ?></a><span id="rolo_company_website" class="edit-icon" style=""><?php echo $company['rolo_company_website']; ?></span></li>
+    		<?php if ($company['rolo_company_website'] != "") { ?><li class="website url-field group"><span class="type"><?php _e('Website', 'rolopress'); ?></span> <a class="url" href="http://<?php echo $company['rolo_company_website']; ?>"><?php echo $company['rolo_company_website']; ?></a><span id="rolo_company_website" class="edit-icon" style=""><?php echo $company['rolo_company_website']; ?></span></li><?php } ?>
     </ul><!-- vcard -->
     </form>
 <?php
@@ -350,16 +382,17 @@ function wt_get_ID_by_page_name($page_name) {
 }
 
 /**
- * Displays Javascript disabled warning
+ * Displays Javascript disabled warning if user is logged in.
  *
  * @since 0.1
  */
 function rolopress_js_disabled() {
-?>
-    <noscript>
+
+    if (is_user_logged_in() ) { // only display if user is logged in ?>
+		<noscript>
         <p class="error"><?php _e('JavaScript is disabled. For RoloPress to work properly, <a href="http://rolopress.com/forums/topic/inline-editing-not-working">please enable JavaScript.</a>');?></p>
     </noscript>
-<?php
+<?php }
 }
 add_action('rolopress_before_wrapper', 'rolopress_js_disabled');
 
@@ -468,6 +501,8 @@ function get_page_number() {
 
 /**
  * For category lists on category archives: Returns other categories except the current one (redundant)
+ *
+ * @since 0.1
  */
 function cats_meow($glue) {
     $current_cat = single_cat_title( '', false );
@@ -484,6 +519,7 @@ function cats_meow($glue) {
 
     return trim(join( $glue, $cats ));
 }
+
 
 /**
  * For tag lists on tag archives: Returns other tags except the current one (redundant)
@@ -503,4 +539,22 @@ function tag_ur_it($glue) {
 
     return trim(join( $glue, $tags ));
 }
+
+
+/**
+ * Get Page ID by page title
+ *
+ * @param string $page_name Page title
+ *
+ * @Credits: http://www.web-templates.nu/2008/09/02/get-id-by-page-name/
+ *
+ * @since 0.2
+ */
+function rolo_get_ID_by_page_title($page_title)
+{
+	global $wpdb;
+	$page_title_id = $wpdb->get_var("SELECT ID FROM $wpdb->posts WHERE post_title = '".$page_title."'");
+	return $page_title_id;
+}
+
 ?>

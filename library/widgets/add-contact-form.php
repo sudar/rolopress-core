@@ -51,7 +51,7 @@ class Rolo_Widget_Add_Contact extends WP_Widget {
 
 		<div style="float:left;width:98%;">
 		<p><img class="rolo_widget_icon" src= <?php echo ROLOPRESS_IMAGES  . '/admin/rolopress-icon.gif' ?> />
-		Displays the Add Contact Form.  Great for a sidebar or a Widgets page.
+		<?php _e('Displays the Add Contact Form.  Great for a sidebar or a Widgets page.', 'rolopress'); ?>
 		</p>
 		</div>
 		<p>

@@ -13,7 +13,7 @@
 				<div id="post-0" class="post error404 not-found">
 					<?php rolopress_before_entry(); // Before entry hook ?>
 					<div class="entry-main">
-						<p><?php _e( 'Apologies, but we were unable to find what you were looking for. Perhaps searching will help.', 'rolopress' ); ?></p>
+					<p><?php _e( 'Apologies, but we were unable to find what you were looking for. Perhaps searching will help.', 'rolopress' ); ?></p>
 	<?php get_search_form(); ?>
 					</div><!-- .entry-main -->
 				  <?php rolopress_after_entry(); // After entry hook ?>
