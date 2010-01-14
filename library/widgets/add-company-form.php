@@ -51,7 +51,7 @@ class Rolo_Widget_Add_company extends WP_Widget {
 
 		<div style="float:left;width:98%;">
 		<p><img class="rolo_widget_icon" src= <?php echo ROLOPRESS_IMAGES  . '/admin/rolopress-icon.gif' ?> />
-		<?php _e('Displays the Add Company Form.  Great for a sidebar or a Widgets page.', 'rolopress'); ?>
+		Displays the Add Company Form.  Great for a sidebar or a Widgets page.
 		</p>
 		</div>
 		<p>

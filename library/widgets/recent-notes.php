@@ -81,7 +81,7 @@ class Rolo_Widget_Recent_Notes extends WP_Widget {
 ?>
 		<div style="float:left;width:98%;">
 		<p><img class="rolo_widget_icon" src= <?php echo ROLOPRESS_IMAGES  . '/admin/rolopress-icon.gif' ?> />
-		<?php _e('Displays your recently created notes.', 'rolopress'); ?>
+		Displays your recently created notes.
 		</p>
 		</div>
 		
