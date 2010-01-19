@@ -407,10 +407,10 @@ function rolopress_default_menu() {
 <?php 
     if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('menu') ) {
 ?>
-        <ul class="menu_item site-title">
-            <li id="app-title"><span><a href="<?php bloginfo( 'url' ) ?>/" title="<?php bloginfo( 'name' ) ?>" rel="home"><?php bloginfo( 'name' ) ?></a></span></li>
+        <ul class="menu_item site-title default_menu">
+            <li id="app-title"><span><a class="default_menu" href="<?php bloginfo( 'url' ) ?>/" title="<?php bloginfo( 'name' ) ?>" rel="home"><?php bloginfo( 'name' ) ?></a></span></li>
         </ul>
-        <ul class="menu_item menu_main">
+        <ul class="menu_item menu_main default_menu">
             <li>
                 <a title="contacts" class="contacts" href="<?php echo get_term_link('Contact', 'type'); ?>"><span><?php _e('Contacts ', 'rolopress'); ?></span></a>
             </li>
@@ -434,7 +434,7 @@ function rolopress_default_menu() {
             }
 ?>
         </ul>
-        <ul class="menu_item sub_menu alignright">
+        <ul class="menu_item sub_menu alignright default_menu">
             <li>
                 <form id="searchform" method="get" action="<?php bloginfo('url') ?>">
 <?php
@@ -497,27 +497,6 @@ function get_page_number() {
     if (get_query_var('paged')) {
         print ' | ' . __( 'Page ' , 'rolopress') . get_query_var('paged');
     }
-}
-
-/**
- * For category lists on category archives: Returns other categories except the current one (redundant)
- *
- * @since 0.1
- */
-function cats_meow($glue) {
-    $current_cat = single_cat_title( '', false );
-    $separator = "\n";
-    $cats = explode( $separator, get_the_category_list($separator) );
-    foreach ( $cats as $i => $str ) {
-        if ( strstr( $str, ">$current_cat<" ) ) {
-            unset($cats[$i]);
-            break;
-        }
-    }
-    if ( empty($cats) )
-        return false;
-
-    return trim(join( $glue, $cats ));
 }
 
 

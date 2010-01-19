@@ -59,7 +59,7 @@ class Rolo_Widget_Pages extends WP_Widget {
 			'show_date' => $show_date,
 			'date_format' => $date_format,
 			'child_of' => $child_of,
-			'exclude' => $exclude . $edit_company_page . "," . $edit_contact_page,
+			'exclude' => $exclude . "," . $edit_company_page . "," . $edit_contact_page,
 			'include' => $include,
 			'hierarchical' => $hierarchical,
 			'meta_key' => $meta_key,
