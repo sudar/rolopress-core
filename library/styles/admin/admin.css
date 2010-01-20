@@ -6,13 +6,13 @@ Styles for RoloPress admin screens
 /* =Login
 -------------------------------------------------------------- */
 #login h1 a {
-	background:url(/wp-content/themes/rolopress-core/library/images/admin/rolo-login.gif) no-repeat top;
+	background:url(../../images/admin/rolo-login.gif) no-repeat top;
 }
 
 /* =Header
 -------------------------------------------------------------- */ 
 #header-logo {
-	background:transparent url(/wp-content/themes/rolopress-core/library/images/admin/rolopress-icon-bk.gif) no-repeat scroll center center;
+	background:transparent url(../../images/admin/rolopress-icon-bk.gif) no-repeat scroll center center;
 }
 
 /* =Footer

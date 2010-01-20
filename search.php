@@ -20,8 +20,7 @@
 			<h2 class="page-title"><?php _e( 'Search Results for: ', 'rolopress' ); ?><span><?php the_search_query(); ?></span></h2>
 				
 <ul class="item-list">			
-			<?php if ($post->post_type == 'page') the_title;?>
-			<?php // rolo_loop();?>
+			<?php rolo_loop();?>
 </ul>
 
 			<?php rolopress_after_info_content(); // After info content hook ?>
