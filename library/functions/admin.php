@@ -89,7 +89,7 @@ function rolo_admin_dashboard_news_widget () {
 			echo 'no items';
 			} else {
 			foreach ( $rss_items as $item ) {
-			echo '<p><a href="' . $item->get_permalink() . '">' . $item->get_title() . '</a></p>';
+			echo '<p><a href="' . $item->get_permalink() . '">' . $item->get_title() . '</a></p><p>' . $item->get_description() . '</p>';
 			}
 		}
 }
