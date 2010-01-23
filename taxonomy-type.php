@@ -27,7 +27,6 @@
                 </h2>
 				
 				<ul class="item-list">
-
 				
 <?php if ( rolo_type_is( 'contact' ) ) query_posts('meta_key=rolo_contact_last_name&orderby=meta_value&order=ASC');?>
 <?php if ( rolo_type_is( 'company' ) ) query_posts('meta_key=rolo_company&orderby=title&order=ASC');?>

@@ -19,9 +19,9 @@
 			
 			<h2 class="page-title"><?php _e( 'Search Results for: ', 'rolopress' ); ?><span><?php the_search_query(); ?></span></h2>
 				
-<ul class="item-list">			
+		<ul class="item-list">
 			<?php rolo_loop();?>
-</ul>
+		</ul><!-- item-list-->
 
 			<?php rolopress_after_info_content(); // After info content hook ?>
 			</div><!-- #info -->		

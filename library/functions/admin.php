@@ -85,12 +85,17 @@ function rolo_admin_dashboard_news_widget () {
 	include_once(ABSPATH . WPINC . '/feed.php');
 	$rss = fetch_feed('http://feeds.feedburner.com/rolopress');
 	$rss_items = $rss->get_items( 0, $rss->get_item_quantity(5) );
+	  
 		if ( !$rss_items ) {
 			echo 'no items';
 			} else {
 			foreach ( $rss_items as $item ) {
-			echo '<p><a href="' . $item->get_permalink() . '">' . $item->get_title() . '</a></p><p>' . $item->get_description() . '</p>';
+			echo '<p><a class="rsswidget" href="' . $item->get_permalink() . '">' . $item->get_title() . '</a></p><p>' . $item->get_description() . '</p>';
+			
 			}
+		echo '<p class="rolo_dashboard_widget_footer"><a class="rss_subscribe" target="_blank" href="http://feeds.feedburner.com/rolopress">Subscribe to RSS</a> <a class="email_subscribe" target="_blank" href="http://feedburner.google.com/fb/a/mailverify?uri=rolopress&loc=en_US"></a><a target="_blank" href="http://feedburner.google.com/fb/a/mailverify?uri=rolopress&loc=en_US">Subscribe via Email</a></p>';
+     
+			
 		}
 }
 

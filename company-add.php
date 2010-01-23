@@ -18,7 +18,7 @@
             <h2 class="page-title"><?php _e('Add Company', 'rolopress');?></h2>
             <?php the_post(); ?>
 
-            <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+		<li id="entry-<?php the_ID(); ?>" class="<?php rolopress_entry_class(); ?>">
                 <div class="entry-main">
 <?php               if ( current_user_can('publish_posts') ) { // only display if user has proper permissions
                         rolo_add_company();

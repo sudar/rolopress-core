@@ -26,11 +26,9 @@
                     <?php $term; $term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) ); echo $term->name; echo " List"; ?>
                 </h2>
 				
-				<ul class="item-list">
-	
-<?php rolo_loop();?>
-			
-				</ul><!-- item-list-->
+		<ul class="item-list">
+			<?php rolo_loop();?>
+		</ul><!-- item-list-->
 
 
 			</div><!-- #info -->		

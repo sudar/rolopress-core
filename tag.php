@@ -24,11 +24,9 @@
             <h2 class="page-title"><?php _e( 'Items Tagged As:', 'rolopress' ) ?> <span><?php single_tag_title() ?></span></h2>
 
 
-<ul class="item-list">				
-
+		<ul class="item-list">
 			<?php rolo_loop();?>
-			
-				</ul><!-- item-list-->
+		</ul><!-- item-list-->
 
 
 			</div><!-- #info -->		

@@ -18,19 +18,17 @@
 			<div id="info">		
 			
 				<h2 class="page-title"><?php the_title(); ?></h2>
-			
-				<div class="<?php rolopress_entry_class(); ?> widget-area">
-					<?php rolopress_before_entry(); // Before entry hook ?>
-					<div class="entry-main">
+				
+					<?php rolo_loop();?>
+					
+					<div class="widget-area">
 					<ul class="xoxo">
 					<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar("widget-page") ) :
 						echo '<div class="default-text">This page is totally widgetized. <a href="/wp-admin/widgets.php">Just drop some widgets here to fill it up.</a></div>';
 					 endif; ?>
 					</ul> 
 					<br />
-	
-					</div><!-- .entry-main -->
-					<?php rolopress_after_entry(); // After entry hook ?>
+
 				</div><!-- #widget-area -->				
 			
 			</div><!-- #info -->		
