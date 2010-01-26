@@ -39,7 +39,7 @@ function rolopress_get_context() {
 	if ( is_home() ) {
 		$rolopress->context[] = 'home';
 	}
-
+	
 	/* Singular views. */
 	elseif ( is_singular() ) {
 		$rolopress->context[] = 'singular';
@@ -135,6 +135,10 @@ function rolopress_entry_class( $class = '' ) {
 	/* Sticky class (only on home/blog page). */
 	if ( is_home() && is_sticky() )
 		$classes[] = 'sticky';
+		
+	/* 404 */
+	if ( is_404() )
+		$classes[] = 'error404 not-found';
 
 	/* Password-protected posts. */
 	if ( post_password_required() )

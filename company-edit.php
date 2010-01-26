@@ -12,9 +12,9 @@
 <div id="container">
     <div id="main">
 
-        <?php rolopress_before_info(); // Before info hook ?>
+        <?php rolopress_before_page_info(); // Before info hook ?>
         <div id="info">
-            <?php rolopress_before_info_content(); // Before info content hook ?>
+            <?php rolopress_before_page_info_content(); // Before info content hook ?>
             <h2 class="page-title"><?php _e('Edit Company', 'rolopress');?></h2>
             <?php the_post(); ?>
 
@@ -29,9 +29,9 @@
                 </div><!-- .entry-main -->
             </div><!-- #post-<?php the_ID(); ?> -->
 
-            <?php rolopress_after_info_content(); // After info content hook ?>
+            <?php rolopress_after_page_info_content(); // After page info content hook ?>
         </div><!-- #info -->
-        <?php rolopress_after_info(); // After info hook ?>
+			<?php rolopress_after_page_info(); // After page info hook ?>	
 
     </div><!-- #main -->
 </div><!-- #container -->
