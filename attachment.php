@@ -4,7 +4,8 @@
 		<div id="container">	
 				<?php rolopress_before_main(); // Before main hook ?>
 				<div id="main">
-				
+			<?php rolo_navigation_above() ?>			
+
 			<?php rolopress_before_info(); // Before info hook ?>
 			<div id="info">		
 			<?php rolopress_before_info_content(); // Before info content hook ?>
@@ -68,7 +69,9 @@
 
 			<?php rolopress_after_info_content(); // After info content hook ?>
 			</div><!-- #info -->		
-			<?php rolopress_after_info(); // After info hook ?>					
+			<?php rolopress_after_info(); // After info hook ?>
+			
+			<?php rolo_navigation_below() ?>					
 
 <?php comments_template(); ?>	
 			</div><!-- #main -->			

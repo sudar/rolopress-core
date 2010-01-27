@@ -62,6 +62,7 @@ require_once( ROLOPRESS_FUNCTIONS . '/contact-functions.php' );
 require_once( ROLOPRESS_FUNCTIONS . '/company-functions.php' );
 require_once( ROLOPRESS_FUNCTIONS . '/note-functions.php' );
 require_once( ROLOPRESS_FUNCTIONS . '/dynamic-classes.php' );
+require_once( ROLOPRESS_FUNCTIONS . '/messages.php' );
 require_once( ROLOPRESS_FUNCTIONS . '/content-functions.php' );
 
 // Load widget areas and custom widgets

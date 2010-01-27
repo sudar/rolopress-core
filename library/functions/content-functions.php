@@ -9,11 +9,67 @@
  */
  
 
+
  
+/**
+ * Shows appropriate title for each page
+ *
+ * @since 1.2
+ */
+function rolo_pageheader() {
+    
+    if (is_single()){
+        $pagetitle = '<h2 class="page-title">' . __(get_the_term_list( $post->ID, 'type', ' ', ', ', ': ' ), 'rolopress') . get_the_title() . "</h2>\n";
+	} elseif (is_page()) {    
+        $pagetitle = '<h2 class="page-title page">' . get_the_title() . "</h2>\n";
+    } elseif (is_404()) {    
+        $pagetitle = '<h2 class="page-title 404">' . __('Not Found', 'rolopress') . "</h2>\n";
+	} elseif (is_home()) {    
+        $pagetitle = '<h2 class="page-title home">' . __('All Items', 'rolopress') . "</h2>\n";
+	} elseif (is_search()) {    
+        $pagetitle = '<h2 class="page-title search">' . __('Search Results for: ', 'rolopress') . '"' . get_search_query() . '"' . "</h2>\n";
+	} elseif (is_category()) {
+			$current_category = single_cat_title("", false);
+			$pagedesc = category_description();
+        $pagetitle = '<h2 class="page-title category">' . __('Items Categorized As: ', 'rolopress') . '"' . $current_category . '"' . "</h2>\n";
+	} elseif (is_tag()) {
+			$current_tag = single_tag_title("", false);
+			$pagedesc = tag_description();
+        $pagetitle = '<h2 class="page-title tag">' . __('Items Tagged As: ', 'rolopress') . '"' . $current_tag . '"' . "</h2>\n";
+	} elseif (is_tax()) {
+			global $term; 
+			$term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
+			$pagedesc = $term->description;
+        $pagetitle = '<h2 class="page-title taxonomy">' . $term->name . __(' List', 'rolopress') . "</h2>\n";
+    } elseif (is_author()) {
+			global $wp_query;
+			$curauth = $wp_query->get_queried_object(); // get the authors name
+		$pagetitle = '<h2 class="page-title author">' . __('Owned by: ', 'rolopress') . $curauth->display_name . "</h2>\n";
+	} elseif (is_archive()) {
+				if ( is_day() ) :
+					$pagetitle = '<h2 class="page-title day">' . __( 'Items Created On: ', 'rolopress' ) . get_the_time(get_option('date_format')) . "</h2>\n";
+				elseif ( is_month() ) :
+					$pagetitle = '<h2 class="page-title month">' . __( 'Items Created In: ', 'rolopress' ) . get_the_time('F Y') . "</h2>\n";
+				elseif ( is_year() ) :
+					$pagetitle = '<h2 class="page-title year">' . __( 'Items Created In: ', 'rolopress' ) . get_the_time('Y') . "</h2>\n";
+				endif;
+    } else echo 'something else';
+
+	
+	
+// show the page title
+echo $pagetitle; 
+
+// show a description if set
+if ( !empty($pagedesc) ) 
+	echo ('<div class="archive-meta">' . $pagedesc . '</div>' );
+}			
+			
+
 /**
  * For category lists on category archives: Returns other categories except the current one (redundant)
  *
- * @since 0.1
+ * @since 1.0
  */
 function cats_meow($glue) {
     $current_cat = single_cat_title( '', false );
@@ -30,18 +86,33 @@ function cats_meow($glue) {
 
     return trim(join( $glue, $cats ));
 }
- 
+
+/**
+ * Shows Categories if they exist
+ *
+ * @since 1.2
+ */ 
 function rolo_category_list() {
 	if ( $cats_meow = cats_meow(', ') ) { // Returns categories other than the one queried ?>
 		<span class="cat-links"><?php printf( __( 'Also assigned to %s', 'rolopress' ), $cats_meow ) ?><span class="meta-sep"> | </span></span>
 <?php
 	};
 }
- 
+
+/**
+ * List Tags
+ *
+ * @since 1.2
+ */
 function rolo_tag_list() {
 	the_tags( '<span class="tag-links"><span class="entry-utility-prep entry-utility-prep-tag-links">' . __('Tagged: ', 'rolopress' ) . '</span>', ", ", "<span class=\"meta-sep\"> | </span>\n</span>\n\t\t\t\t\t\t" );
 }				
- 
+
+/**
+ * List notes
+ *
+ * @since 1.2
+ */
 function rolo_notes () {
 	if ( comments_open() ) : 
 		if (is_user_logged_in() ) { // only allow logged in users to write notes ?>
@@ -52,10 +123,15 @@ function rolo_notes () {
 	endif;
 }
 
+/**
+ * Show edit link if user has proper permissions
+ *
+ * @since 1.2
+ */
 function rolo_edit_item() {
 		if ( current_user_can('edit_posts') ) { ?>
                 <span>
-				<span class="meta-sep"> | </span>
+				<?php if (!is_page() ) echo '<span class="meta-sep"> | </span>'; // seperates notes and edit link: not needed on pages ?>
                 <?php
 					if (rolo_type_is('contact')) {
 						$edit_contact_page = get_page_by_title('Edit Contact');
@@ -78,7 +154,11 @@ function rolo_edit_item() {
 	}
 };
 
-
+/**
+ * Entry Footer
+ *
+ * @since 1.2
+ */
 function rolo_entry_footer() { 
 		global $post; ?>
 		<div class="entry-meta">
@@ -98,13 +178,54 @@ function rolo_entry_footer() {
 <?php 
 };
 
+/**
+ * Navigation above content
+ *
+ * @since 1.2
+ */
+function rolo_navigation_above() {
 
+global $wp_query; $total_pages = $wp_query->max_num_pages; if ( $total_pages > 1 ) { ?>
+
+				<div id="nav-above" class="navigation">
+					<div class="nav-next"><?php next_posts_link(__( 'Next <span class="meta-nav">&raquo;</span>', 'rolopress' )) ?></div>
+					<div class="nav-previous"><?php previous_posts_link(__( '<span class="meta-nav">&laquo;</span> Previous', 'rolopress' )) ?></div>
+				</div><!-- #nav-above -->
+<?php }
+}
+
+/**
+ * Navigation below content
+ *
+ * @since 1.2
+ */
+function rolo_navigation_below() {
+
+global $wp_query; $total_pages = $wp_query->max_num_pages; if ( $total_pages > 1 ) { ?>
+
+				<div id="nav-below" class="navigation">
+					<div class="nav-next"><?php next_posts_link(__( 'Next <span class="meta-nav">&raquo;</span>', 'rolopress' )) ?></div>
+					<div class="nav-previous"><?php previous_posts_link(__( '<span class="meta-nav">&laquo;</span> Previous', 'rolopress' )) ?></div>
+				</div><!-- #nav-below -->
+<?php }
+}
+
+
+/**
+ * RoloPress master loop
+ *
+ * Currently handles most situations
+ *
+ * @since 1.2
+ */
 function rolo_loop() { ?>
 
-<ul class="item-list">
+<?php if (!is_single() ) { // This class is not needed on single pages ?>
+	<ul class="item-list">
+<?php }; ?>
 
-<?php if (have_posts()) : ?>
-<?php while (have_posts()) : the_post();  ?>
+<?php if (have_posts()) :  ?>
+<?php while (have_posts()) : the_post(); ?>
 
 		<li id="entry-<?php the_ID(); ?>" class="<?php rolopress_entry_class(); ?>">
 			<?php rolopress_before_entry(); // Before entry hook ?>
@@ -112,7 +233,7 @@ function rolo_loop() { ?>
 				<div class="entry-main group">
 				<?php 
 					
-					if (is_archive() || is_home() ) { 
+					if (is_archive() || is_home()) { 
 								if ( rolo_type_is( 'contact' ) ) { rolo_contact_header(get_the_ID());}
 								if ( rolo_type_is( 'company' ) ) { rolo_company_header(get_the_ID());} ?>
 					<?php }
@@ -135,7 +256,7 @@ function rolo_loop() { ?>
 								}
 					}
 					
-					elseif (is_search() ) { echo 'is_search';?>
+					elseif (is_search() ) { ?>
 							<?php 					
 								if 
 									( rolo_type_is( 'contact' ) ) { rolo_contact_header(get_the_ID()); }
@@ -149,7 +270,23 @@ function rolo_loop() { ?>
 								<?php }
 					}
 									
-					elseif (is_page() ) { the_content(); }
+					elseif (is_page() ) {
+								the_content(); // show the page content
+								
+								if (is_page_template('widgets.php') || is_page_template('widgets-no-sidebar.php')) { // is this a widget page
+								
+									if ( is_active_sidebar("widget-page") ) { // is the widget area active ?>
+										<div class="widget-area">
+										<ul class="xoxo">
+										<?php dynamic_sidebar("widget-page");?>
+										</ul> 
+										</div><!-- #widget-area -->	
+										<?php }
+									else {
+										rolo_add_some_widgets_message(); // if not, show a message
+									}
+								}
+					}
 							
 					else { ?>
 								<li id="entry-<?php echo basename(get_permalink());?>" class="entry-header">
@@ -168,7 +305,11 @@ function rolo_loop() { ?>
 		</li><!-- #entry-<?php the_ID(); ?> -->
 
 <?php endwhile; ?>
-</ul><!-- item-list-->
+
+<?php if (!is_single() ) { // not needed on single pages ?>
+	</ul><!-- item-list-->
+<?php }; ?>
+
 
 <?php else : // 404 or no search results ?>
 
@@ -183,37 +324,7 @@ function rolo_loop() { ?>
 
 <?php endif;
 
-}; ?>
-
-		
-
-<?php
-function rolo_navigation_above() {
-
-global $wp_query; $total_pages = $wp_query->max_num_pages; if ( $total_pages > 1 ) { ?>
-
-					<div id="nav-above" class="navigation">
-					<div class="nav-next"><?php next_posts_link(__( 'Next <span class="meta-nav">&raquo;</span>', 'rolopress' )) ?></div>
-					<div class="nav-previous"><?php previous_posts_link(__( '<span class="meta-nav">&laquo;</span> Previous', 'rolopress' )) ?></div>
-				</div><!-- #nav-above -->
-<?php }
-}
-
-add_action('rolopress_before_info', 'rolo_navigation_above');
-
-
-function rolo_navigation_below() {
-
-global $wp_query; $total_pages = $wp_query->max_num_pages; if ( $total_pages > 1 ) { ?>
-
-					<div id="nav-below" class="navigation">
-					<div class="nav-next"><?php next_posts_link(__( 'Next <span class="meta-nav">&raquo;</span>', 'rolopress' )) ?></div>
-					<div class="nav-previous"><?php previous_posts_link(__( '<span class="meta-nav">&laquo;</span> Previous', 'rolopress' )) ?></div>
-				</div><!-- #nav-below -->
-<?php }
-}
-
-add_action('rolopress_after_info', 'rolo_navigation_below');
+}; // end rolo_loop
 
 
  
