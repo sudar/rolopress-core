@@ -1,8 +1,8 @@
 <?php
 /**
- * Loop Functions
+ * Content Functions
  *
- * Functions used in the RoloPress loop
+ * Functions used in the content area
  *
  * @package RoloPress
  * @subpackage Functions
@@ -53,7 +53,8 @@ function rolo_pageheader() {
 				elseif ( is_year() ) :
 					$pagetitle = '<h2 class="page-title year">' . __( 'Items Created In: ', 'rolopress' ) . get_the_time('Y') . "</h2>\n";
 				endif;
-    } else echo 'something else';
+    } else 
+				$pagetitle = '<h2 class="page-title page">' . get_the_title() . "</h2>\n";
 
 	
 	
@@ -211,6 +212,66 @@ global $wp_query; $total_pages = $wp_query->max_num_pages; if ( $total_pages > 1
 }
 
 
+
+/**
+ * Contact and Company sorter
+ *
+ * Handles sort options for archive pages
+ *
+ * @since 1.2
+ */
+function rolo_sorter() {
+
+	// set sort options for Companies
+	if ( rolo_type_is( 'company' ) ) {
+
+		global $query_string, $rolo_company_sort_by, $rolo_company_sort_order;
+
+			// Sort by
+			if ($rolo_company_sort_by == "Name") { $rolo_company_sort_by = 'title'; }
+			elseif ($rolo_company_sort_by == "Owner") {  $rolo_company_sort_by = 'author'; }
+			elseif ($rolo_company_sort_by = "Date Created") { $rolo_company_sort_by = 'date'; }
+			elseif ($rolo_company_sort_by = "Last Modified") { $rolo_company_sort_by = 'modified';}
+			elseif ($rolo_company_sort_by = "ID") { $rolo_company_sort_by = 'ID'; }
+			else $rolo_company_sort_by = 'comment_count';
+		
+			// Sort order
+			if ($rolo_company_sort_order == "Ascending") { $rolo_company_sort_order = 'ASC'; }
+			else $rolo_company_sort_order = 'DESC';
+	
+		$query = query_posts($query_string . "&meta_key=rolo_company&orderby=$rolo_company_sort_by&order=$rolo_company_sort_order");
+	};
+	
+	// set sort options for Contacts
+	if ( rolo_type_is( 'contact' ) ) {
+
+		global $query_string, $rolo_meta_key, $rolo_contact_sort_by, $rolo_contact_sort_order;
+		
+		$rolo_meta_key='rolo_contact'; //set default for rolo_meta_key
+		
+			// Sort by
+			if ($rolo_contact_sort_by == "First Name") {
+				$rolo_meta_key='rolo_contact_first_name';
+				$rolo_contact_sort_by = 'meta_value'; }
+			elseif ($rolo_contact_sort_by == "Last Name") {
+				$rolo_meta_key='rolo_contact_last_name';
+				$rolo_contact_sort_by = 'meta_value'; }
+			elseif ($rolo_contact_sort_by == "Owner") {  $rolo_contact_sort_by = 'author'; }
+			elseif ($rolo_contact_sort_by = "Date Created") { $rolo_contact_sort_by = 'date'; }
+			elseif ($rolo_contact_sort_by = "Last Modified") { $rolo_contact_sort_by = 'modified';}
+			elseif ($rolo_contact_sort_by = "ID") { $rolo_contact_sort_by = 'ID'; }
+			else $rolo_contact_sort_by = 'comment_count';
+		
+			// Sort order
+			if ($rolo_contact_sort_order == "Ascending") { $rolo_contact_sort_order = 'ASC'; }
+			else $rolo_contact_sort_order = 'DESC';
+	
+		$query = query_posts($query_string . "&meta_key=$rolo_meta_key&orderby=$rolo_contact_sort_by&order=$rolo_contact_sort_order");
+	};		
+return $query;
+};
+
+
 /**
  * RoloPress master loop
  *
@@ -323,6 +384,7 @@ function rolo_loop() { ?>
 		</li><!-- #entry-0 -->
 
 <?php endif;
+
 
 }; // end rolo_loop
 

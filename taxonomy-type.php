@@ -1,3 +1,4 @@
+<?php include (ROLOPRESS_ADMIN_FUNCTIONS .'/get-options.php'); ?>
 <?php get_header(); ?>
 	
 	<?php rolopress_before_container(); // Before container hook ?>
@@ -12,11 +13,9 @@
 			<div id="info">
 
 				<?php rolo_pageheader();?>
-				
-				<?php if ( rolo_type_is( 'contact' ) ) query_posts('meta_key=rolo_contact_last_name&orderby=meta_value&order=ASC');?>
-				<?php if ( rolo_type_is( 'company' ) ) query_posts('meta_key=rolo_company&orderby=title&order=ASC');?>
+				<?php rolo_sorter();?>
 				<?php rolo_loop();?>
-				
+
 			</div><!-- #info -->
 			<?php rolopress_after_info(); // After info hook ?>
 			

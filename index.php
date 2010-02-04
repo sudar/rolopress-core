@@ -1,4 +1,8 @@
+<?php include (ROLOPRESS_ADMIN_FUNCTIONS .'/get-options.php'); ?>
+
 <?php get_header(); ?>
+
+<?php echo $rolo_feedburner;?>
 	
 	<?php rolopress_before_container(); // Before container hook ?>
 	<div id="container">
