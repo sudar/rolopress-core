@@ -80,6 +80,4 @@ require_once( ROLOPRESS_EXTENSIONS . '/query-multiple-taxonomies/query-multiple-
 // Load javascript - only if user has proper permissions
 if ( current_user_can('edit_posts') ) { require_once( ROLOPRESS_INCLUDES . '/js-load.php' ); }
 
-
-
 ?>
