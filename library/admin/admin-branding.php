@@ -43,7 +43,8 @@ add_action("login_head","rolo_admin_loginpage_head");
 
 
 function rolo_admin_footer() { // Add custom footer to Admin
-   echo '<div id="footer-rolo">Powered by <a href="http://www.rolopress.com">RoloPress</a>. | <a href="http://rolopress.com/documentation">Documentation</a> | <a href="http://rolopress.com/forums">Support</a></div>';
+  $theme_data = get_theme_data(ROLOPRESS_DIR . '/style.css');
+   echo '<div id="footer-rolo">Powered by <a href="http://www.rolopress.com">RoloPress '.$theme_data['Version'].'</a> | <a href="http://rolopress.com/documentation">Documentation</a> | <a href="http://rolopress.com/forums">Support</a></div>';
 }
 add_action('admin_footer', 'rolo_admin_footer');
 

@@ -25,6 +25,9 @@ require_once( ROLOPRESS_ADMIN_FUNCTIONS . '/admin-setup-menus.php' );
  // Posts menu
 require_once( ROLOPRESS_ADMIN_FUNCTIONS . '/menu-posts-edit.php' );
 
+ // Appearance menu
+require_once( ROLOPRESS_ADMIN_FUNCTIONS . '/menu-appearance-layout.php' );
+
  // Contacts menu
 require_once( ROLOPRESS_ADMIN_FUNCTIONS . '/menu-contacts-settings.php' );
 

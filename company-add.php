@@ -1,3 +1,4 @@
+<?php include (ROLOPRESS_ADMIN_FUNCTIONS .'/get-options-core.php'); ?>
 <?php
 /**
  * Template Name: Company: Add

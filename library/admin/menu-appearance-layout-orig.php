@@ -1,101 +1,77 @@
 <?php
 /**
- * Menu: Companies - Settings
+ * Menu: Appearance - Layout
  *
  * @package RoloPress
  * @subpackage Functions
  */
 
-// Theme company_options adapted from "A Theme Tip For WordPress Theme Authors"
+// Theme options adapted from "A Theme Tip For WordPress Theme Authors"
 // http://literalbarrage.org/blog/archives/2007/05/03/a-theme-tip-for-wordpress-theme-authors/
 
 
-// Create theme company_options
+// Create options
 
-$company_options = array (
+$layout_options = array (
 
-				array(	"name" => __('Index Insert Position','rolopress'),
-						"desc" => __('The widgetized Index Insert will follow after this post number.','rolopress'),
-						"id" => $shortname."_insert_position2",
-						"std" => "2",
-						"type" => "text"),
-
-				array(	"name" => __('Info on Author Page','rolopress'),
-						"desc" => __("Display a <a href=\"http://microformats.org/wiki/hcard\" target=\"_blank\">microformatted vCard</a>—with the author's avatar, bio and email—on the author page.",'rolopress'),
-						"id" => $shortname."_authorinfo2",
-						"std" => "false",
-						"type" => "checkbox"),
-
-				array(	"name" => __('Text in Footer','rolopress'),
-						"desc" => __("You can use the following shortcodes in your footer text: [wp-link] [theme-link] [loginout-link] [blog-title] [the-year]",'rolopress'),
-						"id" => $shortname."_footertext2",
-						"std" => __("Powered by [wp-link]. Built on the [theme-link].", 'rolopress'),
-						"type" => "textarea",
-						"company_options" => array(	"rows" => "5",
-											"cols" => "94") ),
-				array(
-						"name" => __('Feedburner URL'),
-						"desc" => __("Copy and paste your Feedburner URL"),
-						"id" => $shortname."_feedburner2",
-						"std" => "http://feeds2.feedburner.com/",
-						"type" => "text"),
 						
-				array(  "name" => "Dropdown Selection Menu",
-						"desc" => "This is a descriptions",
-						"id" => $shortname."_dropdown_menu",
-						"type" => "select",
-						"std" => "Default",
-						"company_options" => array("Default", "Option 1", "Option 2")),
+				array(  "name" => "Layout Options",
+						"desc" => "Set Content and Sidebar Postions",
+						"id" => $shortname."_layout_setting",
+						"type" => "radio",
+						"std" => "3c-b-rw",
+						"options" => array(
+							"1c-b" => "1 Column",
+							"2c-l" => "2 Columns - Sidebars on left",
+							"2c-r" => "2 Columns - Sidebars on right",
+							"2c-l-w" => "2 Columns - <strong>Wide</strong> sidebar on left",
+							"2c-r-w" => "2 Columns - <strong>Wide</strong> sidebar on right",
+							"3c-l" => "3 Columns - Two sidebars on left",
+							"3c-r" => "3 Columns - Two sidebars on right",
+							"3c-b" => "3 Columns - 1 sidebar on left / 1 sidebar on right",
+							"3c-l-w" => "3 Columns - Two <strong>Wide</strong> sidebars on left",
+							"3c-r-w" => "3 Columns - Two <strong>Wide</strong> sidebars on right",
+							"3c-b-w" => "3 Columns - 1 <strong>Wide</strong> sidebar on left / 1 <strong>Wide</strong> sidebar on right",
+							"3c-b-lw" => "3 Columns - 1 <strong>Wide</strong> sidebar on left / 1 sidebar on right",
+							"3c-b-rw" => "3 Columns - 1 sidebar on left / 1 <strong>Wide</strong> sidebar on right",
 
-				array(  "name" => "Checkbox selection set",
-						"desc" => "This is a descriptions",
-						"id" => $shortname."_checkbox_menu",
-						"type" => "checkbox",
-						"std" => "Default",
-						"company_options" => array("Default", "Option 1", "Option 2")),
-
-				array(  "name" => "Multiple selection box",
-						"desc" => "This is a descriptions",
-						"id" => $shortname."_multi_select_dropdown_menu",
-						"type" => "multiselect",
-						"std" => "Default",
-						"company_options" => array("Defaults", "Option 1s", "Option 2s"))
-
-
-		);
+						),
+				),
+);
 
 		
 		
-// Display company_options page
-function rolo_menu_companies_add () {
+// Display options page
+function rolo_menu_layout_add () {
 
-    global $themename, $shortname, $company_options;
+    global $themename, $shortname, $layout_options;
+
 
     if ( $_GET['page'] == basename(__FILE__) ) {
     
         if ( 'save' == $_REQUEST['action'] ) {
 
-                foreach ($company_options as $value) {
+                foreach ($layout_options as $value) {
                     update_option( $value['id'], $_REQUEST[ $value['id'] ] ); }
 
-                foreach ($company_options as $value) {
+                foreach ($layout_options as $value) {
                     if( isset( $_REQUEST[ $value['id'] ] ) ) { update_option( $value['id'], $_REQUEST[ $value['id'] ]  ); } else { delete_option( $value['id'] ); } }
 
-                header("Location: themes.php?page=menu-companies-settings.php&saved=true");
+                header("Location: themes.php?page=menu-appearance-layout.php&saved=true");
                 die;
 
         } else if( 'reset' == $_REQUEST['action'] ) {
 
-            foreach ($company_options as $value) {
+            foreach ($layout_options as $value) {
                 delete_option( $value['id'] ); }
 
-            header("Location: themes.php?page=menu-companies-settings.php&reset=true");
+            header("Location: themes.php?page=menu-appearance-layout.php&reset=true");
             die;
 
         } else if ( 'reset_widgets' == $_REQUEST['action'] ) {
             $null = null;
             update_option('sidebars_widgets',$null);
-            header("Location: themes.php?page=menu-companies-settings.php&reset=true");
+            header("Location: themes.php?page=menu-appearance-layout.php&reset=true");
             die;
         }
     }
@@ -103,9 +79,9 @@ function rolo_menu_companies_add () {
 
 }
 
-function rolo_menu_companies() {
+function rolo_menu_layout() {
 
-    global $themename, $shortname, $company_options;
+    global $themename, $shortname, $layout_options;
 
     if ( $_REQUEST['saved'] ) echo '<div id="message" class="updated fade"><p><strong>'.$themename.' '.__('settings saved.','rolopress').'</strong></p></div>';
     if ( $_REQUEST['reset'] ) echo '<div id="message" class="updated fade"><p><strong>'.$themename.' '.__('settings reset.','rolopress').'</strong></p></div>';
@@ -114,13 +90,13 @@ function rolo_menu_companies() {
 ?>
 <div class="wrap">
 <?php if ( function_exists('screen_icon') ) screen_icon(); ?>
-<h2><?php echo $themename; ?> Options</h2>
+<h2><?php _e('Layout', 'rolopress');?></h2>
 
 <form method="post" action="">
 
 	<table class="form-table">
 
-<?php foreach ($company_options as $value) {
+<?php foreach ($layout_options as $value) {
 
 // Set styles for different option types
 
@@ -147,7 +123,7 @@ function rolo_menu_companies() {
 			<th scope="row"><label for="<?php echo $value['id']; ?>"><?php echo __($value['name'],'rolopress'); ?></label></th>
 				<td>
 					<select name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>">
-					<?php foreach ($value['company_options'] as $option) { ?>
+					<?php foreach ($value['options'] as $option) { ?>
 					<option<?php if ( get_option( $value['id'] ) == $option) { echo ' selected="selected"'; } elseif ($option == $value['std']) { echo ' selected="selected"'; } ?>><?php echo $option; ?></option>
 					<?php } ?>
 				</select>
@@ -158,11 +134,11 @@ function rolo_menu_companies() {
 
 // Text Area
 		case 'textarea':
-		$ta_company_options = $value['company_options'];
+		$ta_options = $value['options'];
 		?>
 		<tr valign="top"> 
 			<th scope="row"><label for="<?php echo $value['id']; ?>"><?php echo __($value['name'],'rolopress'); ?></label></th>
-			<td><textarea name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>" cols="<?php echo $ta_company_options['cols']; ?>" rows="<?php echo $ta_company_options['rows']; ?>"><?php 
+			<td><textarea name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>" cols="<?php echo $ta_options['cols']; ?>" rows="<?php echo $ta_options['rows']; ?>"><?php 
 				if( get_option($value['id']) != "") {
 						echo __(stripslashes(get_option($value['id'])),'rolopress');
 					}else{
@@ -178,7 +154,7 @@ function rolo_menu_companies() {
 		<tr valign="top"> 
 			<th scope="row"><?php echo __($value['name'],'rolopress'); ?></th>
 			<td>
-				<?php foreach ($value['company_options'] as $key=>$option) { 
+				<?php foreach ($value['options'] as $key=>$option) { 
 				$radio_setting = get_option($value['id']);
 				if($radio_setting != ''){
 					if ($key == get_option($value['id']) ) {
@@ -193,7 +169,7 @@ function rolo_menu_companies() {
 						$checked = "";
 					}
 				}?>
-				<input type="radio" name="<?php echo $value['id']; ?>" id="<?php echo $value['id'] . $key; ?>" value="<?php echo $key; ?>" <?php echo $checked; ?> /><label for="<?php echo $value['id'] . $key; ?>"><?php echo $option; ?></label><br />
+				<input type="radio" name="<?php echo $value['id']; ?>" id="<?php echo $value['id'] . $key; ?>" value="<?php echo $key; ?>" <?php echo $checked; ?> /><label for="<?php echo $value['id'] . $key; ?>"><?php echo $option; ?></label><img src="<?php echo ROLOPRESS_IMAGES.'/admin/'.$key.'.gif'?>" /><br />
 				<?php } ?>
 			</td>
 		</tr>
@@ -242,19 +218,12 @@ function rolo_menu_companies() {
 		<input type="hidden" name="action" value="reset" />
 	</p>
 </form>
-<form method="post" action="">
-	<p class="submit">
-		<input name="reset_widgets" type="submit" value="<?php _e('Reset Widgets','rolopress'); ?>" />
-		<input type="hidden" name="action" value="reset_widgets" />
-	</p>
-</form>
 
-<p><?php _e('For more information about this theme, <a href="http://themeshaper.com">visit ThemeShaper</a>. Please visit the <a href="http://themeshaper.com/forums/">ThemeShaper Forums</a> if you have any questions about RoloPress.', 'rolopress'); ?></p>
 </div>
 <?php
 }
 
-add_action('admin_menu' , 'rolo_menu_companies_add'); 
+add_action('admin_menu' , 'rolo_menu_layout_add'); 
 
 
 ?>

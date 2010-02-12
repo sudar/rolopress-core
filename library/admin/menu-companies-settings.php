@@ -206,7 +206,7 @@ function rolo_menu_companies() {
 </form>
 <form method="post" action="">
 	<p class="submit">
-		<input name="reset" type="submit" value="<?php _e('Reset','rolopress'); ?>" />
+		<input name="reset" type="submit" value="<?php _e('Reset to default','rolopress'); ?>" />
 		<input type="hidden" name="action" value="reset" />
 	</p>
 </form>

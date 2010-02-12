@@ -1,4 +1,5 @@
-<?php include (ROLOPRESS_ADMIN_FUNCTIONS .'/get-options.php'); ?>
+<?php include (ROLOPRESS_ADMIN_FUNCTIONS .'/get-options-core.php'); ?>
+<?php include (ROLOPRESS_ADMIN_FUNCTIONS .'/get-options-taxonomy.php'); ?>
 <?php get_header(); ?>
 	
 	<?php rolopress_before_container(); // Before container hook ?>
@@ -29,6 +30,3 @@
 
 <?php get_sidebar(); ?>	
 <?php get_footer(); ?>
-
-
-
