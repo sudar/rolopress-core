@@ -136,16 +136,14 @@ function rolo_admin_insert_image_column($column_name, $item_id){
 				
 		if ( rolo_type_is('contact') ) { 	
 			$contact = get_post_meta($item_id, 'rolo_contact', true);
-	        echo get_avatar (($contact['rolo_contact_email']),48,ROLOPRESS_IMAGES . "/icons/rolo-contact.jpg");
+	        echo get_avatar (($contact['rolo_contact_email']),48, rolo_get_twitter_profile_image($contact['rolo_contact_twitter'],  ROLOPRESS_IMAGES . "/icons/rolo-contact.jpg"));
 		}
 		
 		if ( rolo_type_is('company') ) { 	
 			$company = get_post_meta($item_id, 'rolo_company', true);
-	        echo get_avatar (($company['rolo_company_email']),48,ROLOPRESS_IMAGES . "/icons/rolo-company.jpg");
+	        echo get_avatar (($company['rolo_company_email']),48, rolo_get_twitter_profile_image($company['rolo_company_twitter'], ROLOPRESS_IMAGES . "/icons/rolo-company.jpg"));
 		}
 	}
 }
 add_action('manage_posts_custom_column', 'rolo_admin_insert_image_column', 10, 2);
-
-
 ?>

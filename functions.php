@@ -69,6 +69,7 @@ require_once( ROLOPRESS_FUNCTIONS . '/widgets.php' );
 // Load extensions
 require_once( ROLOPRESS_EXTENSIONS . '/rolosearch/rolosearch.php' );
 require_once( ROLOPRESS_EXTENSIONS . '/query-multiple-taxonomies/query-multiple-taxonomies.php' );
+require_once( ROLOPRESS_EXTENSIONS . '/twitter-image.php' );
 
 // Load javascript - only if user has proper permissions
 if ( current_user_can('edit_posts') ) { require_once( ROLOPRESS_INCLUDES . '/js-load.php' ); }
