@@ -22,7 +22,11 @@ class twitterImage {
     function __construct($user, $generic_image = '') {
         $this->user=$user;
         $this->imageNotFound = $generic_image;
-        $this->__init();
+        if ($user == '') {
+            $this->image = $this->imageNotFound;
+        } else {
+            $this->__init();
+        }
     }
 
     /*
