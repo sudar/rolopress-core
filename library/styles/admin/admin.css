@@ -6,24 +6,24 @@ Styles for RoloPress admin screens
 /* =Login
 -------------------------------------------------------------- */
 #login h1 a {
-	background:url(/wp-content/themes/rolopress-core/library/images/admin/rolo-login.gif) no-repeat top;
+background:url(../../images/admin/rolo-login.gif) no-repeat top;
 }
 
 /* =Header
 -------------------------------------------------------------- */ 
 #header-logo {
-	background:transparent url(/wp-content/themes/rolopress-core/library/images/admin/rolopress-icon-bk.gif) no-repeat scroll center center;
+background:transparent url(../../images/admin/rolopress-icon-bk.gif) no-repeat scroll center center;
 }
 
 /* =Footer
 -------------------------------------------------------------- */
 #footer-rolo {
-	background: #464646;
-	padding-left: 15px;
-	color:#999999;
-	font-family:Georgia,"Times New Roman","Bitstream Charter",Times,serif;
-	font-size:12px;
-	font-style:italic;
+background: #464646;
+padding-left: 15px;
+color:#999999;
+font-family:Georgia,"Times New Roman","Bitstream Charter",Times,serif;
+font-size:12px;
+font-style:italic;
 }
 #footer-rolo a:link, #footer-rolo a:visited {
 color:#CCCCCC;
@@ -41,4 +41,17 @@ border:1px solid #E1E1E1
 .rolo_widget_icon { /* appears in default widgets */
 float:left;
 padding:0 5px 0 0 ;
+}
+.rolo_dashboard_widget_footer{
+border-top: 1px solid #ccc;
+padding-top: 10px;
+font-weight: bold;
+}
+.email_subscribe {
+background:transparent url(../../images/admin/email.png) no-repeat scroll left;
+padding:0 0 0 24px;
+}
+.rss_subscribe {
+background:transparent url(../../images/admin/rss.png) no-repeat scroll left;
+padding:0 10px 0 20px;
 }
