@@ -1,7 +1,0 @@
-For the menu system to work properly you will need to make two manual changes in the admin area.
--Click on "Permalink Settings"
--Set the Custom Structure to: /%postname%
-
-Save changes and you're ready to go.
-
-This will be fixed by the next version.

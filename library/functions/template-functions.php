@@ -26,7 +26,7 @@ function rolo_contact_header($contact_id) {
 ?>
     <ul id="hcard-<?php echo basename(get_permalink());?>" class="item-header">
 
-			<?php echo get_avatar (($contact['rolo_contact_email']),96,ROLOPRESS_IMAGES . "/icons/rolo-contact.jpg");?>
+			<?php echo get_avatar (($contact['rolo_contact_email']),96, rolo_get_twitter_profile_image($contact['rolo_contact_twitter'], ROLOPRESS_IMAGES . "/icons/rolo-contact.jpg") );?>
 
 			<li><a class="fn" href="<?php the_permalink();?>"><?php echo $contact['rolo_contact_first_name'] . ' ' . $contact['rolo_contact_last_name'];?></a></li>
 			<li>
@@ -138,7 +138,7 @@ function rolo_company_header($company_id) {
 ?>
     <ul id="hcard-<?php echo basename(get_permalink());?>" class="item-header">
 
-			<?php echo get_avatar (($company['rolo_company_email']),96,ROLOPRESS_IMAGES . "/icons/rolo-company.jpg");?>
+			<?php echo get_avatar (($company['rolo_company_email']),96, rolo_get_twitter_profile_image($company['rolo_company_twitter'], ROLOPRESS_IMAGES . "/icons/rolo-company.jpg"));?>
 			<li>
                  <a class="fn"
                     <?php if (is_single()) : // show proper links on single or archive company pages ?>
@@ -230,7 +230,7 @@ function rolo_company_details($company_id) {
                     if ($company['rolo_company_im_MSN'] != "") { ?><li class="social social-msn url-field"><span class="type"><?php _e('MSN', 'rolopress'); ?></span>: <a class="msn" href="msnim:chat?company=<?php echo $company['rolo_company_im_MSN']; ?>"><?php echo $company['rolo_company_im_MSN']; ?></a><span id="rolo_company_im_MSN" class="edit-icon" style=""><?php echo $company['rolo_company_im_MSN']; ?></span></li><?php }
                     if ($company['rolo_company_im_AIM'] != "") { ?><li class="social social-aim url-field"><span class="type"><?php _e('AIM', 'rolopress'); ?></span>: <a class="aim" href="aim:goIM?<?php echo $company['rolo_company_im_AOL']; ?>"><?php echo $company['rolo_company_im_AOL']; ?></a><span id="rolo_company_im_AOL" class="edit-icon" style=""><?php echo $company['rolo_company_im_AOL']; ?></span></li><?php }
                     if ($company['rolo_company_im_GTalk'] != "") { ?><li class="social social-gtalk url-field"><span class="type"><?php _e('GTalk', 'rolopress'); ?></span>: <a class="gtalk" href="gtalk:chat?jid=<?php echo $company['rolo_company_im_GTalk']; ?>"><?php echo $company['rolo_company_im_GTalk']; ?></a><span id="rolo_company_im_GTalk" class="edit-icon" style=""><?php echo $company['rolo_company_im_Yahoo']; ?></span></li><?php }
-					if ($company['rolo_company_im_twitter'] != "") { ?><li class="social social-twitter url-field"><span class="type"><?php _e('Twitter', 'rolopress'); ?></span> <a class="twitter" href="http://www.twitter.com/<?php echo $company['rolo_company_twitter']; ?>"><?php echo $company['rolo_company_twitter']; ?></a><span id="rolo_company_twitter" class="edit-icon" style=""><?php echo $company['rolo_company_twitter']; ?></span></li><?php }
+					if ($company['rolo_company_twitter'] != "") { ?><li class="social social-twitter url-field"><span class="type"><?php _e('Twitter', 'rolopress'); ?></span> <a class="twitter" href="http://www.twitter.com/<?php echo $company['rolo_company_twitter']; ?>"><?php echo $company['rolo_company_twitter']; ?></a><span id="rolo_company_twitter" class="edit-icon" style=""><?php echo $company['rolo_company_twitter']; ?></span></li><?php }
 				?>
                 </ul>
             </li>
@@ -381,86 +381,6 @@ function wt_get_ID_by_page_name($page_name) {
 	return $page_name_id;
 }
 
-/**
- * Displays Javascript disabled warning if user is logged in.
- *
- * @since 0.1
- */
-function rolopress_js_disabled() {
-
-    if (is_user_logged_in() ) { // only display if user is logged in ?>
-		<noscript>
-        <p class="error"><?php _e('JavaScript is disabled. For RoloPress to work properly, <a href="http://rolopress.com/forums/topic/inline-editing-not-working">please enable JavaScript.</a>', 'rolopress');?></p>
-    </noscript>
-<?php }
-}
-add_action('rolopress_before_wrapper', 'rolopress_js_disabled');
-
-/**
- * Assembles default menu
- *
- * @since 0.1
- */
-function rolopress_default_menu() {
-?>
-    <div id="menu">
-<?php 
-    if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('menu') ) {
-?>
-        <ul class="menu_item site-title default_menu">
-            <li id="app-title"><span><a class="default_menu" href="<?php bloginfo( 'url' ) ?>/" title="<?php bloginfo( 'name' ) ?>" rel="home"><?php bloginfo( 'name' ) ?></a></span></li>
-        </ul>
-        <ul class="menu_item menu_main default_menu">
-            <li>
-                <a title="contacts" class="contacts" href="<?php echo get_term_link('Contact', 'type'); ?>"><span><?php _e('Contacts ', 'rolopress'); ?></span></a>
-            </li>
-<?php   
-            if ( current_user_can('publish_posts') ) {
-              // only display if user has proper permissions
-               $add_contact_page = get_page_by_title('Add Contact');
-               $id= $add_contact_page->ID;
-               wp_list_pages("include=$id & title_li=");
-            }
-?>
-            <li>
-                <a title="companies" class="companies" href="<?php echo get_term_link('Company', 'type'); ?>"><span><?php _e('Companies ', 'rolopress'); ?></span></a>
-            </li>
-<?php 
-            if ( current_user_can('publish_posts') ) {
-                // only display if user has proper permissions
-                $add_company_page = get_page_by_title('Add Company');
-                $id= $add_company_page->ID;
-                wp_list_pages("include=$id & title_li=");
-            }
-?>
-        </ul>
-        <ul class="menu_item sub_menu alignright default_menu">
-            <li>
-                <form id="searchform" method="get" action="<?php bloginfo('url') ?>">
-<?php
-                    if (isset($_GET['s'])) {
-                        $s = $_GET['s'];
-                    } else {
-                        $s = '';
-                    }
-?>
-                    <input id="s" name="s" type="text" value="<?php echo wp_specialchars(stripslashes($s), true) ?>" size="20" tabindex="1" />
-                    <input id="searchsubmit" name="searchsubmit" type="submit" value="<?php _e('Search', 'rolopress') ?>" tabindex="2" />
-                </form>
-            </li>
-            <?php global $user_ID, $user_identity, $user_level ?>
-            <?php if ( $user_level >= 1 ) : ?>
-                <li><a title="settings" href="<?php bloginfo('url') ?>/wp-admin/"><span>Settings</span></a></li>
-            <?php endif // $user_level >= 1 ?>
-            <li><?php wp_loginout(); ?></li>
-        </ul>
-<?php
-    }
-?>
-    </div>
-<?php
-}
-add_action('rolopress_before_wrapper', 'rolopress_default_menu');
 
 /**
  * Identifies taxonomy type

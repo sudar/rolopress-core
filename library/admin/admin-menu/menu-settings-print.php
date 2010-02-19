@@ -1,6 +1,6 @@
 <?php
 /**
- * Menu: Companies - Settings
+ * Menu: Settings - Print
  *
  * @package RoloPress
  * @subpackage Functions
@@ -12,58 +12,63 @@
 
 // Create options
 
-$company_options = array (
-
+$print_options = array (
+					
+				array(	"name" => __('Primary Sidebar','rolopress'),
+						"id" => $shortname."_print_primary",
+						"std" => "false",
+						"type" => "checkbox"),
 						
-				array(  "name" => "Sort Company List by",
-						"desc" => "Company Sort Preference",
-						"id" => $shortname."_company_sort_by",
-						"type" => "select",
-						"std" => "Name",
-						"options" => array("Name", "Owner", "Date Created", "Last Modified", "ID", "Note Count")),
+				array(	"name" => __('Secondary Sidebar','rolopress'),
+						"id" => $shortname."_print_secondary",
+						"std" => "false",
+						"type" => "checkbox"),
 						
-				array(  "name" => "Order By",
-						"desc" => "Company Sort Order",
-						"id" => $shortname."_company_sort_order",
-						"type" => "select",
-						"std" => "Ascending",
-						"options" => array("Ascending", "Descending")),
-
-		);
+				array(	"name" => __('Contact-Under Main','rolopress'),
+						"id" => $shortname."_print_contact_under_main",
+						"std" => "false",
+						"type" => "checkbox"),
+						
+				array(	"name" => __('Company-Under Main','rolopress'),
+						"id" => $shortname."_print_company_under_main",
+						"std" => "false",
+						"type" => "checkbox"),
+						
+);
 
 		
 		
 // Display options page
-function rolo_menu_companies_add () {
+function rolo_print_options_add () {
 
-    global $themename, $shortname, $company_options;
+    global $themename, $shortname, $print_options;
 
 
     if ( $_GET['page'] == basename(__FILE__) ) {
     
         if ( 'save' == $_REQUEST['action'] ) {
 
-                foreach ($company_options as $value) {
+                foreach ($print_options as $value) {
                     update_option( $value['id'], $_REQUEST[ $value['id'] ] ); }
 
-                foreach ($company_options as $value) {
+                foreach ($print_options as $value) {
                     if( isset( $_REQUEST[ $value['id'] ] ) ) { update_option( $value['id'], $_REQUEST[ $value['id'] ]  ); } else { delete_option( $value['id'] ); } }
 
-                header("Location: themes.php?page=menu-companies-settings.php&saved=true");
+                header("Location: options-general.php?page=menu-settings-print.php&saved=true");
                 die;
 
         } else if( 'reset' == $_REQUEST['action'] ) {
 
-            foreach ($company_options as $value) {
+            foreach ($print_options as $value) {
                 delete_option( $value['id'] ); }
 
-            header("Location: themes.php?page=menu-companies-settings.php&reset=true");
+            header("Location: options-general.php?page=menu-settings-print.php&reset=true");
             die;
 
         } else if ( 'reset_widgets' == $_REQUEST['action'] ) {
             $null = null;
             update_option('sidebars_widgets',$null);
-            header("Location: themes.php?page=menu-companies-settings.php&reset=true");
+            header("Location: options-general.php?page=menu-settings-print.php&reset=true");
             die;
         }
     }
@@ -71,24 +76,33 @@ function rolo_menu_companies_add () {
 
 }
 
-function rolo_menu_companies() {
+function rolo_print_options() {
 
-    global $themename, $shortname, $company_options;
+    global $themename, $shortname, $print_options;
 
     if ( $_REQUEST['saved'] ) echo '<div id="message" class="updated fade"><p><strong>'.$themename.' '.__('settings saved.','rolopress').'</strong></p></div>';
     if ( $_REQUEST['reset'] ) echo '<div id="message" class="updated fade"><p><strong>'.$themename.' '.__('settings reset.','rolopress').'</strong></p></div>';
-    if ( $_REQUEST['reset_widgets'] ) echo '<div id="message" class="updated fade"><p><strong>'.$themename.' '.__('widgets reset.','rolopress').'</strong></p></div>';
+    
     
 ?>
+
 <div class="wrap">
-<?php echo '<img class="icon32" src=' . ROLOPRESS_IMAGES . '/admin/company-menu-header.png />' ?>
-<h2><?php _e('Company Options', 'rolopress');?></h2>
+	<?php if ( function_exists('screen_icon') ) screen_icon(); ?>
+	<h2><?php _e('Print Options', 'rolopress'); ?> </h2>
+		<form method="post" action="">
+		
+		<div style="float: right; margin-bottom:10px; padding:0; " id="top-update" class="submit"></div>
 
-<form method="post" action="">
+				<table style="margin-bottom: 20px;"></table>
+				<table class="widefat fixed">
+					<thead>
+						<tr class="title">
+							<th scope="col" class="manage-column"><?php _e('Print these Widget Areas', 'rolopress'); ?></th>
+							<th scope="col" class="manage-column"></th>
+						</tr>
+					</thead>
 
-	<table class="form-table">
-
-<?php foreach ($company_options as $value) {
+<?php foreach ($print_options as $value) {
 
 // Set styles for different option types
 
@@ -215,7 +229,8 @@ function rolo_menu_companies() {
 <?php
 }
 
-add_action('admin_menu' , 'rolo_menu_companies_add'); 
+
+add_action('admin_menu' , 'rolo_print_options_add'); 
 
 
 ?>

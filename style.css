@@ -8,17 +8,14 @@ Version: Beta 1.1
 Tags: contact-manager, crm
 
 
-RoloPress for WordPress is copyright SlipFire http://slipfire.com/ and Sudar Muthu http://sudarmuthu.com
-Like WordPress, this work is released under GNU General Public License, version 2 (GPL).
-http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+RoloPress is Copyright(c) SlipFire http://slipfire.com/ and Sudar Muthu http://sudarmuthu.com. All rights reserved.
+Released under the GPL license
+http://www.opensource.org/licenses/gpl-license.php
 
 This program is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-
-RoloPress Core theme framework is based on Shape Theme by Ian Stewart http://themeshapes.com/shape/ andHybrid Theme by Justin Tadlock http://themehybrid.com 
 */
-
 
 /* Import a basic layout */
 @import url('library/styles/2c-r.css');

@@ -11,7 +11,7 @@ class Rolo_Widget_Recent_Notes extends WP_Widget {
 
 	function Rolo_Widget_Recent_Notes() {
 		$widget_ops = array('classname' => 'recent-notes', 'description' => __('Displays Your Most Recent Notes', 'rolopress') );
-		$this->WP_Widget('recent-notes', __('Recent Notes', 'rolopress'), $widget_ops);
+		$this->WP_Widget('rolopress-recent-notes', __('Recent Notes', 'rolopress'), $widget_ops);
 		$this->alt_option_name = 'widget_recent_notes';
 
 		add_action( 'comment_post', array(&$this, 'flush_widget_cache') );

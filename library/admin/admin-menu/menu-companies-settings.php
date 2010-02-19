@@ -1,6 +1,6 @@
 <?php
 /**
- * Menu: Contacts - Settings
+ * Menu: Companies - Settings
  *
  * @package RoloPress
  * @subpackage Functions
@@ -12,19 +12,19 @@
 
 // Create options
 
-$contact_options = array (
+$company_options = array (
 
 						
-				array(  "name" => "Sort Contact List by",
-						"desc" => "Contact Sort Preference",
-						"id" => $shortname."_contact_sort_by",
+				array(	"name" => __('Sort Company List by','rolopress'),
+						"desc" => "Company Sort Preference",
+						"id" => $shortname."_company_sort_by",
 						"type" => "select",
-						"std" => "Last Name",
-						"options" => array("First Name", "Last Name", "Owner", "Date Created", "Last Modified", "ID", "Note Count")),
+						"std" => "Name",
+						"options" => array("Name", "Owner", "Date Created", "Last Modified", "ID", "Note Count")),
 						
-				array(  "name" => "Order By",
-						"desc" => "Contact Sort Order",
-						"id" => $shortname."_contact_sort_order",
+				array(	"name" => __('Order by','rolopress'),
+						"desc" => "Company Sort Order",
+						"id" => $shortname."_company_sort_order",
 						"type" => "select",
 						"std" => "Ascending",
 						"options" => array("Ascending", "Descending")),
@@ -34,36 +34,36 @@ $contact_options = array (
 		
 		
 // Display options page
-function rolo_menu_contacts_add () {
+function rolo_menu_companies_add () {
 
-    global $themename, $shortname, $contact_options;
+    global $themename, $shortname, $company_options;
 
 
     if ( $_GET['page'] == basename(__FILE__) ) {
     
         if ( 'save' == $_REQUEST['action'] ) {
 
-                foreach ($contact_options as $value) {
+                foreach ($company_options as $value) {
                     update_option( $value['id'], $_REQUEST[ $value['id'] ] ); }
 
-                foreach ($contact_options as $value) {
+                foreach ($company_options as $value) {
                     if( isset( $_REQUEST[ $value['id'] ] ) ) { update_option( $value['id'], $_REQUEST[ $value['id'] ]  ); } else { delete_option( $value['id'] ); } }
 
-                header("Location: themes.php?page=menu-contacts-settings.php&saved=true");
+                header("Location: admin.php?page=menu-companies-settings.php&saved=true");
                 die;
 
         } else if( 'reset' == $_REQUEST['action'] ) {
 
-            foreach ($contact_options as $value) {
+            foreach ($company_options as $value) {
                 delete_option( $value['id'] ); }
 
-            header("Location: themes.php?page=menu-contacts-settings.php&reset=true");
+            header("Location: admin.php?page=menu-companies-settings.php&reset=true");
             die;
 
         } else if ( 'reset_widgets' == $_REQUEST['action'] ) {
             $null = null;
             update_option('sidebars_widgets',$null);
-            header("Location: themes.php?page=menu-contacts-settings.php&reset=true");
+            header("Location: admin.php?page=menu-companies-settings.php&reset=true");
             die;
         }
     }
@@ -71,9 +71,9 @@ function rolo_menu_contacts_add () {
 
 }
 
-function rolo_menu_contacts() {
+function rolo_menu_companies() {
 
-    global $themename, $shortname, $contact_options;
+    global $themename, $shortname, $company_options;
 
     if ( $_REQUEST['saved'] ) echo '<div id="message" class="updated fade"><p><strong>'.$themename.' '.__('settings saved.','rolopress').'</strong></p></div>';
     if ( $_REQUEST['reset'] ) echo '<div id="message" class="updated fade"><p><strong>'.$themename.' '.__('settings reset.','rolopress').'</strong></p></div>';
@@ -81,14 +81,14 @@ function rolo_menu_contacts() {
     
 ?>
 <div class="wrap">
-<?php echo '<img class="icon32" src=' . ROLOPRESS_IMAGES . '/admin/contact-menu-header.png />' ?>
-<h2><?php _e('Contact Options', 'rolopress');?></h2>
+<?php echo '<img class="icon32" src=' . ROLOPRESS_IMAGES . '/admin/company-menu-header.png />' ?>
+<h2><?php _e('Company Options', 'rolopress');?></h2>
 
 <form method="post" action="">
 
 	<table class="form-table">
 
-<?php foreach ($contact_options as $value) {
+<?php foreach ($company_options as $value) {
 
 // Set styles for different option types
 
@@ -215,7 +215,7 @@ function rolo_menu_contacts() {
 <?php
 }
 
-add_action('admin_menu' , 'rolo_menu_contacts_add'); 
+add_action('admin_menu' , 'rolo_menu_companies_add'); 
 
 
 ?>
