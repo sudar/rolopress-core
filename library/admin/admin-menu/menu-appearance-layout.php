@@ -94,6 +94,11 @@ function rolo_menu_layout() {
 
 <form method="post" action="">
 
+<p class="submit">
+	<input name="save" type="submit" value="<?php _e('Save changes','rolopress'); ?>" />    
+	<input type="hidden" name="action" value="save" />
+</p>
+
 
 <?php foreach ($layout_options as $value) {
 
