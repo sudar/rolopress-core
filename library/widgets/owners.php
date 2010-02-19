@@ -22,7 +22,7 @@ class Rolo_Widget_Owners extends WP_Widget {
 
 		extract( $args, EXTR_SKIP );
 
-		$title = apply_filters('widget_title', $instance['title'] );
+		$title = apply_filters('widget_title', empty($instance['title']) ? __('Owners', 'rolopress') : $instance['title']);
 		$style = $instance['style'];
 		$feed = $instance['feed']; 
 		$feed_image = $instance['feed_image'];

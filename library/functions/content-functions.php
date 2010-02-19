@@ -19,9 +19,9 @@
 function rolo_pageheader() {
     
     if (is_single()){
-        $pagetitle = '<h2 class="page-title">' . __(get_the_term_list( $post->ID, 'type', ' ', ', ', ': ' ), 'rolopress') . get_the_title() . "</h2>\n";
+        $pagetitle = '<h2 class="page-title">' . __(get_the_term_list( $post->ID, 'type', ' ', ', ', ': ' ), 'rolopress') . __(get_the_title(),'rolopress') . "</h2>\n";
 	} elseif (is_page()) {    
-        $pagetitle = '<h2 class="page-title page">' . get_the_title() . "</h2>\n";
+        $pagetitle = '<h2 class="page-title page">' . __(get_the_title(),'rolopress') . "</h2>\n";
     } elseif (is_404()) {    
         $pagetitle = '<h2 class="page-title 404">' . __('Not Found', 'rolopress') . "</h2>\n";
 	} elseif (is_home()) {    
@@ -40,7 +40,7 @@ function rolo_pageheader() {
 			global $term; 
 			$term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
 			$pagedesc = $term->description;
-        $pagetitle = '<h2 class="page-title taxonomy">' . $term->name . __(' List', 'rolopress') . "</h2>\n";
+        $pagetitle = '<h2 class="page-title taxonomy">' . __($term->name,'rolopress') . __(' List', 'rolopress') . "</h2>\n";
     } elseif (is_author()) {
 			global $wp_query;
 			$curauth = $wp_query->get_queried_object(); // get the authors name
@@ -54,7 +54,7 @@ function rolo_pageheader() {
 					$pagetitle = '<h2 class="page-title year">' . __( 'Items Created In: ', 'rolopress' ) . get_the_time('Y') . "</h2>\n";
 				endif;
     } else 
-				$pagetitle = '<h2 class="page-title page">' . get_the_title() . "</h2>\n";
+				$pagetitle = '<h2 class="page-title page">' . __(get_the_title(),'rolopress') . "</h2>\n";
 
 	
 	

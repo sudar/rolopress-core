@@ -160,7 +160,7 @@ function rolopress_default_menu() {
             </li>
             <?php global $user_ID, $user_identity, $user_level ?>
             <?php if ( $user_level >= 1 ) : ?>
-                <li><a title="settings" href="<?php bloginfo('url') ?>/wp-admin/"><span>Settings</span></a></li>
+                <li><a title="settings" href="<?php bloginfo('url') ?>/wp-admin/"><span><?php _e('Settings', 'rolopress') ?></span></a></li>
             <?php endif // $user_level >= 1 ?>
             <li><?php wp_loginout(); ?></li>
         </ul>

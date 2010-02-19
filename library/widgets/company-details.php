@@ -23,7 +23,7 @@ class Rolo_Widget_Company_Details extends WP_Widget {
 	function widget( $args, $instance ) {
 		if (is_single() && (rolo_type_is ('company'))) { // only display when viewing company page
 		extract( $args );
-		$title = apply_filters('widget_title', $instance['title'] );
+		$title = apply_filters('widget_title', empty($instance['title']) ? __('Company Details', 'rolopress') : $instance['title']);
 		echo $before_widget;
 		
 		if ( $title )

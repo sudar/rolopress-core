@@ -11,7 +11,7 @@ if (!empty($_SERVER['SCRIPT_FILENAME']) && 'notes.php' == basename($_SERVER['SCR
 die ('Please do not load this page directly. Thanks!');
 
 if ( post_password_required() ) { ?>
-<p class="nocomments">This item is password protected. Enter the password to view notes.</p>
+<p class="nocomments"><?php _e('This item is password protected. Enter the password to view notes.', 'rolopress')?></p>
 <?php
 return;
 }
@@ -21,7 +21,7 @@ return;
 <div id="notes" class="group">
 
 <?php if ( have_comments() ) : ?>
-<h3><?php comments_number('No Notes', 'One Note', '% Notes' );?> for &#8220;<?php the_title(); ?>&#8221;</h3>
+<h3><?php comments_number(__('No Notes','rolopress'), __('One Note','rolopress'),  __('% Notes','rolopress') );?> for &#8220;<?php the_title(); ?>&#8221;</h3>
 
 <div class="note-nav">
 <div class="alignleft"><?php previous_comments_link( '&laquo;  Older Notes' ); ?></div>
@@ -68,14 +68,14 @@ return;
 </div>
 
 <?php if ( get_option('comment_registration') && !$user_ID ) : ?>
-<p>You must be <a href="<?php echo get_option('siteurl'); ?>/wp-login.php?redirect_to=<?php echo urlencode(get_permalink()); ?>">logged in</a> to leave a note.</p>
+<p><?php _e('You must be ', 'rolopress')?> <a href="<?php echo get_option('siteurl'); ?>/wp-login.php?redirect_to=<?php echo urlencode(get_permalink()); ?>"><?php _e('logged in ', 'rolopress')?></a><?php _e(' to leave a note.', 'rolopress')?></p>
 <?php else : ?>
 
 <form action="<?php echo get_option('siteurl'); ?>/wp-comments-post.php" method="post" id="noteform">
 
 <?php if ( $user_ID ) : ?>
 
-<p>Logged in as <a href="<?php echo get_option('siteurl'); ?>/wp-admin/profile.php"><?php echo $user_identity; ?></a>. <a href="<?php echo wp_logout_url(get_permalink()); ?>" title="Log out of this account">Log out &raquo;</a></p>
+<p><?php _e('Logged in as ', 'rolopress')?> <a href="<?php echo get_option('siteurl'); ?>/wp-admin/profile.php"><?php echo $user_identity; ?></a>. <a href="<?php echo wp_logout_url(get_permalink()); ?>" title="Log out of this account"><?php _e('Log out ', 'rolopress')?> &raquo;</a></p>
 
 <?php else : ?>
 

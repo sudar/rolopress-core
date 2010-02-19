@@ -23,7 +23,7 @@ class Rolo_Widget_Contact_Details extends WP_Widget {
 	function widget( $args, $instance ) {
 		if (is_single() && (rolo_type_is ('contact'))) { // only display when viewing contact page
 		extract( $args );
-		$title = apply_filters('widget_title', $instance['title'] );
+		$title = apply_filters('widget_title', empty($instance['title']) ? __('Contact Details', 'rolopress') : $instance['title']);
 		echo $before_widget;
 		
 		if ( $title )
