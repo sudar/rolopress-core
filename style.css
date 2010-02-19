@@ -17,23 +17,3 @@ but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 */
 
-/* Import a basic layout */
-@import url('library/styles/2c-r.css');
-
-/* Reset default browser styles */
-@import url('library/styles/reset.css');
-
-/* Rebuild default browser styles */
-@import url('library/styles/rebuild.css');
-
-/* Basic WordPress Styles */
-@import url('library/styles/wp.css');
-
-/* Default Screen Styles */
-@import url('library/styles/screen.css');
-
-/* Styles for Widget Areas */
-@import url('library/styles/widgets.css');
-
-/* Styles for forms */
-@import url('library/styles/uni-form.css');
