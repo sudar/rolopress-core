@@ -34,4 +34,45 @@ function rolo_add_some_widgets_message() { ?>
 		<?php _e('This page is totally widgetized.','rolopress')?> <a href="/wp-admin/widgets.php"><?php _e('Just drop some widgets here to fill it up.','rolopress')?></a>
 		</div>
 <?php }
+
+/**
+ * On inital setup if no contacts or companies are created then 
+ * the menu items produce a 404
+ * This will provide instructions on how to fix
+ *
+ * @since 1.2
+ */
+function rolo_type_tax_message() { ?>
+	<h3>
+	<?php _e('If you want to get rid of this message, you really need to enter a ','rolopress') ?>
+	<a href="/add-contact/"><?php _e('Contact','rolopress') ?></a>
+	<?php _e(' and a ','rolopress') ?>
+	<a href="/add-company/"><?php _e('Company.','rolopress') ?></a><br/>
+	<?php _e('You may also want to make sure your ','rolopress') ?>
+	<a href="/wp-admin/options-permalink.php"><?php _e('Permalinks','rolopress') ?></a>
+	<?php _e(' are set to ','rolopress') ?>
+	<strong><?php _e('%postname%','rolopress') ?></strong><?php _e(' in "Custom Structure".','rolopress') ?>
+	</h3>
+<?php }
+
+
+/**
+ * 404 Message
+ *
+ * @since 1.2
+ */
+function rolo_404_message() { ?>
+	<p>
+	<?php _e( 'Apologies, but we were unable to find what you were looking for. Perhaps searching will help.', 'rolopress' ); ?></p>
+	<?php get_search_form();
+}
+
+
+
+
+
+
+
+
+
 ?>

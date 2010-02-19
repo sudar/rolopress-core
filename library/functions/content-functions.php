@@ -377,8 +377,16 @@ function rolo_loop() { ?>
 		<li id="entry-0" class="<?php rolopress_entry_class(); ?>">
 			<?php rolopress_before_entry(); // Before entry hook ?>
 				<div class="entry-main">
-					<p><?php _e( 'Apologies, but we were unable to find what you were looking for. Perhaps searching will help.', 'rolopress' ); ?></p>
-					<?php get_search_form(); ?>
+				
+					<?php 
+						// on inital setup if no contacts or companies are created then 
+						// the menu items produce a 404
+						// This will provide instructions on how to fix
+					$referring_page = $_SERVER['REQUEST_URI'];
+					if ($referring_page == "/type") rolo_type_tax_message();
+				
+					else { rolo_404_message(); }?>
+					
 				</div><!-- .entry-main -->
 			<?php rolopress_after_entry(); // After entry hook ?>
 		</li><!-- #entry-0 -->
