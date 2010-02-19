@@ -84,7 +84,7 @@ class Rolo_Widget_Owners extends WP_Widget {
 		
 		<div style="float:left;width:98%;">
 		<p><img class="rolo_widget_icon" src= <?php echo ROLOPRESS_IMAGES  . '/admin/rolopress-icon.gif' ?> />
-		Displays a list of users (owners) that have created items.  Best for multiuser installs where you would want to see what items each user created.
+		<?php _e('Displays a list of users (owners) that have created items.  Best for multiuser installs where you would want to see what items each user created.', 'rolopress')?>
 		</p>
 		</div>
 		<div style="float:left;width:48%;">

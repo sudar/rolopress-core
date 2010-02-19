@@ -155,7 +155,9 @@ class Rolo_Widget_Pages extends WP_Widget {
 		<p>
 			<label for="<?php echo $this->get_field_id( 'exclude' ); ?>"><?php _e('Exclude:', 'rolopress'); ?> <code>exclude</code></label>
 			<input id="<?php echo $this->get_field_id( 'exclude' ); ?>" name="<?php echo $this->get_field_name( 'exclude' ); ?>" type="text" value="<?php echo $instance['exclude']; ?>" style="width:100%;" />
-			<small>"Edit Contact" and "Edit Company" pages are automatically excluded, since they should not be accessed directly.</small>
+			<small>
+			<?php _e('"Edit Contact" and "Edit Company" pages are automatically excluded, since they should not be accessed directly.', 'rolopress')?>
+			</small>
 		</p>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'exclude_tree' ); ?>"><?php _e('Exclude Tree:', 'rolopress'); ?> <code>exclude_tree</code></label>
