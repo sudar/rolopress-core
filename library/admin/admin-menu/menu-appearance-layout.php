@@ -37,14 +37,32 @@ $layout_options = array (
 
 						),
 				),
+						
 );
+
+$default_menu_options = array (
+					
+				array(	"name" => __('Show Contact items','rolopress'),
+						"id" => $shortname."_show_contact_items",
+						"std" => "true",
+						"type" => "checkbox"),
+						
+				array(	"name" => __('Show Company items','rolopress'),
+						"id" => $shortname."_show_company_items",
+						"std" => "true",
+						"type" => "checkbox"),
+						
+);
+
+
+
 
 		
 		
 // Display options page
 function rolo_menu_layout_add () {
 
-    global $themename, $shortname, $layout_options;
+    global $themename, $shortname, $layout_options, $default_menu_options;
 
 
     if ( $_GET['page'] == basename(__FILE__) ) {
@@ -81,7 +99,7 @@ function rolo_menu_layout_add () {
 
 function rolo_menu_layout() {
 
-    global $themename, $shortname, $layout_options;
+    global $themename, $shortname, $layout_options,$default_menu_options;
 
     if ( $_REQUEST['saved'] ) echo '<div id="message" class="updated fade"><p><em>'.$themename.' '.__('settings saved.','rolopress').'</em></p></div>';
     if ( $_REQUEST['reset'] ) echo '<div id="message" class="updated fade"><p><em>'.$themename.' '.__('settings reset.','rolopress').'</em></p></div>';
@@ -143,6 +161,7 @@ function rolo_menu_layout() {
 </div><!-- <?php echo $value['id']; ?>_form -->
 
 
+
 	<p class="submit">
 		<input name="save" type="submit" value="<?php _e('Save changes','rolopress'); ?>" />    
 		<input type="hidden" name="action" value="save" />
@@ -156,7 +175,7 @@ function rolo_menu_layout() {
 </form>
 
 
-</div>
+
 <?php
 }
 

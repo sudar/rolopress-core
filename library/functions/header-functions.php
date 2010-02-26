@@ -106,12 +106,14 @@ function rolopress_js_disabled() {
 }
 add_action('rolopress_before_wrapper', 'rolopress_js_disabled');
 
+
 /**
  * Assembles default menu
  *
  * @since 0.1
  */
 function rolopress_default_menu() {
+global $rolo_hide_contact_items, $rolo_hide_company_items;
 ?>
     <div id="menu">
 <?php 
@@ -121,8 +123,11 @@ function rolopress_default_menu() {
             <li id="app-title"><span><a class="default_menu" href="<?php bloginfo( 'url' ) ?>/" title="<?php bloginfo( 'name' ) ?>" rel="home"><?php bloginfo( 'name' ) ?></a></span></li>
         </ul>
         <ul class="menu_item menu_main default_menu">
+		
+		<?php if ($rolo_hide_contact_items != "true") {?>
+	
             <li>
-                <a title="contacts" class="contacts" href="<?php echo get_term_link('Contact', 'type'); ?>"><span><?php _e('Contacts ', 'rolopress'); ?></span></a>
+			<a title="contacts" class="contacts" href="<?php echo get_term_link('Contact', 'type'); ?>"><span><?php _e('Contacts ', 'rolopress'); ?></span></a>
             </li>
 <?php   
             if ( current_user_can('publish_posts') ) {
@@ -131,7 +136,10 @@ function rolopress_default_menu() {
                $id= $add_contact_page->ID;
                wp_list_pages("include=$id & title_li=");
             }
+		}
 ?>
+
+		<?php if ($rolo_hide_company_items != "true") {?>
             <li>
                 <a title="companies" class="companies" href="<?php echo get_term_link('Company', 'type'); ?>"><span><?php _e('Companies ', 'rolopress'); ?></span></a>
             </li>
@@ -142,6 +150,7 @@ function rolopress_default_menu() {
                 $id= $add_company_page->ID;
                 wp_list_pages("include=$id & title_li=");
             }
+		}
 ?>
         </ul>
         <ul class="menu_item sub_menu alignright default_menu">

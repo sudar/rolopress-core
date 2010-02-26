@@ -286,6 +286,7 @@ function rolo_create_taxonomy() {
     register_taxonomy( 'state', 'post', array( 'hierarchical' => false, 'label' => __('State', 'rolopress'), 'query_var' => true, 'rewrite' => true ) );
     register_taxonomy( 'zip', 'post', array( 'hierarchical' => false, 'label' => __('Zip', 'rolopress'), 'query_var' => true, 'rewrite' => true ) );
     register_taxonomy( 'country', 'post', array( 'hierarchical' => false, 'label' => __('Country', 'rolopress'), 'query_var' => true, 'rewrite' => true ) );
+	register_taxonomy( 'test', 'post', array( 'hierarchical' => false, 'label' => __('TEST', 'rolopress'), 'query_var' => true, 'rewrite' => true ) );
 }
 add_action('init', 'rolo_create_taxonomy', 0);
 
