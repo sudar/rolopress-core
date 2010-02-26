@@ -62,7 +62,7 @@ $default_menu_options = array (
 // Display options page
 function rolo_menu_layout_add () {
 
-    global $themename, $shortname, $layout_options, $default_menu_options;
+    global $themename, $shortname, $layout_options;
 
 
     if ( $_GET['page'] == basename(__FILE__) ) {
@@ -99,7 +99,7 @@ function rolo_menu_layout_add () {
 
 function rolo_menu_layout() {
 
-    global $themename, $shortname, $layout_options,$default_menu_options;
+    global $themename, $shortname, $layout_options;
 
     if ( $_REQUEST['saved'] ) echo '<div id="message" class="updated fade"><p><em>'.$themename.' '.__('settings saved.','rolopress').'</em></p></div>';
     if ( $_REQUEST['reset'] ) echo '<div id="message" class="updated fade"><p><em>'.$themename.' '.__('settings reset.','rolopress').'</em></p></div>';
