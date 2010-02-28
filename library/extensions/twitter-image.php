@@ -84,9 +84,12 @@ class twitterImage {
      * @return <string> the reponse content
      */
     private function get_data($url) {
-        $request  = new WP_Http;
-        $response = $request->request( $url );
-        return $response['body'];
+        $response = wp_remote_request($url);
+        if (is_a($response, 'WP_Error')) {
+            return '';
+        } else {
+            return $response['body'];
+        }
     }
 }
 
