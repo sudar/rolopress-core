@@ -3,16 +3,10 @@
 <head profile="http://www.w3.org/2006/03/hcard">
 <title><?php rolopress_document_title(); ?></title>
 
+<meta http-equiv="content-type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" />
 
-	<?php rolopress_head(); // rolopress head hook ?>
-	<?php wp_head(); // wordpress head hook ?>
-
-	<meta http-equiv="content-type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" />
-	<link rel="stylesheet" type="text/css" href="<?php bloginfo('stylesheet_url'); ?>" />
-	<link rel="alternate" type="application/rss+xml" href="<?php bloginfo('rss2_url'); ?>" title="<?php printf( __( '%s latest posts', 'rolopress' ), wp_specialchars( get_bloginfo('name'), 1 ) ); ?>" />
-	<link rel="alternate" type="application/rss+xml" href="<?php bloginfo('comments_rss2_url') ?>" title="<?php printf( __( '%s latest comments', 'rolopress' ), wp_specialchars( get_bloginfo('name'), 1 ) ); ?>" />
-	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
-
+<?php rolopress_head(); // rolopress head hook ?>
+<?php wp_head(); // wordpress head hook ?>
 
 </head>
 
@@ -23,10 +17,10 @@
 
 	<?php rolopress_before_header(); // before header hook ?>
 	<div id="header">
-				<?php rolopress_header(); // Header hook ?>
+			<?php rolopress_header(); // Header hook ?>
 		<div id="masthead">
 		
-		<div id="access">
+			<div id="access">
 				<div class="skip-link"><a href="#main" title="<?php _e( 'Skip to main', 'rolopress' ) ?>"><?php _e( 'Skip to main', 'rolopress' ) ?></a></div>
 			</div><!-- #access -->
 				

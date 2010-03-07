@@ -88,9 +88,7 @@ function _rolo_show_edit_contact_form($contact_id) {
 ?>
 <form action="" method="post" class="uniForm inlineLabels" id="contact-edit">
     <div id="errorMsg">
-        <h3><?php _e('Oops!, We Have a Problem.', 'rolopress');?></h3>
-        <ol>
-        </ol>
+        <h3><?php _e('Mandatory fields are not filled.', 'rolopress');?></h3>
     </div>
 
     <fieldset class="inlineLabels">
@@ -105,8 +103,13 @@ function _rolo_show_edit_contact_form($contact_id) {
             $name = 'rolo_contact_' . $contact_field['name'];
             $current_value = $contact[$name];
             $class = $contact_field['class'];
+
+            $mandatory_class = '';
+            if ($contact_field['mandatory'] == true) {
+                $mandatory_class = ' mandatory';
+            }
 ?>
-        <div class="ctrlHolder <?php echo $contact_field['class']?>">
+        <div class="ctrlHolder <?php echo $contact_field['class']; echo $mandatory_class; ?>">
             <label for="<?php echo $name;?>">
 <?php
                     if ($contact_field['mandatory'] == true) {
@@ -131,7 +134,7 @@ function _rolo_show_edit_contact_form($contact_id) {
    <div class="buttonHolder">
        <input type="hidden" name="contact_id" value="<?php echo $contact_id;?>" />
       <input type="hidden" name="rp_edit_contact" value="edit_contact" />
-      <button type="submit" name="submit" id="submit" class="submitButton" tabindex="<?php echo $rolo_tab_index++;?>" ><?php _e('Edit Contact', 'rolopress');?></button>
+      <button type="submit" name="submit" id="edit_contact" class="submitButton" tabindex="<?php echo $rolo_tab_index++;?>" ><?php _e('Edit Contact', 'rolopress');?></button>
    </div>
 </form>
 <?php
@@ -148,9 +151,7 @@ function _rolo_show_contact_fields() {
 ?>
 <form action="" method="post" class="uniForm inlineLabels" id="contact-add">
     <div id="errorMsg">
-        <h3><?php _e('Oops!, We Have a Problem.', 'rolopress');?></h3>
-        <ol>
-        </ol>
+        <h3><?php _e('Mandatory fields are not filled.', 'rolopress');?></h3>
     </div>
 
     <fieldset class="inlineLabels">
@@ -165,8 +166,13 @@ function _rolo_show_contact_fields() {
             $default_value = $contact_field['default_value'];
             $name = 'rolo_contact_' . $contact_field['name'];
             $class = $contact_field['class'];
+            
+            $mandatory_class = '';
+            if ($contact_field['mandatory'] == true) {
+                $mandatory_class = ' mandatory';
+            }
 ?>
-        <div class="ctrlHolder <?php echo $contact_field['class']?>">
+        <div class="ctrlHolder <?php echo $contact_field['class']; echo $mandatory_class; ?>">
             <label for="<?php echo $name;?>">
 <?php
                     if ($contact_field['mandatory'] == true) {
@@ -190,7 +196,7 @@ function _rolo_show_contact_fields() {
     </fieldset>
    <div class="buttonHolder">
       <input type="hidden" name="rp_add_contact" value="add_contact" />
-      <button type="submit" name="submit" id="submit" class="submitButton" tabindex="<?php echo $rolo_tab_index++;?>" ><?php _e('Add Contact', 'rolopress');?></button>
+      <button type="submit" name="submit" id="add_contact" class="submitButton" tabindex="<?php echo $rolo_tab_index++;?>" ><?php _e('Add Contact', 'rolopress');?></button>
    </div>
 </form>
 <?php
@@ -211,7 +217,18 @@ function _rolo_save_contact_fields() {
     $post_id = 0;
 
     if (isset($_POST['contact_id'])) {
+        $old_post = array();
+
         $post_id = $_POST['contact_id'];
+
+        $old_post['post_title'] = $_POST['rolo_contact_first_name'];
+        if (isset($_POST['rolo_contact_last_name'])) {
+            $old_post['post_title'] .= ' ' . $_POST['rolo_contact_last_name'];
+        }
+
+        $old_post['ID'] = $post_id;
+        $post_id = wp_update_post($old_post);
+
     } else {
         $new_post = array();
 
@@ -568,7 +585,7 @@ function rolo_save_contact_company($field_name, $post_id) {
        // Set the custom taxonmy for the post
         wp_set_post_terms($post_id, $company_name, 'company');
 
-        $company_id = get_post_by_title($company_name);
+        $company_id = get_post_by_title(stripslashes($company_name));
         if (!$company_id) {
             // create an empty post for company
             $new_post = array();

@@ -1,0 +1,21 @@
+/*
+PRINT: Standard Print styles
+*/
+
+#primary, #secondary {
+	float: left;
+	overflow: hidden;
+	padding: 10px 0;
+	width: 100%;
+}
+#primary {
+	clear: both;
+}
+#footer {
+	clear: left;
+	width: 100%;
+}
+
+#access, #menu , #respond, #footer{
+display: none;
+}

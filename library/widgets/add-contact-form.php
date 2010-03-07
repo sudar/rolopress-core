@@ -23,7 +23,7 @@ class Rolo_Widget_Add_Contact extends WP_Widget {
 	function widget( $args, $instance ) {
 	if ( current_user_can('publish_posts') ) { // only display if user has proper permissions
 		extract( $args );
-		$title = apply_filters('widget_title', $instance['title'] );
+		$title = apply_filters('widget_title', empty($instance['title']) ? __('Add Contact', 'rolopress') : $instance['title']);
 		echo $before_widget;
 		
 		if ( $title )

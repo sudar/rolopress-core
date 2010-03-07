@@ -29,16 +29,20 @@ define( 'ROLOPRESS_FUNCTIONS', ROLOPRESS_LIBRARY . '/functions' );
 define( 'ROLOPRESS_SETUP', ROLOPRESS_LIBRARY . '/setup' );
 define( 'ROLOPRESS_WIDGETS', ROLOPRESS_LIBRARY . '/widgets' );
 define( 'ROLOPRESS_INCLUDES', ROLOPRESS_LIBRARY . '/includes' );
+define( 'ROLOPRESS_ADMIN_FUNCTIONS', ROLOPRESS_LIBRARY . '/admin' );
 
 // Define constant paths (other file types)
 $rolopress_dir = get_bloginfo( 'template_directory' );
 define( 'ROLOPRESS_IMAGES', $rolopress_dir . '/library/images' );
 define( 'ROLOPRESS_CSS', $rolopress_dir . '/library/styles' );
+define( 'ROLOPRESS_CSS_LAYOUTS', ROLOPRESS_CSS . '/layouts' );
+define( 'ROLOPRESS_CSS_PRINT', ROLOPRESS_CSS . '/print' );
 define( 'ROLOPRESS_JS', $rolopress_dir . '/library/js' );
 
 // Define child theme paths
 define( 'ROLOPRESS_CHILD_DIR', get_stylesheet_directory() );
 define( 'ROLOPRESS_CHILD_URL', get_stylesheet_directory_uri() );
+define( 'ROLOPRESS_CHILD_CSS', get_stylesheet_directory_uri() . '/style.css' );
 
 // Load compatability function
 require_once( ROLOPRESS_FUNCTIONS . '/compat.php' );
@@ -55,13 +59,19 @@ if ( is_admin() && isset($_GET['activated'] ) && $pagenow == "themes.php" ) {
     require_once( ROLOPRESS_SETUP . '/add-pages.php' );
 	require_once( ROLOPRESS_SETUP . '/settings.php' );
 }
-	
-// Load RoloPress functions
+
+// Load RoloPress Admin functions
+   require_once( ROLOPRESS_ADMIN_FUNCTIONS . '/admin.php' );
+
+// Load RoloPress Template functions
 require_once( ROLOPRESS_FUNCTIONS . '/template-functions.php' );
 require_once( ROLOPRESS_FUNCTIONS . '/contact-functions.php' );
 require_once( ROLOPRESS_FUNCTIONS . '/company-functions.php' );
 require_once( ROLOPRESS_FUNCTIONS . '/note-functions.php' );
 require_once( ROLOPRESS_FUNCTIONS . '/dynamic-classes.php' );
+require_once( ROLOPRESS_FUNCTIONS . '/messages.php' );
+require_once( ROLOPRESS_FUNCTIONS . '/header-functions.php' );
+require_once( ROLOPRESS_FUNCTIONS . '/content-functions.php' );
 
 // Load widget areas and custom widgets
 require_once( ROLOPRESS_FUNCTIONS . '/widgets.php' );
@@ -69,12 +79,10 @@ require_once( ROLOPRESS_FUNCTIONS . '/widgets.php' );
 // Load extensions
 require_once( ROLOPRESS_EXTENSIONS . '/rolosearch/rolosearch.php' );
 require_once( ROLOPRESS_EXTENSIONS . '/query-multiple-taxonomies/query-multiple-taxonomies.php' );
+require_once( ROLOPRESS_EXTENSIONS . '/extended-admin-post-filter/extend-admin-post-filter.php' );
+require_once( ROLOPRESS_EXTENSIONS . '/twitter-image.php' );
 
 // Load javascript - only if user has proper permissions
 if ( current_user_can('edit_posts') ) { require_once( ROLOPRESS_INCLUDES . '/js-load.php' ); }
-
-// Change admin section to RoloPress style
-if (function_exists ('login_header') || is_admin()) // only load if viewing admin
-    require_once( ROLOPRESS_FUNCTIONS . '/admin.php' );
 
 ?>

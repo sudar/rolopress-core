@@ -25,7 +25,7 @@ class Rolo_Widget_Pages extends WP_Widget {
 	function widget( $args, $instance ) {
 		extract( $args );
 
-		$title = apply_filters( 'widget_title', $instance['title'] );
+		$title = apply_filters('widget_title', empty($instance['title']) ? __('Pages', 'rolopress') : $instance['title']);
 		$sort_column = $instance['sort_column'];
 		$sort_order = $instance['sort_order'];
 		$exclude = $instance['exclude'];
@@ -59,7 +59,7 @@ class Rolo_Widget_Pages extends WP_Widget {
 			'show_date' => $show_date,
 			'date_format' => $date_format,
 			'child_of' => $child_of,
-			'exclude' => $exclude . $edit_company_page . "," . $edit_contact_page,
+			'exclude' => $exclude . "," . $edit_company_page . "," . $edit_contact_page,
 			'include' => $include,
 			'hierarchical' => $hierarchical,
 			'meta_key' => $meta_key,
@@ -155,7 +155,9 @@ class Rolo_Widget_Pages extends WP_Widget {
 		<p>
 			<label for="<?php echo $this->get_field_id( 'exclude' ); ?>"><?php _e('Exclude:', 'rolopress'); ?> <code>exclude</code></label>
 			<input id="<?php echo $this->get_field_id( 'exclude' ); ?>" name="<?php echo $this->get_field_name( 'exclude' ); ?>" type="text" value="<?php echo $instance['exclude']; ?>" style="width:100%;" />
-			<small>"Edit Contact" and "Edit Company" pages are automatically excluded, since they should not be accessed directly.</small>
+			<small>
+			<?php _e('"Edit Contact" and "Edit Company" pages are automatically excluded, since they should not be accessed directly.', 'rolopress')?>
+			</small>
 		</p>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'exclude_tree' ); ?>"><?php _e('Exclude Tree:', 'rolopress'); ?> <code>exclude_tree</code></label>

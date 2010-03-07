@@ -16,6 +16,9 @@ margin:0;
 padding:1em;
 font-weight:bold;
 }
+.hide {
+display: none;
+}
 
 /* =Header
 -------------------------------------------------------------- */

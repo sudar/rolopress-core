@@ -72,7 +72,12 @@ jQuery(document).ready(function() {
         }
     });
 
+    // Auto Complete taxonomy fields
     jQuery('input.company').suggest(wpurl + "/wp-admin/admin-ajax.php?action=ajax-tag-search&tax=company", {multiple:false});
+	jQuery('input.city').suggest(wpurl + "/wp-admin/admin-ajax.php?action=ajax-tag-search&tax=city", {multiple:false});
+	jQuery('input.state').suggest(wpurl + "/wp-admin/admin-ajax.php?action=ajax-tag-search&tax=state", {multiple:false});
+	jQuery('input.zip').suggest(wpurl + "/wp-admin/admin-ajax.php?action=ajax-tag-search&tax=zip", {multiple:false});
+	jQuery('input.country').suggest(wpurl + "/wp-admin/admin-ajax.php?action=ajax-tag-search&tax=country", {multiple:false});
 
     // Edit in place for contacts
     jQuery('#rolo_contact_title,#rolo_contact_address, #rolo_contact_email, #rolo_contact_phone_Mobile, #rolo_contact_phone_Home, #rolo_contact_phone_Work, #rolo_contact_phone_Other, #rolo_contact_phone_Fax, #rolo_contact_im_Yahoo, #rolo_contact_im_MSN, #rolo_contact_im_AOL, #rolo_contact_im_GTalk, #rolo_contact_im_Skype, #rolo_contact_twitter, #rolo_contact_website').eip(ajax_url, {
@@ -99,5 +104,17 @@ jQuery(document).ready(function() {
 //        id_field: 'rolo_company_id'
     });
 
+    // Validation for mandatory fields
+    jQuery('#add_contact, #edit_contact, #add_company, #edit_company').click(function (e) {
+        jQuery('div.mandatory input').each(function () {
+            if (jQuery(this).val() === '') {
+                jQuery('#errorMsg').show();
+                jQuery(this).addClass('errorInput');
+                e.preventDefault();
+            } else {
+                jQuery(this).removeClass('errorInput');
+            }
+        });
+    });
 
 });

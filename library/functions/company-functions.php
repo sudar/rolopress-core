@@ -23,7 +23,7 @@ function rolo_add_company() {
         if (isset($_POST['rp_add_company']) && $_POST['rp_add_company'] == 'add_company') {
             $company_id = _rolo_save_company_fields();
             if ($company_id) {
-                echo __("company information successfully added.", 'rolopress');
+                echo __("Company information successfully added.", 'rolopress');
 //                _rolo_show_company_notes($company_id);
             } else {
                 echo __("There was some problem in inserting the company info", 'rolopress');
@@ -59,7 +59,7 @@ function rolo_edit_company() {
         if (isset($_POST['rp_edit_company']) && $_POST['rp_edit_company'] == 'edit_company') {
             $company_id = _rolo_save_company_fields();
             if ($company_id) {
-                echo __("company information successfully added.", 'rolopress');
+                echo __("Company information successfully edited.", 'rolopress');
             } else {
                 echo __("There was some problem in inserting the company info", 'rolopress');
     //            TODO - Handle Error properly
@@ -89,9 +89,7 @@ function _rolo_show_edit_company_form($company_id) {
 ?>
 <form action="" method="post" class="uniForm inlineLabels" id="company-edit">
     <div id="errorMsg">
-        <h3><?php _e('Oops!, We Have a Problem.', 'rolopress');?></h3>
-        <ol>
-        </ol>
+        <h3><?php _e('Mandatory fields are not filled.', 'rolopress');?></h3>
     </div>
 
     <fieldset class="inlineLabels">
@@ -106,8 +104,13 @@ function _rolo_show_edit_company_form($company_id) {
             $name = 'rolo_company_' . $company_field['name'];
             $current_value = $company[$name];
             $class = $company_field['class'];
+
+            $mandatory_class = '';
+            if ($company_field['mandatory'] == true) {
+                $mandatory_class = ' mandatory';
+            }
 ?>
-        <div class="ctrlHolder <?php echo $company_field['class']?>">
+        <div class="ctrlHolder <?php echo $company_field['class']; echo $mandatory_class; ?>">
             <label for="<?php echo $name;?>">
 <?php
                     if ($company_field['mandatory'] == true) {
@@ -132,7 +135,7 @@ function _rolo_show_edit_company_form($company_id) {
    <div class="buttonHolder">
        <input type="hidden" name="company_id" value="<?php echo $company_id;?>" />
       <input type="hidden" name="rp_edit_company" value="edit_company" />
-      <button type="submit" name="submit" id="submit" class="submitButton" tabindex="<?php echo $rolo_tab_index++;?>" ><?php _e('Edit company', 'rolopress');?></button>
+      <button type="submit" name="submit" id="edit_company" class="submitButton" tabindex="<?php echo $rolo_tab_index++;?>" ><?php _e('Edit company', 'rolopress');?></button>
    </div>
 </form>
 <?php
@@ -151,13 +154,10 @@ function _rolo_show_company_fields() {
 ?>
 <form action="" method="post" class="uniForm inlineLabels" id="company-add">
     <div id="errorMsg">
-        <h3><?php _e('Oops!, We Have a Problem.', 'rolopress');?></h3>
-        <ol>
-        </ol>
+        <h3><?php _e('Mandatory fields are not filled.', 'rolopress');?></h3>
     </div>
 
     <fieldset class="inlineLabels">
-
 
 <?php
 	foreach($company_fields as $company_field) {
@@ -169,8 +169,13 @@ function _rolo_show_company_fields() {
             $default_value = $company_field['default_value'];
             $name  = 'rolo_company_' . $company_field['name'];
             $class = $company_field['class'];
+
+            $mandatory_class = '';
+            if ($company_field['mandatory'] == true) {
+                $mandatory_class = ' mandatory';
+            }
 ?>
-        <div class="ctrlHolder <?php echo $company_field['class']?>">
+        <div class="ctrlHolder <?php echo $company_field['class']; echo $mandatory_class; ?>">
             <label for="<?php echo $name;?>">
 <?php
                 if ($company_field['mandatory'] == true) {
@@ -179,10 +184,9 @@ function _rolo_show_company_fields() {
                 echo $company_field['title'];
 				
 				if (isset($company_field['prefix']) == true) {		
-						echo '<span class="prefix '; echo $company_field['name']; echo '">'; echo $company_field['prefix']; echo '</span>';
-						$class = $company_field['class'] . " " . "input-prefix";
-                    }
-					
+                    echo '<span class="prefix '; echo $company_field['name']; echo '">'; echo $company_field['prefix']; echo '</span>';
+                    $class = $company_field['class'] . " " . "input-prefix";
+                }
 					
 ?>
             </label>
@@ -196,7 +200,7 @@ function _rolo_show_company_fields() {
     </fieldset>
    <div class="buttonHolder">
       <input type="hidden" name="rp_add_company" value="add_company" />
-      <button type="submit" name="submit" id="submit" class="submitButton" tabindex="<?php echo $rolo_tab_index++;?>" ><?php _e('Add company', 'rolopress');?></button>
+      <button type="submit" name="submit" id="add_company" class="submitButton" tabindex="<?php echo $rolo_tab_index++;?>" ><?php _e('Add company', 'rolopress');?></button>
    </div>
 </form>
 <?php
@@ -220,7 +224,12 @@ function _rolo_save_company_fields() {
 
     $post_id = 0;
     if (isset($_POST['company_id'])) {
+        $old_post = array();
+        
         $post_id = $_POST['company_id'];
+        $old_post['post_title'] = $company_name;
+        $old_post['ID'] = $post_id;
+        $post_id = wp_update_post($old_post);
     } else {
         $new_post = array();
 
@@ -230,6 +239,9 @@ function _rolo_save_company_fields() {
 
         $post_id = wp_insert_post($new_post);
     }
+
+    // Store only company name as seperate custom field
+    update_post_meta($post_id, 'rolo_company_name', $_POST['rolo_company_name']);
 
     if ($post_id) {
         $new_company = array();
@@ -253,7 +265,18 @@ function _rolo_save_company_fields() {
 
         // Set the custom taxonmy for the post
         wp_set_post_terms($post_id, 'Company', 'type');
-        wp_set_post_terms($post_id, $company_name, 'company');
+
+        $current_name = wp_get_post_terms($post_id, 'company');
+        if (count($current_name) > 0) {
+            //update the current taxonomy
+            $new_value = array();
+            $new_value['name'] = $company_name;
+            $new_value['term_id'] = $current_name[0]->term_id;
+            wp_update_term($current_name[0]->term_id, 'company', $new_value);
+        } else {
+            // create the new taxonomy
+            wp_set_post_terms($post_id, $company_name, 'company', true);
+        }
     } else {
 //        TODO - handle error
     }
