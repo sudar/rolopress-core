@@ -59,7 +59,7 @@ function rolo_edit_company() {
         if (isset($_POST['rp_edit_company']) && $_POST['rp_edit_company'] == 'edit_company') {
             $company_id = _rolo_save_company_fields();
             if ($company_id) {
-                echo __("company information successfully added.", 'rolopress');
+                echo __("Company information successfully edited.", 'rolopress');
             } else {
                 echo __("There was some problem in inserting the company info", 'rolopress');
     //            TODO - Handle Error properly
