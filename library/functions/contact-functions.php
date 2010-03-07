@@ -574,7 +574,7 @@ function rolo_save_contact_company($field_name, $post_id) {
        // Set the custom taxonmy for the post
         wp_set_post_terms($post_id, $company_name, 'company');
 
-        $company_id = get_post_by_title($company_name);
+        $company_id = get_post_by_title(stripslashes($company_name));
         if (!$company_id) {
             // create an empty post for company
             $new_post = array();
