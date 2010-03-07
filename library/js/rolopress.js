@@ -104,7 +104,8 @@ jQuery(document).ready(function() {
 //        id_field: 'rolo_company_id'
     });
 
-    jQuery('#add_contact, #edit_contact').click(function (e) {
+    // Validation for mandatory fields
+    jQuery('#add_contact, #edit_contact, #add_company, #edit_company').click(function (e) {
         jQuery('div.mandatory input').each(function () {
             if (jQuery(this).val() === '') {
                 jQuery('#errorMsg').show();
