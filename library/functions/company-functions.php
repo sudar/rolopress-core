@@ -23,7 +23,7 @@ function rolo_add_company() {
         if (isset($_POST['rp_add_company']) && $_POST['rp_add_company'] == 'add_company') {
             $company_id = _rolo_save_company_fields();
             if ($company_id) {
-                echo __("company information successfully added.", 'rolopress');
+                echo __("Company information successfully added.", 'rolopress');
 //                _rolo_show_company_notes($company_id);
             } else {
                 echo __("There was some problem in inserting the company info", 'rolopress');
