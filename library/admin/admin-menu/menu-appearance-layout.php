@@ -9,57 +9,51 @@
 // Theme options adapted from "A Theme Tip For WordPress Theme Authors"
 // http://literalbarrage.org/blog/archives/2007/05/03/a-theme-tip-for-wordpress-theme-authors/
 
-
 // Create options
-
 $layout_options = array (
-
 						
-				array(	"name" => __('Layout Options','rolopress'),
-						"desc" => "Set Content and Sidebar Postions",
-						"id" => $shortname."_layout_setting",
-						"type" => "radio",
-						"std" => "3c-b-rw",
-						"options" => array(
-							"1c-b" => __('<strong>1 Column</strong><br/>Primary on left<br/>Secondary on right','rolopress'),
-							"2c-l" => __('<strong>2 Columns</strong><br/>Primary on top left<br/>Secondary on Bottom left','rolopress'),
-							"2c-r" => __('<strong>2 Columns</strong><br/>Primary on top right<br/>Secondary on Bottom right','rolopress'),
-							"2c-l-w" => __('<strong>2 Columns</strong><br/><em>Wide</em> Primary on top left<br/><em>Wide</em> Secondary on Bottom left','rolopress'),
-							"2c-r-w" => __('<strong>2 Columns</strong><br/><em>Wide</em> Primary on top right<br/><em>Wide</em> Secondary on Bottom right','rolopress'),
-							"3c-l" => __('<strong>3 Columns</strong><br/>Primary on left<br/>Secondary on left','rolopress'),
-							"3c-r" => __('<strong>3 Columns</strong><br/>Primary on right<br/>Secondary on right','rolopress'),
-							"3c-b" => __('<strong>3 Columns</strong><br/>Primary on left<br/>Secondary on right','rolopress'),
-							"3c-l-w" => __('<strong>3 Columns</strong><br/><em>Wide</em> Primary on left<br/><em>Wide</em> Secondary on left','rolopress'),
-							"3c-r-w" => __('<strong>3 Columns</strong><br/><em>Wide</em> Primary on right<br/><em>Wide</em> Secondary on right','rolopress'),
-							"3c-b-w" => __('<strong>3 Columns</strong><br/><em>Wide</em> Primary on left<br/><em>Wide</em> Secondary on right','rolopress'),
-							"3c-b-lw" => __('<strong>3 Columns</strong><br/>1 <em>Wide</em> sidebar on left<br/>1 sidebar on right','rolopress'),
-							"3c-b-rw" => __('<strong>3 Columns</strong><br/>1 sidebar on left<br/>1 <em>Wide</em> sidebar on right','rolopress'),
-
-						),
-				),
-						
+    array("name" => __('Layout Options','rolopress'),
+          "desc" => "Set Content and Sidebar Postions",
+          "id" => $shortname."_layout_setting",
+          "type" => "radio",
+          "std" => "3c-b-rw",
+          "options" => array (
+                "1c-b" => '<strong>' . __('1 Column', 'rolopress') . '</strong><br/>' . printf(__('Primary on left %s Secondary on right','rolopress'), '<br />'),
+                "2c-l" => '<strong>' . __('2 Columns', 'rolopress') . '</strong><br/>' . printf(__('Primary on top left %s Secondary on Bottom left','rolopress'), '<br />'),
+                "2c-r" => '<strong>' . __('2 Columns', 'rolopress') . '</strong><br/>' . printf(__('Primary on top right %s Secondary on Bottom right','rolopress'), '<br />'),
+                "2c-l-w" => '<strong>' . __('2 Columns', 'rolopress') . '</strong><br/>' . printf(__('Wide Primary on top left %s Wide Secondary on Bottom left','rolopress'), '<br />'),
+                "2c-r-w" => '<strong>' . __('2 Columns', 'rolopress') . '</strong><br/>' . printf(__('Wide Primary on top right %s Wide Secondary on Bottom right','rolopress'), '<br />'),
+                "3c-l" => '<strong>' . __('3 Columns', 'rolopress') . '</strong><br/>' . printf(__('Primary on left %s Secondary on left','rolopress'), '<br />'),
+                "3c-r" => '<strong>' . __('3 Columns', 'rolopress') . '</strong><br/>' . printf(__('Primary on right %s Secondary on right','rolopress'), '<br />'),
+                "3c-b" => '<strong>' . __('3 Columns', 'rolopress') . '</strong><br/>' . printf(__('Primary on left %s Secondary on right','rolopress'), '<br />'),
+                "3c-l-w" => '<strong>' . __('3 Columns', 'rolopress') . '</strong><br/>' . printf(__('Wide Primary on left %s Wide Secondary on left','rolopress'), '<br />'),
+                "3c-r-w" => '<strong>' . __('3 Columns', 'rolopress') . '</strong><br/>' . printf(__('Wide Primary on right %s Wide Secondary on right','rolopress'), '<br />'),
+                "3c-b-w" => '<strong>' . __('3 Columns', 'rolopress') . '</strong><br/>' . printf(__('Wide Primary on left %s Wide Secondary on right','rolopress'), '<br />'),
+                "3c-b-lw" => '<strong>' . __('3 Columns', 'rolopress') . '</strong><br/>' . printf(__('1 Wide sidebar on left %s 1 sidebar on right','rolopress'), '<br />'),
+                "3c-b-rw" => '<strong>' . __('3 Columns', 'rolopress') . '</strong><br/>' . printf(__('1 sidebar on left %s 1 Wide sidebar on right','rolopress'), '<br />'),
+          ),
+    ),
 );
 
 $default_menu_options = array (
-					
-				array(	"name" => __('Show Contact items','rolopress'),
-						"id" => $shortname."_show_contact_items",
-						"std" => "true",
-						"type" => "checkbox"),
-						
-				array(	"name" => __('Show Company items','rolopress'),
-						"id" => $shortname."_show_company_items",
-						"std" => "true",
-						"type" => "checkbox"),
-						
+    array("name" => __('Show Contact items','rolopress'),
+        "id" => $shortname."_show_contact_items",
+        "std" => "true",
+        "type" => "checkbox"),
+
+    array("name" => __('Show Company items','rolopress'),
+        "id" => $shortname."_show_company_items",
+        "std" => "true",
+        "type" => "checkbox"),
 );
 
-
-
-
-		
-		
-// Display options page
+/**
+ * Display options page
+ *
+ * @global <type> $themename
+ * @global <type> $shortname
+ * @global <type> $layout_options
+ */
 function rolo_menu_layout_add () {
 
     global $themename, $shortname, $layout_options;
@@ -93,10 +87,14 @@ function rolo_menu_layout_add () {
             die;
         }
     }
-
-
 }
 
+/**
+ *
+ * @global <type> $themename
+ * @global <type> $shortname
+ * @global <type> $layout_options
+ */
 function rolo_menu_layout() {
 
     global $themename, $shortname, $layout_options;
@@ -117,51 +115,43 @@ function rolo_menu_layout() {
 	<input type="hidden" name="action" value="save" />
 </p>
 
-
 <?php foreach ($layout_options as $value) {
-
 // Form Layout
 ?>
 <div id="<?php echo $value['id']; ?>_form">
 <?php
-// Radio button
+    // Radio button
 	switch ( $value['type'] ) {
 		case 'radio':
-		?>
-
-				<?php foreach ($value['options'] as $key=>$option) { 
+            foreach ($value['options'] as $key=>$option) {
 				$radio_setting = get_option($value['id']);
-				if($radio_setting != ''){
-					if ($key == get_option($value['id']) ) {
+				if ($radio_setting != ''){
+					if ($key == get_option($value['id'])) {
 						$checked = "checked=\"checked\"";
-						} else {
+					} else {
 							$checked = "";
-						}
-				}else{
-					if($key == $value['std']){
+					}
+				} else {
+					if ($key == $value['std']) {
 						$checked = "checked=\"checked\"";
-					}else{
+					} else {
 						$checked = "";
 					}
-				}?>
+				}
+?>
 				<div class="<?php echo $value['id']; ?>_column">
-				<input type="radio" name="<?php echo $value['id']; ?>" id="<?php echo $value['id'] . $key; ?>" value="<?php echo $key; ?>" <?php echo $checked; ?> /><br/>
-				<img src="<?php echo ROLOPRESS_IMAGES.'/admin/'. $key .'.gif'?>" /><br/>
-				<label for="<?php echo $value['id'] . $key; ?>"><?php echo $option; ?></label>
+                    <input type="radio" name="<?php echo $value['id']; ?>" id="<?php echo $value['id'] . $key; ?>" value="<?php echo $key; ?>" <?php echo $checked; ?> /><br/>
+                    <img src="<?php echo ROLOPRESS_IMAGES.'/admin/'. $key .'.gif'?>" /><br/>
+                    <label for="<?php echo $value['id'] . $key; ?>"><?php echo $option; ?></label>
 				</div>
-				<?php } ?>
-
-		<?php
+<?php
+            }
 		break;
-
 	}
 }
 ?>
-
-</div><!-- <?php echo $value['id']; ?>_form -->
-
-
-
+</div>
+<!-- <?php echo $value['id']; ?>_form -->
 	<p class="submit">
 		<input name="save" type="submit" value="<?php _e('Save changes','rolopress'); ?>" />    
 		<input type="hidden" name="action" value="save" />
@@ -173,13 +163,8 @@ function rolo_menu_layout() {
 		<input type="hidden" name="action" value="reset" />
 	</p>
 </form>
-
-
-
 <?php
 }
-
 add_action('admin_menu' , 'rolo_menu_layout_add'); 
-
 
 ?>
