@@ -239,7 +239,7 @@ function rolo_sorter() {
 			if ($rolo_company_sort_order == "Ascending") { $rolo_company_sort_order = 'ASC'; }
 			else $rolo_company_sort_order = 'DESC';
 	
-		$query = query_posts($query_string . "&meta_key=rolo_company&orderby=$rolo_company_sort_by&order=$rolo_company_sort_order");
+		$query = query_posts($query_string . "&post_type=post&meta_key=rolo_company&orderby=$rolo_company_sort_by&order=$rolo_company_sort_order");
 	};
 	
 	// set sort options for Contacts
@@ -266,7 +266,7 @@ function rolo_sorter() {
 			if ($rolo_contact_sort_order == "Ascending") { $rolo_contact_sort_order = 'ASC'; }
 			else $rolo_contact_sort_order = 'DESC';
 	
-		$query = query_posts($query_string . "&meta_key=$rolo_meta_key&orderby=$rolo_contact_sort_by&order=$rolo_contact_sort_order");
+		$query = query_posts($query_string . "&post_type=post&meta_key=$rolo_meta_key&orderby=$rolo_contact_sort_by&order=$rolo_contact_sort_order");
 	};		
 return $query;
 };

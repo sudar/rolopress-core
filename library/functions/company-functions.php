@@ -224,7 +224,12 @@ function _rolo_save_company_fields() {
 
     $post_id = 0;
     if (isset($_POST['company_id'])) {
+        $old_post = array();
+        
         $post_id = $_POST['company_id'];
+        $old_post['post_title'] = $company_name;
+        $old_post['ID'] = $post_id;
+        $post_id = wp_update_post($old_post);
     } else {
         $new_post = array();
 
@@ -260,7 +265,18 @@ function _rolo_save_company_fields() {
 
         // Set the custom taxonmy for the post
         wp_set_post_terms($post_id, 'Company', 'type');
-        wp_set_post_terms($post_id, $company_name, 'company');
+
+        $current_name = wp_get_post_terms($post_id, 'company');
+        if (count($current_name) > 0) {
+            //update the current taxonomy
+            $new_value = array();
+            $new_value['name'] = $company_name;
+            $new_value['term_id'] = $current_name[0]->term_id;
+            wp_update_term($current_name[0]->term_id, 'company', $new_value);
+        } else {
+            // create the new taxonomy
+            wp_set_post_terms($post_id, $company_name, 'company', true);
+        }
     } else {
 //        TODO - handle error
     }
