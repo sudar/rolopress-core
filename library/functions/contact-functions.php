@@ -217,7 +217,18 @@ function _rolo_save_contact_fields() {
     $post_id = 0;
 
     if (isset($_POST['contact_id'])) {
+        $old_post = array();
+
         $post_id = $_POST['contact_id'];
+
+        $old_post['post_title'] = $_POST['rolo_contact_first_name'];
+        if (isset($_POST['rolo_contact_last_name'])) {
+            $old_post['post_title'] .= ' ' . $_POST['rolo_contact_last_name'];
+        }
+
+        $old_post['ID'] = $post_id;
+        $post_id = wp_update_post($old_post);
+
     } else {
         $new_post = array();
 
