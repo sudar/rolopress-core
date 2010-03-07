@@ -1,18 +1,17 @@
-# Translation of the WordPress theme RoloPress Core Beta 1.1 by <a href="http://slipfire.com/">SlipFire</a> &amp; <a href="http://sudarmuthu.com/">Sudar Muthu</a>.
+# Translation of the WordPress theme RoloPress Core Beta 1.2 by <a href="http://slipfire.com/">SlipFire</a> &amp; <a href="http://sudarmuthu.com/">Sudar Muthu</a>.
 # Copyright (C) 2010 <a href="http://slipfire.com/">SlipFire</a> &amp; <a href="http://sudarmuthu.com/">Sudar Muthu</a>
 # This file is distributed under the same license as the RoloPress Core package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
 #
-#: archive.php:68 author.php:57 category.php:61 index.php:51
+#: library/functions/content-functions.php:122
 #: library/functions/template-functions.php:37
-#: library/functions/template-functions.php:70 search.php:57 single.php:62
-#: tag.php:58 taxonomy-company.php:70 taxonomy-type.php:70 taxonomy.php:66
+#: library/functions/template-functions.php:72
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: RoloPress Core Beta 1.1\n"
+"Project-Id-Version: RoloPress Core Beta 1.2\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/rolopress-core\n"
-"POT-Creation-Date: 2010-03-07 14:28+0000\n"
+"POT-Creation-Date: 2010-03-07 14:32+0000\n"
 "PO-Revision-Date: 2010-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,122 +19,40 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: 404.php:11
-msgid "Not Found"
-msgstr ""
-
-#: 404.php:16
-msgid ""
-"Apologies, but we were unable to find what you were looking for. Perhaps "
-"searching will help."
-msgstr ""
-
-#: archive.php:17
-#, php-format
-msgid "Items Created On: <span>%s</span>"
-msgstr ""
-
-#: archive.php:19 archive.php:21
-#, php-format
-msgid "Items Created In: <span>%s</span>"
-msgstr ""
-
-#: archive.php:23
-msgid "Blog Archives"
-msgstr ""
-
-#: archive.php:30 archive.php:85 author.php:14 author.php:74 category.php:17
-#: category.php:78 index.php:10 index.php:69 search.php:12 search.php:73
-#: tag.php:16 tag.php:75 taxonomy-company.php:17 taxonomy-company.php:131
-#: taxonomy-type.php:17 taxonomy-type.php:88 taxonomy.php:17 taxonomy.php:83
-msgid "Next <span class=\"meta-nav\">&raquo;</span>"
-msgstr ""
-
-#: archive.php:31 archive.php:86 author.php:15 author.php:75 category.php:18
-#: category.php:79 index.php:11 index.php:70 search.php:13 search.php:74
-#: tag.php:17 tag.php:76 taxonomy-company.php:18 taxonomy-company.php:132
-#: taxonomy-type.php:18 taxonomy-type.php:89 taxonomy.php:18 taxonomy.php:84
-msgid "<span class=\"meta-nav\">&laquo;</span> Previous"
-msgstr ""
-
-#: archive.php:50 attachment.php:22 author.php:39 category.php:43 index.php:33
-#: search.php:37 tag.php:40 taxonomy-company.php:48 taxonomy-company.php:98
-#: taxonomy-type.php:48 taxonomy.php:44
-msgid "By "
-msgstr ""
-
-#: archive.php:51 attachment.php:23 author.php:40 category.php:44 index.php:34
-#: search.php:38 tag.php:41 taxonomy-company.php:49 taxonomy-company.php:99
-#: taxonomy-type.php:49 taxonomy.php:45
-#, php-format
-msgid "View all posts by %s"
-msgstr ""
-
-#: archive.php:53 author.php:42 category.php:46 index.php:36 search.php:40
-#: tag.php:43
-msgid "Created on "
-msgstr ""
-
-#: archive.php:59 author.php:48 category.php:52 index.php:42 search.php:48
-#: single.php:33 tag.php:49 taxonomy-company.php:61 taxonomy-company.php:111
-#: taxonomy-type.php:61 taxonomy.php:57
-#, php-format
-msgid "Also assigned to %s"
-msgstr ""
-
-#: archive.php:62 author.php:51 category.php:55 index.php:45 search.php:51
-#: single.php:37 tag.php:52 taxonomy-company.php:64 taxonomy-company.php:114
-#: taxonomy-type.php:64 taxonomy.php:60
-msgid "Tagged: "
-msgstr ""
-
-#: archive.php:66 author.php:55 category.php:59 index.php:49 search.php:55
-#: single.php:60 tag.php:56 taxonomy-company.php:68 taxonomy-company.php:115
-#: taxonomy-type.php:68 taxonomy.php:64
-msgid "Write a Note"
-msgstr ""
-
-#: archive.php:66 archive.php:68 author.php:55 author.php:57 category.php:59
-#: category.php:61 index.php:49 index.php:51 search.php:55 search.php:57
-#: single.php:60 single.php:62 tag.php:56 tag.php:58 taxonomy-company.php:68
-#: taxonomy-company.php:70 taxonomy-company.php:115 taxonomy-type.php:68
-#: taxonomy-type.php:70 taxonomy.php:64 taxonomy.php:66
-msgid "1 Note"
-msgstr ""
-
-#: archive.php:66 archive.php:68 author.php:55 author.php:57 category.php:59
-#: category.php:61 index.php:49 index.php:51 search.php:55 search.php:57
-#: single.php:60 single.php:62 tag.php:56 tag.php:58 taxonomy-company.php:68
-#: taxonomy-company.php:70 taxonomy-company.php:115 taxonomy-type.php:68
-#: taxonomy-type.php:70 taxonomy.php:64 taxonomy.php:66
-msgid "% Notes"
-msgstr ""
-
-#: attachment.php:15
+#: attachment.php:17
 #, php-format
 msgid "Return to %s"
 msgstr ""
 
-#: attachment.php:25 taxonomy-company.php:51 taxonomy-company.php:101
-#: taxonomy-type.php:51 taxonomy.php:47
+#: attachment.php:24 library/functions/content-functions.php:166
+msgid "By "
+msgstr ""
+
+#: attachment.php:25 library/functions/content-functions.php:167
+#, php-format
+msgid "View all posts by %s"
+msgstr ""
+
+#: attachment.php:27
 msgid "Published "
 msgstr ""
 
-#: attachment.php:27 attachment.php:64 page.php:20 single.php:44 single.php:50
+#: attachment.php:29 attachment.php:66
+#: library/functions/content-functions.php:140
+#: library/functions/content-functions.php:146
+#: library/functions/content-functions.php:150
 msgid "Edit"
 msgstr ""
 
-#: attachment.php:42 taxonomy-company.php:56 taxonomy-company.php:106
-#: taxonomy-type.php:56 taxonomy.php:52
+#: attachment.php:44
 msgid "Continue reading <span class=\"meta-nav\">&raquo;</span>"
 msgstr ""
 
-#: attachment.php:43 page.php:19 taxonomy-company.php:44
-#: taxonomy-company.php:94 taxonomy-type.php:44 taxonomy.php:40
+#: attachment.php:45
 msgid "Pages:"
 msgstr ""
 
-#: attachment.php:48
+#: attachment.php:50
 #, php-format
 msgid ""
 "This entry has been assigned to %1$s%2$s. Bookmark the <a href=\"%3$s\" "
@@ -144,11 +61,11 @@ msgid ""
 "\" type=\"application/rss+xml\">RSS feed for this item</a>."
 msgstr ""
 
-#: attachment.php:50
+#: attachment.php:52
 msgid " and tagged "
 msgstr ""
 
-#: attachment.php:56
+#: attachment.php:58
 #, php-format
 msgid ""
 "<a class=\"comment-link\" href=\"#respond\" title=\"Add a note\">Add a note</"
@@ -156,7 +73,7 @@ msgid ""
 "\"Trackback URL for your item\" rel=\"trackback\">Trackback URL</a>."
 msgstr ""
 
-#: attachment.php:58
+#: attachment.php:60
 #, php-format
 msgid ""
 "Notes are closed, but you can leave a trackback: <a class=\"trackback-link\" "
@@ -164,47 +81,17 @@ msgid ""
 "\">Trackback URL</a>."
 msgstr ""
 
-#: attachment.php:60
+#: attachment.php:62
 msgid ""
 "Trackbacks are closed, but you can <a class=\"comment-link\" href=\"#respond"
 "\" title=\"Add a note\">Add a note</a>."
 msgstr ""
 
-#: attachment.php:62
+#: attachment.php:64
 msgid "Both notes and trackbacks are currently closed."
 msgstr ""
 
-#: author.php:21
-#, php-format
-msgid "Items Owned By: <span class=\"vcard\">%s</span>"
-msgstr ""
-
-#: category.php:26
-msgid "Items Categorized As:"
-msgstr ""
-
-#: company-add.php:18
-msgid "Add Company"
-msgstr ""
-
-#: company-add.php:26 company-edit.php:26 contact-add.php:27
-#: contact-edit.php:26
-msgid "Sorry, you don't have permission to view this page."
-msgstr ""
-
-#: company-edit.php:18
-msgid "Edit Company"
-msgstr ""
-
-#: contact-add.php:18 library/functions/contact-functions.php:193
-msgid "Add Contact"
-msgstr ""
-
-#: contact-edit.php:18 library/functions/contact-functions.php:134
-msgid "Edit Contact"
-msgstr ""
-
-#: footer.php:10
+#: footer.php:10 library/admin/admin-branding.php:47
 msgid "Powered by "
 msgstr ""
 
@@ -212,22 +99,279 @@ msgstr ""
 msgid "RoloPress"
 msgstr ""
 
-#: header.php:12
-#, php-format
-msgid "%s latest posts"
-msgstr ""
-
-#: header.php:13
-#, php-format
-msgid "%s latest comments"
-msgstr ""
-
-#: header.php:30
+#: header.php:24
 msgid "Skip to main"
 msgstr ""
 
-#: index.php:18
-msgid "All Items"
+#: library/admin/admin-branding.php:47
+msgid "Documentation"
+msgstr ""
+
+#: library/admin/admin-branding.php:47
+msgid "Support"
+msgstr ""
+
+#: library/admin/admin-dashboard.php:29
+msgid "For RoloPress Help and Support, please visit our "
+msgstr ""
+
+#: library/admin/admin-dashboard.php:30
+msgid "Forums"
+msgstr ""
+
+#: library/admin/admin-dashboard.php:50
+msgid "Subscribe to RSS"
+msgstr ""
+
+#: library/admin/admin-dashboard.php:50
+msgid "Subscribe via Email"
+msgstr ""
+
+#: library/admin/admin-dashboard.php:58
+msgid "RoloPress Help and Support"
+msgstr ""
+
+#: library/admin/admin-dashboard.php:59
+msgid "RoloPress News"
+msgstr ""
+
+#: library/admin/admin-menu/admin-setup-menus.php:16
+#: library/admin/admin-menu/menu-appearance-layout.php:18
+msgid "Layout Options"
+msgstr ""
+
+#: library/admin/admin-menu/admin-setup-menus.php:16
+#: library/admin/admin-menu/menu-appearance-layout.php:111
+msgid "Layout"
+msgstr ""
+
+#: library/admin/admin-menu/admin-setup-menus.php:19
+#: library/admin/admin-menu/menu-settings-menu.php:81
+msgid "Menu Options"
+msgstr ""
+
+#: library/admin/admin-menu/admin-setup-menus.php:19
+#: library/functions/widgets.php:27
+msgid "Menu"
+msgstr ""
+
+#: library/admin/admin-menu/admin-setup-menus.php:20
+#: library/admin/admin-menu/menu-settings-print.php:91
+msgid "Print Options"
+msgstr ""
+
+#: library/admin/admin-menu/admin-setup-menus.php:20
+msgid "Printing"
+msgstr ""
+
+#: library/admin/admin-menu/admin-setup-menus.php:25
+msgid "Contacts"
+msgstr ""
+
+#: library/admin/admin-menu/admin-setup-menus.php:28
+msgid "Contact Settings"
+msgstr ""
+
+#: library/admin/admin-menu/admin-setup-menus.php:28
+#: library/admin/admin-menu/admin-setup-menus.php:36
+#: library/functions/header-functions.php:172
+msgid "Settings"
+msgstr ""
+
+#: library/admin/admin-menu/admin-setup-menus.php:33
+#: library/widgets/companies.php:25 library/widgets/companies.php:101
+msgid "Companies"
+msgstr ""
+
+#: library/admin/admin-menu/admin-setup-menus.php:36
+msgid "Company Settings"
+msgstr ""
+
+#: library/admin/admin-menu/menu-appearance-layout.php:24
+msgid "<strong>1 Column</strong><br/>Primary on left<br/>Secondary on right"
+msgstr ""
+
+#: library/admin/admin-menu/menu-appearance-layout.php:25
+msgid ""
+"<strong>2 Columns</strong><br/>Primary on top left<br/>Secondary on Bottom "
+"left"
+msgstr ""
+
+#: library/admin/admin-menu/menu-appearance-layout.php:26
+msgid ""
+"<strong>2 Columns</strong><br/>Primary on top right<br/>Secondary on Bottom "
+"right"
+msgstr ""
+
+#: library/admin/admin-menu/menu-appearance-layout.php:27
+msgid ""
+"<strong>2 Columns</strong><br/><em>Wide</em> Primary on top left<br/"
+"><em>Wide</em> Secondary on Bottom left"
+msgstr ""
+
+#: library/admin/admin-menu/menu-appearance-layout.php:28
+msgid ""
+"<strong>2 Columns</strong><br/><em>Wide</em> Primary on top right<br/"
+"><em>Wide</em> Secondary on Bottom right"
+msgstr ""
+
+#: library/admin/admin-menu/menu-appearance-layout.php:29
+msgid "<strong>3 Columns</strong><br/>Primary on left<br/>Secondary on left"
+msgstr ""
+
+#: library/admin/admin-menu/menu-appearance-layout.php:30
+msgid "<strong>3 Columns</strong><br/>Primary on right<br/>Secondary on right"
+msgstr ""
+
+#: library/admin/admin-menu/menu-appearance-layout.php:31
+msgid "<strong>3 Columns</strong><br/>Primary on left<br/>Secondary on right"
+msgstr ""
+
+#: library/admin/admin-menu/menu-appearance-layout.php:32
+msgid ""
+"<strong>3 Columns</strong><br/><em>Wide</em> Primary on left<br/><em>Wide</"
+"em> Secondary on left"
+msgstr ""
+
+#: library/admin/admin-menu/menu-appearance-layout.php:33
+msgid ""
+"<strong>3 Columns</strong><br/><em>Wide</em> Primary on right<br/><em>Wide</"
+"em> Secondary on right"
+msgstr ""
+
+#: library/admin/admin-menu/menu-appearance-layout.php:34
+msgid ""
+"<strong>3 Columns</strong><br/><em>Wide</em> Primary on left<br/><em>Wide</"
+"em> Secondary on right"
+msgstr ""
+
+#: library/admin/admin-menu/menu-appearance-layout.php:35
+msgid ""
+"<strong>3 Columns</strong><br/>1 <em>Wide</em> sidebar on left<br/>1 sidebar "
+"on right"
+msgstr ""
+
+#: library/admin/admin-menu/menu-appearance-layout.php:36
+msgid ""
+"<strong>3 Columns</strong><br/>1 sidebar on left<br/>1 <em>Wide</em> sidebar "
+"on right"
+msgstr ""
+
+#: library/admin/admin-menu/menu-appearance-layout.php:45
+msgid "Show Contact items"
+msgstr ""
+
+#: library/admin/admin-menu/menu-appearance-layout.php:50
+msgid "Show Company items"
+msgstr ""
+
+#: library/admin/admin-menu/menu-appearance-layout.php:104
+#: library/admin/admin-menu/menu-companies-settings.php:78
+#: library/admin/admin-menu/menu-contacts-settings.php:78
+#: library/admin/admin-menu/menu-settings-menu.php:73
+#: library/admin/admin-menu/menu-settings-print.php:83
+msgid "settings saved."
+msgstr ""
+
+#: library/admin/admin-menu/menu-appearance-layout.php:105
+#: library/admin/admin-menu/menu-companies-settings.php:79
+#: library/admin/admin-menu/menu-contacts-settings.php:79
+#: library/admin/admin-menu/menu-settings-menu.php:74
+#: library/admin/admin-menu/menu-settings-print.php:84
+msgid "settings reset."
+msgstr ""
+
+#: library/admin/admin-menu/menu-appearance-layout.php:106
+#: library/admin/admin-menu/menu-companies-settings.php:80
+#: library/admin/admin-menu/menu-contacts-settings.php:80
+msgid "widgets reset."
+msgstr ""
+
+#: library/admin/admin-menu/menu-appearance-layout.php:116
+#: library/admin/admin-menu/menu-appearance-layout.php:166
+#: library/admin/admin-menu/menu-companies-settings.php:203
+#: library/admin/admin-menu/menu-contacts-settings.php:203
+#: library/admin/admin-menu/menu-settings-menu.php:201
+#: library/admin/admin-menu/menu-settings-print.php:217
+msgid "Save changes"
+msgstr ""
+
+#: library/admin/admin-menu/menu-appearance-layout.php:172
+#: library/admin/admin-menu/menu-companies-settings.php:209
+#: library/admin/admin-menu/menu-contacts-settings.php:209
+#: library/admin/admin-menu/menu-settings-menu.php:207
+#: library/admin/admin-menu/menu-settings-print.php:223
+msgid "Reset to default"
+msgstr ""
+
+#: library/admin/admin-menu/menu-companies-settings.php:18
+msgid "Sort Company List by"
+msgstr ""
+
+#: library/admin/admin-menu/menu-companies-settings.php:25
+#: library/admin/admin-menu/menu-contacts-settings.php:25
+msgid "Order by"
+msgstr ""
+
+#: library/admin/admin-menu/menu-companies-settings.php:85
+msgid "Company Options"
+msgstr ""
+
+#: library/admin/admin-menu/menu-contacts-settings.php:18
+msgid "Sort Contact List by"
+msgstr ""
+
+#: library/admin/admin-menu/menu-contacts-settings.php:85
+msgid "Contact Options"
+msgstr ""
+
+#: library/admin/admin-menu/menu-posts-edit.php:16
+#: library/functions/admin.php:118
+msgid "Image"
+msgstr ""
+
+#: library/admin/admin-menu/menu-settings-menu.php:17
+msgid "Contact items"
+msgstr ""
+
+#: library/admin/admin-menu/menu-settings-menu.php:22
+msgid "Company items"
+msgstr ""
+
+#: library/admin/admin-menu/menu-settings-menu.php:88
+msgid "Hide these menu items"
+msgstr ""
+
+#: library/admin/admin-menu/menu-settings-print.php:17
+msgid "Primary Sidebar"
+msgstr ""
+
+#: library/admin/admin-menu/menu-settings-print.php:22
+msgid "Secondary Sidebar"
+msgstr ""
+
+#: library/admin/admin-menu/menu-settings-print.php:27
+msgid "Contact-Under Main"
+msgstr ""
+
+#: library/admin/admin-menu/menu-settings-print.php:32
+msgid "Company-Under Main"
+msgstr ""
+
+#: library/admin/admin-menu/menu-settings-print.php:100
+msgid "Print these Widget Areas"
+msgstr ""
+
+#: library/extensions/extended-admin-post-filter/extend-admin-post-filter.php:42
+msgid "View all Owners"
+msgstr ""
+
+#: library/extensions/rolosearch/options.php:22
+msgid "Rolosearch"
+msgstr ""
+
+#: library/extensions/rolosearch/options.php:22
+msgid "RoloSearch"
 msgstr ""
 
 #: library/extensions/rolosearch/options.php:55
@@ -399,13 +543,8 @@ msgstr ""
 msgid "Sprout Venture"
 msgstr ""
 
-#: library/functions/admin.php:118
-msgid "Image"
-msgstr ""
-
 #: library/functions/company-functions.php:26
-#: library/functions/company-functions.php:62
-msgid "company information successfully added."
+msgid "Company information successfully added."
 msgstr ""
 
 #: library/functions/company-functions.php:29
@@ -423,45 +562,52 @@ msgstr ""
 msgid "There was some problem in inserting the notes"
 msgstr ""
 
-#: library/functions/company-functions.php:92
-#: library/functions/company-functions.php:154
-#: library/functions/company-functions.php:273
-#: library/functions/contact-functions.php:91
-#: library/functions/contact-functions.php:151
-#: library/functions/contact-functions.php:271
-msgid "Oops!, We Have a Problem."
+#: library/functions/company-functions.php:62
+msgid "Company information successfully edited."
 msgstr ""
 
-#: library/functions/company-functions.php:135
+#: library/functions/company-functions.php:92
+#: library/functions/company-functions.php:157
+#: library/functions/contact-functions.php:91
+#: library/functions/contact-functions.php:154
+msgid "Mandatory fields are not filled."
+msgstr ""
+
+#: library/functions/company-functions.php:138
 msgid "Edit company"
 msgstr ""
 
-#: library/functions/company-functions.php:199
+#: library/functions/company-functions.php:203
 msgid "Add company"
 msgstr ""
 
-#: library/functions/company-functions.php:280
-#: library/functions/contact-functions.php:278
+#: library/functions/company-functions.php:296
+#: library/functions/contact-functions.php:288
+msgid "Oops!, We Have a Problem."
+msgstr ""
+
+#: library/functions/company-functions.php:303
+#: library/functions/contact-functions.php:295
 msgid "Add notes"
 msgstr ""
 
-#: library/functions/company-functions.php:284
-#: library/functions/contact-functions.php:282
+#: library/functions/company-functions.php:307
+#: library/functions/contact-functions.php:299
 msgid "Notes"
 msgstr ""
 
-#: library/functions/company-functions.php:292
-#: library/functions/contact-functions.php:290
+#: library/functions/company-functions.php:315
+#: library/functions/contact-functions.php:307
 msgid "Add Notes"
 msgstr ""
 
-#: library/functions/company-functions.php:467
-#: library/functions/contact-functions.php:430
+#: library/functions/company-functions.php:490
+#: library/functions/contact-functions.php:447
 msgid "Delete"
 msgstr ""
 
-#: library/functions/company-functions.php:468
-#: library/functions/contact-functions.php:431
+#: library/functions/company-functions.php:491
+#: library/functions/contact-functions.php:448
 msgid "Add another"
 msgstr ""
 
@@ -475,169 +621,321 @@ msgstr ""
 msgid "There was some problem in inserting the contact info"
 msgstr ""
 
-#: library/functions/dynamic-classes.php:412
-#: library/functions/dynamic-classes.php:418
-#: library/functions/dynamic-classes.php:421
-#: library/functions/dynamic-classes.php:427
-#: library/functions/dynamic-classes.php:430
+#: library/functions/contact-functions.php:137
+msgid "Edit Contact"
+msgstr ""
+
+#: library/functions/contact-functions.php:199
+#: library/widgets/add-contact-form.php:26
+msgid "Add Contact"
+msgstr ""
+
+#: library/functions/content-functions.php:26
+msgid "Not Found"
+msgstr ""
+
+#: library/functions/content-functions.php:28
+msgid "All Items"
+msgstr ""
+
+#: library/functions/content-functions.php:30
+msgid "Search Results for: "
+msgstr ""
+
+#: library/functions/content-functions.php:34
+msgid "Items Categorized As: "
+msgstr ""
+
+#: library/functions/content-functions.php:38
+msgid "Items Tagged As: "
+msgstr ""
+
+#: library/functions/content-functions.php:43
+msgid " List"
+msgstr ""
+
+#: library/functions/content-functions.php:47
+msgid "Owned by: "
+msgstr ""
+
+#: library/functions/content-functions.php:50
+msgid "Items Created On: "
+msgstr ""
+
+#: library/functions/content-functions.php:52
+#: library/functions/content-functions.php:54
+msgid "Items Created In: "
+msgstr ""
+
+#: library/functions/content-functions.php:98
+#, php-format
+msgid "Also assigned to %s"
+msgstr ""
+
+#: library/functions/content-functions.php:109
+msgid "Tagged: "
+msgstr ""
+
+#: library/functions/content-functions.php:120
+msgid "Write a Note"
+msgstr ""
+
+#: library/functions/content-functions.php:120
+#: library/functions/content-functions.php:122
+msgid "1 Note"
+msgstr ""
+
+#: library/functions/content-functions.php:120
+#: library/functions/content-functions.php:122 notes.php:24
+msgid "% Notes"
+msgstr ""
+
+#: library/functions/content-functions.php:169
+msgid "Created on "
+msgstr ""
+
+#: library/functions/content-functions.php:192
+#: library/functions/content-functions.php:208
+msgid "Next <span class=\"meta-nav\">&raquo;</span>"
+msgstr ""
+
+#: library/functions/content-functions.php:193
+#: library/functions/content-functions.php:209
+msgid "<span class=\"meta-nav\">&laquo;</span> Previous"
+msgstr ""
+
+#: library/functions/dynamic-classes.php:416
+#: library/functions/dynamic-classes.php:422
+#: library/functions/dynamic-classes.php:425
+#: library/functions/dynamic-classes.php:431
+#: library/functions/dynamic-classes.php:434
 #, php-format
 msgid "Archive for %1$s"
 msgstr ""
 
-#: library/functions/dynamic-classes.php:412
+#: library/functions/dynamic-classes.php:416
 msgid "g:i a"
 msgstr ""
 
-#: library/functions/dynamic-classes.php:415
+#: library/functions/dynamic-classes.php:419
 #, php-format
 msgid "Archive for minute %1$s"
 msgstr ""
 
-#: library/functions/dynamic-classes.php:415
+#: library/functions/dynamic-classes.php:419
 msgid "i"
 msgstr ""
 
-#: library/functions/dynamic-classes.php:418
+#: library/functions/dynamic-classes.php:422
 msgid "g a"
 msgstr ""
 
-#: library/functions/dynamic-classes.php:421
+#: library/functions/dynamic-classes.php:425
 msgid "F jS, Y"
 msgstr ""
 
-#: library/functions/dynamic-classes.php:424
+#: library/functions/dynamic-classes.php:428
 #, php-format
 msgid "Archive for week %1$s of %2$s"
 msgstr ""
 
-#: library/functions/dynamic-classes.php:424
+#: library/functions/dynamic-classes.php:428
 msgid "W"
 msgstr ""
 
-#: library/functions/dynamic-classes.php:424
-#: library/functions/dynamic-classes.php:430
+#: library/functions/dynamic-classes.php:428
+#: library/functions/dynamic-classes.php:434
 msgid "Y"
 msgstr ""
 
-#: library/functions/dynamic-classes.php:435
+#: library/functions/dynamic-classes.php:439
 #, php-format
 msgid "Search results for &quot;%1$s&quot;"
 msgstr ""
 
-#: library/functions/dynamic-classes.php:438
+#: library/functions/dynamic-classes.php:442
 msgid "404 Not Found"
 msgstr ""
 
-#: library/functions/dynamic-classes.php:443
+#: library/functions/dynamic-classes.php:447
 #, php-format
 msgid "%1$s Page %2$s"
 msgstr ""
 
-#: library/functions/template-functions.php:82
-#: library/functions/template-functions.php:203
-#: library/setup/setup-fields.php:285
-msgid "City"
-msgstr ""
-
-#: library/functions/template-functions.php:83
-#: library/functions/template-functions.php:204
-#: library/setup/setup-fields.php:286
-msgid "State"
-msgstr ""
-
-#: library/functions/template-functions.php:84
-#: library/functions/template-functions.php:205
-#: library/setup/setup-fields.php:287
-msgid "Zip"
-msgstr ""
-
-#: library/functions/template-functions.php:85
-#: library/functions/template-functions.php:206
-#: library/setup/setup-fields.php:288
-msgid "Country"
-msgstr ""
-
-#: library/functions/template-functions.php:94
-#: library/functions/template-functions.php:218
-msgid "Mobile"
-msgstr ""
-
-#: library/functions/template-functions.php:95 library/widgets/pages.php:85
-msgid "Home"
-msgstr ""
-
-#: library/functions/template-functions.php:96
-#: library/functions/template-functions.php:219
-msgid "Work"
-msgstr ""
-
-#: library/functions/template-functions.php:97
-#: library/functions/template-functions.php:220
-msgid "Fax"
-msgstr ""
-
-#: library/functions/template-functions.php:98
-#: library/functions/template-functions.php:221
-msgid "Other"
-msgstr ""
-
-#: library/functions/template-functions.php:105
-#: library/functions/template-functions.php:229
-msgid "Yahoo"
-msgstr ""
-
-#: library/functions/template-functions.php:106
-#: library/functions/template-functions.php:230
-msgid "MSN"
-msgstr ""
-
-#: library/functions/template-functions.php:107
-#: library/functions/template-functions.php:231
-msgid "AIM"
-msgstr ""
-
-#: library/functions/template-functions.php:108
-#: library/functions/template-functions.php:232
-msgid "GTalk"
-msgstr ""
-
-#: library/functions/template-functions.php:109
-#: library/functions/template-functions.php:233
-msgid "Twitter"
-msgstr ""
-
-#: library/functions/template-functions.php:113
-#: library/functions/template-functions.php:156
-#: library/functions/template-functions.php:238
-msgid "Website"
-msgstr ""
-
-#: library/functions/template-functions.php:393
+#: library/functions/header-functions.php:103
 msgid ""
 "JavaScript is disabled. For RoloPress to work properly, <a href=\"http://"
 "rolopress.com/forums/topic/inline-editing-not-working\">please enable "
 "JavaScript.</a>"
 msgstr ""
 
-#: library/functions/template-functions.php:415
+#: library/functions/header-functions.php:130
 msgid "Contacts "
 msgstr ""
 
-#: library/functions/template-functions.php:426
+#: library/functions/header-functions.php:144
 msgid "Companies "
 msgstr ""
 
-#: library/functions/template-functions.php:448 library/widgets/search.php:18
+#: library/functions/header-functions.php:167 library/widgets/search.php:18
 #: library/widgets/search.php:84
 msgid "Search"
 msgstr ""
 
-#: library/functions/template-functions.php:498
-msgid "Page "
+#: library/functions/messages.php:21
+msgid "Sorry, you don't have permission to view this page."
 msgstr ""
 
-#: library/functions/widgets.php:27
-msgid "Menu"
+#: library/functions/messages.php:34
+msgid "This page is totally widgetized."
+msgstr ""
+
+#: library/functions/messages.php:34
+msgid "Just drop some widgets here to fill it up."
+msgstr ""
+
+#: library/functions/messages.php:47
+msgid "If you want to get rid of this message, you really need to enter a "
+msgstr ""
+
+#: library/functions/messages.php:48
+msgid "Contact"
+msgstr ""
+
+#: library/functions/messages.php:49
+msgid " and a "
+msgstr ""
+
+#: library/functions/messages.php:50
+msgid "Company."
+msgstr ""
+
+#: library/functions/messages.php:51
+msgid "You may also want to make sure your "
+msgstr ""
+
+#: library/functions/messages.php:52
+msgid "Permalinks"
+msgstr ""
+
+#: library/functions/messages.php:53
+msgid " are set to "
+msgstr ""
+
+#: library/functions/messages.php:54
+msgid "%postname%"
+msgstr ""
+
+#: library/functions/messages.php:54
+msgid " in \"Custom Structure\"."
+msgstr ""
+
+#: library/functions/messages.php:66
+msgid ""
+"Apologies, but we were unable to find what you were looking for. Perhaps "
+"searching will help."
+msgstr ""
+
+#: library/functions/template-functions.php:64
+#: library/functions/template-functions.php:187
+msgid "Export vCard"
+msgstr ""
+
+#: library/functions/template-functions.php:77
+#: library/functions/template-functions.php:201
+msgid "Map"
+msgstr ""
+
+#: library/functions/template-functions.php:85
+#: library/functions/template-functions.php:209
+#: library/setup/setup-fields.php:285
+msgid "City"
+msgstr ""
+
+#: library/functions/template-functions.php:86
+#: library/functions/template-functions.php:210
+#: library/setup/setup-fields.php:286
+msgid "State"
+msgstr ""
+
+#: library/functions/template-functions.php:87
+#: library/functions/template-functions.php:211
+#: library/setup/setup-fields.php:287
+msgid "Zip"
+msgstr ""
+
+#: library/functions/template-functions.php:88
+#: library/functions/template-functions.php:212
+#: library/setup/setup-fields.php:288
+msgid "Country"
+msgstr ""
+
+#: library/functions/template-functions.php:97
+#: library/functions/template-functions.php:224
+#: library/setup/setup-fields.php:84 library/setup/setup-fields.php:197
+msgid "Mobile"
+msgstr ""
+
+#: library/functions/template-functions.php:98
+#: library/setup/setup-fields.php:84 library/widgets/pages.php:85
+msgid "Home"
+msgstr ""
+
+#: library/functions/template-functions.php:99
+#: library/functions/template-functions.php:225
+#: library/setup/setup-fields.php:84 library/setup/setup-fields.php:197
+msgid "Work"
+msgstr ""
+
+#: library/functions/template-functions.php:100
+#: library/functions/template-functions.php:226
+#: library/setup/setup-fields.php:84 library/setup/setup-fields.php:197
+msgid "Fax"
+msgstr ""
+
+#: library/functions/template-functions.php:101
+#: library/functions/template-functions.php:227
+#: library/setup/setup-fields.php:84 library/setup/setup-fields.php:197
+msgid "Other"
+msgstr ""
+
+#: library/functions/template-functions.php:108
+#: library/functions/template-functions.php:235
+#: library/setup/setup-fields.php:112 library/setup/setup-fields.php:225
+msgid "Yahoo"
+msgstr ""
+
+#: library/functions/template-functions.php:109
+#: library/functions/template-functions.php:236
+#: library/setup/setup-fields.php:112 library/setup/setup-fields.php:225
+msgid "MSN"
+msgstr ""
+
+#: library/functions/template-functions.php:110
+#: library/functions/template-functions.php:237
+msgid "AIM"
+msgstr ""
+
+#: library/functions/template-functions.php:111
+#: library/functions/template-functions.php:238
+msgid "GTalk"
+msgstr ""
+
+#: library/functions/template-functions.php:112
+#: library/functions/template-functions.php:239
+#: library/setup/setup-fields.php:130 library/setup/setup-fields.php:243
+msgid "Twitter"
+msgstr ""
+
+#: library/functions/template-functions.php:116
+#: library/functions/template-functions.php:159
+#: library/functions/template-functions.php:244
+#: library/setup/setup-fields.php:102 library/setup/setup-fields.php:215
+msgid "Website"
+msgstr ""
+
+#: library/functions/template-functions.php:424
+msgid "Page "
 msgstr ""
 
 #: library/functions/widgets.php:27
@@ -690,12 +988,64 @@ msgid ""
 "Located under the company header information on the single company page."
 msgstr ""
 
+#: library/setup/setup-fields.php:23
+msgid "First Name"
+msgstr ""
+
+#: library/setup/setup-fields.php:36
+msgid "Last Name"
+msgstr ""
+
+#: library/setup/setup-fields.php:49
+msgid "Title"
+msgstr ""
+
+#: library/setup/setup-fields.php:62 library/setup/setup-fields.php:284
+msgid "Company"
+msgstr ""
+
+#: library/setup/setup-fields.php:75 library/setup/setup-fields.php:188
+msgid "Email"
+msgstr ""
+
+#: library/setup/setup-fields.php:89 library/setup/setup-fields.php:202
+msgid "Phone"
+msgstr ""
+
+#: library/setup/setup-fields.php:112 library/setup/setup-fields.php:225
+msgid "AOL"
+msgstr ""
+
+#: library/setup/setup-fields.php:112 library/setup/setup-fields.php:225
+msgid "Gtalk"
+msgstr ""
+
+#: library/setup/setup-fields.php:112 library/setup/setup-fields.php:225
+msgid "Skype"
+msgstr ""
+
+#: library/setup/setup-fields.php:117
+msgid "IM"
+msgstr ""
+
+#: library/setup/setup-fields.php:144 library/setup/setup-fields.php:257
+msgid "Address"
+msgstr ""
+
+#: library/setup/setup-fields.php:157 library/setup/setup-fields.php:270
+msgid "Background Info"
+msgstr ""
+
+#: library/setup/setup-fields.php:175
+msgid "Company Name"
+msgstr ""
+
 #: library/setup/setup-fields.php:283
 msgid "Rolopress Type"
 msgstr ""
 
-#: library/setup/setup-fields.php:284
-msgid "Company"
+#: library/setup/setup-fields.php:289
+msgid "TEST"
 msgstr ""
 
 #: library/widgets/add-company-form.php:17
@@ -707,11 +1057,15 @@ msgstr ""
 msgid "Add Company Form"
 msgstr ""
 
+#: library/widgets/add-company-form.php:26
+msgid "Add Company"
+msgstr ""
+
 #: library/widgets/add-company-form.php:58
 #: library/widgets/add-contact-form.php:58 library/widgets/calendar.php:54
 #: library/widgets/categories.php:118 library/widgets/companies.php:111
 #: library/widgets/company-details.php:58
-#: library/widgets/contact-details.php:57 library/widgets/owners.php:92
+#: library/widgets/contact-details.php:58 library/widgets/owners.php:92
 #: library/widgets/pages.php:129 library/widgets/recent-items.php:113
 #: library/widgets/recent-notes.php:88 library/widgets/search.php:89
 #: library/widgets/tags.php:99
@@ -789,11 +1143,11 @@ msgstr ""
 msgid "Between:"
 msgstr ""
 
-#: library/widgets/bookmarks.php:220 library/widgets/pages.php:191
+#: library/widgets/bookmarks.php:220 library/widgets/pages.php:193
 msgid "Before Link:"
 msgstr ""
 
-#: library/widgets/bookmarks.php:224 library/widgets/pages.php:195
+#: library/widgets/bookmarks.php:224 library/widgets/pages.php:197
 msgid "After Link:"
 msgstr ""
 
@@ -872,7 +1226,7 @@ msgid "Order By:"
 msgstr ""
 
 #: library/widgets/categories.php:144 library/widgets/companies.php:165
-#: library/widgets/pages.php:168 library/widgets/tags.php:164
+#: library/widgets/pages.php:170 library/widgets/tags.php:164
 msgid "Include:"
 msgstr ""
 
@@ -881,7 +1235,7 @@ msgstr ""
 msgid "Exclude:"
 msgstr ""
 
-#: library/widgets/categories.php:152 library/widgets/pages.php:161
+#: library/widgets/categories.php:152 library/widgets/pages.php:163
 msgid "Exclude Tree:"
 msgstr ""
 
@@ -894,7 +1248,7 @@ msgstr ""
 msgid "Number:"
 msgstr ""
 
-#: library/widgets/categories.php:167 library/widgets/pages.php:172
+#: library/widgets/categories.php:167 library/widgets/pages.php:174
 msgid "Child Of:"
 msgstr ""
 
@@ -906,7 +1260,7 @@ msgstr ""
 msgid "Feed Image:"
 msgstr ""
 
-#: library/widgets/categories.php:180 library/widgets/pages.php:212
+#: library/widgets/categories.php:180 library/widgets/pages.php:214
 msgid "Hierarchical?"
 msgstr ""
 
@@ -932,10 +1286,6 @@ msgstr ""
 
 #: library/widgets/companies.php:23
 msgid "An advanced widget to create a Company list or cloud."
-msgstr ""
-
-#: library/widgets/companies.php:25 library/widgets/companies.php:101
-msgid "Companies"
 msgstr ""
 
 #: library/widgets/companies.php:106
@@ -971,8 +1321,21 @@ msgid "Displays all details for your company."
 msgstr ""
 
 #: library/widgets/company-details.php:19
+#: library/widgets/company-details.php:26
 #: library/widgets/company-details.php:49
 msgid "Company Details"
+msgstr ""
+
+#: library/widgets/company-details.php:54
+msgid ""
+"Displays the details for an individual Company. A good place to place this "
+"widget is the Primary or Secondary sidebars, or Company:Under Main."
+msgstr ""
+
+#: library/widgets/company-details.php:55
+msgid ""
+"This is a Smart Widget, which means it only displays when it is supposed to: "
+"when you view an individual company page."
 msgstr ""
 
 #: library/widgets/contact-details.php:17
@@ -980,8 +1343,21 @@ msgid "Displays all details for your contact."
 msgstr ""
 
 #: library/widgets/contact-details.php:19
+#: library/widgets/contact-details.php:26
 #: library/widgets/contact-details.php:48
 msgid "Contact Details"
+msgstr ""
+
+#: library/widgets/contact-details.php:53
+msgid ""
+"Displays the details for an individual contact. A good place to place this "
+"widget is the Primary or Secondary sidebars, or Contact:Under Main."
+msgstr ""
+
+#: library/widgets/contact-details.php:54
+msgid ""
+"This is a Smart Widget, which means it only displays when it is supposed to: "
+"when you view an individual contact page."
 msgstr ""
 
 #: library/widgets/owners.php:16
@@ -990,8 +1366,15 @@ msgid ""
 "owner lists."
 msgstr ""
 
-#: library/widgets/owners.php:18 library/widgets/owners.php:82
+#: library/widgets/owners.php:18 library/widgets/owners.php:25
+#: library/widgets/owners.php:82
 msgid "Owners"
+msgstr ""
+
+#: library/widgets/owners.php:87
+msgid ""
+"Displays a list of users (owners) that have created items.  Best for "
+"multiuser installs where you would want to see what items each user created."
 msgstr ""
 
 #: library/widgets/owners.php:96
@@ -1020,7 +1403,8 @@ msgid ""
 "links."
 msgstr ""
 
-#: library/widgets/pages.php:20 library/widgets/pages.php:119
+#: library/widgets/pages.php:20 library/widgets/pages.php:28
+#: library/widgets/pages.php:119
 msgid "Pages"
 msgstr ""
 
@@ -1032,27 +1416,33 @@ msgstr ""
 msgid "Sort Order:"
 msgstr ""
 
-#: library/widgets/pages.php:176
+#: library/widgets/pages.php:159
+msgid ""
+"\"Edit Contact\" and \"Edit Company\" pages are automatically excluded, "
+"since they should not be accessed directly."
+msgstr ""
+
+#: library/widgets/pages.php:178
 msgid "Authors:"
 msgstr ""
 
-#: library/widgets/pages.php:180
+#: library/widgets/pages.php:182
 msgid "Meta Key:"
 msgstr ""
 
-#: library/widgets/pages.php:184
+#: library/widgets/pages.php:186
 msgid "Meta Value:"
 msgstr ""
 
-#: library/widgets/pages.php:199
+#: library/widgets/pages.php:201
 msgid "Show date?:"
 msgstr ""
 
-#: library/widgets/pages.php:207
+#: library/widgets/pages.php:209
 msgid "Date Format:"
 msgstr ""
 
-#: library/widgets/pages.php:216
+#: library/widgets/pages.php:218
 msgid "Show home?"
 msgstr ""
 
@@ -1062,7 +1452,8 @@ msgid ""
 "recently created items."
 msgstr ""
 
-#: library/widgets/recent-items.php:18 library/widgets/recent-items.php:103
+#: library/widgets/recent-items.php:18 library/widgets/recent-items.php:24
+#: library/widgets/recent-items.php:103
 msgid "Recent Items"
 msgstr ""
 
@@ -1084,6 +1475,10 @@ msgstr ""
 
 #: library/widgets/recent-items.php:62
 msgid "Select Post"
+msgstr ""
+
+#: library/widgets/recent-items.php:108
+msgid "Displays your recently created items."
 msgstr ""
 
 #: library/widgets/recent-items.php:133
@@ -1108,6 +1503,10 @@ msgstr ""
 #, php-format
 msgctxt "widgets"
 msgid "%1$s : %2$s"
+msgstr ""
+
+#: library/widgets/recent-notes.php:84
+msgid "Displays your recently created notes."
 msgstr ""
 
 #: library/widgets/recent-notes.php:91
@@ -1153,6 +1552,18 @@ msgstr ""
 msgid "Taxonomy:"
 msgstr ""
 
+#: notes.php:14
+msgid "This item is password protected. Enter the password to view notes."
+msgstr ""
+
+#: notes.php:24
+msgid "No Notes"
+msgstr ""
+
+#: notes.php:24
+msgid "One Note"
+msgstr ""
+
 #: notes.php:64
 msgid "Add a Note"
 msgstr ""
@@ -1163,6 +1574,26 @@ msgstr ""
 
 #: notes.php:67
 msgid "Cancel attachment to note"
+msgstr ""
+
+#: notes.php:71
+msgid "You must be "
+msgstr ""
+
+#: notes.php:71
+msgid "logged in "
+msgstr ""
+
+#: notes.php:71
+msgid " to leave a note."
+msgstr ""
+
+#: notes.php:78
+msgid "Logged in as "
+msgstr ""
+
+#: notes.php:78
+msgid "Log out "
 msgstr ""
 
 #: notes.php:120
@@ -1179,33 +1610,6 @@ msgstr ""
 #: notes.php:138
 #, php-format
 msgid "%1$s at %2$s"
-msgstr ""
-
-#: search.php:20
-msgid "Search Results for: "
-msgstr ""
-
-#: search.php:81
-msgid "Nothing Found For: "
-msgstr ""
-
-#: search.php:85
-msgid ""
-"Sorry, but nothing matched your search criteria. Please try again with some "
-"different keywords."
-msgstr ""
-
-#: single.php:16
-msgid "Owner: "
-msgstr ""
-
-#: single.php:17
-#, php-format
-msgid "View all items by %s"
-msgstr ""
-
-#: tag.php:24
-msgid "Items Tagged As:"
 msgstr ""
 
 #. Theme Name of an extension
