@@ -235,6 +235,9 @@ function _rolo_save_company_fields() {
         $post_id = wp_insert_post($new_post);
     }
 
+    // Store only company name as seperate custom field
+    update_post_meta($post_id, 'rolo_company_name', $_POST['rolo_company_name']);
+
     if ($post_id) {
         $new_company = array();
 
