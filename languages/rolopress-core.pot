@@ -3,15 +3,12 @@
 # This file is distributed under the same license as the RoloPress Core package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
 #
-#: library/functions/content-functions.php:122
-#: library/functions/template-functions.php:37
-#: library/functions/template-functions.php:72
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: RoloPress Core Beta 1.2\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/rolopress-core\n"
-"POT-Creation-Date: 2010-03-07 14:32+0000\n"
+"POT-Creation-Date: 2010-03-07 16:19+0000\n"
 "PO-Revision-Date: 2010-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -136,12 +133,12 @@ msgid "RoloPress News"
 msgstr ""
 
 #: library/admin/admin-menu/admin-setup-menus.php:16
-#: library/admin/admin-menu/menu-appearance-layout.php:18
+#: library/admin/admin-menu/menu-appearance-layout.php:15
 msgid "Layout Options"
 msgstr ""
 
 #: library/admin/admin-menu/admin-setup-menus.php:16
-#: library/admin/admin-menu/menu-appearance-layout.php:111
+#: library/admin/admin-menu/menu-appearance-layout.php:109
 msgid "Layout"
 msgstr ""
 
@@ -187,85 +184,98 @@ msgstr ""
 msgid "Company Settings"
 msgstr ""
 
+#: library/admin/admin-menu/menu-appearance-layout.php:21
+msgid "1 Column"
+msgstr ""
+
+#: library/admin/admin-menu/menu-appearance-layout.php:21
+#: library/admin/admin-menu/menu-appearance-layout.php:28
+#, php-format
+msgid "Primary on left %s Secondary on right"
+msgstr ""
+
+#: library/admin/admin-menu/menu-appearance-layout.php:22
+#: library/admin/admin-menu/menu-appearance-layout.php:23
 #: library/admin/admin-menu/menu-appearance-layout.php:24
-msgid "<strong>1 Column</strong><br/>Primary on left<br/>Secondary on right"
+#: library/admin/admin-menu/menu-appearance-layout.php:25
+msgid "2 Columns"
+msgstr ""
+
+#: library/admin/admin-menu/menu-appearance-layout.php:22
+#, php-format
+msgid "Primary on top left %s Secondary on Bottom left"
+msgstr ""
+
+#: library/admin/admin-menu/menu-appearance-layout.php:23
+#, php-format
+msgid "Primary on top right %s Secondary on Bottom right"
+msgstr ""
+
+#: library/admin/admin-menu/menu-appearance-layout.php:24
+#, php-format
+msgid "Wide Primary on top left %s Wide Secondary on Bottom left"
 msgstr ""
 
 #: library/admin/admin-menu/menu-appearance-layout.php:25
-msgid ""
-"<strong>2 Columns</strong><br/>Primary on top left<br/>Secondary on Bottom "
-"left"
+#, php-format
+msgid "Wide Primary on top right %s Wide Secondary on Bottom right"
 msgstr ""
 
 #: library/admin/admin-menu/menu-appearance-layout.php:26
-msgid ""
-"<strong>2 Columns</strong><br/>Primary on top right<br/>Secondary on Bottom "
-"right"
+#: library/admin/admin-menu/menu-appearance-layout.php:27
+#: library/admin/admin-menu/menu-appearance-layout.php:28
+#: library/admin/admin-menu/menu-appearance-layout.php:29
+#: library/admin/admin-menu/menu-appearance-layout.php:30
+#: library/admin/admin-menu/menu-appearance-layout.php:31
+#: library/admin/admin-menu/menu-appearance-layout.php:32
+#: library/admin/admin-menu/menu-appearance-layout.php:33
+msgid "3 Columns"
+msgstr ""
+
+#: library/admin/admin-menu/menu-appearance-layout.php:26
+#, php-format
+msgid "Primary on left %s Secondary on left"
 msgstr ""
 
 #: library/admin/admin-menu/menu-appearance-layout.php:27
-msgid ""
-"<strong>2 Columns</strong><br/><em>Wide</em> Primary on top left<br/"
-"><em>Wide</em> Secondary on Bottom left"
-msgstr ""
-
-#: library/admin/admin-menu/menu-appearance-layout.php:28
-msgid ""
-"<strong>2 Columns</strong><br/><em>Wide</em> Primary on top right<br/"
-"><em>Wide</em> Secondary on Bottom right"
+#, php-format
+msgid "Primary on right %s Secondary on right"
 msgstr ""
 
 #: library/admin/admin-menu/menu-appearance-layout.php:29
-msgid "<strong>3 Columns</strong><br/>Primary on left<br/>Secondary on left"
+#, php-format
+msgid "Wide Primary on left %s Wide Secondary on left"
 msgstr ""
 
 #: library/admin/admin-menu/menu-appearance-layout.php:30
-msgid "<strong>3 Columns</strong><br/>Primary on right<br/>Secondary on right"
+#, php-format
+msgid "Wide Primary on right %s Wide Secondary on right"
 msgstr ""
 
 #: library/admin/admin-menu/menu-appearance-layout.php:31
-msgid "<strong>3 Columns</strong><br/>Primary on left<br/>Secondary on right"
+#, php-format
+msgid "Wide Primary on left %s Wide Secondary on right"
 msgstr ""
 
 #: library/admin/admin-menu/menu-appearance-layout.php:32
-msgid ""
-"<strong>3 Columns</strong><br/><em>Wide</em> Primary on left<br/><em>Wide</"
-"em> Secondary on left"
+#, php-format
+msgid "1 Wide sidebar on left %s 1 sidebar on right"
 msgstr ""
 
 #: library/admin/admin-menu/menu-appearance-layout.php:33
-msgid ""
-"<strong>3 Columns</strong><br/><em>Wide</em> Primary on right<br/><em>Wide</"
-"em> Secondary on right"
+#, php-format
+msgid "1 sidebar on left %s 1 Wide sidebar on right"
 msgstr ""
 
-#: library/admin/admin-menu/menu-appearance-layout.php:34
-msgid ""
-"<strong>3 Columns</strong><br/><em>Wide</em> Primary on left<br/><em>Wide</"
-"em> Secondary on right"
-msgstr ""
-
-#: library/admin/admin-menu/menu-appearance-layout.php:35
-msgid ""
-"<strong>3 Columns</strong><br/>1 <em>Wide</em> sidebar on left<br/>1 sidebar "
-"on right"
-msgstr ""
-
-#: library/admin/admin-menu/menu-appearance-layout.php:36
-msgid ""
-"<strong>3 Columns</strong><br/>1 sidebar on left<br/>1 <em>Wide</em> sidebar "
-"on right"
-msgstr ""
-
-#: library/admin/admin-menu/menu-appearance-layout.php:45
+#: library/admin/admin-menu/menu-appearance-layout.php:39
 msgid "Show Contact items"
 msgstr ""
 
-#: library/admin/admin-menu/menu-appearance-layout.php:50
+#: library/admin/admin-menu/menu-appearance-layout.php:44
 msgid "Show Company items"
 msgstr ""
 
-#: library/admin/admin-menu/menu-appearance-layout.php:104
+#: library/admin/admin-menu/menu-appearance-layout.php:102
 #: library/admin/admin-menu/menu-companies-settings.php:78
 #: library/admin/admin-menu/menu-contacts-settings.php:78
 #: library/admin/admin-menu/menu-settings-menu.php:73
@@ -273,7 +283,7 @@ msgstr ""
 msgid "settings saved."
 msgstr ""
 
-#: library/admin/admin-menu/menu-appearance-layout.php:105
+#: library/admin/admin-menu/menu-appearance-layout.php:103
 #: library/admin/admin-menu/menu-companies-settings.php:79
 #: library/admin/admin-menu/menu-contacts-settings.php:79
 #: library/admin/admin-menu/menu-settings-menu.php:74
@@ -281,14 +291,14 @@ msgstr ""
 msgid "settings reset."
 msgstr ""
 
-#: library/admin/admin-menu/menu-appearance-layout.php:106
+#: library/admin/admin-menu/menu-appearance-layout.php:104
 #: library/admin/admin-menu/menu-companies-settings.php:80
 #: library/admin/admin-menu/menu-contacts-settings.php:80
 msgid "widgets reset."
 msgstr ""
 
-#: library/admin/admin-menu/menu-appearance-layout.php:116
-#: library/admin/admin-menu/menu-appearance-layout.php:166
+#: library/admin/admin-menu/menu-appearance-layout.php:114
+#: library/admin/admin-menu/menu-appearance-layout.php:156
 #: library/admin/admin-menu/menu-companies-settings.php:203
 #: library/admin/admin-menu/menu-contacts-settings.php:203
 #: library/admin/admin-menu/menu-settings-menu.php:201
@@ -296,7 +306,7 @@ msgstr ""
 msgid "Save changes"
 msgstr ""
 
-#: library/admin/admin-menu/menu-appearance-layout.php:172
+#: library/admin/admin-menu/menu-appearance-layout.php:162
 #: library/admin/admin-menu/menu-companies-settings.php:209
 #: library/admin/admin-menu/menu-contacts-settings.php:209
 #: library/admin/admin-menu/menu-settings-menu.php:207
