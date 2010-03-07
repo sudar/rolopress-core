@@ -141,7 +141,9 @@
     display:inline-block;
 }
 
-
+.inlineLabels .errorInput {
+    border: 2px solid #FF0000;
+}
 /* ########################################################################## */
 
 /* Styles for form controls where labels are above the input elements */

@@ -104,5 +104,16 @@ jQuery(document).ready(function() {
 //        id_field: 'rolo_company_id'
     });
 
+    jQuery('#add_contact, #edit_contact').click(function (e) {
+        jQuery('div.mandatory input').each(function () {
+            if (jQuery(this).val() === '') {
+                jQuery('#errorMsg').show();
+                jQuery(this).addClass('errorInput');
+                e.preventDefault();
+            } else {
+                jQuery(this).removeClass('errorInput');
+            }
+        });
+    });
 
 });
