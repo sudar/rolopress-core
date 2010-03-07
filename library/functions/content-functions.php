@@ -119,7 +119,7 @@ function rolo_notes () {
 		if (is_user_logged_in() ) { // only allow logged in users to write notes ?>
 			<span class="notes-link"><?php comments_popup_link( __( 'Write a Note', 'rolopress' ), __( '1 Note', 'rolopress' ), __( '% Notes', 'rolopress' ) ) ?></span><?php
 		} else { ?>
-			<span class="notes-link"><?php comments_popup_link( __( '', 'rolopress' ), __( '1 Note', 'rolopress' ), __( '% Notes', 'rolopress' ) ) ?></span><?php
+			<span class="notes-link"><?php comments_popup_link( '', __( '1 Note', 'rolopress' ), __( '% Notes', 'rolopress' ) ) ?></span><?php
 		};
 	endif;
 }
