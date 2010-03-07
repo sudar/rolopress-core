@@ -1,6 +1,6 @@
 <?php
 /**
- * Menu: Appearance - Layout
+ * Menu: Contacts - Settings
  *
  * @package RoloPress
  * @subpackage Functions
@@ -12,66 +12,58 @@
 
 // Create options
 
-$layout_options = array (
+$contact_options = array (
 
 						
-				array(  "name" => "Layout Options",
-						"desc" => "Set Content and Sidebar Postions",
-						"id" => $shortname."_layout_setting",
-						"type" => "radio",
-						"std" => "3c-b-rw",
-						"options" => array(
-							"1c-b" => "1 Column",
-							"2c-l" => "2 Columns - Sidebars on left",
-							"2c-r" => "2 Columns - Sidebars on right",
-							"2c-l-w" => "2 Columns - <strong>Wide</strong> sidebar on left",
-							"2c-r-w" => "2 Columns - <strong>Wide</strong> sidebar on right",
-							"3c-l" => "3 Columns - Two sidebars on left",
-							"3c-r" => "3 Columns - Two sidebars on right",
-							"3c-b" => "3 Columns - 1 sidebar on left / 1 sidebar on right",
-							"3c-l-w" => "3 Columns - Two <strong>Wide</strong> sidebars on left",
-							"3c-r-w" => "3 Columns - Two <strong>Wide</strong> sidebars on right",
-							"3c-b-w" => "3 Columns - 1 <strong>Wide</strong> sidebar on left / 1 <strong>Wide</strong> sidebar on right",
-							"3c-b-lw" => "3 Columns - 1 <strong>Wide</strong> sidebar on left / 1 sidebar on right",
-							"3c-b-rw" => "3 Columns - 1 sidebar on left / 1 <strong>Wide</strong> sidebar on right",
+				array(	"name" => __('Sort Contact List by','rolopress'),
+						"desc" => "Contact Sort Preference",
+						"id" => $shortname."_contact_sort_by",
+						"type" => "select",
+						"std" => "Last Name",
+						"options" => array("First Name", "Last Name", "Owner", "Date Created", "Last Modified", "ID", "Note Count")),
+						
+				array(	"name" => __('Order by','rolopress'),
+						"desc" => "Contact Sort Order",
+						"id" => $shortname."_contact_sort_order",
+						"type" => "select",
+						"std" => "Ascending",
+						"options" => array("Ascending", "Descending")),
 
-						),
-				),
-);
+		);
 
 		
 		
 // Display options page
-function rolo_menu_layout_add () {
+function rolo_menu_contacts_add () {
 
-    global $themename, $shortname, $layout_options;
+    global $themename, $shortname, $contact_options;
 
 
     if ( $_GET['page'] == basename(__FILE__) ) {
     
         if ( 'save' == $_REQUEST['action'] ) {
 
-                foreach ($layout_options as $value) {
+                foreach ($contact_options as $value) {
                     update_option( $value['id'], $_REQUEST[ $value['id'] ] ); }
 
-                foreach ($layout_options as $value) {
+                foreach ($contact_options as $value) {
                     if( isset( $_REQUEST[ $value['id'] ] ) ) { update_option( $value['id'], $_REQUEST[ $value['id'] ]  ); } else { delete_option( $value['id'] ); } }
 
-                header("Location: themes.php?page=menu-appearance-layout.php&saved=true");
+                header("Location: admin.php?page=menu-contacts-settings.php&saved=true");
                 die;
 
         } else if( 'reset' == $_REQUEST['action'] ) {
 
-            foreach ($layout_options as $value) {
+            foreach ($contact_options as $value) {
                 delete_option( $value['id'] ); }
 
-            header("Location: themes.php?page=menu-appearance-layout.php&reset=true");
+            header("Location: admin.php?page=menu-contacts-settings.php&reset=true");
             die;
 
         } else if ( 'reset_widgets' == $_REQUEST['action'] ) {
             $null = null;
             update_option('sidebars_widgets',$null);
-            header("Location: themes.php?page=menu-appearance-layout.php&reset=true");
+            header("Location: admin.php?page=menu-contacts-settings.php&reset=true");
             die;
         }
     }
@@ -79,9 +71,9 @@ function rolo_menu_layout_add () {
 
 }
 
-function rolo_menu_layout() {
+function rolo_menu_contacts() {
 
-    global $themename, $shortname, $layout_options;
+    global $themename, $shortname, $contact_options;
 
     if ( $_REQUEST['saved'] ) echo '<div id="message" class="updated fade"><p><strong>'.$themename.' '.__('settings saved.','rolopress').'</strong></p></div>';
     if ( $_REQUEST['reset'] ) echo '<div id="message" class="updated fade"><p><strong>'.$themename.' '.__('settings reset.','rolopress').'</strong></p></div>';
@@ -89,14 +81,14 @@ function rolo_menu_layout() {
     
 ?>
 <div class="wrap">
-<?php if ( function_exists('screen_icon') ) screen_icon(); ?>
-<h2><?php _e('Layout', 'rolopress');?></h2>
+<?php echo '<img class="icon32" src=' . ROLOPRESS_IMAGES . '/admin/contact-menu-header.png />' ?>
+<h2><?php _e('Contact Options', 'rolopress');?></h2>
 
 <form method="post" action="">
 
 	<table class="form-table">
 
-<?php foreach ($layout_options as $value) {
+<?php foreach ($contact_options as $value) {
 
 // Set styles for different option types
 
@@ -169,7 +161,7 @@ function rolo_menu_layout() {
 						$checked = "";
 					}
 				}?>
-				<input type="radio" name="<?php echo $value['id']; ?>" id="<?php echo $value['id'] . $key; ?>" value="<?php echo $key; ?>" <?php echo $checked; ?> /><label for="<?php echo $value['id'] . $key; ?>"><?php echo $option; ?></label><img src="<?php echo ROLOPRESS_IMAGES.'/admin/'.$key.'.gif'?>" /><br />
+				<input type="radio" name="<?php echo $value['id']; ?>" id="<?php echo $value['id'] . $key; ?>" value="<?php echo $key; ?>" <?php echo $checked; ?> /><label for="<?php echo $value['id'] . $key; ?>"><?php echo $option; ?></label><br />
 				<?php } ?>
 			</td>
 		</tr>
@@ -214,7 +206,7 @@ function rolo_menu_layout() {
 </form>
 <form method="post" action="">
 	<p class="submit">
-		<input name="reset" type="submit" value="<?php _e('Reset','rolopress'); ?>" />
+		<input name="reset" type="submit" value="<?php _e('Reset to default','rolopress'); ?>" />
 		<input type="hidden" name="action" value="reset" />
 	</p>
 </form>
@@ -223,7 +215,7 @@ function rolo_menu_layout() {
 <?php
 }
 
-add_action('admin_menu' , 'rolo_menu_layout_add'); 
+add_action('admin_menu' , 'rolo_menu_contacts_add'); 
 
 
 ?>

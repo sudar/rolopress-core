@@ -1,6 +1,6 @@
 <?php
 /**
- * Menu: Contacts - Settings
+ * Menu: Settings - Menu
  *
  * @package RoloPress
  * @subpackage Functions
@@ -12,58 +12,53 @@
 
 // Create options
 
-$contact_options = array (
-
+$default_menu_options = array (
+					
+				array(	"name" => __('Contact items','rolopress'),
+						"id" => $shortname."_hide_contact_items",
+						"std" => "checked",
+						"type" => "checkbox"),
 						
-				array(  "name" => "Sort Contact List by",
-						"desc" => "Contact Sort Preference",
-						"id" => $shortname."_contact_sort_by",
-						"type" => "select",
-						"std" => "Last Name",
-						"options" => array("First Name", "Last Name", "Owner", "Date Created", "Last Modified", "ID", "Note Count")),
+				array(	"name" => __('Company items','rolopress'),
+						"id" => $shortname."_hide_company_items",
+						"default" => "true",
+						"type" => "checkbox"),
 						
-				array(  "name" => "Order By",
-						"desc" => "Contact Sort Order",
-						"id" => $shortname."_contact_sort_order",
-						"type" => "select",
-						"std" => "Ascending",
-						"options" => array("Ascending", "Descending")),
-
-		);
+);
 
 		
 		
 // Display options page
-function rolo_menu_contacts_add () {
+function rolo_default_menu_options_add () {
 
-    global $themename, $shortname, $contact_options;
+    global $themename, $shortname, $default_menu_options;
 
 
     if ( $_GET['page'] == basename(__FILE__) ) {
     
         if ( 'save' == $_REQUEST['action'] ) {
 
-                foreach ($contact_options as $value) {
+                foreach ($default_menu_options as $value) {
                     update_option( $value['id'], $_REQUEST[ $value['id'] ] ); }
 
-                foreach ($contact_options as $value) {
+                foreach ($default_menu_options as $value) {
                     if( isset( $_REQUEST[ $value['id'] ] ) ) { update_option( $value['id'], $_REQUEST[ $value['id'] ]  ); } else { delete_option( $value['id'] ); } }
 
-                header("Location: themes.php?page=menu-contacts-settings.php&saved=true");
+                header("Location: options-general.php?page=menu-settings-menu.php&saved=true");
                 die;
 
         } else if( 'reset' == $_REQUEST['action'] ) {
 
-            foreach ($contact_options as $value) {
+            foreach ($default_menu_options as $value) {
                 delete_option( $value['id'] ); }
 
-            header("Location: themes.php?page=menu-contacts-settings.php&reset=true");
+            header("Location: options-general.php?page=menu-settings-menu.php&reset=true");
             die;
 
         } else if ( 'reset_widgets' == $_REQUEST['action'] ) {
             $null = null;
             update_option('sidebars_widgets',$null);
-            header("Location: themes.php?page=menu-contacts-settings.php&reset=true");
+            header("Location: options-general.php?page=menu-settings-menu.php&reset=true");
             die;
         }
     }
@@ -71,24 +66,27 @@ function rolo_menu_contacts_add () {
 
 }
 
-function rolo_menu_contacts() {
+function rolo_default_menu_options() {
 
-    global $themename, $shortname, $contact_options;
+    global $themename, $shortname, $default_menu_options;
 
     if ( $_REQUEST['saved'] ) echo '<div id="message" class="updated fade"><p><strong>'.$themename.' '.__('settings saved.','rolopress').'</strong></p></div>';
     if ( $_REQUEST['reset'] ) echo '<div id="message" class="updated fade"><p><strong>'.$themename.' '.__('settings reset.','rolopress').'</strong></p></div>';
-    if ( $_REQUEST['reset_widgets'] ) echo '<div id="message" class="updated fade"><p><strong>'.$themename.' '.__('widgets reset.','rolopress').'</strong></p></div>';
+    
     
 ?>
+
 <div class="wrap">
-<?php echo '<img class="icon32" src=' . ROLOPRESS_IMAGES . '/admin/contact-menu-header.png />' ?>
-<h2><?php _e('Contact Options', 'rolopress');?></h2>
+	<?php if ( function_exists('screen_icon') ) screen_icon(); ?>
+	<h2><?php _e('Menu Options', 'rolopress'); ?> </h2>
+		<form method="post" action="">
+		
+		<div style="float: right; margin-bottom:10px; padding:0; " id="top-update" class="submit"></div>
 
-<form method="post" action="">
 
-	<table class="form-table">
-
-<?php foreach ($contact_options as $value) {
+				<table>
+					<h3><?php _e('Hide these menu items', 'rolopress'); ?> </h3>
+<?php foreach ($default_menu_options as $value) {
 
 // Set styles for different option types
 
@@ -172,7 +170,6 @@ function rolo_menu_contacts() {
 		case 'checkbox':
 		?>
 		<tr valign="top"> 
-			<th scope="row"><?php echo __($value['name'],'rolopress'); ?></th>
 			<td>
 				<?php
 					if(get_option($value['id'])){
@@ -184,6 +181,7 @@ function rolo_menu_contacts() {
 				<input type="checkbox" name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>" value="true" <?php echo $checked; ?> />
 				<label for="<?php echo $value['id']; ?>"><?php echo __($value['desc'],'rolopress'); ?></label>
 			</td>
+			<th scope="row"><?php echo __($value['name'],'rolopress'); ?></th>
 		</tr>
 		<?php
 		break;
@@ -215,7 +213,8 @@ function rolo_menu_contacts() {
 <?php
 }
 
-add_action('admin_menu' , 'rolo_menu_contacts_add'); 
+
+add_action('admin_menu' , 'rolo_default_menu_options_add'); 
 
 
 ?>

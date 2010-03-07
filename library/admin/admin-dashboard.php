@@ -24,9 +24,13 @@ add_action('wp_dashboard_setup', 'rolo_admin_remove_dashboard_widgets');
 /**
  * Create Help and Support widget for dashboard
  */
-function rolo_admin_dashboard_help() {
-   echo '<p>For RoloPress Help and Support, please visit our <a href="http://www.rolopress.com/forums">Forums</a></p>';
-}
+function rolo_admin_dashboard_help() { ?>
+	<p>
+	<?php _e('For RoloPress Help and Support, please visit our ','rolopress') ?>
+	<a href="http://www.rolopress.com/forums"><?php _e('Forums','rolopress') ?></a>
+	</p>
+   
+<?php };
 
 /**
  * Create News widget for dashboard
@@ -43,9 +47,7 @@ function rolo_admin_dashboard_news_widget () {
 			echo '<p><a class="rsswidget" href="' . $item->get_permalink() . '">' . $item->get_title() . '</a></p><p>' . $item->get_description() . '</p>';
 			
 			}
-		echo '<p class="rolo_dashboard_widget_footer"><a class="rss_subscribe" target="_blank" href="http://feeds.feedburner.com/rolopress">Subscribe to RSS</a> <a class="email_subscribe" target="_blank" href="http://feedburner.google.com/fb/a/mailverify?uri=rolopress&loc=en_US"></a><a target="_blank" href="http://feedburner.google.com/fb/a/mailverify?uri=rolopress&loc=en_US">Subscribe via Email</a></p>';
-     
-			
+		echo '<p class="rolo_dashboard_widget_footer"><a class="rss_subscribe" target="_blank" href="http://feeds.feedburner.com/rolopress">'. __('Subscribe to RSS','rolopress').'</a> <a class="email_subscribe" target="_blank" href="http://feedburner.google.com/fb/a/mailverify?uri=rolopress&loc=en_US"></a><a target="_blank" href="http://feedburner.google.com/fb/a/mailverify?uri=rolopress&loc=en_US">'.__('Subscribe via Email','rolopress').'</a></p>';
 		}
 }
 
@@ -53,8 +55,8 @@ function rolo_admin_dashboard_news_widget () {
  * Add RoloPress custom dashboard widgets
  */
 function rolo_admin_custom_dashboard_widgets() {
-	wp_add_dashboard_widget('rolo_help_widget', 'RoloPress Help and Support', 'rolo_admin_dashboard_help');
-	wp_add_dashboard_widget('rolo_news_widget', 'RoloPress News', 'rolo_admin_dashboard_news_widget');
+	wp_add_dashboard_widget('rolo_help_widget', __('RoloPress Help and Support','rolopress'), 'rolo_admin_dashboard_help');
+	wp_add_dashboard_widget('rolo_news_widget', __('RoloPress News','rolopress'), 'rolo_admin_dashboard_news_widget');
 }
 add_action('wp_dashboard_setup', 'rolo_admin_custom_dashboard_widgets');
 

@@ -8,30 +8,39 @@
  * @subpackage Functions
  */
  
- // Globals for menu pages
+// Globals for menu pages
 $themename = "RoloPress";
 $shortname = "rolo";
 
+// Define constant paths
+define( 'ROLOPRESS_ADMIN_MENU', ROLOPRESS_ADMIN_FUNCTIONS . '/admin-menu' );
 
- // Change to RoloPress branding
-require_once( ROLOPRESS_ADMIN_FUNCTIONS . '/admin-branding.php' );
 
- // Setup custom dashboard
-require_once( ROLOPRESS_ADMIN_FUNCTIONS . '/admin-dashboard.php' );
+// Setup overall menu system
+require_once( ROLOPRESS_ADMIN_MENU . '/admin-setup-menus.php' );
 
- // Setup overall menu system
-require_once( ROLOPRESS_ADMIN_FUNCTIONS . '/admin-setup-menus.php' );
+// Posts menu
+require_once( ROLOPRESS_ADMIN_MENU . '/menu-posts-edit.php' );
 
- // Posts menu
-require_once( ROLOPRESS_ADMIN_FUNCTIONS . '/menu-posts-edit.php' );
+// Appearance menu
+require_once( ROLOPRESS_ADMIN_MENU . '/menu-appearance-layout.php' );
 
- // Appearance menu
-require_once( ROLOPRESS_ADMIN_FUNCTIONS . '/menu-appearance-layout.php' );
+// Settings menu
+require_once( ROLOPRESS_ADMIN_MENU . '/menu-settings-menu.php' );
+require_once( ROLOPRESS_ADMIN_MENU . '/menu-settings-print.php' );
 
- // Contacts menu
-require_once( ROLOPRESS_ADMIN_FUNCTIONS . '/menu-contacts-settings.php' );
+// Contacts menu
+require_once( ROLOPRESS_ADMIN_MENU . '/menu-contacts-settings.php' );
 
- // Companies menu
-require_once( ROLOPRESS_ADMIN_FUNCTIONS . '/menu-companies-settings.php' );
+// Companies menu
+require_once( ROLOPRESS_ADMIN_MENU . '/menu-companies-settings.php' );
+
+
+// only load if viewing admin
+if (function_exists ('login_header') || is_admin()) { 
+require_once( ROLOPRESS_ADMIN_FUNCTIONS . '/admin-branding.php' ); // Change to RoloPress branding
+require_once( ROLOPRESS_ADMIN_FUNCTIONS . '/admin-dashboard.php' ); // Setup custom dashboard
+}
+
 
 ?>

@@ -8,11 +8,6 @@
 <?php rolopress_head(); // rolopress head hook ?>
 <?php wp_head(); // wordpress head hook ?>
 
-	<link rel="stylesheet" type="text/css" href="<?php bloginfo('stylesheet_url'); ?>" media="screen,projection" />
-	<link rel="alternate" type="application/rss+xml" href="<?php bloginfo('rss2_url'); ?>" title="<?php printf( __( '%s latest posts', 'rolopress' ), wp_specialchars( get_bloginfo('name'), 1 ) ); ?>" />
-	<link rel="alternate" type="application/rss+xml" href="<?php bloginfo('comments_rss2_url') ?>" title="<?php printf( __( '%s latest comments', 'rolopress' ), wp_specialchars( get_bloginfo('name'), 1 ) ); ?>" />
-	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
-
 </head>
 
 <body class="<?php rolopress_body_class() ?>">
@@ -22,10 +17,10 @@
 
 	<?php rolopress_before_header(); // before header hook ?>
 	<div id="header">
-				<?php rolopress_header(); // Header hook ?>
+			<?php rolopress_header(); // Header hook ?>
 		<div id="masthead">
 		
-		<div id="access">
+			<div id="access">
 				<div class="skip-link"><a href="#main" title="<?php _e( 'Skip to main', 'rolopress' ) ?>"><?php _e( 'Skip to main', 'rolopress' ) ?></a></div>
 			</div><!-- #access -->
 				

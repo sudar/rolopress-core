@@ -32,9 +32,13 @@ text-decoration:none;
 
 /* =Edit Posts
 -------------------------------------------------------------- */
+.edit-php #doaction{
+margin-right:75%;
+}
 img.avatar {
 border:1px solid #E1E1E1
 }
+
 
 /* =Widgets
 -------------------------------------------------------------- */
@@ -54,6 +58,13 @@ padding:0 0 0 24px;
 .rss_subscribe {
 background:transparent url(../../images/admin/rss.png) no-repeat scroll left;
 padding:0 10px 0 20px;
+}
+
+/* =Menu's
+-------------------------------------------------------------- */
+.form_section {
+width:100%;
+clear:both
 }
 
 /* =Menu: Appearance Layout

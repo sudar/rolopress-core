@@ -59,8 +59,10 @@ function rolo_contact_details($contact_id) {
 ?>
     <form id="contact-form">
         <input type="hidden" name="rolo_post_id" id="rolo_post_id" value ="<?php echo $contact_id;?>" />
-		<ul id="vcard-<?php basename(get_permalink());?>" class="vcard">
+		<ul id="vcard-<?php echo basename(get_permalink());?>" class="vcard">
 
+			<li class="vcard-export"><a class="url-field" href="http://h2vx.com/vcf/<?php the_permalink();?>"><span><?php _e('Export vCard', 'rolopress'); ?></span></a></li>
+			
 			<li class="fn"><?php echo $contact['rolo_contact_first_name'] . ' ' . $contact['rolo_contact_last_name'];?></li>
 			
 			<?php if ($contact['rolo_contact_title'] != "") { ?>
@@ -72,11 +74,12 @@ function rolo_contact_details($contact_id) {
 				
 			<?php $rolo_contact_full_address = $contact['rolo_contact_address'] . get_the_term_list($contact_id, 'city', '', '', '') . get_the_term_list($contact_id, 'state', '', '', '') . get_the_term_list($contact_id, 'zip', '', '', '') . get_the_term_list($contact_id, 'country', '', '', '');
 				if ($rolo_contact_full_address != "") { ?>
-				<li class="map"><a class="url" href="http://maps.google.com/maps?f=q&source=s_q&geocode=&q=<?php echo $contact['rolo_contact_address'] . " " . rolo_get_term_list($contact_id, 'city') . " " . rolo_get_term_list($contact_id, 'state') . " " . rolo_get_term_list($contact_id, 'country')  . " " . rolo_get_term_list($contact_id, 'zip');?> "><span>Map</span></a></li><?php }
+				<li class="map"><a class="url-field" href="http://maps.google.com/maps?f=q&source=s_q&geocode=&q=<?php echo $contact['rolo_contact_address'] . " " . rolo_get_term_list($contact_id, 'city') . " " . rolo_get_term_list($contact_id, 'state') . " " . rolo_get_term_list($contact_id, 'country')  . " " . rolo_get_term_list($contact_id, 'zip');?> "><span><?php _e('Map', 'rolopress'); ?></span></a></li><?php }
 			?>
 									   
 			<li>
 				<ul class="adr group">
+				<span class="type hide">Home</span><!-- certain hcard parsers need this -->
 				<?php
 					if ($contact['rolo_contact_address'] != "") { ?><li class="street-address" id="rolo_contact_address"><?php echo $contact['rolo_contact_address']; ?></li><?php }
                     if (get_the_term_list($contact_id, 'city', '', '', '') != "") { ?><li class="url-field"><span class="type"><?php _e('City', 'rolopress'); ?></span><?php echo get_the_term_list($contact_id, 'city', '', '', '');?><span id="city" class="locality edit-icon" style=""><?php echo rolo_get_term_list($contact_id, 'city'); ?></span></li><?php }
@@ -87,7 +90,7 @@ function rolo_contact_details($contact_id) {
 				</ul>
 			</li>
 			
-			<?php if ($contact['rolo_contact_email'] != "") { ?><li class="email url-field group"><a class="email" href="mailto:<?php echo $contact['rolo_contact_email'];?>"><?php echo $contact['rolo_contact_email'];?> </a><span id="rolo_contact_email" class="edit-icon" style=""><?php echo $contact['rolo_contact_email']; ?></span></li><?php } ?>
+			<?php if ($contact['rolo_contact_email'] != "") { ?><li class="email-address url-field group"><a class="email" href="mailto:<?php echo $contact['rolo_contact_email'];?>"><?php echo $contact['rolo_contact_email'];?> </a><span id="rolo_contact_email" class="edit-icon" style=""><?php echo $contact['rolo_contact_email']; ?></span></li><?php } ?>
             <li>
 				<ul class="tel group">
 				<?php
@@ -181,8 +184,10 @@ function rolo_company_details($company_id) {
         <input type="hidden" name="rolo_post_id" id="rolo_post_id" value ="<?php echo $company_id;?>" />
 		<ul id="vcard-<?php basename(get_permalink());?>" class="vcard">
 
+		<li class="vcard-export"><a class="url-field" href="http://h2vx.com/vcf/<?php the_permalink();?>"><span><?php _e('Export vCard', 'rolopress'); ?></span></a></li>
+		
 			<li>
-                 <a class="fn"
+                 <a class="fn org"
                     <?php if (is_single()) : // show proper links on single or archive company pages ?>
                         href="<?php echo get_term_link($company['rolo_company_name'], 'company'); ?>"><?php echo $company['rolo_company_name'];?>
                     <?php else: ?>
@@ -193,11 +198,12 @@ function rolo_company_details($company_id) {
 	               
 			<?php $rolo_company_full_address = $company['rolo_company_address'] . get_the_term_list($company_id, 'city', '', '', '') . get_the_term_list($company_id, 'state', '', '', '') . get_the_term_list($company_id, 'zip', '', '', '') . get_the_term_list($company_id, 'country', '', '', '');
 				if ($rolo_company_full_address != "") { ?>
-					<li class="map"><a class="url" href="http://maps.google.com/maps?f=q&source=s_q&geocode=&q=<?php echo $company['rolo_company_address'] . " " . rolo_get_term_list($company_id, 'city') . " " . rolo_get_term_list($company_id, 'state') . " " . rolo_get_term_list($company_id, 'country')  . " " . rolo_get_term_list($company_id, 'zip');?> "><span>Map</span></a></li><?php }
+					<li class="map"><a class="url" href="http://maps.google.com/maps?f=q&source=s_q&geocode=&q=<?php echo $company['rolo_company_address'] . " " . rolo_get_term_list($company_id, 'city') . " " . rolo_get_term_list($company_id, 'state') . " " . rolo_get_term_list($company_id, 'country')  . " " . rolo_get_term_list($company_id, 'zip');?> "><span><?php _e('Map', 'rolopress'); ?></span></a></li><?php }
 			?>
 		
 			<li>
 				<ul class="adr group">
+				<span class="type hide">Work</span><!-- certain hcard parsers need this -->
 				<?php
 					if ($company['rolo_company_address'] != "") { ?><li class="street-address" id="rolo_company_address"><?php echo $company['rolo_company_address']; ?></li><?php }
                    	if (get_the_term_list($company_id, 'city', '', '', '') != "") { ?><li class="url-field"><span class="type"><?php _e('City', 'rolopress'); ?></span><?php echo get_the_term_list($company_id, 'city', '', '', '');?><span id="city" class="locality edit-icon" style=""><?php echo rolo_get_term_list($company_id, 'city'); ?></span></li><?php }
@@ -210,7 +216,7 @@ function rolo_company_details($company_id) {
 			</li>
 
 
-            <?php if ($company['rolo_company_email'] != "") { ?><li class="email url-field"><a class="email" href="mailto:<?php echo $company['rolo_company_email'];?>"><?php echo $company['rolo_company_email'];?></a><span id="rolo_company_email" class="edit-icon" style=""><?php echo $company['rolo_company_email']; ?></span></li><?php } ?>
+            <?php if ($company['rolo_company_email'] != "") { ?><li class="email-address url-field"><a class="email" href="mailto:<?php echo $company['rolo_company_email'];?>"><?php echo $company['rolo_company_email'];?></a><span id="rolo_company_email" class="edit-icon" style=""><?php echo $company['rolo_company_email']; ?></span></li><?php } ?>
 
             <li>
                 <ul class="tel group">
@@ -381,86 +387,6 @@ function wt_get_ID_by_page_name($page_name) {
 	return $page_name_id;
 }
 
-/**
- * Displays Javascript disabled warning if user is logged in.
- *
- * @since 0.1
- */
-function rolopress_js_disabled() {
-
-    if (is_user_logged_in() ) { // only display if user is logged in ?>
-		<noscript>
-        <p class="error"><?php _e('JavaScript is disabled. For RoloPress to work properly, <a href="http://rolopress.com/forums/topic/inline-editing-not-working">please enable JavaScript.</a>', 'rolopress');?></p>
-    </noscript>
-<?php }
-}
-add_action('rolopress_before_wrapper', 'rolopress_js_disabled');
-
-/**
- * Assembles default menu
- *
- * @since 0.1
- */
-function rolopress_default_menu() {
-?>
-    <div id="menu">
-<?php 
-    if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('menu') ) {
-?>
-        <ul class="menu_item site-title default_menu">
-            <li id="app-title"><span><a class="default_menu" href="<?php bloginfo( 'url' ) ?>/" title="<?php bloginfo( 'name' ) ?>" rel="home"><?php bloginfo( 'name' ) ?></a></span></li>
-        </ul>
-        <ul class="menu_item menu_main default_menu">
-            <li>
-                <a title="contacts" class="contacts" href="<?php echo get_term_link('Contact', 'type'); ?>"><span><?php _e('Contacts ', 'rolopress'); ?></span></a>
-            </li>
-<?php   
-            if ( current_user_can('publish_posts') ) {
-              // only display if user has proper permissions
-               $add_contact_page = get_page_by_title('Add Contact');
-               $id= $add_contact_page->ID;
-               wp_list_pages("include=$id & title_li=");
-            }
-?>
-            <li>
-                <a title="companies" class="companies" href="<?php echo get_term_link('Company', 'type'); ?>"><span><?php _e('Companies ', 'rolopress'); ?></span></a>
-            </li>
-<?php 
-            if ( current_user_can('publish_posts') ) {
-                // only display if user has proper permissions
-                $add_company_page = get_page_by_title('Add Company');
-                $id= $add_company_page->ID;
-                wp_list_pages("include=$id & title_li=");
-            }
-?>
-        </ul>
-        <ul class="menu_item sub_menu alignright default_menu">
-            <li>
-                <form id="searchform" method="get" action="<?php bloginfo('url') ?>">
-<?php
-                    if (isset($_GET['s'])) {
-                        $s = $_GET['s'];
-                    } else {
-                        $s = '';
-                    }
-?>
-                    <input id="s" name="s" type="text" value="<?php echo wp_specialchars(stripslashes($s), true) ?>" size="20" tabindex="1" />
-                    <input id="searchsubmit" name="searchsubmit" type="submit" value="<?php _e('Search', 'rolopress') ?>" tabindex="2" />
-                </form>
-            </li>
-            <?php global $user_ID, $user_identity, $user_level ?>
-            <?php if ( $user_level >= 1 ) : ?>
-                <li><a title="settings" href="<?php bloginfo('url') ?>/wp-admin/"><span>Settings</span></a></li>
-            <?php endif // $user_level >= 1 ?>
-            <li><?php wp_loginout(); ?></li>
-        </ul>
-<?php
-    }
-?>
-    </div>
-<?php
-}
-add_action('rolopress_before_wrapper', 'rolopress_default_menu');
 
 /**
  * Identifies taxonomy type

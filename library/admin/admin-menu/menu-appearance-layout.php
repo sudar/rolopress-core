@@ -15,29 +15,47 @@
 $layout_options = array (
 
 						
-				array(  "name" => "Layout Options",
+				array(	"name" => __('Layout Options','rolopress'),
 						"desc" => "Set Content and Sidebar Postions",
 						"id" => $shortname."_layout_setting",
 						"type" => "radio",
 						"std" => "3c-b-rw",
 						"options" => array(
-							"1c-b" => "<strong>1 Column</strong><br/>Primary on left<br/>Secondary on right",
-							"2c-l" => "<strong>2 Columns</strong><br/>Primary on top left<br/>Secondary on Bottom left",
-							"2c-r" => "<strong>2 Columns</strong><br/>Primary on top right<br/>Secondary on Bottom right",
-							"2c-l-w" => "<strong>2 Columns</strong><br/><em>Wide</em> Primary on top left<br/><em>Wide</em> Secondary on Bottom left",
-							"2c-r-w" => "<strong>2 Columns</strong><br/><em>Wide</em> Primary on top right<br/><em>Wide</em> Secondary on Bottom right",
-							"3c-l" => "<strong>3 Columns</strong><br/>Primary on left<br/>Secondary on left",
-							"3c-r" => "<strong>3 Columns</strong><br/>Primary on right<br/>Secondary on right",
-							"3c-b" => "<strong>3 Columns</strong><br/>Primary on left<br/>Secondary on right",
-							"3c-l-w" => "<strong>3 Columns</strong><br/><em>Wide</em> Primary on left<br/><em>Wide</em> Secondary on left",
-							"3c-r-w" => "<strong>3 Columns</strong><br/><em>Wide</em> Primary on right<br/><em>Wide</em> Secondary on right",
-							"3c-b-w" => "<strong>3 Columns</strong><br/><em>Wide</em> Primary on left<br/><em>Wide</em> Secondary on right",
-							"3c-b-lw" => "<strong>3 Columns</strong><br/>1 <em>Wide</em> sidebar on left<br/>1 sidebar on right",
-							"3c-b-rw" => "<strong>3 Columns</strong><br/>1 sidebar on left<br/>1 <em>Wide</em> sidebar on right",
+							"1c-b" => __('<strong>1 Column</strong><br/>Primary on left<br/>Secondary on right','rolopress'),
+							"2c-l" => __('<strong>2 Columns</strong><br/>Primary on top left<br/>Secondary on Bottom left','rolopress'),
+							"2c-r" => __('<strong>2 Columns</strong><br/>Primary on top right<br/>Secondary on Bottom right','rolopress'),
+							"2c-l-w" => __('<strong>2 Columns</strong><br/><em>Wide</em> Primary on top left<br/><em>Wide</em> Secondary on Bottom left','rolopress'),
+							"2c-r-w" => __('<strong>2 Columns</strong><br/><em>Wide</em> Primary on top right<br/><em>Wide</em> Secondary on Bottom right','rolopress'),
+							"3c-l" => __('<strong>3 Columns</strong><br/>Primary on left<br/>Secondary on left','rolopress'),
+							"3c-r" => __('<strong>3 Columns</strong><br/>Primary on right<br/>Secondary on right','rolopress'),
+							"3c-b" => __('<strong>3 Columns</strong><br/>Primary on left<br/>Secondary on right','rolopress'),
+							"3c-l-w" => __('<strong>3 Columns</strong><br/><em>Wide</em> Primary on left<br/><em>Wide</em> Secondary on left','rolopress'),
+							"3c-r-w" => __('<strong>3 Columns</strong><br/><em>Wide</em> Primary on right<br/><em>Wide</em> Secondary on right','rolopress'),
+							"3c-b-w" => __('<strong>3 Columns</strong><br/><em>Wide</em> Primary on left<br/><em>Wide</em> Secondary on right','rolopress'),
+							"3c-b-lw" => __('<strong>3 Columns</strong><br/>1 <em>Wide</em> sidebar on left<br/>1 sidebar on right','rolopress'),
+							"3c-b-rw" => __('<strong>3 Columns</strong><br/>1 sidebar on left<br/>1 <em>Wide</em> sidebar on right','rolopress'),
 
 						),
 				),
+						
 );
+
+$default_menu_options = array (
+					
+				array(	"name" => __('Show Contact items','rolopress'),
+						"id" => $shortname."_show_contact_items",
+						"std" => "true",
+						"type" => "checkbox"),
+						
+				array(	"name" => __('Show Company items','rolopress'),
+						"id" => $shortname."_show_company_items",
+						"std" => "true",
+						"type" => "checkbox"),
+						
+);
+
+
+
 
 		
 		
@@ -94,6 +112,11 @@ function rolo_menu_layout() {
 
 <form method="post" action="">
 
+<p class="submit">
+	<input name="save" type="submit" value="<?php _e('Save changes','rolopress'); ?>" />    
+	<input type="hidden" name="action" value="save" />
+</p>
+
 
 <?php foreach ($layout_options as $value) {
 
@@ -138,6 +161,7 @@ function rolo_menu_layout() {
 </div><!-- <?php echo $value['id']; ?>_form -->
 
 
+
 	<p class="submit">
 		<input name="save" type="submit" value="<?php _e('Save changes','rolopress'); ?>" />    
 		<input type="hidden" name="action" value="save" />
@@ -151,7 +175,7 @@ function rolo_menu_layout() {
 </form>
 
 
-</div>
+
 <?php
 }
 

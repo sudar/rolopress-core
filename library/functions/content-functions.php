@@ -19,9 +19,9 @@
 function rolo_pageheader() {
     
     if (is_single()){
-        $pagetitle = '<h2 class="page-title">' . __(get_the_term_list( $post->ID, 'type', ' ', ', ', ': ' ), 'rolopress') . get_the_title() . "</h2>\n";
+        $pagetitle = '<h2 class="page-title">' . __(get_the_term_list( $post->ID, 'type', ' ', ', ', ': ' ), 'rolopress') . __(get_the_title(),'rolopress') . "</h2>\n";
 	} elseif (is_page()) {    
-        $pagetitle = '<h2 class="page-title page">' . get_the_title() . "</h2>\n";
+        $pagetitle = '<h2 class="page-title page">' . __(get_the_title(),'rolopress') . "</h2>\n";
     } elseif (is_404()) {    
         $pagetitle = '<h2 class="page-title 404">' . __('Not Found', 'rolopress') . "</h2>\n";
 	} elseif (is_home()) {    
@@ -40,7 +40,7 @@ function rolo_pageheader() {
 			global $term; 
 			$term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
 			$pagedesc = $term->description;
-        $pagetitle = '<h2 class="page-title taxonomy">' . $term->name . __(' List', 'rolopress') . "</h2>\n";
+        $pagetitle = '<h2 class="page-title taxonomy">' . __($term->name,'rolopress') . __(' List', 'rolopress') . "</h2>\n";
     } elseif (is_author()) {
 			global $wp_query;
 			$curauth = $wp_query->get_queried_object(); // get the authors name
@@ -54,7 +54,7 @@ function rolo_pageheader() {
 					$pagetitle = '<h2 class="page-title year">' . __( 'Items Created In: ', 'rolopress' ) . get_the_time('Y') . "</h2>\n";
 				endif;
     } else 
-				$pagetitle = '<h2 class="page-title page">' . get_the_title() . "</h2>\n";
+				$pagetitle = '<h2 class="page-title page">' . __(get_the_title(),'rolopress') . "</h2>\n";
 
 	
 	
@@ -377,8 +377,16 @@ function rolo_loop() { ?>
 		<li id="entry-0" class="<?php rolopress_entry_class(); ?>">
 			<?php rolopress_before_entry(); // Before entry hook ?>
 				<div class="entry-main">
-					<p><?php _e( 'Apologies, but we were unable to find what you were looking for. Perhaps searching will help.', 'rolopress' ); ?></p>
-					<?php get_search_form(); ?>
+				
+					<?php 
+						// on inital setup if no contacts or companies are created then 
+						// the menu items produce a 404
+						// This will provide instructions on how to fix
+					$referring_page = $_SERVER['REQUEST_URI'];
+					if ($referring_page == "/type") rolo_type_tax_message();
+				
+					else { rolo_404_message(); }?>
+					
 				</div><!-- .entry-main -->
 			<?php rolopress_after_entry(); // After entry hook ?>
 		</li><!-- #entry-0 -->

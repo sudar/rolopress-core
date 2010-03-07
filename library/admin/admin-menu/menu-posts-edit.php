@@ -44,4 +44,5 @@ function rolo_admin_insert_image_column($column_name, $item_id){
 	}
 }
 add_action('manage_posts_custom_column', 'rolo_admin_insert_image_column', 10, 2);
+
 ?>

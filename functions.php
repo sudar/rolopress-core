@@ -35,11 +35,14 @@ define( 'ROLOPRESS_ADMIN_FUNCTIONS', ROLOPRESS_LIBRARY . '/admin' );
 $rolopress_dir = get_bloginfo( 'template_directory' );
 define( 'ROLOPRESS_IMAGES', $rolopress_dir . '/library/images' );
 define( 'ROLOPRESS_CSS', $rolopress_dir . '/library/styles' );
+define( 'ROLOPRESS_CSS_LAYOUTS', ROLOPRESS_CSS . '/layouts' );
+define( 'ROLOPRESS_CSS_PRINT', ROLOPRESS_CSS . '/print' );
 define( 'ROLOPRESS_JS', $rolopress_dir . '/library/js' );
 
 // Define child theme paths
 define( 'ROLOPRESS_CHILD_DIR', get_stylesheet_directory() );
 define( 'ROLOPRESS_CHILD_URL', get_stylesheet_directory_uri() );
+define( 'ROLOPRESS_CHILD_CSS', get_stylesheet_directory_uri() . '/style.css' );
 
 // Load compatability function
 require_once( ROLOPRESS_FUNCTIONS . '/compat.php' );
@@ -76,6 +79,7 @@ require_once( ROLOPRESS_FUNCTIONS . '/widgets.php' );
 // Load extensions
 require_once( ROLOPRESS_EXTENSIONS . '/rolosearch/rolosearch.php' );
 require_once( ROLOPRESS_EXTENSIONS . '/query-multiple-taxonomies/query-multiple-taxonomies.php' );
+require_once( ROLOPRESS_EXTENSIONS . '/extended-admin-post-filter/extend-admin-post-filter.php' );
 require_once( ROLOPRESS_EXTENSIONS . '/twitter-image.php' );
 
 // Load javascript - only if user has proper permissions
