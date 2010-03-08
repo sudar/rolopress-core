@@ -2,6 +2,9 @@
 PRINT: Standard Print styles
 */
 
+body {
+	background:none !important;
+}
 #primary, #secondary {
 	float: left;
 	overflow: hidden;

@@ -52,14 +52,14 @@ Class se_admin {
 			
 		if($_POST['action'] == "save") 
 		{
-			echo "<div class=\"updated fade\" id=\"limitcatsupdatenotice\"><p>" . __('Your default search settings have been <strong>updated</strong> by RoloSearch. </p><p> What are you waiting for? Go check out the new search results!', 'RoloSearch', 'rolopress') . "</p></div>";
+			echo "<div class=\"updated fade\" id=\"limitcatsupdatenotice\"><p>" . __('Your default search settings have been ', 'RoloSearch', 'rolopress') . "<strong>" . __('updated ', 'RoloSearch', 'rolopress') . "</strong>" . __('by RoloSearch.', 'RoloSearch', 'rolopress') . "</p><p>" . __('What are you waiting for? Go check out the new search results!', 'RoloSearch', 'rolopress') . "</p></div>";
 			update_option("se_options", $new_options);
 
 		}
 		
 		if($_POST['action'] == "reset") 
 		{ 
-			echo "<div class=\"updated fade\" id=\"limitcatsupdatenotice\"><p>" . __('Your default search settings have been <strong>updated</strong> by RoloSearch. </p><p> What are you waiting for? Go check out the new search results!', 'RoloSearch', 'rolopress') . "</p></div>";
+			echo "<div class=\"updated fade\" id=\"limitcatsupdatenotice\"><p>" . __('Your default search settings have been ', 'RoloSearch', 'rolopress') . "<strong>" . __('updated ', 'RoloSearch', 'rolopress') . "</strong>" . __(' by RoloSearch.', 'RoloSearch', 'rolopress') . "</p><p>" . __('What are you waiting for? Go check out the new search results!', 'RoloSearch', 'rolopress') . "</p></div>";
 			delete_option("se_options", $new_options);
 		}
 		
@@ -237,7 +237,7 @@ Class se_admin {
 					    <td class="titledesc">&nbsp;&nbsp;&nbsp;<?php _e('Highlight Background Color','RoloSearch', 'rolopress'); ?>:</td>
 					    <td class="forminp">
 					        <input type="text" id="highlight_color" name="highlight_color" value="<?php echo $options['se_highlight_color'];?>" />
-						    <br/><small><?php _e('Examples:<br/>\'#FFF984\' or \'red\'','RoloSearch', 'rolopress'); ?></small>
+						    <br/><small><?php echo __('Examples:','RoloSearch', 'rolopress') . "<br/>'#FFF984'" . __('or \'red\'','RoloSearch', 'rolopress'); ?></small>
 					    </td>
 					</tr>
 				
@@ -271,7 +271,7 @@ Class se_admin {
 					    <td class="forminp">
 					        <small><?php _e('Important: \'Highlight Background Color\' must be blank to use this advanced styling.', 'RoloSearch', 'rolopress') ?></small><br/>
 							<input type="text" id="highlight_style" name="highlight_style" value="<?php echo $options['se_highlight_style'];?>" />
-						    <br/><small><?php _e('Example:<br/>background-color: #FFF984; font-weight: bold; color: #000; padding: 0 1px;','RoloSearch', 'rolopress'); ?></small>
+						    <br/><small><?php echo __('Example:','RoloSearch', 'rolopress') . "<br/>" . __('background-color: #FFF984; font-weight: bold; color: #000; padding: 0 1px;','RoloSearch', 'rolopress'); ?></small>
 					    </td>
 					</tr>
 				</table>

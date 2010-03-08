@@ -100,7 +100,7 @@ function rolopress_js_disabled() {
 
     if (is_user_logged_in() ) { // only display if user is logged in ?>
 <noscript>
-	<p class="error"><?php _e('JavaScript is disabled. For RoloPress to work properly, <a href="http://rolopress.com/forums/topic/inline-editing-not-working">please enable JavaScript.</a>', 'rolopress');?></p>
+	<p class="error"><?php echo __('JavaScript is disabled. For RoloPress to work properly,', 'rolopress') . " <a href=\"http://rolopress.com/forums/topic/inline-editing-not-working\">". __('please enable JavaScript.', 'rolopress') . "</a>";?></p>
 </noscript>
 <?php }
 }

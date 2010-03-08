@@ -16,9 +16,9 @@ Once you activate your RoloPress child theme, a few things automatically happen:
 
 3.  A whole bunch of Custom Fields are assigned to Contacts and Companies. Again, unless you're a developer, don't worry about it... RoloPress will take care of you.
 
-## What's a Theme Framework? RoloPress is a
+## What's a Theme Framework?
 
-*Theme Framework*. Which means it's quite easy for you to modify the look and feel and still keep RoloPress future-proof so you can take advantage of cool new features we implement. RoloPress uses the Parent/Child relationship to make this easy for you. The RoloPress Core theme, the Parent, does all the heavy lifting and is the brains behind RoloPress. All your cool styling changes and modifications should be made in a RoloPress Child Theme. This way, when we introduce new RoloPress features you just overwrite your existing RoloPress Core with the new one, all your changes are safe, and you upgrade your RoloPress. To learn more about Parent-Child Themes you may want to [read this article.][2]
+RoloPress is a *Theme Framework*. Which means it's quite easy for you to modify the look and feel and still keep RoloPress future-proof so you can take advantage of cool new features we implement. RoloPress uses the Parent/Child relationship to make this easy for you. The RoloPress Core theme, the Parent, does all the heavy lifting and is the brains behind RoloPress. All your cool styling changes and modifications should be made in a RoloPress Child Theme. This way, when we introduce new RoloPress features you just overwrite your existing RoloPress Core with the new one, all your changes are safe, and you upgrade your RoloPress. To learn more about Parent-Child Themes you may want to [read this article.][2]
 ## Widget Areas
 
 RoloPress has 6 widget-ready areas, that can be used creatively to customize your RoloPress.
@@ -38,11 +38,12 @@ RoloPress has 6 widget-ready areas, that can be used creatively to customize you
 4.  ### Widget Page
 
     RoloPress actually includes two theme templates that can be built entirely with widgets. One template is a full widget page with no sidebars, the other uses your standard sidebar layout. A real cool way of using this might be to create a "Dashboard" of many widgets and make that your homepage. To use this widget area just a create a Page like normal. Then look for the dropdown menu marked "Template" and select "Widget Page" or "Widget Page: No Sidebars". If you want this to be your homepage, click on "Reading" under the "Settings" menu. Under "Front Page Displays" choose "A Static Page", and select the page you created. "Save Changes" and you're ready to go.
-    *   ### Contact: Under Main
+
+5.  ### Contact: Under Main
 
         Located on any individual contact page, under the contact information
 
-    *   ### Company: Under Main
+6.  ### Company: Under Main
 
         Located on any individual company page, under the contact information</ol>
 

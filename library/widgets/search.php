@@ -106,7 +106,7 @@ class Rolo_Widget_Search extends WP_Widget {
 		</p>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'theme_search' ); ?>">
-			<input class="checkbox" type="checkbox" <?php checked( $instance['theme_search'], true ); ?> id="<?php echo $this->get_field_id( 'theme_search' ); ?>" name="<?php echo $this->get_field_name( 'theme_search' ); ?>" /> <?php _e('Use theme\'s <code>searchform.php</code>?', 'rolopress'); ?></label>
+			<input class="checkbox" type="checkbox" <?php checked( $instance['theme_search'], true ); ?> id="<?php echo $this->get_field_id( 'theme_search' ); ?>" name="<?php echo $this->get_field_name( 'theme_search' ); ?>" /> <?php echo __('Use theme\'s','rolopress') . "<code>searchform.php</code>?</label>";?>
 		</p>
 		</div>
 		<div style="clear:both;">&nbsp;</div>

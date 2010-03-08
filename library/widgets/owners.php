@@ -112,7 +112,7 @@ class Rolo_Widget_Owners extends WP_Widget {
 		<div style="float:right;width:48%;">
 		<p>
 			<label for="<?php echo $this->get_field_id( 'html' ); ?>">
-			<input class="checkbox" type="checkbox" <?php checked( $instance['html'], true ); ?> id="<?php echo $this->get_field_id( 'html' ); ?>" name="<?php echo $this->get_field_name( 'html' ); ?>" /> <?php _e('<acronym title="Hypertext Markup Language">HTML</acronym>?', 'rolopress'); ?> <code>html</code></label>
+			<input class="checkbox" type="checkbox" <?php checked( $instance['html'], true ); ?> id="<?php echo $this->get_field_id( 'html' ); ?>" name="<?php echo $this->get_field_name( 'html'); ?>" /><acronym title="Hypertext Markup Language"><?php echo __(' HTML?','rolopress') . "</acronym>" . "<code>" . __('html','rolopress') . "</code></label>";?>
 		</p>
 		<p>
 			<label for="<?php echo $this->get_field_id( 'optioncount' ); ?>">
