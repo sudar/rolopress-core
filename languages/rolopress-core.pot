@@ -8,85 +8,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: RoloPress Core Beta 1.2\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/rolopress-core\n"
-"POT-Creation-Date: 2010-03-07 16:19+0000\n"
+"POT-Creation-Date: 2010-03-11 13:21+0000\n"
 "PO-Revision-Date: 2010-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-
-#: attachment.php:17
-#, php-format
-msgid "Return to %s"
-msgstr ""
-
-#: attachment.php:24 library/functions/content-functions.php:166
-msgid "By "
-msgstr ""
-
-#: attachment.php:25 library/functions/content-functions.php:167
-#, php-format
-msgid "View all posts by %s"
-msgstr ""
-
-#: attachment.php:27
-msgid "Published "
-msgstr ""
-
-#: attachment.php:29 attachment.php:66
-#: library/functions/content-functions.php:140
-#: library/functions/content-functions.php:146
-#: library/functions/content-functions.php:150
-msgid "Edit"
-msgstr ""
-
-#: attachment.php:44
-msgid "Continue reading <span class=\"meta-nav\">&raquo;</span>"
-msgstr ""
-
-#: attachment.php:45
-msgid "Pages:"
-msgstr ""
-
-#: attachment.php:50
-#, php-format
-msgid ""
-"This entry has been assigned to %1$s%2$s. Bookmark the <a href=\"%3$s\" "
-"title=\"Permalink to %4$s\" rel=\"bookmark\">permalink</a>. Follow any notes "
-"here with the <a href=\"%5$s\" title=\"Comments RSS to %4$s\" rel=\"alternate"
-"\" type=\"application/rss+xml\">RSS feed for this item</a>."
-msgstr ""
-
-#: attachment.php:52
-msgid " and tagged "
-msgstr ""
-
-#: attachment.php:58
-#, php-format
-msgid ""
-"<a class=\"comment-link\" href=\"#respond\" title=\"Add a note\">Add a note</"
-"a> or leave a trackback: <a class=\"trackback-link\" href=\"%s\" title="
-"\"Trackback URL for your item\" rel=\"trackback\">Trackback URL</a>."
-msgstr ""
-
-#: attachment.php:60
-#, php-format
-msgid ""
-"Notes are closed, but you can leave a trackback: <a class=\"trackback-link\" "
-"href=\"%s\" title=\"Trackback URL for your item\" rel=\"trackback"
-"\">Trackback URL</a>."
-msgstr ""
-
-#: attachment.php:62
-msgid ""
-"Trackbacks are closed, but you can <a class=\"comment-link\" href=\"#respond"
-"\" title=\"Add a note\">Add a note</a>."
-msgstr ""
-
-#: attachment.php:64
-msgid "Both notes and trackbacks are currently closed."
-msgstr ""
 
 #: footer.php:10 library/admin/admin-branding.php:47
 msgid "Powered by "
@@ -386,10 +314,25 @@ msgstr ""
 
 #: library/extensions/rolosearch/options.php:55
 #: library/extensions/rolosearch/options.php:62
-msgid ""
-"Your default search settings have been <strong>updated</strong> by "
-"RoloSearch. </p><p> What are you waiting for? Go check out the new search "
-"results!"
+msgid "Your default search settings have been "
+msgstr ""
+
+#: library/extensions/rolosearch/options.php:55
+#: library/extensions/rolosearch/options.php:62
+msgid "updated "
+msgstr ""
+
+#: library/extensions/rolosearch/options.php:55
+msgid "by RoloSearch."
+msgstr ""
+
+#: library/extensions/rolosearch/options.php:55
+#: library/extensions/rolosearch/options.php:62
+msgid "What are you waiting for? Go check out the new search results!"
+msgstr ""
+
+#: library/extensions/rolosearch/options.php:62
+msgid " by RoloSearch."
 msgstr ""
 
 #: library/extensions/rolosearch/options.php:72
@@ -482,7 +425,11 @@ msgid "Highlight Background Color"
 msgstr ""
 
 #: library/extensions/rolosearch/options.php:240
-msgid "Examples:<br/>'#FFF984' or 'red'"
+msgid "Examples:"
+msgstr ""
+
+#: library/extensions/rolosearch/options.php:240
+msgid "or 'red'"
 msgstr ""
 
 #: library/extensions/rolosearch/options.php:250
@@ -516,9 +463,12 @@ msgid ""
 msgstr ""
 
 #: library/extensions/rolosearch/options.php:274
+msgid "Example:"
+msgstr ""
+
+#: library/extensions/rolosearch/options.php:274
 msgid ""
-"Example:<br/>background-color: #FFF984; font-weight: bold; color: #000; "
-"padding: 0 1px;"
+"background-color: #FFF984; font-weight: bold; color: #000; padding: 0 1px;"
 msgstr ""
 
 #: library/extensions/rolosearch/options.php:289
@@ -700,6 +650,21 @@ msgstr ""
 msgid "% Notes"
 msgstr ""
 
+#: library/functions/content-functions.php:140
+#: library/functions/content-functions.php:146
+#: library/functions/content-functions.php:150
+msgid "Edit"
+msgstr ""
+
+#: library/functions/content-functions.php:166
+msgid "By "
+msgstr ""
+
+#: library/functions/content-functions.php:167
+#, php-format
+msgid "View all posts by %s"
+msgstr ""
+
 #: library/functions/content-functions.php:169
 msgid "Created on "
 msgstr ""
@@ -773,10 +738,11 @@ msgid "%1$s Page %2$s"
 msgstr ""
 
 #: library/functions/header-functions.php:103
-msgid ""
-"JavaScript is disabled. For RoloPress to work properly, <a href=\"http://"
-"rolopress.com/forums/topic/inline-editing-not-working\">please enable "
-"JavaScript.</a>"
+msgid "JavaScript is disabled. For RoloPress to work properly,"
+msgstr ""
+
+#: library/functions/header-functions.php:103
+msgid "please enable JavaScript."
 msgstr ""
 
 #: library/functions/header-functions.php:130
@@ -1052,10 +1018,6 @@ msgstr ""
 
 #: library/setup/setup-fields.php:283
 msgid "Rolopress Type"
-msgstr ""
-
-#: library/setup/setup-fields.php:289
-msgid "TEST"
 msgstr ""
 
 #: library/widgets/add-company-form.php:17
@@ -1392,7 +1354,11 @@ msgid "Feed:"
 msgstr ""
 
 #: library/widgets/owners.php:115
-msgid "<acronym title=\"Hypertext Markup Language\">HTML</acronym>?"
+msgid " HTML?"
+msgstr ""
+
+#: library/widgets/owners.php:115
+msgid "html"
 msgstr ""
 
 #: library/widgets/owners.php:119 library/widgets/recent-items.php:142
@@ -1546,7 +1512,7 @@ msgid "Search Submit:"
 msgstr ""
 
 #: library/widgets/search.php:109
-msgid "Use theme's <code>searchform.php</code>?"
+msgid "Use theme's"
 msgstr ""
 
 #: library/widgets/tags.php:16
