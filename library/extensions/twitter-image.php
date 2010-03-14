@@ -84,7 +84,14 @@ class twitterImage {
      * @return <string> the reponse content
      */
     private function get_data($url) {
-        $response = wp_remote_request($url);
+        $response = wp_cache_get($url, 'rolopress');
+        if ($response == false) {
+            // if it is not present in cache, make the request
+            $response = wp_remote_request($url);
+            // set the response in cache
+            wp_cache_add($url, $response, 'rolopress');
+        }
+
         if (is_a($response, 'WP_Error')) {
             return '';
         } else {
