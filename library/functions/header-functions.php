@@ -84,10 +84,10 @@ add_action ('wp_head','rolo_css_print');
 function rolo_css_widget_areas() {
 	global $rolo_print_primary, $rolo_print_secondary, $rolo_print_contact_under_main, $rolo_print_company_under_main;
 	
-	if ($rolo_print_primary == "false") { echo '<link rel="stylesheet" type="text/css" href="' . ROLOPRESS_CSS_PRINT . '/hide-primary.css" media="print" />' . "\r";};
-	if ($rolo_print_secondary == "false") { echo '<link rel="stylesheet" type="text/css" href="' . ROLOPRESS_CSS_PRINT . '/hide-secondary.css" media="print" />' . "\r";};
-	if ($rolo_print_contact_under_main == "false") { echo '<link rel="stylesheet" type="text/css" href="' . ROLOPRESS_CSS_PRINT . '/hide-contact-under-main.css" media="print" />' . "\r";};
-	if ($rolo_print_company_under_main == "false") { echo '<link rel="stylesheet" type="text/css" href="' . ROLOPRESS_CSS_PRINT . '/hide-company-under-main" media="print" />' . "\r";};
+	if (get_option('rolo_print_primary') != "true") { echo '<link rel="stylesheet" type="text/css" href="' . ROLOPRESS_CSS_PRINT . '/hide-primary.css" media="print" />' . "\r";};
+	if (get_option('rolo_print_secondary') != "true") { echo '<link rel="stylesheet" type="text/css" href="' . ROLOPRESS_CSS_PRINT . '/hide-secondary.css" media="print" />' . "\r";};
+	if (get_option('rolo_print_contact_under_main') != "true") { echo '<link rel="stylesheet" type="text/css" href="' . ROLOPRESS_CSS_PRINT . '/hide-contact-under-main.css" media="print" />' . "\r";};
+	if (get_option('rolo_print_company_under_main') != "true") { echo '<link rel="stylesheet" type="text/css" href="' . ROLOPRESS_CSS_PRINT . '/hide-company-under-main" media="print" />' . "\r";};
 }
 add_action ('wp_head','rolo_css_widget_areas');
 
@@ -124,7 +124,7 @@ global $rolo_hide_contact_items, $rolo_hide_company_items;
         </ul>
         <ul class="menu_item menu_main default_menu">
 		
-		<?php if ($rolo_hide_contact_items != "true") {?>
+		<?php if (get_option('rolo_hide_contact_items') != "true") {?>
 	
             <li>
 			<a title="contacts" class="contacts" href="<?php echo get_term_link('Contact', 'type'); ?>"><span><?php _e('Contacts ', 'rolopress'); ?></span></a>
@@ -139,7 +139,7 @@ global $rolo_hide_contact_items, $rolo_hide_company_items;
 		}
 ?>
 
-		<?php if ($rolo_hide_company_items != "true") {?>
+		<?php if (get_option('rolo_hide_company_items') != "true") {?>
             <li>
                 <a title="companies" class="companies" href="<?php echo get_term_link('Company', 'type'); ?>"><span><?php _e('Companies ', 'rolopress'); ?></span></a>
             </li>

@@ -1,6 +1,6 @@
 <?php
 /**
- * Menu: Settings - Menu
+ * Menu: Settings - Search
  *
  * @package RoloPress
  * @subpackage Functions
@@ -12,57 +12,54 @@
 
 // Create options
 
-$default_menu_options = array (
+$rolosearch_options = array (
 					
-				array(	"name" => __('Contact items','rolopress'),
-						"id" => $shortname."_hide_contact_items",
-						"std" => "checked",
-						"type" => "checkbox"),
-						
-				array(	"name" => __('Company items','rolopress'),
-						"id" => $shortname."_hide_company_items",
-						"default" => "true",
-						"type" => "checkbox"),
-						
+				array(	"name" => __('Disable RoloSearch','rolopress'),
+						"desc" => __('If you are going to use a search plugin, you should disable RoloSearch to eliminate conflicts'),
+						"id" => $shortname."_disable_rolosearch",
+						"type" => "select",
+						"std" => "Use RoloSearch",
+						"options" => array("Use RoloSearch", "Disable RoloSearch")),					
 );
 
 		
 		
 // Display options page
-function rolo_default_menu_options_add () {
+function rolo_search_options_add () {
 
-    global $themename, $shortname, $default_menu_options;
+    global $themename, $shortname, $rolosearch_options;
 
 
     if ( $_GET['page'] == basename(__FILE__) ) {
     
         if ( 'save' == $_REQUEST['action'] ) {
 
-                foreach ($default_menu_options as $value) {
+                foreach ($rolosearch_options as $value) {
                     update_option( $value['id'], $_REQUEST[ $value['id'] ] ); }
 
-                foreach ($default_menu_options as $value) {
+                foreach ($rolosearch_options as $value) {
                     if( isset( $_REQUEST[ $value['id'] ] ) ) { update_option( $value['id'], $_REQUEST[ $value['id'] ]  ); } else { delete_option( $value['id'] ); } }
 
-                header("Location: options-general.php?page=menu-settings-menu.php&saved=true");
+                header("Location: options-general.php?page=menu-settings-search.php&saved=true");
                 die;
 
         } else if( 'reset' == $_REQUEST['action'] ) {
 
-            foreach ($default_menu_options as $value) {
+            foreach ($rolosearch_options as $value) {
                 delete_option( $value['id'] ); }
 
-            header("Location: options-general.php?page=menu-settings-menu.php&reset=true");
+            header("Location: options-general.php?page=menu-settings-search.php&reset=true");
             die;
+
         }
     }
 
 
 }
 
-function rolo_default_menu_options() {
+function rolo_search_options() {
 
-    global $themename, $shortname, $default_menu_options;
+    global $themename, $shortname, $rolosearch_options;
 
     if ( $_REQUEST['saved'] ) echo '<div id="message" class="updated fade"><p><strong>'.$themename.' '.__('settings saved.','rolopress').'</strong></p></div>';
     if ( $_REQUEST['reset'] ) echo '<div id="message" class="updated fade"><p><strong>'.$themename.' '.__('settings reset.','rolopress').'</strong></p></div>';
@@ -72,15 +69,21 @@ function rolo_default_menu_options() {
 
 <div class="wrap">
 	<?php if ( function_exists('screen_icon') ) screen_icon(); ?>
-	<h2><?php _e('Menu Options', 'rolopress'); ?> </h2>
+	<h2><?php _e('Search Options', 'rolopress'); ?> </h2>
 		<form method="post" action="">
 		
 		<div style="float: right; margin-bottom:10px; padding:0; " id="top-update" class="submit"></div>
 
+				<table style="margin-bottom: 20px;"></table>
+				<table class="widefat fixed">
+					<thead>
+						<tr class="title">
+							<th scope="col" class="manage-column"><?php _e('Disable RoloSearch', 'rolopress'); ?></th>
+							<th scope="col" class="manage-column"></th>
+						</tr>
+					</thead>
 
-				<table>
-					<h3><?php _e('Hide these menu items', 'rolopress'); ?> </h3>
-<?php foreach ($default_menu_options as $value) {
+<?php foreach ($rolosearch_options as $value) {
 
 // Set styles for different option types
 
@@ -104,7 +107,7 @@ function rolo_default_menu_options() {
 		case 'select':
 		?>
 		<tr valign="top">
-			<th scope="row"><label for="<?php echo $value['id']; ?>"><?php echo __($value['name'],'rolopress'); ?></label></th>
+			<th scope="row"><label for="<?php echo $value['id']; ?>"><?php echo __($value['desc'],'rolopress'); ?></label></th>
 				<td>
 					<select name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>">
 					<?php foreach ($value['options'] as $option) { ?>
@@ -164,6 +167,7 @@ function rolo_default_menu_options() {
 		case 'checkbox':
 		?>
 		<tr valign="top"> 
+			<th scope="row"><?php echo __($value['desc'],'rolopress'); ?></th>
 			<td>
 				<?php
 					if(get_option($value['id'])){
@@ -173,9 +177,7 @@ function rolo_default_menu_options() {
 					}
 				?>
 				<input type="checkbox" name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>" value="true" <?php echo $checked; ?> />
-				<label for="<?php echo $value['id']; ?>"><?php echo __($value['desc'],'rolopress'); ?></label>
 			</td>
-			<th scope="row"><?php echo __($value['name'],'rolopress'); ?></th>
 		</tr>
 		<?php
 		break;
@@ -208,7 +210,7 @@ function rolo_default_menu_options() {
 }
 
 
-add_action('admin_menu' , 'rolo_default_menu_options_add'); 
+add_action('admin_menu' , 'rolo_search_options_add'); 
 
 
 ?>

@@ -65,11 +65,6 @@ function rolo_print_options_add () {
             header("Location: options-general.php?page=menu-settings-print.php&reset=true");
             die;
 
-        } else if ( 'reset_widgets' == $_REQUEST['action'] ) {
-            $null = null;
-            update_option('sidebars_widgets',$null);
-            header("Location: options-general.php?page=menu-settings-print.php&reset=true");
-            die;
         }
     }
 

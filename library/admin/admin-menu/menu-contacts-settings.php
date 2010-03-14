@@ -59,12 +59,6 @@ function rolo_menu_contacts_add () {
 
             header("Location: admin.php?page=menu-contacts-settings.php&reset=true");
             die;
-
-        } else if ( 'reset_widgets' == $_REQUEST['action'] ) {
-            $null = null;
-            update_option('sidebars_widgets',$null);
-            header("Location: admin.php?page=menu-contacts-settings.php&reset=true");
-            die;
         }
     }
 

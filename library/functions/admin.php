@@ -18,9 +18,10 @@
  
 function rolo_admin_css() { // Admin CSS
     $admin_css = ROLOPRESS_CSS . '/admin/admin.css';
-    echo '<link rel="stylesheet" type="text/css" href="' . $admin_css . '" />';
+    echo '<link rel="stylesheet" type="text/css" href="' . $admin_css . '" media="screen" />';
 }
-add_action('admin_head', 'rolo_admin_css');
+add_action('admin_head', 'rolo_admin_css'); // admin area
+add_action("login_head","rolo_admin_loginpage_head"); //login screen
 
 
 function rolo_loginpage_logo_link($url) { // Return a url; in this case the homepage url of wordpress
@@ -33,13 +34,6 @@ function rolo_admin_loginpage_logo_title($message){ // Return title text for the
      return get_bloginfo('name');
 }
 add_filter("login_headertitle","rolo_admin_loginpage_logo_title");
-
-
-function rolo_admin_loginpage_head(){ // Admin CSS for login page
-    $admin_css = ROLOPRESS_CSS . '/admin/admin.css';
-    echo '<link rel="stylesheet" type="text/css" href="' . $admin_css . '" media="screen" />';
-}
-add_action("login_head","rolo_admin_loginpage_head");
 
 
 function rolo_admin_footer() { // Add custom footer to Admin
@@ -103,47 +97,4 @@ function rolo_admin_custom_dashboard_widgets() {
 }
 add_action('wp_dashboard_setup', 'rolo_admin_custom_dashboard_widgets');
 
-
-/**
- * Edit Posts Page
- */
- 
-/**
- * Set / Unset columns
- * 
- * @credits http://johnathanandersendesign.com
- */
-function rolo_admin_setup_custom_column($defaults) {
-    unset($defaults['date']);
-	$defaults['image'] = __('Image', 'rolopress'); // adds new column to column array
-	return $defaults;
-}
-add_filter('manage_posts_columns', 'rolo_admin_setup_custom_column');
-
-
-/**
- * Add item image
- * 
- * @credits http://johnathanandersendesign.com
- */
-function rolo_admin_insert_image_column($column_name, $item_id){
-
-	if( $column_name == 'image' ) {
-	
-		if (!$item_id) {
-			return false;
-		}
-				
-		if ( rolo_type_is('contact') ) { 	
-			$contact = get_post_meta($item_id, 'rolo_contact', true);
-	        echo get_avatar (($contact['rolo_contact_email']),48, rolo_get_twitter_profile_image($contact['rolo_contact_twitter'],  ROLOPRESS_IMAGES . "/icons/rolo-contact.jpg"));
-		}
-		
-		if ( rolo_type_is('company') ) { 	
-			$company = get_post_meta($item_id, 'rolo_company', true);
-	        echo get_avatar (($company['rolo_company_email']),48, rolo_get_twitter_profile_image($company['rolo_company_twitter'], ROLOPRESS_IMAGES . "/icons/rolo-company.jpg"));
-		}
-	}
-}
-add_action('manage_posts_custom_column', 'rolo_admin_insert_image_column', 10, 2);
 ?>

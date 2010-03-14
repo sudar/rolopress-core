@@ -18,19 +18,19 @@ $layout_options = array (
           "type" => "radio",
           "std" => "3c-b-rw",
           "options" => array (
-                "1c-b" => '<strong>' . __('1 Column', 'rolopress') . '</strong><br/>' . printf(__('Primary on left %s Secondary on right','rolopress'), '<br />'),
-                "2c-l" => '<strong>' . __('2 Columns', 'rolopress') . '</strong><br/>' . printf(__('Primary on top left %s Secondary on Bottom left','rolopress'), '<br />'),
-                "2c-r" => '<strong>' . __('2 Columns', 'rolopress') . '</strong><br/>' . printf(__('Primary on top right %s Secondary on Bottom right','rolopress'), '<br />'),
-                "2c-l-w" => '<strong>' . __('2 Columns', 'rolopress') . '</strong><br/>' . printf(__('Wide Primary on top left %s Wide Secondary on Bottom left','rolopress'), '<br />'),
-                "2c-r-w" => '<strong>' . __('2 Columns', 'rolopress') . '</strong><br/>' . printf(__('Wide Primary on top right %s Wide Secondary on Bottom right','rolopress'), '<br />'),
-                "3c-l" => '<strong>' . __('3 Columns', 'rolopress') . '</strong><br/>' . printf(__('Primary on left %s Secondary on left','rolopress'), '<br />'),
-                "3c-r" => '<strong>' . __('3 Columns', 'rolopress') . '</strong><br/>' . printf(__('Primary on right %s Secondary on right','rolopress'), '<br />'),
-                "3c-b" => '<strong>' . __('3 Columns', 'rolopress') . '</strong><br/>' . printf(__('Primary on left %s Secondary on right','rolopress'), '<br />'),
-                "3c-l-w" => '<strong>' . __('3 Columns', 'rolopress') . '</strong><br/>' . printf(__('Wide Primary on left %s Wide Secondary on left','rolopress'), '<br />'),
-                "3c-r-w" => '<strong>' . __('3 Columns', 'rolopress') . '</strong><br/>' . printf(__('Wide Primary on right %s Wide Secondary on right','rolopress'), '<br />'),
-                "3c-b-w" => '<strong>' . __('3 Columns', 'rolopress') . '</strong><br/>' . printf(__('Wide Primary on left %s Wide Secondary on right','rolopress'), '<br />'),
-                "3c-b-lw" => '<strong>' . __('3 Columns', 'rolopress') . '</strong><br/>' . printf(__('1 Wide sidebar on left %s 1 sidebar on right','rolopress'), '<br />'),
-                "3c-b-rw" => '<strong>' . __('3 Columns', 'rolopress') . '</strong><br/>' . printf(__('1 sidebar on left %s 1 Wide sidebar on right','rolopress'), '<br />'),
+                "1c-b" => '<strong>' . __('1 Column', 'rolopress') . '</strong><br/>' . sprintf(__('Primary on left %s Secondary on right','rolopress'), '<br />'),
+                "2c-l" => '<strong>' . __('2 Columns', 'rolopress') . '</strong><br/>' . sprintf(__('Primary on top left %s Secondary on Bottom left','rolopress'), '<br />'),
+                "2c-r" => '<strong>' . __('2 Columns', 'rolopress') . '</strong><br/>' . sprintf(__('Primary on top right %s Secondary on Bottom right','rolopress'), '<br />'),
+                "2c-l-w" => '<strong>' . __('2 Columns', 'rolopress') . '</strong><br/>' . sprintf(__('Wide Primary on top left %s Wide Secondary on Bottom left','rolopress'), '<br />'),
+                "2c-r-w" => '<strong>' . __('2 Columns', 'rolopress') . '</strong><br/>' . sprintf(__('Wide Primary on top right %s Wide Secondary on Bottom right','rolopress'), '<br />'),
+                "3c-l" => '<strong>' . __('3 Columns', 'rolopress') . '</strong><br/>' . sprintf(__('Primary on left %s Secondary on left','rolopress'), '<br />'),
+                "3c-r" => '<strong>' . __('3 Columns', 'rolopress') . '</strong><br/>' . sprintf(__('Primary on right %s Secondary on right','rolopress'), '<br />'),
+                "3c-b" => '<strong>' . __('3 Columns', 'rolopress') . '</strong><br/>' . sprintf(__('Primary on left %s Secondary on right','rolopress'), '<br />'),
+                "3c-l-w" => '<strong>' . __('3 Columns', 'rolopress') . '</strong><br/>' . sprintf(__('Wide Primary on left %s Wide Secondary on left','rolopress'), '<br />'),
+                "3c-r-w" => '<strong>' . __('3 Columns', 'rolopress') . '</strong><br/>' . sprintf(__('Wide Primary on right %s Wide Secondary on right','rolopress'), '<br />'),
+                "3c-b-w" => '<strong>' . __('3 Columns', 'rolopress') . '</strong><br/>' . sprintf(__('Wide Primary on left %s Wide Secondary on right','rolopress'), '<br />'),
+                "3c-b-lw" => '<strong>' . __('3 Columns', 'rolopress') . '</strong><br/>' . sprintf(__('1 Wide sidebar on left %s 1 sidebar on right','rolopress'), '<br />'),
+                "3c-b-rw" => '<strong>' . __('3 Columns', 'rolopress') . '</strong><br/>' . sprintf(__('1 sidebar on left %s 1 Wide sidebar on right','rolopress'), '<br />'),
           ),
     ),
 );
@@ -77,12 +77,6 @@ function rolo_menu_layout_add () {
             foreach ($layout_options as $value) {
                 delete_option( $value['id'] ); }
 
-            header("Location: themes.php?page=menu-appearance-layout.php&reset=true");
-            die;
-
-        } else if ( 'reset_widgets' == $_REQUEST['action'] ) {
-            $null = null;
-            update_option('sidebars_widgets',$null);
             header("Location: themes.php?page=menu-appearance-layout.php&reset=true");
             die;
         }
