@@ -79,12 +79,6 @@ function rolo_menu_layout_add () {
 
             header("Location: themes.php?page=menu-appearance-layout.php&reset=true");
             die;
-
-        } else if ( 'reset_widgets' == $_REQUEST['action'] ) {
-            $null = null;
-            update_option('sidebars_widgets',$null);
-            header("Location: themes.php?page=menu-appearance-layout.php&reset=true");
-            die;
         }
     }
 }

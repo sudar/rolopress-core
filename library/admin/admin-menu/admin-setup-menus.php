@@ -18,7 +18,7 @@ function rolo_add_admin_menu() { // adds all top level and sub menus
   /** Settings Menu **/
 	add_submenu_page("options-general.php", __('Menu Options','rolopress'), __('Menu','rolopress'), 7, 'menu-settings-menu.php', 'rolo_default_menu_options');
 	add_submenu_page("options-general.php", __('Print Options','rolopress'), __('Printing','rolopress'), 7, 'menu-settings-print.php', 'rolo_print_options');
- 
+	add_submenu_page("options-general.php", __('Search Options','rolopress'), __('Search','rolopress'), 7, 'menu-settings-search.php', 'rolo_search_options');
  
  /** Contacts Menu **/
 	// Add a new top-level menu:
