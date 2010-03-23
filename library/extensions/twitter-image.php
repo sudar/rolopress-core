@@ -6,7 +6,6 @@
  * Date : August 17,2009
  *
  * Modifyed by Sudar <http://sudarmuthu.com/rolopress> to make it more comapatible with WordPress API
- * TODO: Cache the image
  */
 
 class twitterImage {
