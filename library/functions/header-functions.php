@@ -41,8 +41,7 @@ add_action ('wp_head','rolo_css_standard');
  * @since 1.2
  */
 function rolo_css_theme_layout() {
-	global $rolo_layout_setting;
-	echo '<link rel="stylesheet" type="text/css" href="' . ROLOPRESS_CSS_LAYOUTS . "/" . $rolo_layout_setting . '.css" media="screen,projection" />' . "\r";
+	echo '<link rel="stylesheet" type="text/css" href="' . ROLOPRESS_CSS_LAYOUTS . "/" . get_option('rolo_layout_setting') . '.css" media="screen,projection" />' . "\r";
 }
 add_action ('wp_head','rolo_css_theme_layout');
 

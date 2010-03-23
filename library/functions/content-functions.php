@@ -221,12 +221,15 @@ global $wp_query; $total_pages = $wp_query->max_num_pages; if ( $total_pages > 1
  * @since 1.2
  */
 function rolo_sorter() {
+	global $query_string;
+
 
 	// set sort options for Companies
 	if ( rolo_type_is( 'company' ) ) {
 
-		global $query_string, $rolo_company_sort_by, $rolo_company_sort_order;
-
+		$rolo_company_sort_by = get_option('rolo_company_sort_by');
+		$rolo_company_sort_order = get_option('rolo_company_sort_order');
+			
 			// Sort by
 			if ($rolo_company_sort_by == "Name") { $rolo_company_sort_by = 'title'; }
 			elseif ($rolo_company_sort_by == "Owner") {  $rolo_company_sort_by = 'author'; }
@@ -245,8 +248,8 @@ function rolo_sorter() {
 	// set sort options for Contacts
 	if ( rolo_type_is( 'contact' ) ) {
 
-		global $query_string, $rolo_meta_key, $rolo_contact_sort_by, $rolo_contact_sort_order;
-		
+		$rolo_contact_sort_by = get_option('rolo_contact_sort_by');
+		$rolo_contact_sort_order = get_option('rolo_contact_sort_order');
 		$rolo_meta_key='rolo_contact'; //set default for rolo_meta_key
 		
 			// Sort by
@@ -280,11 +283,9 @@ return $query;
  * @since 1.2
  */
 function rolo_loop() { ?>
-
 <?php if (!is_single() ) { // This class is not needed on single pages ?>
 	<ul class="item-list">
 <?php }; ?>
-
 <?php if (have_posts()) :  ?>
 <?php while (have_posts()) : the_post(); ?>
 

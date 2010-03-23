@@ -10,9 +10,9 @@
 class Rolo_Widget_Recent_Notes extends WP_Widget {
 
 	function Rolo_Widget_Recent_Notes() {
-		$widget_ops = array('classname' => 'recent-notes', 'description' => __('Displays Your Most Recent Notes', 'rolopress') );
-		$this->WP_Widget('rolopress-recent-notes', __('Recent Notes', 'rolopress'), $widget_ops);
-		$this->alt_option_name = 'widget_recent_notes';
+		$widget_ops = array( 'classname' => 'recent-notes', 'description' => __('Displays Your Most Recent Notes', 'rolopress') );
+		$control_ops = array( 'width' => 500, 'height' => 350, 'id_base' => 'rolopress-recent-notes' );
+		$this->WP_Widget( 'rolopress-recent-notes', __('Recent Notes', 'rolopress'), $widget_ops, $control_ops );
 
 		add_action( 'comment_post', array(&$this, 'flush_widget_cache') );
 		add_action( 'wp_set_comment_status', array(&$this, 'flush_widget_cache') );
@@ -45,6 +45,7 @@ class Rolo_Widget_Recent_Notes extends WP_Widget {
 		<?php echo $before_widget;
 			if ( $title )
 			echo "\n\t\t\t" . $before_title . $title . $after_title;
+			
 			echo "\n\t\t\t\t" . '<ul class="xoxo recent-notes">';
 			
 			if ( $comments ) : foreach ( (array) $comments as $comment) :
@@ -93,4 +94,4 @@ class Rolo_Widget_Recent_Notes extends WP_Widget {
 		<small><?php _e('(at most 15)', 'rolopress'); ?></small></p>
 <?php
 	}
-}
+}?>

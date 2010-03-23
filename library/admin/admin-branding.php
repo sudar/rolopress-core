@@ -18,9 +18,10 @@
  
 function rolo_admin_css() { // Admin CSS
     $admin_css = ROLOPRESS_CSS . '/admin/admin.css';
-    echo '<link rel="stylesheet" type="text/css" href="' . $admin_css . '" />';
+    echo '<link rel="stylesheet" type="text/css" href="' . $admin_css . '" media="screen" />';
 }
-add_action('admin_head', 'rolo_admin_css');
+add_action('admin_head', 'rolo_admin_css'); //admin css
+add_action("login_head","rolo_admin_css"); //login css
 
 
 function rolo_loginpage_logo_link($url) { // Return a url; in this case the homepage url of wordpress
@@ -34,20 +35,11 @@ function rolo_admin_loginpage_logo_title($message){ // Return title text for the
 }
 add_filter("login_headertitle","rolo_admin_loginpage_logo_title");
 
-
-function rolo_admin_loginpage_head(){ // Admin CSS for login page
-    $admin_css = ROLOPRESS_CSS . '/admin/admin.css';
-    echo '<link rel="stylesheet" type="text/css" href="' . $admin_css . '" media="screen" />';
-}
-add_action("login_head","rolo_admin_loginpage_head");
-
-
 function rolo_admin_footer() { // Add custom footer to Admin
   $theme_data = get_theme_data(ROLOPRESS_DIR . '/style.css');
    echo '<div id="footer-rolo">'.__('Powered by ','rolopress').'<a href="http://www.rolopress.com">RoloPress '.$theme_data['Version'].'</a> | <a href="http://rolopress.com/documentation">'.__('Documentation','rolopress').'</a> | <a href="http://rolopress.com/forums">'.__('Support','rolopress').'</a></div>';
 }
 add_action('admin_footer', 'rolo_admin_footer');
-
 
 
 ?>

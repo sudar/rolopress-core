@@ -1,5 +1,3 @@
-<?php include (ROLOPRESS_ADMIN_FUNCTIONS .'/get-options-core.php'); ?>
-<?php include (ROLOPRESS_ADMIN_FUNCTIONS .'/get-options-taxonomy.php'); ?>
 <?php get_header(); ?>
 	
 	<?php rolopress_before_container(); // Before container hook ?>

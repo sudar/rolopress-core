@@ -1,4 +1,3 @@
-<?php include (ROLOPRESS_ADMIN_FUNCTIONS .'/get-options-core.php'); ?>
 <?php get_header(); ?>
 
 <?php echo $rolo_feedburner;?>
