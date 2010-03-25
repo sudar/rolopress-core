@@ -1,4 +1,4 @@
-# Translation of the WordPress theme RoloPress Core Beta 1.2 by <a href="http://slipfire.com/">SlipFire</a> &amp; <a href="http://sudarmuthu.com/">Sudar Muthu</a>.
+# Translation of the WordPress theme RoloPress Core Beta 1.22 by <a href="http://slipfire.com/">SlipFire</a> &amp; <a href="http://sudarmuthu.com/">Sudar Muthu</a>.
 # Copyright (C) 2010 <a href="http://slipfire.com/">SlipFire</a> &amp; <a href="http://sudarmuthu.com/">Sudar Muthu</a>
 # This file is distributed under the same license as the RoloPress Core package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: RoloPress Core Beta 1.2\n"
+"Project-Id-Version: RoloPress Core Beta 1.22\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/rolopress-core\n"
-"POT-Creation-Date: 2010-03-11 13:21+0000\n"
+"POT-Creation-Date: 2010-03-25 15:30+0000\n"
 "PO-Revision-Date: 2010-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: footer.php:10 library/admin/admin-branding.php:47
+#: footer.php:10 library/admin/admin-branding.php:40
 msgid "Powered by "
 msgstr ""
 
@@ -28,11 +28,11 @@ msgstr ""
 msgid "Skip to main"
 msgstr ""
 
-#: library/admin/admin-branding.php:47
+#: library/admin/admin-branding.php:40
 msgid "Documentation"
 msgstr ""
 
-#: library/admin/admin-branding.php:47
+#: library/admin/admin-branding.php:40
 msgid "Support"
 msgstr ""
 
@@ -66,12 +66,12 @@ msgid "Layout Options"
 msgstr ""
 
 #: library/admin/admin-menu/admin-setup-menus.php:16
-#: library/admin/admin-menu/menu-appearance-layout.php:109
+#: library/admin/admin-menu/menu-appearance-layout.php:103
 msgid "Layout"
 msgstr ""
 
 #: library/admin/admin-menu/admin-setup-menus.php:19
-#: library/admin/admin-menu/menu-settings-menu.php:81
+#: library/admin/admin-menu/menu-settings-menu.php:75
 msgid "Menu Options"
 msgstr ""
 
@@ -81,12 +81,23 @@ msgid "Menu"
 msgstr ""
 
 #: library/admin/admin-menu/admin-setup-menus.php:20
-#: library/admin/admin-menu/menu-settings-print.php:91
+#: library/admin/admin-menu/menu-settings-print.php:86
 msgid "Print Options"
 msgstr ""
 
 #: library/admin/admin-menu/admin-setup-menus.php:20
 msgid "Printing"
+msgstr ""
+
+#: library/admin/admin-menu/admin-setup-menus.php:21
+#: library/admin/admin-menu/menu-settings-search.php:72
+msgid "Search Options"
+msgstr ""
+
+#: library/admin/admin-menu/admin-setup-menus.php:21
+#: library/functions/header-functions.php:166 library/widgets/search.php:18
+#: library/widgets/search.php:84
+msgid "Search"
 msgstr ""
 
 #: library/admin/admin-menu/admin-setup-menus.php:25
@@ -99,12 +110,13 @@ msgstr ""
 
 #: library/admin/admin-menu/admin-setup-menus.php:28
 #: library/admin/admin-menu/admin-setup-menus.php:36
-#: library/functions/header-functions.php:172
+#: library/functions/header-functions.php:171
 msgid "Settings"
 msgstr ""
 
 #: library/admin/admin-menu/admin-setup-menus.php:33
-#: library/widgets/companies.php:25 library/widgets/companies.php:101
+#: library/widgets/companies.php:25 library/widgets/companies.php:32
+#: library/widgets/companies.php:102
 msgid "Companies"
 msgstr ""
 
@@ -203,42 +215,46 @@ msgstr ""
 msgid "Show Company items"
 msgstr ""
 
-#: library/admin/admin-menu/menu-appearance-layout.php:102
-#: library/admin/admin-menu/menu-companies-settings.php:78
-#: library/admin/admin-menu/menu-contacts-settings.php:78
-#: library/admin/admin-menu/menu-settings-menu.php:73
-#: library/admin/admin-menu/menu-settings-print.php:83
+#: library/admin/admin-menu/menu-appearance-layout.php:96
+#: library/admin/admin-menu/menu-companies-settings.php:73
+#: library/admin/admin-menu/menu-contacts-settings.php:72
+#: library/admin/admin-menu/menu-settings-menu.php:67
+#: library/admin/admin-menu/menu-settings-print.php:78
+#: library/admin/admin-menu/menu-settings-search.php:64
 msgid "settings saved."
 msgstr ""
 
-#: library/admin/admin-menu/menu-appearance-layout.php:103
-#: library/admin/admin-menu/menu-companies-settings.php:79
-#: library/admin/admin-menu/menu-contacts-settings.php:79
-#: library/admin/admin-menu/menu-settings-menu.php:74
-#: library/admin/admin-menu/menu-settings-print.php:84
+#: library/admin/admin-menu/menu-appearance-layout.php:97
+#: library/admin/admin-menu/menu-companies-settings.php:74
+#: library/admin/admin-menu/menu-contacts-settings.php:73
+#: library/admin/admin-menu/menu-settings-menu.php:68
+#: library/admin/admin-menu/menu-settings-print.php:79
+#: library/admin/admin-menu/menu-settings-search.php:65
 msgid "settings reset."
 msgstr ""
 
-#: library/admin/admin-menu/menu-appearance-layout.php:104
-#: library/admin/admin-menu/menu-companies-settings.php:80
-#: library/admin/admin-menu/menu-contacts-settings.php:80
+#: library/admin/admin-menu/menu-appearance-layout.php:98
+#: library/admin/admin-menu/menu-companies-settings.php:75
+#: library/admin/admin-menu/menu-contacts-settings.php:74
 msgid "widgets reset."
 msgstr ""
 
-#: library/admin/admin-menu/menu-appearance-layout.php:114
-#: library/admin/admin-menu/menu-appearance-layout.php:156
-#: library/admin/admin-menu/menu-companies-settings.php:203
-#: library/admin/admin-menu/menu-contacts-settings.php:203
-#: library/admin/admin-menu/menu-settings-menu.php:201
-#: library/admin/admin-menu/menu-settings-print.php:217
+#: library/admin/admin-menu/menu-appearance-layout.php:108
+#: library/admin/admin-menu/menu-appearance-layout.php:150
+#: library/admin/admin-menu/menu-companies-settings.php:198
+#: library/admin/admin-menu/menu-contacts-settings.php:197
+#: library/admin/admin-menu/menu-settings-menu.php:195
+#: library/admin/admin-menu/menu-settings-print.php:212
+#: library/admin/admin-menu/menu-settings-search.php:197
 msgid "Save changes"
 msgstr ""
 
-#: library/admin/admin-menu/menu-appearance-layout.php:162
-#: library/admin/admin-menu/menu-companies-settings.php:209
-#: library/admin/admin-menu/menu-contacts-settings.php:209
-#: library/admin/admin-menu/menu-settings-menu.php:207
-#: library/admin/admin-menu/menu-settings-print.php:223
+#: library/admin/admin-menu/menu-appearance-layout.php:156
+#: library/admin/admin-menu/menu-companies-settings.php:204
+#: library/admin/admin-menu/menu-contacts-settings.php:203
+#: library/admin/admin-menu/menu-settings-menu.php:201
+#: library/admin/admin-menu/menu-settings-print.php:218
+#: library/admin/admin-menu/menu-settings-search.php:203
 msgid "Reset to default"
 msgstr ""
 
@@ -251,7 +267,7 @@ msgstr ""
 msgid "Order by"
 msgstr ""
 
-#: library/admin/admin-menu/menu-companies-settings.php:85
+#: library/admin/admin-menu/menu-companies-settings.php:80
 msgid "Company Options"
 msgstr ""
 
@@ -259,12 +275,11 @@ msgstr ""
 msgid "Sort Contact List by"
 msgstr ""
 
-#: library/admin/admin-menu/menu-contacts-settings.php:85
+#: library/admin/admin-menu/menu-contacts-settings.php:79
 msgid "Contact Options"
 msgstr ""
 
 #: library/admin/admin-menu/menu-posts-edit.php:16
-#: library/functions/admin.php:118
 msgid "Image"
 msgstr ""
 
@@ -276,7 +291,7 @@ msgstr ""
 msgid "Company items"
 msgstr ""
 
-#: library/admin/admin-menu/menu-settings-menu.php:88
+#: library/admin/admin-menu/menu-settings-menu.php:82
 msgid "Hide these menu items"
 msgstr ""
 
@@ -296,211 +311,23 @@ msgstr ""
 msgid "Company-Under Main"
 msgstr ""
 
-#: library/admin/admin-menu/menu-settings-print.php:100
+#: library/admin/admin-menu/menu-settings-print.php:95
 msgid "Print these Widget Areas"
+msgstr ""
+
+#: library/admin/admin-menu/menu-settings-search.php:17
+#: library/admin/admin-menu/menu-settings-search.php:81
+msgid "Disable RoloSearch"
+msgstr ""
+
+#: library/admin/admin-menu/menu-settings-search.php:18
+msgid ""
+"If you are going to use a search plugin, you should disable RoloSearch to "
+"eliminate conflicts"
 msgstr ""
 
 #: library/extensions/extended-admin-post-filter/extend-admin-post-filter.php:42
 msgid "View all Owners"
-msgstr ""
-
-#: library/extensions/rolosearch/options.php:22
-msgid "Rolosearch"
-msgstr ""
-
-#: library/extensions/rolosearch/options.php:22
-msgid "RoloSearch"
-msgstr ""
-
-#: library/extensions/rolosearch/options.php:55
-#: library/extensions/rolosearch/options.php:62
-msgid "Your default search settings have been "
-msgstr ""
-
-#: library/extensions/rolosearch/options.php:55
-#: library/extensions/rolosearch/options.php:62
-msgid "updated "
-msgstr ""
-
-#: library/extensions/rolosearch/options.php:55
-msgid "by RoloSearch."
-msgstr ""
-
-#: library/extensions/rolosearch/options.php:55
-#: library/extensions/rolosearch/options.php:62
-msgid "What are you waiting for? Go check out the new search results!"
-msgstr ""
-
-#: library/extensions/rolosearch/options.php:62
-msgid " by RoloSearch."
-msgstr ""
-
-#: library/extensions/rolosearch/options.php:72
-msgid "RoloSearch Version:"
-msgstr ""
-
-#: library/extensions/rolosearch/options.php:77
-#: library/extensions/rolosearch/options.php:282
-msgid "Update Options"
-msgstr ""
-
-#: library/extensions/rolosearch/options.php:85
-msgid "Basic Configuration"
-msgstr ""
-
-#: library/extensions/rolosearch/options.php:93
-msgid "Search every page"
-msgstr ""
-
-#: library/extensions/rolosearch/options.php:96
-#: library/extensions/rolosearch/options.php:107
-#: library/extensions/rolosearch/options.php:121
-#: library/extensions/rolosearch/options.php:135
-#: library/extensions/rolosearch/options.php:146
-#: library/extensions/rolosearch/options.php:156
-#: library/extensions/rolosearch/options.php:166
-#: library/extensions/rolosearch/options.php:176
-#: library/extensions/rolosearch/options.php:189
-#: library/extensions/rolosearch/options.php:200
-#: library/extensions/rolosearch/options.php:210
-#: library/extensions/rolosearch/options.php:220
-#: library/extensions/rolosearch/options.php:230
-msgid "Yes"
-msgstr ""
-
-#: library/extensions/rolosearch/options.php:104
-msgid "Search approved pages only"
-msgstr ""
-
-#: library/extensions/rolosearch/options.php:118
-msgid "Search every tag name"
-msgstr ""
-
-#: library/extensions/rolosearch/options.php:132
-msgid "Search every category name and description"
-msgstr ""
-
-#: library/extensions/rolosearch/options.php:143
-msgid "Search every note"
-msgstr ""
-
-#: library/extensions/rolosearch/options.php:153
-msgid "Search note authors"
-msgstr ""
-
-#: library/extensions/rolosearch/options.php:163
-msgid "Search approved notes only"
-msgstr ""
-
-#: library/extensions/rolosearch/options.php:173
-msgid "Search every excerpt"
-msgstr ""
-
-#: library/extensions/rolosearch/options.php:186
-msgid "Search every draft"
-msgstr ""
-
-#: library/extensions/rolosearch/options.php:197
-msgid "Search every attachment"
-msgstr ""
-
-#: library/extensions/rolosearch/options.php:197
-msgid "(post type = attachment)"
-msgstr ""
-
-#: library/extensions/rolosearch/options.php:207
-msgid "Search Item Details"
-msgstr ""
-
-#: library/extensions/rolosearch/options.php:217
-msgid "Search every item owner"
-msgstr ""
-
-#: library/extensions/rolosearch/options.php:227
-msgid "Highlight Search Terms"
-msgstr ""
-
-#: library/extensions/rolosearch/options.php:237
-msgid "Highlight Background Color"
-msgstr ""
-
-#: library/extensions/rolosearch/options.php:240
-msgid "Examples:"
-msgstr ""
-
-#: library/extensions/rolosearch/options.php:240
-msgid "or 'red'"
-msgstr ""
-
-#: library/extensions/rolosearch/options.php:250
-msgid "Advanced Configuration - Exclusion"
-msgstr ""
-
-#: library/extensions/rolosearch/options.php:256
-msgid "Exclude some post or page IDs"
-msgstr ""
-
-#: library/extensions/rolosearch/options.php:259
-msgid "Comma separated Post IDs (example: 1, 5, 9)"
-msgstr ""
-
-#: library/extensions/rolosearch/options.php:263
-msgid "Exclude Categories"
-msgstr ""
-
-#: library/extensions/rolosearch/options.php:266
-msgid "Comma separated category IDs (example: 1, 4)"
-msgstr ""
-
-#: library/extensions/rolosearch/options.php:270
-msgid "Full Highlight Style"
-msgstr ""
-
-#: library/extensions/rolosearch/options.php:272
-msgid ""
-"Important: 'Highlight Background Color' must be blank to use this advanced "
-"styling."
-msgstr ""
-
-#: library/extensions/rolosearch/options.php:274
-msgid "Example:"
-msgstr ""
-
-#: library/extensions/rolosearch/options.php:274
-msgid ""
-"background-color: #FFF984; font-weight: bold; color: #000; padding: 0 1px;"
-msgstr ""
-
-#: library/extensions/rolosearch/options.php:289
-msgid "Reset Button"
-msgstr ""
-
-#: library/extensions/rolosearch/options.php:302
-msgid "Test Search Form"
-msgstr ""
-
-#: library/extensions/rolosearch/options.php:309
-msgid "Use this search form to run a live search test."
-msgstr ""
-
-#: library/extensions/rolosearch/options.php:315
-msgid "Run Test Search"
-msgstr ""
-
-#: library/extensions/rolosearch/options.php:328
-msgid "RoloSearch Version: "
-msgstr ""
-
-#: library/extensions/rolosearch/options.php:328
-msgid "was based on Search Everything Version: "
-msgstr ""
-
-#: library/extensions/rolosearch/options.php:328
-msgid "Developed by Dan Cameron of"
-msgstr ""
-
-#: library/extensions/rolosearch/options.php:328
-msgid "Sprout Venture"
 msgstr ""
 
 #: library/functions/company-functions.php:26
@@ -737,25 +564,20 @@ msgstr ""
 msgid "%1$s Page %2$s"
 msgstr ""
 
-#: library/functions/header-functions.php:103
+#: library/functions/header-functions.php:102
 msgid "JavaScript is disabled. For RoloPress to work properly,"
 msgstr ""
 
-#: library/functions/header-functions.php:103
+#: library/functions/header-functions.php:102
 msgid "please enable JavaScript."
 msgstr ""
 
-#: library/functions/header-functions.php:130
+#: library/functions/header-functions.php:129
 msgid "Contacts "
 msgstr ""
 
-#: library/functions/header-functions.php:144
+#: library/functions/header-functions.php:143
 msgid "Companies "
-msgstr ""
-
-#: library/functions/header-functions.php:167 library/widgets/search.php:18
-#: library/widgets/search.php:84
-msgid "Search"
 msgstr ""
 
 #: library/functions/messages.php:21
@@ -1035,11 +857,11 @@ msgstr ""
 
 #: library/widgets/add-company-form.php:58
 #: library/widgets/add-contact-form.php:58 library/widgets/calendar.php:54
-#: library/widgets/categories.php:118 library/widgets/companies.php:111
+#: library/widgets/categories.php:118 library/widgets/companies.php:112
 #: library/widgets/company-details.php:58
 #: library/widgets/contact-details.php:58 library/widgets/owners.php:92
 #: library/widgets/pages.php:129 library/widgets/recent-items.php:113
-#: library/widgets/recent-notes.php:88 library/widgets/search.php:89
+#: library/widgets/recent-notes.php:89 library/widgets/search.php:89
 #: library/widgets/tags.php:99
 msgid "Title:"
 msgstr ""
@@ -1187,22 +1009,22 @@ msgstr ""
 msgid "Style:"
 msgstr ""
 
-#: library/widgets/categories.php:129 library/widgets/companies.php:122
+#: library/widgets/categories.php:129 library/widgets/companies.php:123
 #: library/widgets/tags.php:121
 msgid "Order:"
 msgstr ""
 
-#: library/widgets/categories.php:136 library/widgets/companies.php:130
+#: library/widgets/categories.php:136 library/widgets/companies.php:131
 #: library/widgets/pages.php:133 library/widgets/tags.php:129
 msgid "Order By:"
 msgstr ""
 
-#: library/widgets/categories.php:144 library/widgets/companies.php:165
+#: library/widgets/categories.php:144 library/widgets/companies.php:166
 #: library/widgets/pages.php:170 library/widgets/tags.php:164
 msgid "Include:"
 msgstr ""
 
-#: library/widgets/categories.php:148 library/widgets/companies.php:161
+#: library/widgets/categories.php:148 library/widgets/companies.php:162
 #: library/widgets/pages.php:156 library/widgets/tags.php:160
 msgid "Exclude:"
 msgstr ""
@@ -1215,7 +1037,7 @@ msgstr ""
 msgid "Depth:"
 msgstr ""
 
-#: library/widgets/categories.php:163 library/widgets/companies.php:137
+#: library/widgets/categories.php:163 library/widgets/companies.php:138
 #: library/widgets/tags.php:136
 msgid "Number:"
 msgstr ""
@@ -1260,31 +1082,31 @@ msgstr ""
 msgid "An advanced widget to create a Company list or cloud."
 msgstr ""
 
-#: library/widgets/companies.php:106
+#: library/widgets/companies.php:107
 msgid ""
 "Displays your Companies as a list by default.  But can also be used to "
 "create a Company Cloud. To display a cloud change the \"Format\" to \"Flat"
 "\", and change the smallest and largest font sizes."
 msgstr ""
 
-#: library/widgets/companies.php:115 library/widgets/recent-items.php:122
+#: library/widgets/companies.php:116 library/widgets/recent-items.php:122
 #: library/widgets/tags.php:114
 msgid "Format:"
 msgstr ""
 
-#: library/widgets/companies.php:144 library/widgets/tags.php:143
+#: library/widgets/companies.php:145 library/widgets/tags.php:143
 msgid "Largest:"
 msgstr ""
 
-#: library/widgets/companies.php:148 library/widgets/tags.php:147
+#: library/widgets/companies.php:149 library/widgets/tags.php:147
 msgid "Smallest:"
 msgstr ""
 
-#: library/widgets/companies.php:152 library/widgets/tags.php:151
+#: library/widgets/companies.php:153 library/widgets/tags.php:151
 msgid "Unit:"
 msgstr ""
 
-#: library/widgets/companies.php:169 library/widgets/tags.php:168
+#: library/widgets/companies.php:170 library/widgets/tags.php:168
 msgid "Link:"
 msgstr ""
 
@@ -1469,27 +1291,27 @@ msgstr ""
 msgid "Displays Your Most Recent Notes"
 msgstr ""
 
-#: library/widgets/recent-notes.php:14 library/widgets/recent-notes.php:30
-#: library/widgets/recent-notes.php:74
+#: library/widgets/recent-notes.php:15 library/widgets/recent-notes.php:30
+#: library/widgets/recent-notes.php:75
 msgid "Recent Notes"
 msgstr ""
 
 #. translators: comments widget: 1: comment author, 2: post link
-#: library/widgets/recent-notes.php:51
+#: library/widgets/recent-notes.php:52
 #, php-format
 msgctxt "widgets"
 msgid "%1$s : %2$s"
 msgstr ""
 
-#: library/widgets/recent-notes.php:84
+#: library/widgets/recent-notes.php:85
 msgid "Displays your recently created notes."
 msgstr ""
 
-#: library/widgets/recent-notes.php:91
+#: library/widgets/recent-notes.php:92
 msgid "Number of notes to show:"
 msgstr ""
 
-#: library/widgets/recent-notes.php:93
+#: library/widgets/recent-notes.php:94
 msgid "(at most 15)"
 msgstr ""
 
