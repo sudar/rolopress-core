@@ -126,7 +126,7 @@ global $rolo_hide_contact_items, $rolo_hide_company_items;
 		<?php if (get_option('rolo_hide_contact_items') != "true") {?>
 	
             <li>
-			<a title="contacts" class="contacts" href="<?php echo get_term_link('Contact', 'type'); ?>"><span><?php _e('Contacts ', 'rolopress'); ?></span></a>
+			<a title="contacts" class="contacts" href="<?php echo get_term_link('contact', 'type'); ?>"><span><?php _e('Contacts ', 'rolopress'); ?></span></a>
             </li>
 <?php   
             if ( current_user_can('publish_posts') ) {
@@ -140,7 +140,7 @@ global $rolo_hide_contact_items, $rolo_hide_company_items;
 
 		<?php if (get_option('rolo_hide_company_items') != "true") {?>
             <li>
-                <a title="companies" class="companies" href="<?php echo get_term_link('Company', 'type'); ?>"><span><?php _e('Companies ', 'rolopress'); ?></span></a>
+                <a title="companies" class="companies" href="<?php echo get_term_link('company', 'type'); ?>"><span><?php _e('Companies ', 'rolopress'); ?></span></a>
             </li>
 <?php 
             if ( current_user_can('publish_posts') ) {

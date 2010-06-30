@@ -145,7 +145,7 @@ function rolo_company_header($company_id) {
 			<li>
                  <a class="fn"
                     <?php if (is_single()) : // show proper links on single or archive company pages ?>
-                        href="<?php echo get_term_link($company['rolo_company_name'], 'company'); ?>"><?php echo $company['rolo_company_name'];?>
+                        href="<?php echo rp_get_term_link($company['rolo_company_name'], 'company', 'name'); ?>"><?php echo $company['rolo_company_name'];?>
                     <?php else: ?>
                         href="<?php the_permalink();?>"><?php echo $company['rolo_company_name'];?>
                     <?php endif;?>
@@ -189,7 +189,7 @@ function rolo_company_details($company_id) {
 			<li>
                  <a class="fn org"
                     <?php if (is_single()) : // show proper links on single or archive company pages ?>
-                        href="<?php echo get_term_link($company['rolo_company_name'], 'company'); ?>"><?php echo $company['rolo_company_name'];?>
+                        href="<?php echo rp_get_term_link($company['rolo_company_name'], 'company', 'name'); ?>"><?php echo $company['rolo_company_name'];?>
                     <?php else: ?>
                         href="<?php the_permalink();?>"><?php echo $company['rolo_company_name'];?>
                     <?php endif;?>
