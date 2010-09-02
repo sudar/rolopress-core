@@ -194,6 +194,7 @@ global $wp_query; $total_pages = $wp_query->max_num_pages; if ( $total_pages > 1
 				</div><!-- #nav-above -->
 <?php }
 }
+add_action('rolopress_before_main','rolo_navigation_above');
 
 /**
  * Navigation below content
@@ -210,7 +211,7 @@ global $wp_query; $total_pages = $wp_query->max_num_pages; if ( $total_pages > 1
 				</div><!-- #nav-below -->
 <?php }
 }
-
+add_action('rolopress_after_main','rolo_navigation_below');
 
 
 /**

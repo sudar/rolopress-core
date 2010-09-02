@@ -2,24 +2,23 @@
 LAYOUT: Two-Column Wide Sidebars(Left)
 DESCRIPTION: Two-column fluid layout with one wide sidebar left of info
 */
-
-#container {
-	float: right;
-	margin: 0 0 0 -300px;
-	width: 100%;
+div#container {
+float:right;
+margin:0 0 0 -280px;
+width:100%;
 }
-#info , .navigation{
-	margin: 0 0 0 290px;
+div#main, .navigation {
+margin:0 0 0 290px;
 }
-#primary, #secondary {
-	float: left;
-	overflow: hidden;
-	width: 280px;
+div.sidebar {
+float:left;
+overflow:hidden;
+width:280px;
 }
-#secondary {
-	clear: left;
+div#secondary {
+clear:left;
 }
-#footer {
-	clear: both;
-	width: 100%;
+div#footer {
+clear:both;
+width:100%;
 }

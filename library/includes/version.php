@@ -6,7 +6,7 @@
 /**
  * The RoloPress version string
  */
-$rolo_version = '1.22';
+$rolo_version = '1.4';
 
 /* Extensions */
 $rolo_ext_search_orig = "search everything";

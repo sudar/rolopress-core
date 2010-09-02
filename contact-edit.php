@@ -17,10 +17,6 @@ get_header(); ?>
 	
 		<?php rolopress_before_main(); // Before main hook ?>
 		<div id="main">
-		
-			<?php rolopress_before_page_info(); // Before info hook ?>
-			<div id="info">
-			<?php rolopress_before_page_info_content(); // Before page info content hook ?>
 			
 				<?php rolo_pageheader();?>
 				
@@ -30,10 +26,6 @@ get_header(); ?>
 						rolo_permission_message();
 					}
 				?>	
-			
-			<?php rolopress_after_page_info_content(); // After page info content hook ?>
-			</div><!-- #info -->
-			<?php rolopress_after_page_info(); // After page info hook ?>
 			
 		</div><!-- #main -->
 		<?php rolopress_after_main(); // After main hook ?>

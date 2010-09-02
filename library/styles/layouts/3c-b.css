@@ -1,32 +1,30 @@
 /*
 LAYOUT: Three-Column
-DESCRIPTION: Three-column fluid layout with two sidebars on both sides of info
+DESCRIPTION: Three-column fluid layout with two sidebars on both sides of content
 */
-
-#container {
-	float: left;
-	width: 100%;
+div#container {
+float:left;
+width:100%;
 }
-#info, .navigation {
-	margin: 0 190px;
-	overflow:hidden;
+div#main, .navigation {
+margin:0 188px;
 }
-#primary, #secondary {
-	float: left;
-	overflow: hidden;
-	width: 180px;
+div.sidebar {
+float:left;
+overflow:hidden;
+width:180px;
 }
-#primary {
-	margin: 0 0 0 -100%;
+div#primary {
+margin:0 0 0 -100%;
 }
-* html #primary {
-	left: 20px;
-	position: relative;
+* html div#primary {
+left:20px;
+position:relative;
 }
-#secondary {
-	margin: 0 0 0 -185px;
+div#secondary {
+margin:0 0 0 -190px;
 }
-#footer {
-	clear: left;
-	width: 100%;
+div#footer {
+clear:left;
+width:100%;
 }

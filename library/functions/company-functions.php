@@ -116,14 +116,14 @@ function _rolo_show_edit_company_form($company_id) {
                     if ($company_field['mandatory'] == true) {
                         echo '<em>*</em>';
                     }
-                    echo $company_field['title'];
-
+                    echo $company_field['title'];?>
+			</label>
+<?php
 					if (isset($company_field['prefix']) == true) {
 						echo '<span class="prefix '; echo $company_field['name']; echo '">'; echo $company_field['prefix']; echo '</span>';
 						$class = $company_field['class'] . " " . "input-prefix";
                     }
 ?>
-            </label>
             <input type="text" name="<?php echo $name;?>" value="<?php echo $current_value ;?>" size="55" tabindex="<?php echo $rolo_tab_index;?>" class="textInput <?php echo $class;?>" />
         </div>
 <?php
@@ -181,15 +181,15 @@ function _rolo_show_company_fields() {
                 if ($company_field['mandatory'] == true) {
                     echo '<em>*</em>';
                 }
-                echo $company_field['title'];
-				
+                echo $company_field['title'];?>
+			</label>
+<?php				
 				if (isset($company_field['prefix']) == true) {		
                     echo '<span class="prefix '; echo $company_field['name']; echo '">'; echo $company_field['prefix']; echo '</span>';
                     $class = $company_field['class'] . " " . "input-prefix";
-                }
-					
+                }			
 ?>
-            </label>
+
             <input type="text" name="<?php echo $name;?>" value="<?php echo $default_value ;?>" size="55" tabindex="<?php echo $rolo_tab_index;?>" class="textInput <?php echo $class;?>" />
         </div>
 <?php

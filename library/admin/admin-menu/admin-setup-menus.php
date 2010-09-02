@@ -16,7 +16,6 @@ function rolo_add_admin_menu() { // adds all top level and sub menus
 	add_submenu_page("themes.php", __('Layout Options','rolopress'), __('Layout','rolopress'), 7, 'menu-appearance-layout.php', 'rolo_menu_layout');
 	
   /** Settings Menu **/
-	add_submenu_page("options-general.php", __('Menu Options','rolopress'), __('Menu','rolopress'), 7, 'menu-settings-menu.php', 'rolo_default_menu_options');
 	add_submenu_page("options-general.php", __('Print Options','rolopress'), __('Printing','rolopress'), 7, 'menu-settings-print.php', 'rolo_print_options');
 	add_submenu_page("options-general.php", __('Search Options','rolopress'), __('Search','rolopress'), 7, 'menu-settings-search.php', 'rolo_search_options');
  

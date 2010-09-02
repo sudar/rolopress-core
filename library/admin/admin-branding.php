@@ -37,7 +37,7 @@ add_filter("login_headertitle","rolo_admin_loginpage_logo_title");
 
 function rolo_admin_footer() { // Add custom footer to Admin
   $theme_data = get_theme_data(ROLOPRESS_DIR . '/style.css');
-   echo '<div id="footer-rolo">'.__('Powered by ','rolopress').'<a href="http://www.rolopress.com">RoloPress '.$theme_data['Version'].'</a> | <a href="http://rolopress.com/documentation">'.__('Documentation','rolopress').'</a> | <a href="http://rolopress.com/forums">'.__('Support','rolopress').'</a></div>';
+   echo '<div id="footer-rolo">'.__('Powered by ','rolopress').'<a href="http://www.rolopress.com">RoloPress '.$theme_data['Version'].'</a> | <a href="http://rolopress.com/documentation">'.__('Documentation','rolopress').'</a> | <a href="http://forum.rolopress.com/">'.__('Support','rolopress').'</a></div>';
 }
 add_action('admin_footer', 'rolo_admin_footer');
 

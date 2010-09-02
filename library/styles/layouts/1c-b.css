@@ -3,16 +3,16 @@ LAYOUT: One-Column
 DESCRIPTION: One-column fluid layout with sidebars stacked in two columns below info
 */
 
-#primary, #secondary {
-	float: left;
-	overflow: hidden;
-	padding: 10px .4%;
-	width: 49%;
+div.sidebar {
+float:left;
+overflow:hidden;
+padding:10px 0 0 0;
+width:50%;
 }
-#primary {
-	clear: both;
+div#primary {
+clear:both;
 }
-#footer {
-	clear: left;
-	width: 100%;
+div#footer {
+clear:left;
+width:100%;
 }

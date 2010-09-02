@@ -115,14 +115,16 @@ function _rolo_show_edit_contact_form($contact_id) {
                     if ($contact_field['mandatory'] == true) {
                         echo '<em>*</em>';
                     }
-                    echo $contact_field['title'];
-					
+                    echo $contact_field['title'];?>
+			</label>
+			
+<?php					
 					if (isset($contact_field['prefix']) == true) {		
 						echo '<span class="prefix '; echo $contact_field['name']; echo '">'; echo $contact_field['prefix']; echo '</span>';
 						$class = $contact_field['class'] . " " . "input-prefix";
                     }
 ?>
-            </label>
+
             <input type="text" name="<?php echo $name;?>" value="<?php echo $current_value ;?>" size="55" tabindex="<?php echo $rolo_tab_index;?>" class="textInput <?php echo $class;?>" />
         </div>
 <?php
@@ -172,20 +174,22 @@ function _rolo_show_contact_fields() {
                 $mandatory_class = ' mandatory';
             }
 ?>
-        <div class="ctrlHolder <?php echo $contact_field['class']; echo $mandatory_class; ?>">
+		<div class="ctrlHolder <?php echo $contact_field['class']; echo $mandatory_class; ?>">
             <label for="<?php echo $name;?>">
 <?php
                     if ($contact_field['mandatory'] == true) {
                         echo '<em>*</em>';
                     }
-                    echo $contact_field['title'];
-
+                    echo $contact_field['title'];?>
+			</label>
+			
+<?php
 					if (isset($contact_field['prefix']) == true) {
 						echo '<span class="prefix '; echo $contact_field['name']; echo '">'; echo $contact_field['prefix']; echo '</span>';
 						$class = $contact_field['class'] . " " . "input-prefix";
                     }
 ?>
-            </label>
+
             <input type="text" name="<?php echo $name;?>" value="<?php echo $default_value ;?>" size="55" tabindex="<?php echo $rolo_tab_index;?>" class="textInput <?php echo $class;?>" />
         </div>
 <?php
@@ -354,11 +358,11 @@ function rolo_setup_contact_address($field_name, &$rolo_tab_index, $contact_id =
         $zip = ($zip == '') ? 'Zip' : $zip;
         $country = ($country == '') ? 'Country' : $country;
 ?>
-        <div class="ctrlHolder">
+        <div class="ctrlHolder nolabel">
             <input type="text" name="rolo_contact_city" value="<?php echo $city ;?>" size="30" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput city" />
-            <input type="text" name="rolo_contact_state" value="<?php echo $state ;?>" size="15" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput state" />
+			<input type="text" name="rolo_contact_state" value="<?php echo $state ;?>" size="15" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput state" />
             <input type="text" name="rolo_contact_zip" value="<?php echo $zip ;?>" size="10" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput zip" />
-        </div>
+		</div>
 
         <div class="ctrlHolder">
             <label for="rolo_contact_country"></label>
@@ -446,7 +450,7 @@ function rolo_setup_contact_multiple($field_name, &$rolo_tab_index, $contact_id 
 ?>
             <img src ="<?php echo get_bloginfo('template_directory') ?>/library/images/forms/delete.png" class="rolo_delete_ctrl" alt="<?php _e('Delete', 'rolopress');?>" <?php echo $hidden;?> />
             <img src ="<?php echo get_bloginfo('template_directory') ?>/library/images/forms/add.png" class="rolo_add_ctrl" alt="<?php _e('Add another', 'rolopress');?>" />
-        </div>
+		</div>
 <?php
     }
 }

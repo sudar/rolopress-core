@@ -8,7 +8,6 @@
  * @subpackage Functions
  */
  
-
 /**
  * Display RoloPress version in meta
  *
@@ -105,53 +104,29 @@ function rolopress_js_disabled() {
 }
 add_action('rolopress_before_wrapper', 'rolopress_js_disabled');
 
+/**
+ * Create default menu
+ *
+ * Assembles menu and places before wrapper
+ * @since 1.4
+ */
+function rolopress_default_top_menu() { 
+	echo "<div id=\"menu\">";
+	wp_nav_menu( array( 'menu' => 'default-menu') ); // display menu built in Appearance > Menus
+	rolopress_default_top_menu_right(); // call function to create right side of menu.
+	echo "</div>";
+};
+add_action('rolopress_before_wrapper', 'rolopress_default_top_menu');
+
 
 /**
- * Assembles default menu
+ * Create the right side of default menu
  *
- * @since 0.1
+ * called in rolopress_default_top_menu() 
+ * @since 1.4
  */
-function rolopress_default_menu() {
-global $rolo_hide_contact_items, $rolo_hide_company_items;
-?>
-    <div id="menu">
-<?php 
-    if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('menu') ) {
-?>
-        <ul class="menu_item site-title default_menu">
-            <li id="app-title"><span><a class="default_menu" href="<?php bloginfo( 'url' ) ?>/" title="<?php bloginfo( 'name' ) ?>" rel="home"><?php bloginfo( 'name' ) ?></a></span></li>
-        </ul>
-        <ul class="menu_item menu_main default_menu">
-		
-		<?php if (get_option('rolo_hide_contact_items') != "true") {?>
-	
-            <li>
-			<a title="contacts" class="contacts" href="<?php echo get_term_link('contact', 'type'); ?>"><span><?php _e('Contacts ', 'rolopress'); ?></span></a>
-            </li>
-<?php   
-            if ( current_user_can('publish_posts') ) {
-              // only display if user has proper permissions
-               $add_contact_page = get_page_by_title('Add Contact');
-               $id= $add_contact_page->ID;
-               wp_list_pages("include=$id & title_li=");
-            }
-		}
-?>
+function rolopress_default_top_menu_right() { ?>
 
-		<?php if (get_option('rolo_hide_company_items') != "true") {?>
-            <li>
-                <a title="companies" class="companies" href="<?php echo get_term_link('company', 'type'); ?>"><span><?php _e('Companies ', 'rolopress'); ?></span></a>
-            </li>
-<?php 
-            if ( current_user_can('publish_posts') ) {
-                // only display if user has proper permissions
-                $add_company_page = get_page_by_title('Add Company');
-                $id= $add_company_page->ID;
-                wp_list_pages("include=$id & title_li=");
-            }
-		}
-?>
-        </ul>
         <ul class="menu_item sub_menu alignright default_menu">
             <li>
                 <form id="searchform" method="get" action="<?php bloginfo('url') ?>">
@@ -173,13 +148,5 @@ global $rolo_hide_contact_items, $rolo_hide_company_items;
             <li><?php wp_loginout(); ?></li>
         </ul>
 <?php
-    }
-?>
-    </div>
-<?php
 }
-add_action('rolopress_before_wrapper', 'rolopress_default_menu');
-
-
- 
 ?>

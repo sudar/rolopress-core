@@ -13,6 +13,7 @@
 <body class="<?php rolopress_body_class() ?>">
 
 <?php rolopress_before_wrapper(); // before wrapper hook ?> 
+
 <div id="wrapper" class="hfeed">
 
 	<?php rolopress_before_header(); // before header hook ?>

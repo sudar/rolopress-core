@@ -6,18 +6,8 @@
 		<?php rolopress_before_main(); // Before main hook ?>
 		<div id="main">
 
-			<?php rolo_navigation_above() ?>			
-
-			<?php rolopress_before_info(); // Before info hook ?>
-			<div id="info">
-
 				<?php rolo_pageheader();?>
 				<?php rolo_loop();?>
-				
-			</div><!-- #info -->
-			<?php rolopress_after_info(); // After info hook ?>
-			
-			<?php rolo_navigation_below() ?>
 			
 		</div><!-- #main -->
 		<?php rolopress_after_main(); // After main hook ?>

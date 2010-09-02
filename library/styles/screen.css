@@ -248,31 +248,31 @@ ol.notelist li.pingback div.vcard {
 
 /* =Page Templates
 -------------------------------------------------------------- */
-.page-template-widgets-no-sidebar #info{
+.page-template-widgets-no-sidebar #main{
 margin:0;
 }
 .page-template-widgets-no-sidebar .default-text, .page-template-widgets-no-sidebar .default-text  {
 text-align:center;
 }
-#info .widget-area .xoxo {
+#main .widget-area .xoxo {
 width:98%;
 margin:0;
 }
-#info .widget-area  ul  {
+#main .widget-area  ul  {
 margin:0;
 }
-#info .widget-area li {
+#main .widget-area li {
 list-style:none;
 }
-#info  .widget-area   ul li.widget  {
+#main  .widget-area   ul li.widget  {
 float:left;
 margin:1%;
 width:30%;
 }
-#info  .widget-area  li.widget li  {
+#main  .widget-area  li.widget li  {
 list-style:disc;
 list-style-position:inside;
 }
-#info  .widget-area  br {
+#main  .widget-area  br {
 clear:left;
 }

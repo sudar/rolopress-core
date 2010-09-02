@@ -2,6 +2,14 @@
 Styles for RoloPress admin screens
 */
 
+/* =General
+-------------------------------------------------------------- */
+#user_info a:link, #user_info a:visited, #footer a:link, #footer a:visited {
+color:#fff;
+}
+#user_info p {
+color:#fff;
+}
 
 /* =Login
 -------------------------------------------------------------- */
@@ -14,20 +22,28 @@ background:url(../../images/admin/rolo-login.gif) no-repeat top;
 #header-logo {
 background:transparent url(../../images/admin/rolopress-icon-bk.gif) no-repeat scroll center center;
 }
+#wphead {
+background:#464646;
+}
+#wphead h1 a {
+color:#fff;
+}
 
 /* =Footer
 -------------------------------------------------------------- */
-#footer-rolo {
+#footer, #footer-rolo {
 background: #464646;
-padding-left: 15px;
 color:#999999;
 font-family:Georgia,"Times New Roman","Bitstream Charter",Times,serif;
 font-size:12px;
 font-style:italic;
 }
-#footer-rolo a:link, #footer-rolo a:visited {
+#footer, #footer-rolo a:link, #footer-rolo a:visited {
 color:#CCCCCC;
 text-decoration:none;
+}
+#footer-rolo {
+padding-left:15px;
 }
 
 /* =Edit Posts

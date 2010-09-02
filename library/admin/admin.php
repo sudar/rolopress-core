@@ -26,7 +26,6 @@ require_once( ROLOPRESS_ADMIN_MENU . '/menu-posts-edit.php' );
 require_once( ROLOPRESS_ADMIN_MENU . '/menu-appearance-layout.php' );
 
 // Settings menu
-require_once( ROLOPRESS_ADMIN_MENU . '/menu-settings-menu.php' );
 require_once( ROLOPRESS_ADMIN_MENU . '/menu-settings-print.php' );
 require_once( ROLOPRESS_ADMIN_MENU . '/menu-settings-search.php' );
 
