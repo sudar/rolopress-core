@@ -3,22 +3,22 @@ LAYOUT: Two-Column (Right)
 DESCRIPTION: Two-column fluid layout with one sidebars right of info
 */
 div#container {
-float:left;
-margin:0 -200px 0 0;
-width:100%;
+    float:left;
+    margin:0 -200px 0 0;
+    width:100%;
 }
 div#main, .navigation {
-margin:0 180px 0 0;
+    margin:0 180px 0 0;
 }
 div.sidebar {
-float:right;
-overflow:hidden;
-width:180px;
+    float:right;
+    overflow:hidden;
+    width:180px;
 }
 div#secondary {
-clear:right;
+    clear:right;
 }
 div#footer {
-clear:both;
-width:100%;
+    clear:both;
+    width:100%;
 }

@@ -1,23 +1,23 @@
 /* -------------------------------------------------------------- He   
    Default Screen Styles for RoloPress
-     
+
 -------------------------------------------------------------- */   
 
 body, #wrapper {
     margin: .5em 1%;
 }
 li {
-list-style:none;
+    list-style:none;
 }
 .error {
-text-align:center;
-background:yellow;
-margin:0;
-padding:1em;
-font-weight:bold;
+    text-align:center;
+    background:yellow;
+    margin:0;
+    padding:1em;
+    font-weight:bold;
 }
 .hide {
-display: none;
+    display: none;
 }
 
 /* =Header
@@ -109,104 +109,104 @@ h3.section-heading {
 /* =Notes
 -------------------------------------------------------------- */	
 ol.notelist {
-	list-style:none;
-	margin:0;
-	padding:0;
+    list-style:none;
+    margin:0;
+    padding:0;
 }
 ol.notelist li {
-	border:1px solid #d5d5d5;
-	border-radius:5px;
-	-moz-border-radius:5px;
-	-webkit-border-radius:5px;
-	margin:0 0 10px;
-	padding:5px 7px 5px 24px;
-	position:relative;
+    border:1px solid #d5d5d5;
+    border-radius:5px;
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
+    margin:0 0 10px;
+    padding:5px 7px 5px 24px;
+    position:relative;
 }
 ol.notelist li.pingback comment-author {
-	padding:0 170px 0 0;
+    padding:0 170px 0 0;
 }
 ol.notelist li div.vcard {
-	font-weight:bold;
-	font-size: 14px;
-	line-height: 16px;
-	font-family: helvetica,arial,sans-serif;
+    font-weight:bold;
+    font-size: 14px;
+    line-height: 16px;
+    font-family: helvetica,arial,sans-serif;
 }
 ol.notelist li div.vcard cite.fn {
-	font-style:normal;
-	font-size: 11px;
+    font-style:normal;
+    font-size: 11px;
 }
 ol.notelist li div.vcard cite.fn a.url {
-	color:#cc0000;
-	text-decoration:none;
+    color:#cc0000;
+    text-decoration:none;
 }
 ol.notelist li div.vcard cite.fn a.url:hover {
-	color:#000;
+    color:#000;
 }
 ol.notelist li div.vcard img.avatar {
-	background: #fff;
-	border:1px solid #aaa;
-	padding: 5px;
-	left:7px;
-	position:absolute;
-	top:7px;
+    background: #fff;
+    border:1px solid #aaa;
+    padding: 5px;
+    left:7px;
+    position:absolute;
+    top:7px;
 }
 ol.notelist li div.comment-meta {
-	font-weight:bold; 
-	font-size: 10px;
-	line-height: 16px;
-	position:absolute;
-	right:10px;
-	text-align:right;
-	top:5px;
+    font-weight:bold;
+    font-size: 10px;
+    line-height: 16px;
+    position:absolute;
+    right:10px;
+    text-align:right;
+    top:5px;
 }
 ol.notelist li div.comment-meta a {
-	color:#205B87;
-	text-decoration:none;
+    color:#205B87;
+    text-decoration:none;
 }
 ol.notelist li p {
-	font-weight:normal;
-	font-size: 12px;
-	line-height: 16px;
-	margin:5px 0 12px;
+    font-weight:normal;
+    font-size: 12px;
+    line-height: 16px;
+    margin:5px 0 12px;
 }
 ol.notelist li ul {
-	font-weight:normal;
-	font-size: 12px;
-	line-height: 16px;
-	list-style:square;
-	margin:0 0 12px;
-	padding:0;
+    font-weight:normal;
+    font-size: 12px;
+    line-height: 16px;
+    list-style:square;
+    margin:0 0 12px;
+    padding:0;
 }
 ol.notelist li div.reply a {
-	color:#000;
-	text-decoration:none;
-	text-transform:uppercase;
+    color:#000;
+    text-decoration:none;
+    text-transform:uppercase;
 }
 ol.notelist li ul.children {
-	list-style:none;
-	margin:12px 0 0;
-	text-indent:0;
+    list-style:none;
+    margin:12px 0 0;
+    text-indent:0;
 }
 ol.notelist li ul.children li.depth-2 {
-	margin:0 0 3px;
+    margin:0 0 3px;
 }
 ol.notelist li ul.children li.depth-3 {
-	margin:0 0 3px;
+    margin:0 0 3px;
 }
 ol.notelist li ul.children li.depth-4 {
-	margin:0 0 3px;
+    margin:0 0 3px;
 }
 ol.notelist li ul.children li.depth-5 {
-	margin:0 0 3px;
+    margin:0 0 3px;
 }
 ol.notelist ul.children li.odd {
-	background:#fff;
+    background:#fff;
 }
 ol.notelist ul.children li.even {
-	background:#f6f6f6;
+    background:#f6f6f6;
 }
 ol.notelist li.pingback div.vcard {
-	padding:0 170px 0 0;
+    padding:0 170px 0 0;
 }
 
 /* =Form: company autocomplete
@@ -249,30 +249,30 @@ ol.notelist li.pingback div.vcard {
 /* =Page Templates
 -------------------------------------------------------------- */
 .page-template-widgets-no-sidebar #main{
-margin:0;
+    margin:0;
 }
 .page-template-widgets-no-sidebar .default-text, .page-template-widgets-no-sidebar .default-text  {
-text-align:center;
+    text-align:center;
 }
 #main .widget-area .xoxo {
-width:98%;
-margin:0;
+    width:98%;
+    margin:0;
 }
 #main .widget-area  ul  {
-margin:0;
+    margin:0;
 }
 #main .widget-area li {
-list-style:none;
+    list-style:none;
 }
 #main  .widget-area   ul li.widget  {
-float:left;
-margin:1%;
-width:30%;
+    float:left;
+    margin:1%;
+    width:30%;
 }
 #main  .widget-area  li.widget li  {
-list-style:disc;
-list-style-position:inside;
+    list-style:disc;
+    list-style-position:inside;
 }
 #main  .widget-area  br {
-clear:left;
+    clear:left;
 }

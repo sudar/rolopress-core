@@ -3,19 +3,19 @@ LAYOUT: Three-Column (Left)
 DESCRIPTION: Three-column fluid layout with two sidebars left of info
 */
 div#container {
-float:right;
-margin:0 0 0 -360px;
-width:100%;
+    float:right;
+    margin:0 0 0 -360px;
+    width:100%;
 }
 div#main, .navigation {
-margin:0 0 0 370px;
+    margin:0 0 0 370px;
 }
 div.sidebar {
-float:right;
-overflow:hidden;
-width:180px;
+    float:right;
+    overflow:hidden;
+    width:180px;
 }
 div#footer {
-clear:both;
-width:100%;
+    clear:both;
+    width:100%;
 }

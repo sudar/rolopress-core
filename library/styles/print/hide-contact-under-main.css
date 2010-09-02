@@ -3,5 +3,5 @@ PRINT: Hide Contact-Under-Main widget area
 */
 
 .contact-under-main{
-display: none;
+    display: none;
 }

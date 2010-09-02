@@ -1,20 +1,20 @@
 /* -------------------------------------------------------------- 
-   
+
    Rebuild the default browser styles
-   
+
    Based on work by Blueprint CSS   
    http://code.google.com/p/blueprintcss/
-     
+
 -------------------------------------------------------------- */   
 
 
 body {
-  background: #fff;	
+    background: #fff;
 }
 body, input, textarea {
-	color: #111;    
-	font: 12px Arial,sans-serif;
-	line-height: 1.5;
+    color: #111;
+    font: 12px Arial,sans-serif;
+    line-height: 1.5;
 }
 
 
@@ -22,8 +22,8 @@ body, input, textarea {
 -------------------------------------------------------------- */
 
 h1,h2,h3,h4,h5,h6 { 
-	font-weight: normal;
-	clear: both;
+    font-weight: normal;
+    clear: both;
 }
 
 h1 { font-size: 2em; margin: .67em 0 }
@@ -34,10 +34,10 @@ h5 { font-size: .83em; margin: 1.5em 0 }
 h6  { font-size: .75em; margin: 1.67em 0 }
 
 hr {
-  background-color: #999;
-  border:0;
-  height: 1px;
-	margin-bottom: 1.5em;
+    background-color: #999;
+    border:0;
+    height: 1px;
+    margin-bottom: 1.5em;
 }
 
 
@@ -45,81 +45,81 @@ hr {
 -------------------------------------------------------------- */
 
 p {
-	margin-bottom: 1.5em;
+    margin-bottom: 1.5em;
 }
 ul {
-	margin: 0 0 1.5em 2.5em;
+    margin: 0 0 1.5em 2.5em;
 }
 ol {
-	margin: 0 0 1.5em 2.5em;
+    margin: 0 0 1.5em 2.5em;
 }
 ul {
-	list-style:disc;
+    list-style:disc;
 }
 ol {
-	list-style-type: decimal;
+    list-style-type: decimal;
 }
 ol ol {
-	list-style:upper-alpha;
+    list-style:upper-alpha;
 }
 ol ol ol {
-	list-style:lower-roman;
+    list-style:lower-roman;
 }
 ol ol ol ol {
-	list-style:lower-alpha;
+    list-style:lower-alpha;
 }
 ul ul, ol ol, ul ol, ol ul {
-	margin-bottom:0;
+    margin-bottom:0;
 }
 dl	{
-	margin:0 1.5em;
+    margin:0 1.5em;
 }
 dt {
-	font-weight: bold;
+    font-weight: bold;
 }
 dd {
-	margin-bottom: 1.5em;
+    margin-bottom: 1.5em;
 }
 strong {
-	font-weight: bold;
+    font-weight: bold;
 }
 cite, em, i {
-	font-style: italic;
+    font-style: italic;
 }
 blockquote {
-	margin: 0 3em;
+    margin: 0 3em;
 }
 blockquote em, blockquote i, blockquote cite {
-	font-style: normal;
+    font-style: normal;
 }
 pre {
-	font: 11px Monaco, monospace;
-	line-height: 1.5;
-	margin-bottom: 1.5em;
+    font: 11px Monaco, monospace;
+    line-height: 1.5;
+    margin-bottom: 1.5em;
 }
 code {
-	font: 11px Monaco, monospace;
+    font: 11px Monaco, monospace;
 }
 abbr, acronym {
-  border-bottom: 1px dotted #666;
-  cursor: help;
+    border-bottom: 1px dotted #666;
+    cursor: help;
 }
 ins {
-	text-decoration: none;
+    text-decoration: none;
 }
 sup,
 sub {
-	height: 0;
-	line-height: 1;
-	vertical-align: baseline;
-	position: relative;
-	
+    height: 0;
+    line-height: 1;
+    vertical-align: baseline;
+    position: relative;
+
 }
 sup {
-	bottom: 1ex;
+    bottom: 1ex;
 }
 sub {
-	top: .5ex;
+    top: .5ex;
 }
 
 

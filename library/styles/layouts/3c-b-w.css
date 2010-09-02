@@ -3,28 +3,28 @@ LAYOUT: Three-Column Wide Sidebars
 DESCRIPTION: Three-column fluid layout with two wide sidebars on both sides of info
 */
 div#container {
-float:left;
-width:100%;
+    float:left;
+    width:100%;
 }
 div#main, .navigation {
-margin:0 290px;
+    margin:0 290px;
 }
 div.sidebar {
-float:left;
-overflow:hidden;
-width:280px;
+    float:left;
+    overflow:hidden;
+    width:280px;
 }
 div#primary {
-margin:0 0 0 -100%;
+    margin:0 0 0 -100%;
 }
 * html div#primary {
-left:20px;
-position:relative;
+    left:20px;
+    position:relative;
 }
 div#secondary {
-margin:0 0 0 -290px;
+    margin:0 0 0 -290px;
 }
 div#footer {
-clear:left;
-width:100%;
+    clear:left;
+    width:100%;
 }

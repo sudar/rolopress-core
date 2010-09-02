@@ -3,24 +3,24 @@ LAYOUT: Three-Column (Right)
 DESCRIPTION: Three-column fluid layout with two sidebars right of info
 */
 div#container {
-float:left;
-width:100%;
+    float:left;
+    width:100%;
 }
 div#main, .navigation {
-margin:0 360px 0 0;
+    margin:0 360px 0 0;
 }
 div.sidebar {
-float:left;
-overflow:hidden;
-width:180px;
+    float:left;
+    overflow:hidden;
+    width:180px;
 }
 div#primary {
-margin:0 0 0 -360px;
+    margin:0 0 0 -360px;
 }
 div#secondary {
-margin:0 0 0 -180px;
+    margin:0 0 0 -180px;
 }
 div#footer {
-clear:left;
-width:100%;
+    clear:left;
+    width:100%;
 }

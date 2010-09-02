@@ -3,22 +3,22 @@ PRINT: Standard Print styles
 */
 
 body {
-	background:none !important;
+    background:none !important;
 }
 #primary, #secondary {
-	float: left;
-	overflow: hidden;
-	padding: 10px 0;
-	width: 100%;
+    float: left;
+    overflow: hidden;
+    padding: 10px 0;
+    width: 100%;
 }
 #primary {
-	clear: both;
+    clear: both;
 }
 #footer {
-	clear: left;
-	width: 100%;
+    clear: left;
+    width: 100%;
 }
 
 #access, #menu , #respond, #footer{
-display: none;
+    display: none;
 }
