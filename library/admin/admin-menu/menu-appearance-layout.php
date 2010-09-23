@@ -35,18 +35,6 @@ $layout_options = array (
     ),
 );
 
-$default_menu_options = array (
-    array("name" => __('Show Contact items','rolopress'),
-        "id" => $shortname."_show_contact_items",
-        "std" => "true",
-        "type" => "checkbox"),
-
-    array("name" => __('Show Company items','rolopress'),
-        "id" => $shortname."_show_company_items",
-        "std" => "true",
-        "type" => "checkbox"),
-);
-
 /**
  * Display options page
  *
@@ -57,7 +45,6 @@ $default_menu_options = array (
 function rolo_menu_layout_add () {
 
     global $themename, $shortname, $layout_options;
-
 
     if ( $_GET['page'] == basename(__FILE__) ) {
     
