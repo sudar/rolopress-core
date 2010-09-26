@@ -53,9 +53,17 @@ function rolo_change_menu_names( $translated ) {
 	$translated = str_replace( 'Posts', 'Items', $translated );
 	$translated = str_replace( 'post', 'item', $translated );
 
-	// Change Comments to Notes
+	// Change Comments
 	$translated = str_replace( 'Comments', 'Notes', $translated );
 	$translated = str_replace( 'comment', 'note', $translated );
+	$translated = str_replace( 'Discussion', 'Notes', $translated );
+
+	// Change Author to Owner
+	$translated = str_replace( 'Authors', 'Owners', $translated );
+	$translated = str_replace( 'Author', 'Owner', $translated );
+	
+	// Change Misc items
+	$translated = str_replace( 'In Response To', 'For Item', $translated );
 	
 	return $translated;
 }
@@ -86,5 +94,6 @@ function rolo_custom_favorite_actions($actions) {
 }
 
 add_filter('favorite_actions', 'rolo_custom_favorite_actions');
+
 
 ?>
