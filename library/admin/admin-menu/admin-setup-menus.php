@@ -41,4 +41,28 @@ add_action('admin_menu', 'rolo_add_admin_menu');
 
 
 
+
+
+
+
+
+
+
+
+
+/**
+ * Setup RoloPress section in admin
+ */
+function rolopress_setup_dashboard() {
+	
+		require_once ROLOPRESS_ADMIN_MENU . '/rolopress-admin-settings.php';
+		//require_once ROLOPRESS_ADMIN_MENU . '/rolopress-main-menu.php';
+		add_menu_page(__('Dashboard','rolopress'), __('rolopress','rolopress'), 'manage_options', 'rolopress-main', 'rolopress_do_page', ROLOPRESS_IMAGES . 'admin/rolopress-icon-bk.gif)');
+		
+};
+add_action('admin_menu', 'rolopress_setup_dashboard');
+
+
+
+
 ?>
