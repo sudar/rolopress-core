@@ -42,4 +42,49 @@ function rolo_admin_footer() { // Add custom footer to Admin
 add_action('admin_footer', 'rolo_admin_footer');
 
 
+/**
+ * Change menu names
+ *
+ * @Credits: http://www.cmurrayconsulting.com/wordpress-tips/customizing-wordpress-admin/
+ */
+function rolo_change_menu_names( $translated ) {
+
+	// Change Posts to Items
+	$translated = str_replace( 'Posts', 'Items', $translated );
+	$translated = str_replace( 'post', 'item', $translated );
+
+	// Change Comments to Notes
+	$translated = str_replace( 'Comments', 'Notes', $translated );
+	$translated = str_replace( 'comment', 'note', $translated );
+	
+	return $translated;
+}
+add_filter( 'gettext', 'rolo_change_menu_names' );
+add_filter( 'ngettext', 'rolo_change_menu_names' );
+
+/**
+ * Remove menu items
+ *
+ * @Credits: http://sixrevisions.com/wordpress/how-to-customize-the-wordpress-admin-area/
+ */
+function rolo_remove_submenus() {
+  global $submenu;
+  unset($submenu['edit.php'][10]); // Removes Add New
+}
+
+add_action('admin_menu', 'rolo_remove_submenus');
+
+/**
+ * Customize favorites dropdown
+ *
+ * @Credits: http://sixrevisions.com/wordpress/how-to-customize-the-wordpress-admin-area/
+ */
+function rolo_custom_favorite_actions($actions) {
+  unset($actions['post-new.php?post_type=post']); // Remove New Post
+  unset($actions['post-new.php']); // Remove New Post
+  return $actions;
+}
+
+add_filter('favorite_actions', 'rolo_custom_favorite_actions');
+
 ?>
