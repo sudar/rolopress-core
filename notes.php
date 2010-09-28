@@ -92,6 +92,8 @@ return;
 
 <p><textarea name="comment" id="note" cols="100%" rows="10" tabindex="4"></textarea></p>
 
+<?php do_action('rolo_before_note_submit', $post->ID); ?>
+
 <p><input name="submit" type="submit" id="submit" tabindex="5" value="Add Note" />
 <?php comment_id_fields(); ?>
 </p>
