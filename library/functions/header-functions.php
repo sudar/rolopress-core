@@ -40,7 +40,9 @@ add_action ('wp_head','rolo_css_standard');
  * @since 1.2
  */
 function rolo_css_theme_layout() {
-	echo '<link rel="stylesheet" type="text/css" href="' . ROLOPRESS_CSS_LAYOUTS . "/" . get_option('rolo_layout_setting') . '.css" media="screen,projection" />' . "\r";
+	$options = get_option('rolopress_layout_options');
+	$layout = $options [theme_layout];
+	echo '<link rel="stylesheet" type="text/css" href="' . ROLOPRESS_CSS_LAYOUTS . "/" . $layout . '.css" media="screen,projection" />' . "\r";
 }
 add_action ('wp_head','rolo_css_theme_layout');
 
@@ -82,10 +84,16 @@ add_action ('wp_head','rolo_css_print');
 function rolo_css_widget_areas() {
 	global $rolo_print_primary, $rolo_print_secondary, $rolo_print_contact_under_main, $rolo_print_company_under_main;
 	
-	if (get_option('rolo_print_primary') != "true") { echo '<link rel="stylesheet" type="text/css" href="' . ROLOPRESS_CSS_PRINT . '/hide-primary.css" media="print" />' . "\r";};
-	if (get_option('rolo_print_secondary') != "true") { echo '<link rel="stylesheet" type="text/css" href="' . ROLOPRESS_CSS_PRINT . '/hide-secondary.css" media="print" />' . "\r";};
-	if (get_option('rolo_print_contact_under_main') != "true") { echo '<link rel="stylesheet" type="text/css" href="' . ROLOPRESS_CSS_PRINT . '/hide-contact-under-main.css" media="print" />' . "\r";};
-	if (get_option('rolo_print_company_under_main') != "true") { echo '<link rel="stylesheet" type="text/css" href="' . ROLOPRESS_CSS_PRINT . '/hide-company-under-main" media="print" />' . "\r";};
+	$options = get_option('rolopress_main_options');
+	$rolo_print_primary = $options[print_primary];
+	$rolo_print_secondary = $options[print_secondary];
+	$rolo_print_contact_under_main = $options[print_contact_under_main];
+	$rolo_print_company_under_main = $options[print_company_under_main];
+	
+	if ($rolo_print_primary != "on") { echo '<link rel="stylesheet" type="text/css" href="' . ROLOPRESS_CSS_PRINT . '/hide-primary.css" media="print" />' . "\r";};
+	if ($rolo_print_secondary != "on") { echo '<link rel="stylesheet" type="text/css" href="' . ROLOPRESS_CSS_PRINT . '/hide-secondary.css" media="print" />' . "\r";};
+	if ($rolo_print_contact_under_main != "on") { echo '<link rel="stylesheet" type="text/css" href="' . ROLOPRESS_CSS_PRINT . '/hide-contact-under-main.css" media="print" />' . "\r";};
+	if ($rolo_print_company_under_main != "on") { echo '<link rel="stylesheet" type="text/css" href="' . ROLOPRESS_CSS_PRINT . '/hide-company-under-main" media="print" />' . "\r";};
 }
 add_action ('wp_head','rolo_css_widget_areas');
 

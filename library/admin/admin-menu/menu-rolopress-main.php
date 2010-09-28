@@ -162,6 +162,7 @@ function setting_print_company_under_main(){
 function rolopress_do_page() { ?>
 
 	<div class="wrap" style="margin: 10px 0 0 0;">
+		<div class="icon32" id="icon-options-general"><br></div>
 		<h2>RoloPress Settings</h2>
 		
 		<form name="settings" action="options.php" method="post" enctype="multipart/form-action">

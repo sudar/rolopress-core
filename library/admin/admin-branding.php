@@ -55,6 +55,7 @@ function rolo_change_menu_names( $translated ) {
 
 	// Change Comments
 	$translated = str_replace( 'Comments', 'Notes', $translated );
+	$translated = str_replace( 'Comment', 'Note', $translated );
 	$translated = str_replace( 'comment', 'note', $translated );
 	$translated = str_replace( 'Discussion', 'Notes', $translated );
 
@@ -69,6 +70,8 @@ function rolo_change_menu_names( $translated ) {
 }
 add_filter( 'gettext', 'rolo_change_menu_names' );
 add_filter( 'ngettext', 'rolo_change_menu_names' );
+add_filter( 'gettext_with_context', 'rolo_change_menu_names' );
+add_filter( 'ngettext_with_context', 'rolo_change_menu_names' );
 
 /**
  * Remove menu items

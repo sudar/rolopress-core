@@ -223,13 +223,13 @@ add_action('rolopress_after_main','rolo_navigation_below');
  */
 function rolo_sorter() {
 	global $query_string;
-
+	$options = get_option('rolopress_main_options');
 
 	// set sort options for Companies
 	if ( rolo_type_is( 'company' ) ) {
 
-		$rolo_company_sort_by = get_option('rolo_company_sort_by');
-		$rolo_company_sort_order = get_option('rolo_company_sort_order');
+		$rolo_company_sort_by = $options[company_sort_by];
+		$rolo_company_sort_order = $options[company_sort_order];
 			
 			// Sort by
 			if ($rolo_company_sort_by == "Name") { $rolo_company_sort_by = 'title'; }
@@ -249,9 +249,10 @@ function rolo_sorter() {
 	// set sort options for Contacts
 	if ( rolo_type_is( 'contact' ) ) {
 
-		$rolo_contact_sort_by = get_option('rolo_contact_sort_by');
-		$rolo_contact_sort_order = get_option('rolo_contact_sort_order');
+		$rolo_contact_sort_by = $options[contact_sort_by];
+		$rolo_contact_sort_order = $options[contact_sort_order];
 		$rolo_meta_key='rolo_contact'; //set default for rolo_meta_key
+		
 		
 			// Sort by
 			if ($rolo_contact_sort_by == "First Name") {

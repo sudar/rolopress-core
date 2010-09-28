@@ -20,6 +20,9 @@ $locale = get_locale();
 $locale_file = TEMPLATEPATH . "/languages/$locale.php";
 if ( is_readable($locale_file) )
 	require_once($locale_file);
+	
+
+define ( 'ROLOPRESS_CORE_THEME_VERSION', '1.4');
 
 // Define constant paths
 define( 'ROLOPRESS_DIR', TEMPLATEPATH );
@@ -77,14 +80,47 @@ if ( is_admin() && isset($_GET['activated'] ) && $pagenow == "themes.php" ) {
 	require_once( ROLOPRESS_FUNCTIONS . '/widgets.php' );
 
 // Load extensions
+	$options = get_option('rolopress_main_options');
+	
 	require_once( ROLOPRESS_EXTENSIONS . '/query-multiple-taxonomies/query-multiple-taxonomies.php' );
 	require_once( ROLOPRESS_EXTENSIONS . '/extended-admin-post-filter/extend-admin-post-filter.php' );
 	require_once( ROLOPRESS_EXTENSIONS . '/twitter-image.php' );
-if ( get_option('rolo_disable_rolosearch') !== "Disable RoloSearch") {
-	require_once( ROLOPRESS_EXTENSIONS . '/rolosearch/rolosearch.php' );}
+	
+	$rolosearch = $options[disable_rolosearch];
+		if ( $rolosearch !== "Disable RoloSearch") {
+			require_once( ROLOPRESS_EXTENSIONS . '/rolosearch/rolosearch.php' );
+		}
 
 // Load javascript - only if user has proper permissions
 if ( current_user_can('edit_posts') ) {
 	require_once( ROLOPRESS_INCLUDES . '/js-load.php' ); }
+
+	
+	
+	
+	
+	
+	
+// Change Company to Organization
+function rolo_change_menu_name( $translated ) {
+
+	// Change Posts to Items
+	$translated = str_replace( 'Companies', 'Organizations', $translated );
+	$translated = str_replace( 'Company', 'Organization', $translated );
+
+
+	
+	return $translated;
+}
+add_filter( 'gettext', 'rolo_change_menu_name' );
+add_filter( 'ngettext', 'rolo_change_menu_name' );
+add_filter( 'gettext_with_context', 'rolo_change_menu_name' );
+add_filter( 'ngettext_with_context', 'rolo_change_menu_name' );
+
+
+
+
+
+
 
 ?>
