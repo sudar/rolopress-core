@@ -26,7 +26,7 @@ require_once ROLOPRESS_ADMIN_MENU . '/menu-rolopress-main.php';
 require_once( ROLOPRESS_ADMIN_MENU . '/menu-posts-edit.php' );
 
 // Load Appearance menu
-require_once( ROLOPRESS_ADMIN_MENU . '/menu-layout.php' );
+require_once( ROLOPRESS_ADMIN_MENU . '/menu-rolopress-layout.php' );
 
 
 // only load if viewing admin

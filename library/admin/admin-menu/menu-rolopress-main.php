@@ -166,9 +166,9 @@ function rolopress_do_page() { ?>
 		<h2>RoloPress Settings</h2>
 		
 		<form name="settings" action="options.php" method="post" enctype="multipart/form-action">
+		<p class="submit"><input name="Submit" type="submit" class="button-primary" value="<?php esc_attr_e('Save Changes'); ?>" /></p>
 		<?php settings_fields('rolopress_main_options'); ?>
 		<?php do_settings_sections(__FILE__);?>
-		
 		<p class="submit"><input name="Submit" type="submit" class="button-primary" value="<?php esc_attr_e('Save Changes'); ?>" /></p>
 		</form>
 
