@@ -38,7 +38,9 @@ function rolo_contact_header($contact_id) {
 			?>
             </li>
 			<?php if ($contact['rolo_contact_email'] != "") { ?><li class="email url-field"><a class="email" href="mailto:<?php echo $contact['rolo_contact_email'];?>"><?php echo $contact['rolo_contact_email'];?> </a><span id="rolo_contact_email" class="edit-icon" style=""><?php echo $contact['rolo_contact_email']; ?></span></li><?php } ?>
-    </ul><!-- vcard -->
+
+			<?php rolopress_after_contact_hcard();?>
+    </ul><!-- hcard -->
 <?php
 }
 
@@ -115,6 +117,8 @@ function rolo_contact_details($contact_id) {
                 </ul>
             </li>
 				<?php if ($contact['rolo_contact_website'] != "") { ?><li class="website url-field group"><span class="type"><?php _e('Website', 'rolopress'); ?></span><a class="url" href="http://<?php echo $contact['rolo_contact_website']; ?>"><?php echo $contact['rolo_contact_website']; ?></a><span id="rolo_contact_website" class="edit-icon" style=""><?php echo $contact['rolo_contact_website']; ?></span></li><?php } ?>
+				
+				<?php rolopress_after_contact_vcard();?>
         </ul><!-- vcard -->
     </form>
 <?php
@@ -159,7 +163,8 @@ function rolo_company_header($company_id) {
 			if ($company['rolo_company_website'] != "") { ?>
 				<li class="website url-field group"><span class="type"><?php _e('Website', 'rolopress'); ?></span> <a class="url" href="http://<?php echo $company['rolo_company_website']; ?>"><?php echo $company['rolo_company_website']; ?></a><span id="rolo_company_website" class="edit-icon" style=""><?php echo $company['rolo_company_website']; ?></span></li><?php }
 			?>
-    </ul><!-- vcard -->
+			<?php rolopress_after_company_hcard();?>
+    </ul><!-- hcard -->
 <?php
 }
 
@@ -243,6 +248,8 @@ function rolo_company_details($company_id) {
             </li>
 
     		<?php if ($company['rolo_company_website'] != "") { ?><li class="website url-field group"><span class="type"><?php _e('Website', 'rolopress'); ?></span> <a class="url" href="http://<?php echo $company['rolo_company_website']; ?>"><?php echo $company['rolo_company_website']; ?></a><span id="rolo_company_website" class="edit-icon" style=""><?php echo $company['rolo_company_website']; ?></span></li><?php } ?>
+			
+			<?php rolopress_after_company_vcard();?>
     </ul><!-- vcard -->
     </form>
 <?php

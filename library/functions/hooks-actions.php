@@ -53,6 +53,17 @@ function rolopress_after_main() { do_action('rolopress_after_main'); }
 function rolopress_after_container() { do_action('rolopress_after_container'); }
 
 
+// Located in List pages
+function rolopress_after_contact_hcard() { do_action('rolopress_after_contact_hcard'); }
+
+function rolopress_after_company_hcard() { do_action('rolopress_after_company_hcard'); }
+
+// Located in Item Details
+function rolopress_after_contact_vcard() { do_action('rolopress_after_contact_vcard'); }
+
+function rolopress_after_company_vcard() { do_action('rolopress_after_company_vcard'); }
+
+
 // Located in footer.php
 function rolopress_before_footer() { do_action('rolopress_before_footer'); }
 
@@ -61,5 +72,13 @@ function rolopress_footer() { do_action('rolopress_footer'); }
 function rolopress_after_footer() { do_action('rolopress_after_footer'); }
 
 function rolopress_after_wrapper() { do_action('rolopress_after_wrapper'); }
+
+/* Hooks located in other files
+ * These are for reference
+ 
+ Notes.php
+ rolopress_before_note_submit()
+ 
+ */
 
 ?>
