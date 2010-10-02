@@ -21,6 +21,9 @@ $locale_file = TEMPLATEPATH . "/languages/$locale.php";
 if ( is_readable($locale_file) )
 	require_once($locale_file);
 
+//To check if RoloPress is loaded or not.
+define('ROLOPRESS_VERSION', '1.4');
+
 // Define constant paths
 define( 'ROLOPRESS_DIR', TEMPLATEPATH );
 define( 'ROLOPRESS_LIBRARY', ROLOPRESS_DIR . '/library' );
@@ -45,13 +48,13 @@ define( 'ROLOPRESS_CHILD_URL', get_stylesheet_directory_uri() );
 define( 'ROLOPRESS_CHILD_CSS', get_stylesheet_directory_uri() . '/style.css' );
 
 // Load compatability function
-	require_once( ROLOPRESS_FUNCTIONS . '/compat.php' );
+require_once( ROLOPRESS_FUNCTIONS . '/compat.php' );
 
 // Load action hooks
-	require_once( ROLOPRESS_FUNCTIONS . '/hooks-actions.php' );
+require_once( ROLOPRESS_FUNCTIONS . '/hooks-actions.php' );
 
 // Setup custom fields and custom taxonomies
-	require_once( ROLOPRESS_SETUP . '/setup-fields.php' );
+require_once( ROLOPRESS_SETUP . '/setup-fields.php' );
 
 // Run setup -- only when theme is activated
 // @credits: http://www.nabble.com/Activation-hook-exist-for-themes--td25211004.html
@@ -61,30 +64,32 @@ if ( is_admin() && isset($_GET['activated'] ) && $pagenow == "themes.php" ) {
 }
 
 // Load RoloPress Admin functions
-   require_once( ROLOPRESS_ADMIN_FUNCTIONS . '/admin.php' );
+require_once( ROLOPRESS_ADMIN_FUNCTIONS . '/admin.php' );
 
 // Load RoloPress Template functions
-	require_once( ROLOPRESS_FUNCTIONS . '/template-functions.php' );
-	require_once( ROLOPRESS_FUNCTIONS . '/contact-functions.php' );
-	require_once( ROLOPRESS_FUNCTIONS . '/company-functions.php' );
-	require_once( ROLOPRESS_FUNCTIONS . '/note-functions.php' );
-	require_once( ROLOPRESS_FUNCTIONS . '/dynamic-classes.php' );
-	require_once( ROLOPRESS_FUNCTIONS . '/messages.php' );
-	require_once( ROLOPRESS_FUNCTIONS . '/header-functions.php' );
-	require_once( ROLOPRESS_FUNCTIONS . '/content-functions.php' );
+require_once( ROLOPRESS_FUNCTIONS . '/template-functions.php' );
+require_once( ROLOPRESS_FUNCTIONS . '/contact-functions.php' );
+require_once( ROLOPRESS_FUNCTIONS . '/company-functions.php' );
+require_once( ROLOPRESS_FUNCTIONS . '/note-functions.php' );
+require_once( ROLOPRESS_FUNCTIONS . '/dynamic-classes.php' );
+require_once( ROLOPRESS_FUNCTIONS . '/messages.php' );
+require_once( ROLOPRESS_FUNCTIONS . '/header-functions.php' );
+require_once( ROLOPRESS_FUNCTIONS . '/content-functions.php' );
 
 // Load widget areas and custom widgets
-	require_once( ROLOPRESS_FUNCTIONS . '/widgets.php' );
+require_once( ROLOPRESS_FUNCTIONS . '/widgets.php' );
 
 // Load extensions
-	require_once( ROLOPRESS_EXTENSIONS . '/query-multiple-taxonomies/query-multiple-taxonomies.php' );
-	require_once( ROLOPRESS_EXTENSIONS . '/extended-admin-post-filter/extend-admin-post-filter.php' );
-	require_once( ROLOPRESS_EXTENSIONS . '/twitter-image.php' );
+require_once( ROLOPRESS_EXTENSIONS . '/query-multiple-taxonomies/query-multiple-taxonomies.php' );
+require_once( ROLOPRESS_EXTENSIONS . '/extended-admin-post-filter/extend-admin-post-filter.php' );
+require_once( ROLOPRESS_EXTENSIONS . '/twitter-image.php' );
+
 if ( get_option('rolo_disable_rolosearch') !== "Disable RoloSearch") {
-	require_once( ROLOPRESS_EXTENSIONS . '/rolosearch/rolosearch.php' );}
+	require_once( ROLOPRESS_EXTENSIONS . '/rolosearch/rolosearch.php' );
+}
 
 // Load javascript - only if user has proper permissions
 if ( current_user_can('edit_posts') ) {
-	require_once( ROLOPRESS_INCLUDES . '/js-load.php' ); }
-
+	require_once( ROLOPRESS_INCLUDES . '/js-load.php' );
+}
 ?>
