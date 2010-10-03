@@ -600,6 +600,9 @@ function rolo_save_contact_company($field_name, $post_id) {
 
             $company_id = wp_insert_post($new_post);
 
+            // Store only company name as seperate custom field
+            update_post_meta($company_id, 'rolo_company_name', $company_name);
+
             // Set the custom taxonmy for the post
             wp_set_post_terms($company_id, 'Company', 'type');
             wp_set_post_terms($company_id, $company_name, 'company');
