@@ -41,7 +41,7 @@ add_action ('wp_head','rolo_css_standard');
  */
 function rolo_css_theme_layout() {
 	$options = get_option('rolopress_layout_options');
-	$layout = $options [theme_layout];
+	$layout = $options[theme_layout];
 	echo '<link rel="stylesheet" type="text/css" href="' . ROLOPRESS_CSS_LAYOUTS . "/" . $layout . '.css" media="screen,projection" />' . "\r";
 }
 add_action ('wp_head','rolo_css_theme_layout');
@@ -68,9 +68,9 @@ function rolo_css_print() {
 	$custom_print_css = ROLOPRESS_CHILD_DIR . '/print.css'; // here's the file we look for
 
 	if (file_exists($custom_print_css)) {
-	echo '<link rel="stylesheet" type="text/css" href="' . ROLOPRESS_CHILD_URL . '/print.css" media="print" />' . "\r";
+		echo '<link rel="stylesheet" type="text/css" href="' . ROLOPRESS_CHILD_URL . '/print.css" media="print" />' . "\r";
 	} else {
-	echo '<link rel="stylesheet" type="text/css" href="' . ROLOPRESS_CSS_PRINT . '/print.css" media="print" />' . "\r";
+		echo '<link rel="stylesheet" type="text/css" href="' . ROLOPRESS_CSS_PRINT . '/print.css" media="print" />' . "\r";
 	}
 }
 add_action ('wp_head','rolo_css_print');
@@ -82,9 +82,8 @@ add_action ('wp_head','rolo_css_print');
  * @since 1.2
  */
 function rolo_css_widget_areas() {
-	global $rolo_print_primary, $rolo_print_secondary, $rolo_print_contact_under_main, $rolo_print_company_under_main;
-	
 	$options = get_option('rolopress_main_options');
+
 	$rolo_print_primary = $options[print_primary];
 	$rolo_print_secondary = $options[print_secondary];
 	$rolo_print_contact_under_main = $options[print_contact_under_main];

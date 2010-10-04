@@ -14,10 +14,6 @@
  */
 function rolopress_main_settings_defaults() {
 	$defaults = array( // define our defaults
-			'contact_sort_by' => 'Last Name',
-			'contact_sort_order' => 'Ascending',
-			'company_sort_by' => 'Name',
-			'company_sort_order' => 'Ascending',
 			'disable_rolosearch' => 'Use RoloSearch',
 			'theme_version' => ROLOPRESS_CORE_THEME_VERSION // <-- no comma after the last option
 	);
@@ -29,11 +25,32 @@ function rolopress_main_settings_defaults() {
  */
 function rolopress_layout_settings_defaults() {
 	$defaults = array( // define our defaults
-			'layout_option' => '3c-b-rw' // <-- no comma after the last option
+			'theme_layout' => '3c-b-rw' // <-- no comma after the last option
 	);
 	return apply_filters('rolopress_layout_settings_defaults', $defaults);
 }
 
+/**
+ * Contact Settings: Register defaults
+ */
+function rolopress_contact_settings_defaults() {
+	$defaults = array( // define our defaults
+			'contact_sort_by' => 'Last Name',
+			'contact_sort_order' => 'Ascending' // <-- no comma after the last option
+	);
+	return apply_filters('rolopress_contact_settings_defaults', $defaults);
+}
+
+/**
+ * Company Settings: Register defaults
+ */
+function rolopress_company_settings_defaults() {
+	$defaults = array( // define our defaults
+			'company_sort_by' => 'Name',
+			'company_sort_order' => 'Ascending' // <-- no comma after the last option
+	);
+	return apply_filters('rolopress_company_settings_defaults', $defaults);
+}
 
 /**
  * This registers all RoloPress settings field and adds defaults to the options table
@@ -41,9 +58,13 @@ function rolopress_layout_settings_defaults() {
 function rolopress_register_theme_settings() {
 	register_setting(rolopress_main_options, rolopress_main_options);
 	register_setting(rolopress_layout_options, rolopress_layout_options);
+	register_setting(rolopress_contact_options, rolopress_layout_options);
+	register_setting(rolopress_company_options, rolopress_layout_options);
 	
 	add_option(rolopress_main_options, rolopress_main_settings_defaults(), '', 'yes');
 	add_option(rolopress_layout_options, rolopress_layout_settings_defaults(), '', 'yes');
+	add_option(rolopress_contact_options, rolopress_contact_settings_defaults(), '', 'yes');
+	add_option(rolopress_company_options, rolopress_company_settings_defaults(), '', 'yes');
 }
 add_action('admin_init', 'rolopress_register_theme_settings', 5);
 

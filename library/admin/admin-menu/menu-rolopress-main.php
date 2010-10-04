@@ -10,16 +10,6 @@
 function options_init_rolo_main(){
 	register_setting('rolopress_main_options', 'rolopress_main_options', 'rolopress_main_options_validate' );
 	
-	//Contacts Section
-	add_settings_section('contacts_section','Contact Settings','section_text_rolo_main_contacts',__FILE__);
-	add_settings_field('contact_sort_by', 'Sort Contact List by', 'setting_contact_sort_by', __FILE__, 'contacts_section');
-	add_settings_field('contact_sort_order', 'Order by', 'setting_contact_sort_order', __FILE__, 'contacts_section');
-	
-	//Company Section
-	add_settings_section('company_section','Company Settings','section_text_rolo_main_company',__FILE__);
-	add_settings_field('company_sort_by', 'Sort Company List by', 'setting_company_sort_by', __FILE__, 'company_section');
-	add_settings_field('company_sort_order', 'Order by', 'setting_company_sort_order', __FILE__, 'company_section');
-		
 	//Search Section
 	add_settings_section('search_section','Search Settings','section_text_rolo_main_search',__FILE__);
 	add_settings_field('disable_rolosearch', 'RoloSearch Setting', 'setting_disable_rolosearch', __FILE__, 'search_section');
@@ -38,70 +28,6 @@ add_action('admin_init', 'options_init_rolo_main' );
 /****************************************************************
  ************************** Admin Sections ********************** 
 *****************************************************************/
-
-///////////////////////////
-//   Contact Settings
-//////////////////////////
-
-function section_text_rolo_main_contacts(){
-	echo '<p>Settings for your Contacts</p>';
-}
-
-// DROP-DOWN-BOX - Name: rolopress_main_options[setting_contact_sort_by]
-function setting_contact_sort_by() {
-	$options = get_option('rolopress_main_options');
-	$items = array("First Name", "Last Name", "Owner", "Date Created", "Last Modified", "ID", "Note Count");
-	echo "<select id='contact_sort_by' name='rolopress_main_options[contact_sort_by]'>";
-	foreach($items as $item) {
-		$selected = ($options['contact_sort_by']==$item) ? 'selected="selected"' : '';
-		echo "<option value='$item' $selected>$item</option>";
-	}
-	echo "</select>";
-}
-
-// DROP-DOWN-BOX - Name: rolopress_main_options[setting_contact_sort_order]
-function setting_contact_sort_order() {
-	$options = get_option('rolopress_main_options');
-	$items = array("Ascending", "Descending");
-	echo "<select id='contact_sort_order' name='rolopress_main_options[contact_sort_order]'>";
-	foreach($items as $item) {
-		$selected = ($options['contact_sort_order']==$item) ? 'selected="selected"' : '';
-		echo "<option value='$item' $selected>$item</option>";
-	}
-	echo "</select>";
-}
-
-///////////////////////////
-//   Company Settings
-//////////////////////////
-
-function section_text_rolo_main_company(){
-	echo '<p>Settings for your Contacts</p>';
-}
-
-// DROP-DOWN-BOX - Name: rolopress_main_options[setting_company_sort_by]
-function setting_company_sort_by() {
-	$options = get_option('rolopress_main_options');
-	$items = array("Name", "Owner", "Date Created", "Last Modified", "ID", "Note Count");
-	echo "<select id='company_sort_by' name='rolopress_main_options[company_sort_by]'>";
-	foreach($items as $item) {
-		$selected = ($options['company_sort_by']==$item) ? 'selected="selected"' : '';
-		echo "<option value='$item' $selected>$item</option>";
-	}
-	echo "</select>";
-}
-
-// DROP-DOWN-BOX - Name: rolopress_main_options[setting_company_sort_order]
-function setting_company_sort_order() {
-	$options = get_option('rolopress_main_options');
-	$items = array("Ascending", "Descending");
-	echo "<select id='company_sort_order' name='rolopress_main_options[company_sort_order]'>";
-	foreach($items as $item) {
-		$selected = ($options['company_sort_order']==$item) ? 'selected="selected"' : '';
-		echo "<option value='$item' $selected>$item</option>";
-	}
-	echo "</select>";
-}
 
 ///////////////////////////
 //   Search Settings

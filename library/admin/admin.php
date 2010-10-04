@@ -22,11 +22,13 @@ require_once( ROLOPRESS_ADMIN_MENU . '/admin-setup-menus.php' );
 // Load Main RoloPress menu
 require_once ROLOPRESS_ADMIN_MENU . '/menu-rolopress-main.php';
 
+// Load sub menu's
+require_once( ROLOPRESS_ADMIN_MENU . '/menu-rolopress-layout.php' );
+require_once( ROLOPRESS_ADMIN_MENU . '/menu-rolopress-contact.php' );
+require_once( ROLOPRESS_ADMIN_MENU . '/menu-rolopress-company.php' );
+
 // Load Posts menu
 require_once( ROLOPRESS_ADMIN_MENU . '/menu-posts-edit.php' );
-
-// Load Appearance menu
-require_once( ROLOPRESS_ADMIN_MENU . '/menu-rolopress-layout.php' );
 
 
 // only load if viewing admin
