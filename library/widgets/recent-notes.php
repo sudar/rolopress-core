@@ -51,6 +51,16 @@ class Rolo_Widget_Recent_Notes extends WP_Widget {
  			$number = 5;
  		else if ( $number < 1 )
  			$number = 1;
+			
+		if ( $instance['datetime'] == 'date') {
+			$new_instance['datetime'] = get_comment_date() . ": ";
+		} elseif ($instance['datetime'] == 'date/time') {
+			$new_instance['datetime'] = get_comment_date() . " at " . get_comment_time() . ": ";
+		} else {
+			$new_instance['datetime'] = null;
+		};
+		
+		$datetime = $new_instance['datetime'];
 
 		$comments = get_comments( array( 'number' => $number, 'status' => 'approve' ) );
 		$output .= $before_widget;
@@ -60,7 +70,7 @@ class Rolo_Widget_Recent_Notes extends WP_Widget {
 		$output .= '<ul id="recentnotes">';
 		if ( $comments ) {
 			foreach ( (array) $comments as $comment) {
-				$output .=  '<li class="recentnotes">' . /* translators: comments widget: 1: comment author, 2: post link */ sprintf(_x('%1$s', 'widgets'), '<a href="' . esc_url( get_comment_link($comment->comment_ID) ) . '">' . get_the_title($comment->comment_post_ID) . ': ' . get_comment_excerpt() . '</a>') . '</li>';
+				$output .=  '<li class="recentnotes">' . /* translators: comments widget: 1: comment author, 2: post link */ sprintf(_x('%1$s', 'widgets'), $datetime . '<a href="' . esc_url( get_comment_link($comment->comment_ID) ) . '">' . get_the_title($comment->comment_post_ID) . ': ' . get_comment_excerpt() . '</a>') . '</li>';
 			}
  		}
 		$output .= '</ul>';
@@ -75,6 +85,7 @@ class Rolo_Widget_Recent_Notes extends WP_Widget {
 		$instance = $old_instance;
 		$instance['title'] = strip_tags($new_instance['title']);
 		$instance['number'] = (int) $new_instance['number'];
+		$instance['datetime'] = $new_instance['datetime'];
 		$this->flush_widget_cache();
 
 		$alloptions = wp_cache_get( 'alloptions', 'options' );
@@ -87,17 +98,32 @@ class Rolo_Widget_Recent_Notes extends WP_Widget {
 	function form( $instance ) {
 		$title = isset($instance['title']) ? esc_attr($instance['title']) : '';
 		$number = isset($instance['number']) ? absint($instance['number']) : 5;
+		$datetime = $instance['datetime'];
 ?>
 		<div style="float:left;width:98%;">
 		<p><img class="rolo_widget_icon" src= <?php echo ROLOPRESS_IMAGES  . '/admin/rolopress-icon.gif' ?> />
 		<?php _e('Displays your recently created Notes.', 'rolopress')?>
 		</p>
 		</div>
-		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:'); ?></label>
-		<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" /></p>
+		
+		<p>
+			<label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:'); ?></label>
+			<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" />
+		</p>
 
-		<p><label for="<?php echo $this->get_field_id('number'); ?>"><?php _e('Number of notes to show:'); ?></label>
-		<input id="<?php echo $this->get_field_id('number'); ?>" name="<?php echo $this->get_field_name('number'); ?>" type="text" value="<?php echo $number; ?>" size="3" /></p>
+		<p>
+			<label for="<?php echo $this->get_field_id('number'); ?>"><?php _e('Number of notes to show:'); ?></label>
+			<input id="<?php echo $this->get_field_id('number'); ?>" name="<?php echo $this->get_field_name('number'); ?>" type="text" value="<?php echo $number; ?>" size="3" />
+		</p>
+		
+		<p>
+				<label for="<?php echo $this->get_field_id( 'datetime' ); ?>"><?php _e('Show Date and Time:', 'rolopress'); ?></label> 
+					<select id="<?php echo $this->get_field_id( 'datetime' ); ?>" name="<?php echo $this->get_field_name( 'datetime' ); ?>" class="widefat" style="width:100%;">
+						<option <?php if ( 'none' == $instance['datetime'] ) echo 'selected="selected"'; ?>>none</option>
+						<option <?php if ( 'date' == $instance['datetime'] ) echo 'selected="selected"'; ?>>date</option>
+						<option <?php if ( 'date/time' == $instance['datetime'] ) echo 'selected="selected"'; ?>>date/time</option>
+			</select>
+					</select></p>
 <?php
 	}
 }
