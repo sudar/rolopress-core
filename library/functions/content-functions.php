@@ -279,31 +279,6 @@ return $query;
 };
 
 /**
- * Show to user
- *
- * Compare logged-in user to item owner
- *
- * @since 1.5
- */
- 
- function rolo_showtouser() {
-	global $current_user;
-		$owner = sanitize_html_class( get_the_author_meta( 'user_nicename' ), get_the_author_meta( 'ID' ) );
-		get_currentuserinfo();
-			$currentuser = $current_user->user_login;
-	
-	if ($owner == $currentuser) {
-		$show = "y";
-	} else {
-		$show = "n";
-	}
-	
-	return $show;
-
-}
- 
-
-/**
  * RoloPress master loop
  *
  * Currently handles most situations
@@ -315,11 +290,6 @@ function rolo_loop() { ?>
 	<ul class="item-list">
 <?php }; ?>
 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-<?php  global $post;?>
-
-<?php // only show to owner
-if (rolo_showtouser() == "y") {?>
-
 
 		<li id="entry-<?php the_ID(); ?>" class="<?php rolopress_entry_class(); ?>">
 		
@@ -398,12 +368,7 @@ if (rolo_showtouser() == "y") {?>
 
 				<?php rolopress_after_entry(); // After entry hook ?>
 				
-				<?php if (is_single()) { comments_template( '/notes.php' ); } ?>
-
 		</li><!-- #entry-<?php the_ID(); ?> -->
-		
-<?php }; // end rolo_showtouser ?>
-
 <?php endwhile; ?>
 
 <?php if (!is_single() ) { // not needed on single pages ?>
