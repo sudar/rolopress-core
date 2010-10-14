@@ -8,7 +8,6 @@
 
 				<?php rolo_pageheader();?>
 				<?php rolo_loop();?>
-				<?php comments_template( '/notes.php' ); ?>
 			
 		</div><!-- #main -->
 		<?php rolopress_after_main(); // After main hook ?>

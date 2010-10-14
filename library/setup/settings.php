@@ -77,7 +77,7 @@ add_action('admin_init', 'rolopress_register_theme_settings', 5);
 function rolo_set_permalinks() {
 	global $wpdb, $wp_rewrite;
 
-	$permalink_structure = '/%postname%';
+	$permalink_structure = '/%post_id%-%postname%';
 	$wp_rewrite->set_permalink_structure($permalink_structure);
 	$wp_rewrite->flush_rules();
 }

@@ -278,6 +278,30 @@ function rolo_sorter() {
 return $query;
 };
 
+/**
+ * Show to user
+ *
+ * Compare logged-in user to item owner
+ *
+ * @since 1.5
+ */
+ 
+ function rolo_showtouser() {
+	global $current_user;
+		$owner = sanitize_html_class( get_the_author_meta( 'user_nicename' ), get_the_author_meta( 'ID' ) );
+		get_currentuserinfo();
+			$currentuser = $current_user->user_login;
+	
+	if ($owner == $currentuser) {
+		$show = "y";
+	} else {
+		$show = "n";
+	}
+	
+	return $show;
+
+}
+ 
 
 /**
  * RoloPress master loop
@@ -290,10 +314,15 @@ function rolo_loop() { ?>
 <?php if (!is_single() ) { // This class is not needed on single pages ?>
 	<ul class="item-list">
 <?php }; ?>
-<?php if (have_posts()) :  ?>
-<?php while (have_posts()) : the_post(); ?>
+<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+<?php  global $post;?>
+
+<?php // only show to owner
+if (rolo_showtouser() == "y") {?>
+
 
 		<li id="entry-<?php the_ID(); ?>" class="<?php rolopress_entry_class(); ?>">
+		
 			<?php rolopress_before_entry(); // Before entry hook ?>
 
 				<div class="entry-main group">
@@ -305,6 +334,7 @@ function rolo_loop() { ?>
 					<?php }
 					
 					elseif (is_single() ) { 
+					
 								if ( rolo_type_is( 'contact' ) ) { rolo_contact_header(get_the_ID()); the_content();
 										if ( is_active_sidebar("contact-under-main")){ ?>
 											<div class="widget-area contact-under-main">
@@ -367,8 +397,12 @@ function rolo_loop() { ?>
 				<?php rolo_entry_footer(); ?>
 
 				<?php rolopress_after_entry(); // After entry hook ?>
+				
+				<?php if (is_single()) { comments_template( '/notes.php' ); } ?>
 
 		</li><!-- #entry-<?php the_ID(); ?> -->
+		
+<?php }; // end rolo_showtouser ?>
 
 <?php endwhile; ?>
 
