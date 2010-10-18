@@ -98,17 +98,4 @@ $rolosearch = $options[disable_rolosearch];
 if ( current_user_can('edit_posts') ) {
 	require_once( ROLOPRESS_INCLUDES . '/js-load.php' ); }
 
-// Update options from old option value names to new value names
-
-upgrade_option('rolo_disable_rolosearch', 'rolopress_main_options', 'disable_rolosearch');
-upgrade_option('rolo_print_primary', 'rolopress_main_options', 'print_primary');
-upgrade_option('rolo_print_secondary', 'rolopress_main_options', 'print_secondary');
-upgrade_option('rolo_print_contact_under_main', 'rolopress_main_options', 'print_contact_under_main');
-upgrade_option('rolo_print_company_under_main', 'rolopress_main_options', 'print_company_under_main');
-upgrade_option('rolo_layout_setting', 'rolopress_layout_options', 'theme_layout');
-upgrade_option('rolo_contact_sort_by', 'rolopress_contact_options', 'contact_sort_by');
-upgrade_option('rolo_contact_sort_order', 'rolopress_contact_options', 'contact_sort_order');
-upgrade_option('rolo_company_sort_by', 'rolopress_company_options', 'company_sort_by');
-upgrade_option('rolo_company_sort_order', 'rolopress_company_options', 'company_sort_order');
-
 ?>

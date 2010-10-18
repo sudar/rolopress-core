@@ -195,4 +195,43 @@ add_action('init', 'rolo_set_permalinks');
 	}
 }
 add_action('init', 'rolopress_create_menus');
+
+/**
+ * Upgrade option from v1.4 to v1.5
+ *
+ * Changed to WP settings api in 1.5
+ *
+ * @param string $old_option - Old Option name
+ * @param string $new_option - new Option name
+ * @param string $new_option_key - new option key name
+ * 
+ * Since v1.5
+ */
+function upgrade_option($old_option, $new_option, $new_option_key) {
+    $old_value = get_option($old_option);
+    if ($old_value != false) {
+        $new_value = get_option($new_option);
+        $new_value = ($new_value == false) ? array() : $new_value;
+
+        $new_value[$new_option_key] = $old_value;
+        update_option($new_option, $new_value);
+    }
+}
+
+
+/* Old -> New options
+ *
+ */
+upgrade_option('rolo_disable_rolosearch', 'rolopress_main_options', 'disable_rolosearch');
+upgrade_option('rolo_print_primary', 'rolopress_main_options', 'print_primary');
+upgrade_option('rolo_print_secondary', 'rolopress_main_options', 'print_secondary');
+upgrade_option('rolo_print_contact_under_main', 'rolopress_main_options', 'print_contact_under_main');
+upgrade_option('rolo_print_company_under_main', 'rolopress_main_options', 'print_company_under_main');
+upgrade_option('rolo_layout_setting', 'rolopress_layout_options', 'theme_layout');
+upgrade_option('rolo_contact_sort_by', 'rolopress_contact_options', 'contact_sort_by');
+upgrade_option('rolo_contact_sort_order', 'rolopress_contact_options', 'contact_sort_order');
+upgrade_option('rolo_company_sort_by', 'rolopress_company_options', 'company_sort_by');
+upgrade_option('rolo_company_sort_order', 'rolopress_company_options', 'company_sort_order');
+
+
 ?>
