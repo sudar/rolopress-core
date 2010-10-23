@@ -40,6 +40,7 @@ jQuery(document).ready(function() {
     // when the delete button is clicked
     jQuery('img.rolo_delete_ctrl').live('click', function () {
        var $this = jQuery(this) ;
+       $this.parent('.ctrlHolder').children('.textInput').val('');
        $this.parent('.ctrlHolder').hide().trigger('hide');
     });
 

@@ -404,32 +404,27 @@ function rolo_setup_contact_multiple($field_name, &$rolo_tab_index, $contact_id 
     $multiple_field = $contact_fields[$field_name];
     $multiples = $multiple_field['multiple'];
 
-    $options = "";
-    foreach ($multiples as $option) {
-        $options .= "<option value ='$option'>$option</option>";
-    }
-
     $contact = get_post_meta($contact_id, 'rolo_contact', true);
 
     for ($i = 0 ; $i < count($multiples) ; $i++) {
 
         $multiple = $multiples[$i];
+        $current_value = '';
+        $title = '';
+        $ctrl_class = '';
+        $hidden = '';
 
         $name  = $multiple_field['name'] . "[$i]";
         $class = $multiple_field['class'];
         $select_name = $multiple_field['name'] . "_select[$i]";
-        if ($i == 0) {
+
+        if (isset($contact['rolo_contact_' . $field_name . '_' . $multiple])) {
+            $current_value = $contact['rolo_contact_' . $field_name . '_' . $multiple];
             $ctrl_class = ' multipleInput ' . $multiple_field['name'];
             $title = $multiple_field['title'];
         } else {
             $ctrl_class = ' multipleInput ctrlHidden ' . $multiple_field['name'];
             $title = '';
-        }
-
-        if (isset($contact['rolo_contact_' . $field_name . '_' . $multiple])) {
-            $current_value = $contact['rolo_contact_' . $field_name . '_' . $multiple];
-        } else {
-            $current_value = '';
         }
 ?>
         <div class="ctrlHolder<?php echo $ctrl_class;?>">
@@ -439,18 +434,20 @@ function rolo_setup_contact_multiple($field_name, &$rolo_tab_index, $contact_id 
             </label>
             <input type="text" name="<?php echo $name;?>" value="<?php echo $current_value ;?>" size="55" tabindex="<?php echo $rolo_tab_index++;?>" class="textInput <?php echo $class;?>" />
             <select name="<?php echo $select_name;?>" tabindex="<?php echo $rolo_tab_index++;?>">
-                <?php echo $options;?>
+<?php
+                foreach ($multiples as $option) {
+                    echo "<option value ='" , $option, "'", selected($multiple, $option, FALSE) , ">", $option, "</option>\n";
+                }
+?>
             </select>
 <?php
             if ($i == 0) {
                 $hidden = 'style = "display:none"';
-            } else {
-                $hidden = '';
             }
 ?>
             <img src ="<?php echo get_bloginfo('template_directory') ?>/library/images/forms/delete.png" class="rolo_delete_ctrl" alt="<?php _e('Delete', 'rolopress');?>" <?php echo $hidden;?> />
             <img src ="<?php echo get_bloginfo('template_directory') ?>/library/images/forms/add.png" class="rolo_add_ctrl" alt="<?php _e('Add another', 'rolopress');?>" />
-		</div>
+        </div>
 <?php
     }
 }
