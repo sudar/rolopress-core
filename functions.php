@@ -21,7 +21,6 @@ $locale_file = TEMPLATEPATH . "/languages/$locale.php";
 if ( is_readable($locale_file) )
 	require_once($locale_file);
 	
-
 define ( 'ROLOPRESS_CORE_THEME_VERSION', '1.4');
 
 //To check if RoloPress is loaded or not.
