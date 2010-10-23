@@ -232,6 +232,4 @@ upgrade_option('rolo_contact_sort_by', 'rolopress_contact_options', 'contact_sor
 upgrade_option('rolo_contact_sort_order', 'rolopress_contact_options', 'contact_sort_order');
 upgrade_option('rolo_company_sort_by', 'rolopress_company_options', 'company_sort_by');
 upgrade_option('rolo_company_sort_order', 'rolopress_company_options', 'company_sort_order');
-
-
 ?>

@@ -27,22 +27,4 @@ if (!function_exists('get_post_by_title'))  {
         return null;
     }
 }
-
-/**
- * Upgrade option from old value to new
- *
- * @param string $old_option - Old Option name
- * @param string $new_option - new Option name
- * @param string $new_option_key - new option key name
- */
-function upgrade_option($old_option, $new_option, $new_option_key) {
-    $old_value = get_option($old_option);
-    if ($old_value != false) {
-        $new_value = get_option($new_option);
-        $new_value = ($new_value == false) ? array() : $new_value;
-
-        $new_value[$new_option_key] = $old_value;
-        update_option($new_option, $new_value);
-    }
-}
 ?>
