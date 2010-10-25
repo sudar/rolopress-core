@@ -15,7 +15,7 @@
 function rolopress_main_settings_defaults() {
 	$defaults = array( // define our defaults
 			'disable_rolosearch' => 'Use RoloSearch',
-			'theme_version' => ROLOPRESS_CORE_THEME_VERSION // <-- no comma after the last option
+			'theme_version' => ROLOPRESS_VERSION // <-- no comma after the last option
 	);
 	return apply_filters('rolopress_main_settings_defaults', $defaults);
 }
@@ -53,7 +53,7 @@ function rolopress_company_settings_defaults() {
 }
 
 /**
- * This registers all RoloPress settings field and adds defaults to the options table
+ * This registers all RoloPress settings fields, adds defaults to the options table and updates WordPress settings
  */
 function rolopress_register_theme_settings() {
 	register_setting(rolopress_main_options, rolopress_main_options);
@@ -65,6 +65,21 @@ function rolopress_register_theme_settings() {
 	add_option(rolopress_layout_options, rolopress_layout_settings_defaults(), '', 'yes');
 	add_option(rolopress_contact_options, rolopress_contact_settings_defaults(), '', 'yes');
 	add_option(rolopress_company_options, rolopress_company_settings_defaults(), '', 'yes');
+	
+	
+	// UPDATE WORDPRESS SETTINGS
+	
+	// Settings - Discussions
+	update_option( 'comment_order', 'desc' );			// sort notes by newest
+	update_option( 'thread_comments', '1' );			// enable threaded notes
+	update_option( 'thread_comments_depth', '5' );		// set threaded notes to 5 deep
+	update_option( 'default_pingback_flag', '0' );		// don't ping
+	update_option( 'default_ping_status', 'closed' );	// turn off pingbacks
+	update_option( 'comment_whitelist', '0' );			// note author does not have to have another note approved
+	
+	// Update Settings - Privacy
+	update_option( 'blog_public', '0' );				// make private
+	
 }
 add_action('admin_init', 'rolopress_register_theme_settings', 5);
 

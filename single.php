@@ -12,7 +12,6 @@
 			
 		</div><!-- #main -->
 		<?php rolopress_after_main(); // After main hook ?>
-
 	</div><!-- #container -->
 	<?php rolopress_after_container(); // After container hook ?>
 
