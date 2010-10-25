@@ -242,7 +242,7 @@ function _rolo_save_company_fields() {
 
     // Store only company name as seperate custom field
     update_post_meta($post_id, 'rolo_company_name', $_POST['rolo_company_name']);
-
+    wp_set_post_terms($post_id, $_POST['rolo_company_post_tag']);
     if ($post_id) {
         $new_company = array();
 
@@ -520,7 +520,7 @@ function rolo_save_company_multiple($field_name, $post_id, &$new_company) {
 }
 
 /**
- * Setup function for background info
+ * Setup function for company background info
  *
  * @global array $company_fields List of company fields
  * @param string $field_name Field Name to be shown
@@ -576,6 +576,34 @@ function rolo_save_company_info($field_name, $post_id) {
         wp_update_post(array('ID' => $post_id, 'post_content' => $notes));
     }
 }
+
+
+/**
+ * Setup function for company tags
+ *
+ * @global array $company_fields List of company fields
+ * @param string $field_name Field Name to be shown
+ * @param <type> $rolo_tab_index
+ * @since 1.5
+ */
+function rolo_setup_company_post_tags($fieldname, $tabidx, $cid ) {
+	$post_tags = wp_get_post_terms($cid, 'post_tag');
+	$tag_list = '';
+	$i = 0;
+	foreach ( $post_tags as $tag ) {
+	    $tag_list .= $tag->name;
+	    if ( $i+1<sizeof($post_tags) )
+		$tag_list .= ', ';
+	}
+?>
+<div class="ctrlHolder">
+        <label for="rolo_company_post_tag">
+Tags        </label>
+        <input type="text" class="textInput post_tag" tabindex="1003" size="55" value="<?php echo $tag_list; ?>" name="rolo_company_post_tag" autocomplete="off">
+    </div>
+<?php
+}
+
 
 /**
  * callback function for inline company edits

@@ -39,7 +39,7 @@ function rolo_contact_header($contact_id) {
             </li>
 			<?php if ($contact['rolo_contact_email'] != "") { ?><li class="email url-field"><a class="email" href="mailto:<?php echo $contact['rolo_contact_email'];?>"><?php echo $contact['rolo_contact_email'];?> </a><span id="rolo_contact_email" class="edit-icon" style=""><?php echo $contact['rolo_contact_email']; ?></span></li><?php } ?>
 
-			<?php rolopress_after_contact_hcard();?>
+			<?php rolopress_after_contact_header();?>
     </ul><!-- hcard -->
 <?php
 }
@@ -118,7 +118,36 @@ function rolo_contact_details($contact_id) {
             </li>
 				<?php if ($contact['rolo_contact_website'] != "") { ?><li class="website url-field group"><span class="type"><?php _e('Website', 'rolopress'); ?></span><a class="url" href="http://<?php echo $contact['rolo_contact_website']; ?>"><?php echo $contact['rolo_contact_website']; ?></a><span id="rolo_contact_website" class="edit-icon" style=""><?php echo $contact['rolo_contact_website']; ?></span></li><?php } ?>
 				
-				<?php rolopress_after_contact_vcard();?>
+				<?php if ($contact['rolo_contact_post_tag'] != "" ) { ?>
+						<li class="tags url-field"><span class="type"><?php _e('Tags', 'rolopress');?></span>
+							<?php $post_tags = get_the_tags();
+							$tag_list = '';
+							$i = 0;
+							foreach ( $post_tags as $pt ) {
+								$tag_list .= $pt->name;
+								if ( $i+1<sizeof($post_tags) )
+								$tag_list	.= ', ';
+								$i++;
+							}
+							$tag_links	= get_the_term_list($cid, 'post_tag', '', ',','');
+							$tag_links	= explode(', ', $tag_links );
+							?>
+							
+							<ul class="tags group">
+								<?php foreach ( $tag_links as $i=>$tag ): ?>
+										<li class="url-field">
+											<?php echo $tag; ?>
+											<?php if ($i+1==sizeof($tag_links)): ?>
+											<span id="post_tag" class="edit-icon" style=""><?php echo $tag_list; ?></span>
+											<?php endif; ?>
+										</li>
+								<?php if ($i+1<sizeof($tag_links)): echo ', '; endif ?>
+								<?php endforeach; ?>
+							</ul>
+				<?php } ?>
+</li>		
+				
+				<?php rolopress_after_contact_details();?>
         </ul><!-- vcard -->
     </form>
 <?php
@@ -163,7 +192,7 @@ function rolo_company_header($company_id) {
 			if ($company['rolo_company_website'] != "") { ?>
 				<li class="website url-field group"><span class="type"><?php _e('Website', 'rolopress'); ?></span> <a class="url" href="http://<?php echo $company['rolo_company_website']; ?>"><?php echo $company['rolo_company_website']; ?></a><span id="rolo_company_website" class="edit-icon" style=""><?php echo $company['rolo_company_website']; ?></span></li><?php }
 			?>
-			<?php rolopress_after_company_hcard();?>
+			<?php rolopress_after_company_header();?>
     </ul><!-- hcard -->
 <?php
 }
@@ -249,7 +278,41 @@ function rolo_company_details($company_id) {
 
     		<?php if ($company['rolo_company_website'] != "") { ?><li class="website url-field group"><span class="type"><?php _e('Website', 'rolopress'); ?></span> <a class="url" href="http://<?php echo $company['rolo_company_website']; ?>"><?php echo $company['rolo_company_website']; ?></a><span id="rolo_company_website" class="edit-icon" style=""><?php echo $company['rolo_company_website']; ?></span></li><?php } ?>
 			
-			<?php rolopress_after_company_vcard();?>
+			<?php if ($company['rolo_company_post_tag'] != "" ) { ?>
+				<li class="tags url-field"><span class="type"><?php _e('Tags', 'rolopress');?></span>
+					<?php $post_tags = get_the_tags();
+					$tag_list = '';
+					$i = 0;
+					foreach ( $post_tags as $pt ) {
+						$tag_list	.= $pt->name;
+						if ( $i+1<sizeof($post_tags) )
+						$tag_list	.= ', ';
+						$i++;
+					}
+					$tag_links	= get_the_term_list($cid, 'post_tag', '', ', ');
+					$tag_links	= explode(', ', $tag_links );
+					?>
+					
+				<ul class="tags group">
+					<?php foreach ( $tag_links as $i=>$tag ): ?>
+						<li class="url-field">
+							<?php echo $tag; ?>
+							<?php if ($i+1==sizeof($tag_links)): ?>
+								<span id="post_tag" class="edit-icon" style=""><?php echo $tag_list; ?></span>
+							<?php endif; ?>
+						</li>
+			
+				<?php if ($i+1<sizeof($tag_links)): echo ', '; endif ?>
+					<?php endforeach; ?>
+				</ul>
+			<?php } ?>
+
+</li>
+			
+			
+			
+			
+			<?php rolopress_after_company_details();?>
     </ul><!-- vcard -->
     </form>
 <?php

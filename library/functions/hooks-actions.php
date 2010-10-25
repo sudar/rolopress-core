@@ -54,14 +54,14 @@ function rolopress_after_container() { do_action('rolopress_after_container'); }
 
 
 // Located in List pages
-function rolopress_after_contact_hcard() { do_action('rolopress_after_contact_hcard'); }
+function rolopress_after_contact_header() { do_action('rolopress_after_contact_header'); }
 
-function rolopress_after_company_hcard() { do_action('rolopress_after_company_hcard'); }
+function rolopress_after_company_header() { do_action('rolopress_after_company_header'); }
 
 // Located in Item Details
-function rolopress_after_contact_vcard() { do_action('rolopress_after_contact_vcard'); }
+function rolopress_after_contact_details() { do_action('rolopress_after_contact_details'); }
 
-function rolopress_after_company_vcard() { do_action('rolopress_after_company_vcard'); }
+function rolopress_after_company_details() { do_action('rolopress_after_company_details'); }
 
 
 // Located in footer.php

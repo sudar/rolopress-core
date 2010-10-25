@@ -159,6 +159,19 @@ array
     'setup_function' => 'rolo_setup_contact_info',
     'save_function' => 'rolo_save_contact_info',
     'mandatory' => false
+    ),
+    "tags" =>
+    array
+    (
+    'name' => 'post_tag',
+    'class' => 'tags',
+    'filter' => "rolo_contact_post_tag",
+    'default_value' => '',
+    'title' => __('Tags','rolopress'),
+    'description' => '',
+    'setup_function' => 'rolo_setup_contact_post_tags',
+    'save_function' => '',
+    'mandatory' => false
     )
 );
 
@@ -271,6 +284,19 @@ array
     'description' => '',
     'setup_function' => 'rolo_setup_company_info',
     'save_function' => 'rolo_save_company_info',
+    'mandatory' => false
+    ),
+    "tags" =>
+    array
+    (
+    'name' => 'post_tag',
+    'class' => 'tags',
+    'filter' => "rolo_company_post_tag",
+    'default_value' => '',
+    'title' => __('Tags','rolopress'),
+    'description' => '',
+    'setup_function' => 'rolo_setup_company_post_tags',
+    'save_function' => '',
     'mandatory' => false
     )
 );

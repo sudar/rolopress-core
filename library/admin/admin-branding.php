@@ -52,6 +52,12 @@ function rolo_change_menu_names( $translated ) {
 	// Change Posts to Items
 	$translated = str_replace( 'Posts', 'Items', $translated );
 	$translated = str_replace( 'post', 'item', $translated );
+	
+	// Change Post Tags to Tags
+	$translated = str_replace( 'Post Tags', 'Tags', $translated );
+	$translated = str_replace( 'post tags', 'tags', $translated );
+	$translated = str_replace( 'Post Tag', 'Tag', $translated );
+	$translated = str_replace( 'post tag', 'tag', $translated );
 
 	// Change Comments
 	$translated = str_replace( 'Comments', 'Notes', $translated );

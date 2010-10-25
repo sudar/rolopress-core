@@ -250,6 +250,7 @@ function _rolo_save_contact_fields() {
     // Store only first name and last name as seperate custom fields
     update_post_meta($post_id, 'rolo_contact_first_name', $_POST['rolo_contact_first_name']);
     update_post_meta($post_id, 'rolo_contact_last_name', $_POST['rolo_contact_last_name']);
+    wp_set_post_terms($post_id, $_POST['rolo_contact_post_tag']);
 
     if ($post_id) {
         $new_contact = array();
@@ -609,6 +610,37 @@ function rolo_save_contact_company($field_name, $post_id) {
             wp_set_post_terms($company_id, $company_name, 'company');
         }
     }
+}
+
+
+/**
+ * Setup function for contact tags
+ *
+ * @global array $contact_fields List of contact fields
+ * @param string $field_name Field Name to be shown
+ * @param <type> $rolo_tab_index
+ * @since 1.5
+ */
+function rolo_setup_contact_post_tags($fieldname, $tabidx, $cid=-1 ) {
+    if ( $cid >= 0 ):
+	$post_tags = wp_get_post_terms($cid, 'post_tag');
+	$tag_list = '';
+	$i = 0;
+	foreach ( $post_tags as $tag ) {
+	    $tag_list .= $tag->name;
+	    if ( $i+1<sizeof($post_tags) )
+		$tag_list .= ', ';
+	}
+    else:
+	$tag_list = '';
+    endif;
+?>
+<div class="ctrlHolder">
+        <label for="rolo_contact_post_tag">
+Tags        </label>
+        <input type="text" class="textInput post_tag" tabindex="1003" size="55" value="<?php echo $tag_list; ?>" name="rolo_contact_post_tag" autocomplete="off">
+    </div>
+<?php
 }
 
 /**
