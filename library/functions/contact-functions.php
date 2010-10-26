@@ -418,14 +418,17 @@ function rolo_setup_contact_multiple($field_name, &$rolo_tab_index, $contact_id 
         $name  = $multiple_field['name'] . "[$i]";
         $class = $multiple_field['class'];
         $select_name = $multiple_field['name'] . "_select[$i]";
+        $title = $multiple_field['title'];
 
         if (isset($contact['rolo_contact_' . $field_name . '_' . $multiple])) {
             $current_value = $contact['rolo_contact_' . $field_name . '_' . $multiple];
             $ctrl_class = ' multipleInput ' . $multiple_field['name'];
-            $title = $multiple_field['title'];
         } else {
-            $ctrl_class = ' multipleInput ctrlHidden ' . $multiple_field['name'];
-            $title = '';
+            if ($i == 0) {
+                $ctrl_class = ' multipleInput ' . $multiple_field['name'];
+            } else {
+                $ctrl_class = ' multipleInput ctrlHidden ' . $multiple_field['name'];
+            }
         }
 ?>
         <div class="ctrlHolder<?php echo $ctrl_class;?>">
