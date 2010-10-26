@@ -1,3 +1,8 @@
+/**
+ * RoloPress JavaScript functions.
+ * @requires jQuery
+ */
+
 // Auto set on page load...
 jQuery(document).ready(function() {
     // Uniform
@@ -33,7 +38,7 @@ jQuery(document).ready(function() {
     jQuery('img.rolo_add_ctrl').live('click', function () {
        var $this = jQuery(this) ;
        var slug = jQuery.trim($this.parent('div.ctrlHolder').attr('class').replace('ctrlHolder', '').replace('ctrlHidden', '').replace('multipleInput', ''));
-
+       
        $this.hide().parents('form.uniForm').find('div.' + slug + ':hidden:first').trigger('show').show();
     });
 
@@ -106,7 +111,6 @@ jQuery(document).ready(function() {
     });
 
     // Edit in place for notes
-
     jQuery('div.note p').eip(ajax_url, {
         action: 'rolo_edit_note'
 //        id_field: 'rolo_company_id'
@@ -124,5 +128,4 @@ jQuery(document).ready(function() {
             }
         });
     });
-
 });
