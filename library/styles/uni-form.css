@@ -95,7 +95,7 @@
 }
 .inlineLabels .ctrlHidden .textInput{ /* all choices in multiple except first */
                                       width:30%;
-                                      margin-left:31%;
+                                      /*margin-left:31%;*/
 }
 
 .inlineLabels .city {
