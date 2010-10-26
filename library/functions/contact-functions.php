@@ -684,6 +684,10 @@ function rolo_edit_address_callback() {
 add_action('wp_ajax_rolo_edit_address', 'rolo_edit_address_callback');
 add_action('wp_ajax_nopriv_rolo_edit_address', 'rolo_edit_address_callback');
 
+// for post tags
+add_action('wp_ajax_rolo_edit_tag', 'rolo_edit_address_callback');
+add_action('wp_ajax_nopriv_rolo_tag', 'rolo_edit_address_callback');
+
 /**
  * helper function for callback function
  * @param <type> $new_value 
