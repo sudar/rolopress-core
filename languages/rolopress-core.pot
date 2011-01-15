@@ -1,15 +1,15 @@
-# Translation of the WordPress theme RoloPress Core Beta 1.22 by <a href="http://slipfire.com/">SlipFire</a> &amp; <a href="http://sudarmuthu.com/">Sudar Muthu</a>.
-# Copyright (C) 2010 <a href="http://slipfire.com/">SlipFire</a> &amp; <a href="http://sudarmuthu.com/">Sudar Muthu</a>
+# Translation of the WordPress theme RoloPress Core Beta 1.5 by <a href="http://slipfire.com/">SlipFire</a> &amp; <a href="http://sudarmuthu.com/">Sudar Muthu</a>.
+# Copyright (C) 2011 <a href="http://slipfire.com/">SlipFire</a> &amp; <a href="http://sudarmuthu.com/">Sudar Muthu</a>
 # This file is distributed under the same license as the RoloPress Core package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: RoloPress Core Beta 1.22\n"
+"Project-Id-Version: RoloPress Core Beta 1.5\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/rolopress-core\n"
-"POT-Creation-Date: 2010-03-25 15:30+0000\n"
-"PO-Revision-Date: 2010-MO-DA HO:MI+ZONE\n"
+"POT-Creation-Date: 2011-01-15 13:55+0000\n"
+"PO-Revision-Date: 2011-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -20,11 +20,11 @@ msgstr ""
 msgid "Powered by "
 msgstr ""
 
-#: footer.php:10
+#: footer.php:10 library/admin/admin-menu/admin-setup-menus.php:16
 msgid "RoloPress"
 msgstr ""
 
-#: header.php:24
+#: header.php:25
 msgid "Skip to main"
 msgstr ""
 
@@ -61,269 +61,131 @@ msgid "RoloPress News"
 msgstr ""
 
 #: library/admin/admin-menu/admin-setup-menus.php:16
-#: library/admin/admin-menu/menu-appearance-layout.php:15
+msgid "Dashboard"
+msgstr ""
+
+#: library/admin/admin-menu/admin-setup-menus.php:19
 msgid "Layout Options"
 msgstr ""
 
-#: library/admin/admin-menu/admin-setup-menus.php:16
-#: library/admin/admin-menu/menu-appearance-layout.php:103
+#: library/admin/admin-menu/admin-setup-menus.php:19
 msgid "Layout"
 msgstr ""
 
-#: library/admin/admin-menu/admin-setup-menus.php:19
-#: library/admin/admin-menu/menu-settings-menu.php:75
-msgid "Menu Options"
-msgstr ""
-
-#: library/admin/admin-menu/admin-setup-menus.php:19
-#: library/functions/widgets.php:27
-msgid "Menu"
-msgstr ""
-
-#: library/admin/admin-menu/admin-setup-menus.php:20
-#: library/admin/admin-menu/menu-settings-print.php:86
-msgid "Print Options"
-msgstr ""
-
-#: library/admin/admin-menu/admin-setup-menus.php:20
-msgid "Printing"
-msgstr ""
-
-#: library/admin/admin-menu/admin-setup-menus.php:21
-#: library/admin/admin-menu/menu-settings-search.php:72
-msgid "Search Options"
-msgstr ""
-
-#: library/admin/admin-menu/admin-setup-menus.php:21
-#: library/functions/header-functions.php:166 library/widgets/search.php:18
-#: library/widgets/search.php:84
-msgid "Search"
-msgstr ""
-
-#: library/admin/admin-menu/admin-setup-menus.php:25
-msgid "Contacts"
-msgstr ""
-
-#: library/admin/admin-menu/admin-setup-menus.php:28
+#: library/admin/admin-menu/admin-setup-menus.php:22
 msgid "Contact Settings"
 msgstr ""
 
-#: library/admin/admin-menu/admin-setup-menus.php:28
-#: library/admin/admin-menu/admin-setup-menus.php:36
-#: library/functions/header-functions.php:171
-msgid "Settings"
+#: library/admin/admin-menu/admin-setup-menus.php:22
+#: library/setup/settings.php:146 library/setup/settings.php:149
+msgid "Contacts"
 msgstr ""
 
-#: library/admin/admin-menu/admin-setup-menus.php:33
-#: library/widgets/companies.php:25 library/widgets/companies.php:32
-#: library/widgets/companies.php:102
-msgid "Companies"
-msgstr ""
-
-#: library/admin/admin-menu/admin-setup-menus.php:36
+#: library/admin/admin-menu/admin-setup-menus.php:25
 msgid "Company Settings"
 msgstr ""
 
-#: library/admin/admin-menu/menu-appearance-layout.php:21
-msgid "1 Column"
-msgstr ""
-
-#: library/admin/admin-menu/menu-appearance-layout.php:21
-#: library/admin/admin-menu/menu-appearance-layout.php:28
-#, php-format
-msgid "Primary on left %s Secondary on right"
-msgstr ""
-
-#: library/admin/admin-menu/menu-appearance-layout.php:22
-#: library/admin/admin-menu/menu-appearance-layout.php:23
-#: library/admin/admin-menu/menu-appearance-layout.php:24
-#: library/admin/admin-menu/menu-appearance-layout.php:25
-msgid "2 Columns"
-msgstr ""
-
-#: library/admin/admin-menu/menu-appearance-layout.php:22
-#, php-format
-msgid "Primary on top left %s Secondary on Bottom left"
-msgstr ""
-
-#: library/admin/admin-menu/menu-appearance-layout.php:23
-#, php-format
-msgid "Primary on top right %s Secondary on Bottom right"
-msgstr ""
-
-#: library/admin/admin-menu/menu-appearance-layout.php:24
-#, php-format
-msgid "Wide Primary on top left %s Wide Secondary on Bottom left"
-msgstr ""
-
-#: library/admin/admin-menu/menu-appearance-layout.php:25
-#, php-format
-msgid "Wide Primary on top right %s Wide Secondary on Bottom right"
-msgstr ""
-
-#: library/admin/admin-menu/menu-appearance-layout.php:26
-#: library/admin/admin-menu/menu-appearance-layout.php:27
-#: library/admin/admin-menu/menu-appearance-layout.php:28
-#: library/admin/admin-menu/menu-appearance-layout.php:29
-#: library/admin/admin-menu/menu-appearance-layout.php:30
-#: library/admin/admin-menu/menu-appearance-layout.php:31
-#: library/admin/admin-menu/menu-appearance-layout.php:32
-#: library/admin/admin-menu/menu-appearance-layout.php:33
-msgid "3 Columns"
-msgstr ""
-
-#: library/admin/admin-menu/menu-appearance-layout.php:26
-#, php-format
-msgid "Primary on left %s Secondary on left"
-msgstr ""
-
-#: library/admin/admin-menu/menu-appearance-layout.php:27
-#, php-format
-msgid "Primary on right %s Secondary on right"
-msgstr ""
-
-#: library/admin/admin-menu/menu-appearance-layout.php:29
-#, php-format
-msgid "Wide Primary on left %s Wide Secondary on left"
-msgstr ""
-
-#: library/admin/admin-menu/menu-appearance-layout.php:30
-#, php-format
-msgid "Wide Primary on right %s Wide Secondary on right"
-msgstr ""
-
-#: library/admin/admin-menu/menu-appearance-layout.php:31
-#, php-format
-msgid "Wide Primary on left %s Wide Secondary on right"
-msgstr ""
-
-#: library/admin/admin-menu/menu-appearance-layout.php:32
-#, php-format
-msgid "1 Wide sidebar on left %s 1 sidebar on right"
-msgstr ""
-
-#: library/admin/admin-menu/menu-appearance-layout.php:33
-#, php-format
-msgid "1 sidebar on left %s 1 Wide sidebar on right"
-msgstr ""
-
-#: library/admin/admin-menu/menu-appearance-layout.php:39
-msgid "Show Contact items"
-msgstr ""
-
-#: library/admin/admin-menu/menu-appearance-layout.php:44
-msgid "Show Company items"
-msgstr ""
-
-#: library/admin/admin-menu/menu-appearance-layout.php:96
-#: library/admin/admin-menu/menu-companies-settings.php:73
-#: library/admin/admin-menu/menu-contacts-settings.php:72
-#: library/admin/admin-menu/menu-settings-menu.php:67
-#: library/admin/admin-menu/menu-settings-print.php:78
-#: library/admin/admin-menu/menu-settings-search.php:64
-msgid "settings saved."
-msgstr ""
-
-#: library/admin/admin-menu/menu-appearance-layout.php:97
-#: library/admin/admin-menu/menu-companies-settings.php:74
-#: library/admin/admin-menu/menu-contacts-settings.php:73
-#: library/admin/admin-menu/menu-settings-menu.php:68
-#: library/admin/admin-menu/menu-settings-print.php:79
-#: library/admin/admin-menu/menu-settings-search.php:65
-msgid "settings reset."
-msgstr ""
-
-#: library/admin/admin-menu/menu-appearance-layout.php:98
-#: library/admin/admin-menu/menu-companies-settings.php:75
-#: library/admin/admin-menu/menu-contacts-settings.php:74
-msgid "widgets reset."
-msgstr ""
-
-#: library/admin/admin-menu/menu-appearance-layout.php:108
-#: library/admin/admin-menu/menu-appearance-layout.php:150
-#: library/admin/admin-menu/menu-companies-settings.php:198
-#: library/admin/admin-menu/menu-contacts-settings.php:197
-#: library/admin/admin-menu/menu-settings-menu.php:195
-#: library/admin/admin-menu/menu-settings-print.php:212
-#: library/admin/admin-menu/menu-settings-search.php:197
-msgid "Save changes"
-msgstr ""
-
-#: library/admin/admin-menu/menu-appearance-layout.php:156
-#: library/admin/admin-menu/menu-companies-settings.php:204
-#: library/admin/admin-menu/menu-contacts-settings.php:203
-#: library/admin/admin-menu/menu-settings-menu.php:201
-#: library/admin/admin-menu/menu-settings-print.php:218
-#: library/admin/admin-menu/menu-settings-search.php:203
-msgid "Reset to default"
-msgstr ""
-
-#: library/admin/admin-menu/menu-companies-settings.php:18
-msgid "Sort Company List by"
-msgstr ""
-
-#: library/admin/admin-menu/menu-companies-settings.php:25
-#: library/admin/admin-menu/menu-contacts-settings.php:25
-msgid "Order by"
-msgstr ""
-
-#: library/admin/admin-menu/menu-companies-settings.php:80
-msgid "Company Options"
-msgstr ""
-
-#: library/admin/admin-menu/menu-contacts-settings.php:18
-msgid "Sort Contact List by"
-msgstr ""
-
-#: library/admin/admin-menu/menu-contacts-settings.php:79
-msgid "Contact Options"
+#: library/admin/admin-menu/admin-setup-menus.php:25
+#: library/setup/settings.php:182 library/setup/settings.php:185
+#: library/widgets/companies.php:25 library/widgets/companies.php:32
+#: library/widgets/companies.php:102
+msgid "Companies"
 msgstr ""
 
 #: library/admin/admin-menu/menu-posts-edit.php:16
 msgid "Image"
 msgstr ""
 
-#: library/admin/admin-menu/menu-settings-menu.php:17
-msgid "Contact items"
+#: library/admin/admin-menu/menu-rolopress-company.php:70
+#: library/admin/admin-menu/menu-rolopress-contact.php:70
+#: library/admin/admin-menu/menu-rolopress-layout.php:75
+#: library/admin/admin-menu/menu-rolopress-layout.php:78
+#: library/admin/admin-menu/menu-rolopress-main.php:95
+#: library/admin/admin-menu/menu-rolopress-main.php:98
+msgid "Save Changes"
 msgstr ""
 
-#: library/admin/admin-menu/menu-settings-menu.php:22
-msgid "Company items"
+#: library/admin/admin-menu/menu-rolopress-layout.php:38
+msgid "1 Column"
 msgstr ""
 
-#: library/admin/admin-menu/menu-settings-menu.php:82
-msgid "Hide these menu items"
+#: library/admin/admin-menu/menu-rolopress-layout.php:38
+#: library/admin/admin-menu/menu-rolopress-layout.php:45
+#, php-format
+msgid "Primary on left %s Secondary on right"
 msgstr ""
 
-#: library/admin/admin-menu/menu-settings-print.php:17
-msgid "Primary Sidebar"
+#: library/admin/admin-menu/menu-rolopress-layout.php:39
+#: library/admin/admin-menu/menu-rolopress-layout.php:40
+#: library/admin/admin-menu/menu-rolopress-layout.php:41
+#: library/admin/admin-menu/menu-rolopress-layout.php:42
+msgid "2 Columns"
 msgstr ""
 
-#: library/admin/admin-menu/menu-settings-print.php:22
-msgid "Secondary Sidebar"
+#: library/admin/admin-menu/menu-rolopress-layout.php:39
+#, php-format
+msgid "Primary on top left %s Secondary on Bottom left"
 msgstr ""
 
-#: library/admin/admin-menu/menu-settings-print.php:27
-msgid "Contact-Under Main"
+#: library/admin/admin-menu/menu-rolopress-layout.php:40
+#, php-format
+msgid "Primary on top right %s Secondary on Bottom right"
 msgstr ""
 
-#: library/admin/admin-menu/menu-settings-print.php:32
-msgid "Company-Under Main"
+#: library/admin/admin-menu/menu-rolopress-layout.php:41
+#, php-format
+msgid "Wide Primary on top left %s Wide Secondary on Bottom left"
 msgstr ""
 
-#: library/admin/admin-menu/menu-settings-print.php:95
-msgid "Print these Widget Areas"
+#: library/admin/admin-menu/menu-rolopress-layout.php:42
+#, php-format
+msgid "Wide Primary on top right %s Wide Secondary on Bottom right"
 msgstr ""
 
-#: library/admin/admin-menu/menu-settings-search.php:17
-#: library/admin/admin-menu/menu-settings-search.php:81
-msgid "Disable RoloSearch"
+#: library/admin/admin-menu/menu-rolopress-layout.php:43
+#: library/admin/admin-menu/menu-rolopress-layout.php:44
+#: library/admin/admin-menu/menu-rolopress-layout.php:45
+#: library/admin/admin-menu/menu-rolopress-layout.php:46
+#: library/admin/admin-menu/menu-rolopress-layout.php:47
+#: library/admin/admin-menu/menu-rolopress-layout.php:48
+#: library/admin/admin-menu/menu-rolopress-layout.php:49
+#: library/admin/admin-menu/menu-rolopress-layout.php:50
+msgid "3 Columns"
 msgstr ""
 
-#: library/admin/admin-menu/menu-settings-search.php:18
-msgid ""
-"If you are going to use a search plugin, you should disable RoloSearch to "
-"eliminate conflicts"
+#: library/admin/admin-menu/menu-rolopress-layout.php:43
+#, php-format
+msgid "Primary on left %s Secondary on left"
+msgstr ""
+
+#: library/admin/admin-menu/menu-rolopress-layout.php:44
+#, php-format
+msgid "Primary on right %s Secondary on right"
+msgstr ""
+
+#: library/admin/admin-menu/menu-rolopress-layout.php:46
+#, php-format
+msgid "Wide Primary on left %s Wide Secondary on left"
+msgstr ""
+
+#: library/admin/admin-menu/menu-rolopress-layout.php:47
+#, php-format
+msgid "Wide Primary on right %s Wide Secondary on right"
+msgstr ""
+
+#: library/admin/admin-menu/menu-rolopress-layout.php:48
+#, php-format
+msgid "Wide Primary on left %s Wide Secondary on right"
+msgstr ""
+
+#: library/admin/admin-menu/menu-rolopress-layout.php:49
+#, php-format
+msgid "1 Wide sidebar on left %s 1 sidebar on right"
+msgstr ""
+
+#: library/admin/admin-menu/menu-rolopress-layout.php:50
+#, php-format
+msgid "1 sidebar on left %s 1 Wide sidebar on right"
 msgstr ""
 
 #: library/extensions/extended-admin-post-filter/extend-admin-post-filter.php:42
@@ -356,7 +218,7 @@ msgstr ""
 #: library/functions/company-functions.php:92
 #: library/functions/company-functions.php:157
 #: library/functions/contact-functions.php:91
-#: library/functions/contact-functions.php:154
+#: library/functions/contact-functions.php:156
 msgid "Mandatory fields are not filled."
 msgstr ""
 
@@ -369,32 +231,32 @@ msgid "Add company"
 msgstr ""
 
 #: library/functions/company-functions.php:296
-#: library/functions/contact-functions.php:288
+#: library/functions/contact-functions.php:293
 msgid "Oops!, We Have a Problem."
 msgstr ""
 
 #: library/functions/company-functions.php:303
-#: library/functions/contact-functions.php:295
+#: library/functions/contact-functions.php:300
 msgid "Add notes"
 msgstr ""
 
 #: library/functions/company-functions.php:307
-#: library/functions/contact-functions.php:299
+#: library/functions/contact-functions.php:304
 msgid "Notes"
 msgstr ""
 
 #: library/functions/company-functions.php:315
-#: library/functions/contact-functions.php:307
+#: library/functions/contact-functions.php:312
 msgid "Add Notes"
 msgstr ""
 
 #: library/functions/company-functions.php:490
-#: library/functions/contact-functions.php:447
+#: library/functions/contact-functions.php:452
 msgid "Delete"
 msgstr ""
 
 #: library/functions/company-functions.php:491
-#: library/functions/contact-functions.php:448
+#: library/functions/contact-functions.php:453
 msgid "Add another"
 msgstr ""
 
@@ -408,12 +270,12 @@ msgstr ""
 msgid "There was some problem in inserting the contact info"
 msgstr ""
 
-#: library/functions/contact-functions.php:137
+#: library/functions/contact-functions.php:139
 msgid "Edit Contact"
 msgstr ""
 
-#: library/functions/contact-functions.php:199
-#: library/widgets/add-contact-form.php:26
+#: library/functions/contact-functions.php:203 library/setup/settings.php:164
+#: library/setup/settings.php:167 library/widgets/add-contact-form.php:26
 msgid "Add Contact"
 msgstr ""
 
@@ -497,12 +359,12 @@ msgid "Created on "
 msgstr ""
 
 #: library/functions/content-functions.php:192
-#: library/functions/content-functions.php:208
+#: library/functions/content-functions.php:209
 msgid "Next <span class=\"meta-nav\">&raquo;</span>"
 msgstr ""
 
 #: library/functions/content-functions.php:193
-#: library/functions/content-functions.php:209
+#: library/functions/content-functions.php:210
 msgid "<span class=\"meta-nav\">&laquo;</span> Previous"
 msgstr ""
 
@@ -564,20 +426,21 @@ msgstr ""
 msgid "%1$s Page %2$s"
 msgstr ""
 
-#: library/functions/header-functions.php:102
+#: library/functions/header-functions.php:108
 msgid "JavaScript is disabled. For RoloPress to work properly,"
 msgstr ""
 
-#: library/functions/header-functions.php:102
+#: library/functions/header-functions.php:108
 msgid "please enable JavaScript."
 msgstr ""
 
-#: library/functions/header-functions.php:129
-msgid "Contacts "
+#: library/functions/header-functions.php:148 library/widgets/search.php:18
+#: library/widgets/search.php:84
+msgid "Search"
 msgstr ""
 
-#: library/functions/header-functions.php:143
-msgid "Companies "
+#: library/functions/header-functions.php:153
+msgid "Settings"
 msgstr ""
 
 #: library/functions/messages.php:21
@@ -634,106 +497,122 @@ msgid ""
 "searching will help."
 msgstr ""
 
-#: library/functions/template-functions.php:64
-#: library/functions/template-functions.php:187
+#: library/functions/template-functions.php:66
+#: library/functions/template-functions.php:222
 msgid "Export vCard"
 msgstr ""
 
-#: library/functions/template-functions.php:77
-#: library/functions/template-functions.php:201
+#: library/functions/template-functions.php:79
+#: library/functions/template-functions.php:236
 msgid "Map"
 msgstr ""
 
-#: library/functions/template-functions.php:85
-#: library/functions/template-functions.php:209
-#: library/setup/setup-fields.php:285
+#: library/functions/template-functions.php:87
+#: library/functions/template-functions.php:244
+#: library/setup/setup-fields.php:311
 msgid "City"
 msgstr ""
 
-#: library/functions/template-functions.php:86
-#: library/functions/template-functions.php:210
-#: library/setup/setup-fields.php:286
+#: library/functions/template-functions.php:88
+#: library/functions/template-functions.php:245
+#: library/setup/setup-fields.php:312
 msgid "State"
 msgstr ""
 
-#: library/functions/template-functions.php:87
-#: library/functions/template-functions.php:211
-#: library/setup/setup-fields.php:287
+#: library/functions/template-functions.php:89
+#: library/functions/template-functions.php:246
+#: library/setup/setup-fields.php:313
 msgid "Zip"
 msgstr ""
 
-#: library/functions/template-functions.php:88
-#: library/functions/template-functions.php:212
-#: library/setup/setup-fields.php:288
+#: library/functions/template-functions.php:90
+#: library/functions/template-functions.php:247
+#: library/setup/setup-fields.php:314
 msgid "Country"
 msgstr ""
 
-#: library/functions/template-functions.php:97
-#: library/functions/template-functions.php:224
-#: library/setup/setup-fields.php:84 library/setup/setup-fields.php:197
+#: library/functions/template-functions.php:99
+#: library/functions/template-functions.php:259
+#: library/setup/setup-fields.php:84 library/setup/setup-fields.php:210
 msgid "Mobile"
 msgstr ""
 
-#: library/functions/template-functions.php:98
+#: library/functions/template-functions.php:100
 #: library/setup/setup-fields.php:84 library/widgets/pages.php:85
 msgid "Home"
 msgstr ""
 
-#: library/functions/template-functions.php:99
-#: library/functions/template-functions.php:225
-#: library/setup/setup-fields.php:84 library/setup/setup-fields.php:197
+#: library/functions/template-functions.php:101
+#: library/functions/template-functions.php:260
+#: library/setup/setup-fields.php:84 library/setup/setup-fields.php:210
 msgid "Work"
 msgstr ""
 
-#: library/functions/template-functions.php:100
-#: library/functions/template-functions.php:226
-#: library/setup/setup-fields.php:84 library/setup/setup-fields.php:197
+#: library/functions/template-functions.php:102
+#: library/functions/template-functions.php:261
+#: library/setup/setup-fields.php:84 library/setup/setup-fields.php:210
 msgid "Fax"
 msgstr ""
 
-#: library/functions/template-functions.php:101
-#: library/functions/template-functions.php:227
-#: library/setup/setup-fields.php:84 library/setup/setup-fields.php:197
+#: library/functions/template-functions.php:103
+#: library/functions/template-functions.php:262
+#: library/setup/setup-fields.php:84 library/setup/setup-fields.php:210
 msgid "Other"
 msgstr ""
 
-#: library/functions/template-functions.php:108
-#: library/functions/template-functions.php:235
-#: library/setup/setup-fields.php:112 library/setup/setup-fields.php:225
+#: library/functions/template-functions.php:110
+#: library/functions/template-functions.php:270
+#: library/setup/setup-fields.php:112 library/setup/setup-fields.php:238
 msgid "Yahoo"
 msgstr ""
 
-#: library/functions/template-functions.php:109
-#: library/functions/template-functions.php:236
-#: library/setup/setup-fields.php:112 library/setup/setup-fields.php:225
+#: library/functions/template-functions.php:111
+#: library/functions/template-functions.php:271
+#: library/setup/setup-fields.php:112 library/setup/setup-fields.php:238
 msgid "MSN"
 msgstr ""
 
-#: library/functions/template-functions.php:110
-#: library/functions/template-functions.php:237
+#: library/functions/template-functions.php:112
+#: library/functions/template-functions.php:272
 msgid "AIM"
 msgstr ""
 
-#: library/functions/template-functions.php:111
-#: library/functions/template-functions.php:238
+#: library/functions/template-functions.php:113
+#: library/functions/template-functions.php:273
 msgid "GTalk"
 msgstr ""
 
-#: library/functions/template-functions.php:112
-#: library/functions/template-functions.php:239
-#: library/setup/setup-fields.php:130 library/setup/setup-fields.php:243
+#: library/functions/template-functions.php:114
+#: library/setup/setup-fields.php:112 library/setup/setup-fields.php:238
+msgid "Skype"
+msgstr ""
+
+#: library/functions/template-functions.php:115
+#: library/functions/template-functions.php:274
+#: library/setup/setup-fields.php:130 library/setup/setup-fields.php:256
 msgid "Twitter"
 msgstr ""
 
-#: library/functions/template-functions.php:116
-#: library/functions/template-functions.php:159
-#: library/functions/template-functions.php:244
-#: library/setup/setup-fields.php:102 library/setup/setup-fields.php:215
+#: library/functions/template-functions.php:119
+#: library/functions/template-functions.php:193
+#: library/functions/template-functions.php:279
+#: library/setup/setup-fields.php:102 library/setup/setup-fields.php:228
 msgid "Website"
 msgstr ""
 
-#: library/functions/template-functions.php:424
+#: library/functions/template-functions.php:122
+#: library/functions/template-functions.php:282
+#: library/setup/setup-fields.php:170 library/setup/setup-fields.php:296
+#: library/widgets/tags.php:18 library/widgets/tags.php:94
+msgid "Tags"
+msgstr ""
+
+#: library/functions/template-functions.php:495
 msgid "Page "
+msgstr ""
+
+#: library/functions/widgets.php:27
+msgid "Menu"
 msgstr ""
 
 #: library/functions/widgets.php:27
@@ -786,6 +665,11 @@ msgid ""
 "Located under the company header information on the single company page."
 msgstr ""
 
+#: library/setup/settings.php:200 library/setup/settings.php:203
+#: library/widgets/add-company-form.php:26
+msgid "Add Company"
+msgstr ""
+
 #: library/setup/setup-fields.php:23
 msgid "First Name"
 msgstr ""
@@ -798,47 +682,43 @@ msgstr ""
 msgid "Title"
 msgstr ""
 
-#: library/setup/setup-fields.php:62 library/setup/setup-fields.php:284
+#: library/setup/setup-fields.php:62 library/setup/setup-fields.php:310
 msgid "Company"
 msgstr ""
 
-#: library/setup/setup-fields.php:75 library/setup/setup-fields.php:188
+#: library/setup/setup-fields.php:75 library/setup/setup-fields.php:201
 msgid "Email"
 msgstr ""
 
-#: library/setup/setup-fields.php:89 library/setup/setup-fields.php:202
+#: library/setup/setup-fields.php:89 library/setup/setup-fields.php:215
 msgid "Phone"
 msgstr ""
 
-#: library/setup/setup-fields.php:112 library/setup/setup-fields.php:225
+#: library/setup/setup-fields.php:112 library/setup/setup-fields.php:238
 msgid "AOL"
 msgstr ""
 
-#: library/setup/setup-fields.php:112 library/setup/setup-fields.php:225
+#: library/setup/setup-fields.php:112 library/setup/setup-fields.php:238
 msgid "Gtalk"
-msgstr ""
-
-#: library/setup/setup-fields.php:112 library/setup/setup-fields.php:225
-msgid "Skype"
 msgstr ""
 
 #: library/setup/setup-fields.php:117
 msgid "IM"
 msgstr ""
 
-#: library/setup/setup-fields.php:144 library/setup/setup-fields.php:257
+#: library/setup/setup-fields.php:144 library/setup/setup-fields.php:270
 msgid "Address"
 msgstr ""
 
-#: library/setup/setup-fields.php:157 library/setup/setup-fields.php:270
+#: library/setup/setup-fields.php:157 library/setup/setup-fields.php:283
 msgid "Background Info"
 msgstr ""
 
-#: library/setup/setup-fields.php:175
+#: library/setup/setup-fields.php:188
 msgid "Company Name"
 msgstr ""
 
-#: library/setup/setup-fields.php:283
+#: library/setup/setup-fields.php:309
 msgid "Rolopress Type"
 msgstr ""
 
@@ -851,17 +731,13 @@ msgstr ""
 msgid "Add Company Form"
 msgstr ""
 
-#: library/widgets/add-company-form.php:26
-msgid "Add Company"
-msgstr ""
-
 #: library/widgets/add-company-form.php:58
 #: library/widgets/add-contact-form.php:58 library/widgets/calendar.php:54
 #: library/widgets/categories.php:118 library/widgets/companies.php:112
 #: library/widgets/company-details.php:58
 #: library/widgets/contact-details.php:58 library/widgets/owners.php:92
 #: library/widgets/pages.php:129 library/widgets/recent-items.php:113
-#: library/widgets/recent-notes.php:89 library/widgets/search.php:89
+#: library/widgets/recent-notes.php:110 library/widgets/search.php:89
 #: library/widgets/tags.php:99
 msgid "Title:"
 msgstr ""
@@ -1288,31 +1164,30 @@ msgid "After:"
 msgstr ""
 
 #: library/widgets/recent-notes.php:13
-msgid "Displays Your Most Recent Notes"
+msgid "Display your recent Notes"
 msgstr ""
 
-#: library/widgets/recent-notes.php:15 library/widgets/recent-notes.php:30
-#: library/widgets/recent-notes.php:75
+#: library/widgets/recent-notes.php:14 library/widgets/recent-notes.php:48
 msgid "Recent Notes"
 msgstr ""
 
 #. translators: comments widget: 1: comment author, 2: post link
-#: library/widgets/recent-notes.php:52
+#: library/widgets/recent-notes.php:73
 #, php-format
 msgctxt "widgets"
-msgid "%1$s : %2$s"
+msgid "%1$s"
 msgstr ""
 
-#: library/widgets/recent-notes.php:85
-msgid "Displays your recently created notes."
+#: library/widgets/recent-notes.php:105
+msgid "Displays your recently created Notes."
 msgstr ""
 
-#: library/widgets/recent-notes.php:92
+#: library/widgets/recent-notes.php:115
 msgid "Number of notes to show:"
 msgstr ""
 
-#: library/widgets/recent-notes.php:94
-msgid "(at most 15)"
+#: library/widgets/recent-notes.php:120
+msgid "Show Date and Time:"
 msgstr ""
 
 #: library/widgets/search.php:16
@@ -1340,10 +1215,6 @@ msgstr ""
 #: library/widgets/tags.php:16
 msgid ""
 "An advanced widget that gives you total control over the output of your tags."
-msgstr ""
-
-#: library/widgets/tags.php:18 library/widgets/tags.php:94
-msgid "Tags"
 msgstr ""
 
 #: library/widgets/tags.php:103
@@ -1394,43 +1265,43 @@ msgstr ""
 msgid "Log out "
 msgstr ""
 
-#: notes.php:120
+#: notes.php:122
 msgid "Your note is awaiting moderation."
 msgstr ""
 
-#: notes.php:135
+#: notes.php:137
 #, php-format
 msgid ""
 "<span class=\"added-by\">Added by: </span><cite class=\"commenter\">%s</"
 "cite><span class=\"added-on\"> on </span>"
 msgstr ""
 
-#: notes.php:138
+#: notes.php:140
 #, php-format
 msgid "%1$s at %2$s"
 msgstr ""
 
-#. Theme Name of an extension
+#. Theme Name of the plugin/theme
 msgid "RoloPress Core"
 msgstr ""
 
-#. Theme URI of an extension
+#. Theme URI of the plugin/theme
 msgid "http://rolopress.com"
 msgstr ""
 
-#. Description of an extension
+#. Description of the plugin/theme
 msgid ""
 "Contact Manager parent theme for RoloPress. This theme should not be "
 "activated and used directly. You can <a href=\"http://rolopress.com/category/"
 "themes\">download RoloPress child themes here</a>."
 msgstr ""
 
-#. Author of an extension
+#. Author of the plugin/theme
 msgid ""
 "<a href=\"http://slipfire.com/\">SlipFire</a> &amp; <a href=\"http://"
 "sudarmuthu.com/\">Sudar Muthu</a>"
 msgstr ""
 
-#. Tags of an extension
+#. Tags of the plugin/theme
 msgid "contact-manager, crm"
 msgstr ""
