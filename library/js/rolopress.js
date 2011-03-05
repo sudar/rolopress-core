@@ -111,9 +111,8 @@ jQuery(document).ready(function() {
     });
 
     // Edit in place for notes
-    jQuery('div.note p').eip(ajax_url, {
-        action: 'rolo_edit_note'
-//        id_field: 'rolo_company_id'
+    jQuery('div.note').eip(ajax_url, {
+        action: 'rolo_edit_note', form_type: "textarea"
     });
 
     // Validation for mandatory fields
